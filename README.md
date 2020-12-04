@@ -8,6 +8,7 @@ This project is my first in-depth UX and Development project/product that has a 
 
 A big focus for this project is in storing, viewing and managing data so aside from utilizing more React Hooks as in my other projects, I delved into Firebase. The current list of dependencies (at the moment) are the following:
 
+- [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
 - [React Hooks](https://reactjs.org/docs/hooks-reference.html#useeffect)
   - [useState](https://reactjs.org/docs/hooks-reference.html#usestate)
   - [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)
