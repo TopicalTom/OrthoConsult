@@ -1,0 +1,444 @@
+@import "../../styles/baseline.scss";
+
+.case {
+    position: fixed;
+    overflow-y:auto;
+    background-color: white;
+    top:0;
+    left:0;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    //padding: 40px 60px;
+    text-align: left;
+    outline: none;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 5vw 90vw 5vw;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header header header"
+        ". content ."
+        ". actions .";
+
+        @include tablet {
+            grid-template-columns: 25vw 50vw 25vw;
+            grid-template-rows: auto;
+            grid-template-areas:
+                "header header header"
+                ". content ."
+                ". actions .";
+        }
+
+    &__form {
+        grid-area: content;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        align-self: center;
+        //width: 100%;
+        //height: 100%;
+        //width: 50vw;
+        //height: 70vh;
+        //margin: 100px auto;
+    }
+
+    &__header {
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    &__close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: 1rem;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        cursor: pointer;
+        opacity: 0.5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &__cancel {
+        width: 35px;
+        padding-bottom: 8px;
+    }
+
+    &__escape {
+        font-weight: bold;
+        color: #999999;
+    }
+
+    &__instructions {
+        padding-bottom: 50px;
+        width: 90%;
+        line-height: 1.5rem;
+    }
+
+    &__types {
+        width: 100%;
+        display: flex;
+    }
+
+    &__touchpoint {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__type {
+        width: 48%;
+        height: 300px;
+        border-radius: 4px;
+        padding: 1rem;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #156fc4;
+        }
+    }
+
+    &__nav {
+        grid-area: actions;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        margin-top: 70px;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        display: grid;
+        justify-items: right;
+        grid-template-columns: repeat(3, 1fr);
+        gap: auto;
+        
+    }
+
+    &__title {
+
+        &--current {
+            margin-bottom: 20px; 
+        }
+
+        &--previous {
+            margin-left: 0.4rem;
+        }
+    }
+
+    &__column{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__action {
+        //background-color: #F2F3F7;
+        //padding: 0.5rem 1rem;
+        font-weight: bold;
+    }
+
+    &__container {
+        display: grid;
+        justify-items: stretch;
+        height: 320px;
+
+        &--default {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        &--table,
+        &--triple {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        &--quad {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+    }
+
+    &__row {
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    &__button {
+        cursor: pointer;
+
+        &--previous {
+            border: none;
+            background: none;
+            color: #AAAAAA;
+            //padding: 0.8rem 0rem;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            text-align: left;
+            margin-bottom: 50px;
+            padding: 0;
+
+            &:hover > svg {
+                transition: background-color 0.25s ease-in-out;
+                transition: fill 0.25s ease-in-out;
+                background-color:#F2F3F7;
+
+                & > path {
+                    transition: fill 0.25s ease-in-out;
+                    fill:#2997ff;
+                }
+            }
+
+            &:hover > label {
+                transition: color 0.25s ease-in-out;
+                color:#2997ff;
+            }
+        }
+
+        &--next,
+        &--submit {
+            border-radius: 4px;
+            background-color: #2997ff;
+            border: none;
+            padding: 1rem 3rem;
+            color: white;
+            font-weight: bold;
+            align-self: flex-end;
+            font-size: 0.9rem;
+            margin-left: 20px;
+
+            &:hover {
+                background-color: #156fc4;
+            }
+        }
+    }
+
+    &__label {
+        color: #999999;
+    }
+
+    &__stack{
+        display: grid;
+        justify-items: stretch;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    &__upload {
+        width: 100%;
+        height: 60%;
+        padding: 4rem 1rem;
+        border-radius: 4px;
+        border: 2px dotted #E1E1E1;
+    }
+
+    &__diagram {
+        //width: 100%;
+        height: 90%;
+    }
+
+    &__icon {
+
+        &--previous {
+            width: 32px;
+            border-radius: 50px;
+            padding: 0.25rem;
+
+            & > path {
+                fill: #AAAAAA;
+            }
+        }
+    }
+}
+
+/*
+        &--previous {
+            border: none;
+            background: none;
+            color: #747272;
+            padding: 0.8rem 2rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            background-color: #F2F3F7;
+            color: gray;
+            border-radius: 4px;
+        }
+
+*/
+
+/*
+.case {
+    position: fixed;
+    overflow-y:auto;
+    background-color: white;
+    top:50%;
+    left:50%;
+    right:auto;
+    bottom:auto;
+    z-index: 1000;
+    border-radius:18px;
+    transform:translate(-50%,-50%);
+    width: 55vw;
+    height: 70vh;
+    width: 100vw;
+    height: 100vh;
+    padding: 40px 60px;
+    text-align: left;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 30px;
+    border: 2px solid rgba(196, 196, 196, 0.315);
+    overflow: hidden;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__details {
+        padding-bottom: 30px;
+        width: 90%;
+        line-height: 1.5rem;
+    }
+
+    &__step {
+        flex-direction: column;
+
+        &--hidden {
+            display: none;
+        }
+
+        &--active {
+            display: flex;
+        }
+    }
+
+    &__types {
+        width: 100%;
+        display: flex;
+    }
+
+    &__touchpoint {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__type {
+        width: 48%;
+        height: 300px;
+        border-radius: 4px;
+        padding: 1rem;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #156fc4;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        margin-top: 40px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
+
+    &__header {
+        margin-bottom: 20px;
+    }
+
+    &__column{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__container {
+        display: grid;
+        justify-items: stretch;
+        height: 320px;
+
+        &--default {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        &--table,
+        &--triple {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        &--quad {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+    }
+
+    &__row {
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    &__button {
+        cursor: pointer;
+
+        &--previous {
+            border: none;
+            background: none;
+            color: #747272;
+            padding: 0.8rem 2rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            background-color: #F2F3F7;
+            color: #2997ff;
+            border-radius: 4px;
+        }
+
+        &--next,
+        &--submit {
+            border-radius: 4px;
+            background-color: #2997ff;
+            border: none;
+            padding: 1rem 3rem;
+            color: white;
+            font-weight: bold;
+            align-self: flex-end;
+            font-size: 0.9rem;
+
+            &:hover {
+                background-color: #156fc4;
+            }
+        }
+    }
+
+    &__upload {
+        width: 100%;
+        height: 60%;
+        padding: 4rem 1rem;
+        border-radius: 4px;
+        border: 2px dotted #E1E1E1;
+    }
+
+    &__diagram {
+        //width: 100%;
+        height: 90%;
+    }
+}
+*/

@@ -1,0 +1,67 @@
+@import "../../styles/baseline.scss";
+
+.header {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    transform: translateY(0);
+    transition: transform 0 ease-in-out;
+    transition: background-color 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0) 0px 10px 20px;
+    z-index: 105;
+    border-bottom: 1px solid;
+    align-items: center;
+
+    @include tablet {
+        border-bottom: none;
+        height: 60px;
+    }
+
+    &__watermark {
+        color: white;
+    }
+
+    &__container {
+        margin: 0 20px;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        z-index: 105;
+        transition: background-color 0.3s ease;
+
+        @include tablet {
+            margin: 0 60px;
+        }
+
+        @include laptop-small {
+            margin: 0 100px;
+        }
+
+        @include laptop {
+            width: 1200px;
+            margin: 0 auto;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: row;
+        padding-inline-start: 0px;
+        width: 50%;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+
+        & > li {
+            color: white;
+        }
+    }
+}

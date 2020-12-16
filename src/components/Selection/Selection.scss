@@ -1,0 +1,39 @@
+@import "../../styles/baseline.scss";
+
+.selection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    &__label {
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        color: #999999;
+    }
+
+    &__list {
+        padding-inline-start: 0px;
+    }
+
+    &__item {
+        border-radius: 4px;
+        padding: 0.5rem;
+        width: 100%;
+        align-items: center;
+
+        &:hover {
+            background-color: #F2F3F7;
+        }
+    }
+
+    &__input {
+        height: 1rem;
+        width: 1rem;
+        border: 1.5px solid #dbdbdb;
+    }
+
+    &__option {
+        font-size: 1rem;
+        padding-left: 10px;
+    }
+}

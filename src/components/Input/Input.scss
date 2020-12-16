@@ -1,0 +1,72 @@
+@import "../../styles/baseline.scss";
+
+.input {
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        margin-bottom: 8px;
+        font-size: 0.8rem;
+        color: #999999;
+        //color: rgba(0, 0, 0, 0.54);
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+    }
+
+    &__container {
+        display: flex;
+        position: relative;
+        width: 100%;
+        transition: background-color 0.25s ease-in-out;
+
+        &:hover > p {
+            background-color: #EEEEEE;
+        }
+    }
+
+    &__criteria {
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.54);
+        position: absolute;
+        z-index: 90;
+        pointer-events: none;
+        right: 0;
+        bottom: 58%;
+        align-self: center;
+        padding: auto 0;
+        background-color: #fafafa;
+        padding-right: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    &__field {
+        font-family: inherit;
+        border-radius: 4px;
+        padding: 0.75rem;
+        //background-color: #F2F3F7;
+        background-color: #fafafa;
+        //background: linear-gradient(-30deg, #F0F1F2E5, #F0F1F2E5 45%, #F0F1F2 45%) #fff;
+        //border: 1.5px solid #E1E1E1;
+        //border: 1.5px solid #F2F3F7;
+        border: 1.5px solid #dbdbdb;
+        margin-bottom: 30px;
+        font-size: 1rem;
+        width: 100%;
+        transition: background-color 0.25s ease-in-out;
+        transition: border-color 0.25s ease-in-out;
+
+        &:hover {
+            background-color: #EEEEEE;
+            border: 1.5px solid #868686;
+        }
+    }
+
+    &__help {
+        color: #999999;
+    }
+}

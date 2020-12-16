@@ -1,0 +1,49 @@
+@import "../../styles/baseline.scss";
+
+.options {
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        color: rgba(0, 0, 0, 0.54);
+    }
+
+    &__list {
+        padding-inline-start: 0px;
+    }
+
+    &__item {
+        border-radius: 4px;
+        padding: 0.5rem;
+        width: 100%;
+        align-items: center;
+
+        &--default {
+
+            &:hover {
+                background-color: #F2F3F7;
+                cursor: pointer;
+            }
+        }
+
+        &--selected {
+            background-color: #2997ff;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__input {
+        height: 1rem;
+        width: 1rem;
+    }
+
+    &__option {
+        font-size: 1rem;
+        padding-left: 10px;
+    }
+}

@@ -1,0 +1,61 @@
+@import "../../styles/baseline.scss";
+
+.main {
+    width: 100vw;
+    height: 90vh;
+    margin: 0;
+    background-color: #2997ff;
+
+    &__container {
+        margin: auto 20px;
+        height: 100vh;
+        display: flex;
+        vertical-align: center;
+        align-content: center;
+        padding: auto 0;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include tablet {
+            margin: 0 60px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        @include laptop-small {
+            margin: 0 100px;
+        }
+
+        @include laptop {
+            margin: 0 auto;
+            padding: 6rem 0rem;
+            width: 1200px;
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        line-height: 3.4rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 50px;
+    
+        @include tablet {
+            font-size: 4rem;
+            line-height: 5rem;
+            width: 80%;
+        }
+    }
+
+    &__mission {
+        display: flex;
+        padding-bottom: 40px;
+        color: rgba(255, 255, 255, 0.75);
+        width: 70%;
+        font-weight: 500;
+
+        @include tablet {
+            padding-bottom: 80px;
+        }
+    }
+}
