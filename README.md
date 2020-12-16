@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+### `OrthoConsult`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is my first in-depth UX and Development project/product that has a real life context that will be used by real people.
 
-## Available Scripts
+<br />
 
-In the project directory, you can run:
+### Incorporating New & Old Concepts
 
-### `npm start`
+A big focus for this project is in storing, viewing and managing data so aside from utilizing more React Hooks as in my other projects, I delved into Firebase. The current list of dependencies (at the moment) are the following:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+- [HTML Drag & Drop](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
+- [React Hooks](https://reactjs.org/docs/hooks-reference.html#useeffect)
+  - [useState](https://reactjs.org/docs/hooks-reference.html#usestate)
+  - [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)
+  - [useContext](https://reactjs.org/docs/hooks-reference.html#usecontext)
+  - [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer)
+- [React Router](https://reactrouter.com/web/guides/quick-start)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Firebase](https://firebase.google.com/)
+  - [FireStore](https://firebase.google.com/products/firestore)
+  - [Storage](https://firebase.google.com/products/storage)
+  - [Authentication](https://firebase.google.com/products/auth)
+  - [Hosting](https://firebase.google.com/products/hosting)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br />
 
-### `npm test`
+### Folder Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+My folder structure (seen below) is organized by grouping similar files together which aims for scale as I add more features, pages and implement responsiveness. 
 
-### `npm run build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+OrthoConsult
+├── README.md
+├── package.json
+├── node_modules
+├── build
+├── public
+└── src
+    ├── assets
+    │   ├── files
+    │   ├── icons
+    │   ├── images
+    │   ├── logos
+    │   └── vectors
+    ├── components
+    │   ├── Card
+    │   ├── CardGroup
+    │   ├── CaseForm
+    │   ├── CaseSteps
+    │   ├── DropZone
+    │   ├── Header
+    │   ├── Help
+    │   ├── Input
+    │   ├── LogIn
+    │   ├── Options
+    │   ├── Rating
+    │   ├── Selection
+    │   ├── SignUp
+    │   ├── TextArea
+    │   └── Toggle
+    ├── contexts
+    │   ├── AuthProvider.jsx
+    │   ├── DataProvider.jsx
+    │   ├── ModalProvider.jsx
+    │   ├── StepProvider.jsx
+    │   └── ValidationProvider.jsx
+    ├── templates
+    │   ├── dataTemplate.jsx
+    │   └── formTemplate.jsx
+    ├── pages
+    │   ├── About
+    │   ├── Account
+    │   └── Main
+    ├── styles
+    │   ├── partials
+    │   └── baseline.scss
+    ├── firebase.js
+    ├── App.js
+    └── index.js
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br />
+<br />
