@@ -6,6 +6,7 @@ import { AuthProvider } from './contexts/AuthProvider';
 import { ModalProvider } from './contexts/ModalProvider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+require('dotenv').config();
 
 ReactDOM.render(
     <AuthProvider>
