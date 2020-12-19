@@ -1,9 +1,11 @@
 import React, { useContext, useState, createContext } from 'react';
+
+// State Template
 import questions from '../templates/questionaire';
 
+// Custom Step Management Hook
 const StepContext = createContext(0);
 
-// Custom Step Management Hook
 export function useStep() {
     return useContext(StepContext)
 }

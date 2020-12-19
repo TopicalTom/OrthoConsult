@@ -1,6 +1,6 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import Card from '../Card/Card';
@@ -30,7 +30,7 @@ function Step10() {
     ]
 
     return (
-            <div className="case__container case__container--triple">
+            <div className="case__content case__content--triple">
                 {options && options.map((item) => {
                     return (
                         <Card 

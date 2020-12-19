@@ -1,6 +1,6 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import Input from '../Input/Input';
@@ -8,20 +8,22 @@ import Selection from '../Selection/Selection';
 
 function Step15() {
     const { state } = useData();
-    const { earLevel, eyeLevel, shoulderLevel, dentalArches } = state.cranial;
+    const { earLevel, eyeLevel, shoulderLevel, dentalArches, forwardPosture } = state.cranial;
     const posture = [
         {
             name: "Yes",
-            label: "Yes"
+            label: "Yes",
+            value: true
         },
         {
             name: "No",
-            label: "No"
+            label: "No",
+            value: false
         }
     ];
 
     return (
-            <div className="case__container case__container--default">
+            <div className="case__content case__content--default">
                 <div className="case__column">
                     <Input 
                         label="Dental Arches"
@@ -55,10 +57,11 @@ function Step15() {
                     />
                     <Selection 
                         label="Forward Head Posture"
-                        name="headPosture"
+                        name="forwardPosture"
                         type="radio"
-                        callback="headPosture"
+                        callback="forwardPosture"
                         list={posture}
+                        data={forwardPosture}
                     />
                 </div>
             </div>

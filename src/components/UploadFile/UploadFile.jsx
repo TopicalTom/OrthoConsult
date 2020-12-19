@@ -18,6 +18,7 @@ function UploadFile() {
 
             reader.onabort = () => console.log('file reading was aborted')
             reader.onerror = () => console.log('file reading has failed')
+            
             reader.onload = async () => {
                 const id = uuidv4();
                 const storageRef = storage.ref(patient).child(id);
@@ -61,7 +62,7 @@ function UploadFile() {
                         </p>
                         <h4 
                             className="upload__sub">
-                            or <a className="upload__link">browse</a> your files
+                            or click to <a className="upload__link">browse</a> files
                         </h4>
                     </>
             }

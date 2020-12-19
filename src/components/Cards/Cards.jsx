@@ -1,18 +1,25 @@
 import React, {useState, useEffect} from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { useData } from "../../contexts/DataProvider";
+import { useStep } from "../../contexts/StepProvider";
 import "./Cards.scss";
 
 const Cards = (props) => {
     const { dispatch, state } = useData();
-    const { name, callback, options, data} = props;
+    const { next } = useStep();
+    const { type, name, callback, options, data} = props;
     const [selected, setSelected] = useState(data);
+
+    function select() {
+        setTimeout(next, 3000)
+    }
 
     useEffect(() => {
         setSelected(data)
     }, [state]);
 
     return (
-        <ul className={`cards cards--${options.length <= 3 ? "default" : "alt"}`}>
+        <ul className={`cards cards--${type}`}>
             {options && options.map((item) => {
                 return (
                     <li 
@@ -20,7 +27,8 @@ const Cards = (props) => {
                         onClick={() => dispatch ({
                             type: callback,
                             payload: item.label
-                        })}>
+                        })}
+                        key={uuidv4()}>
                         <input 
                             className="cards__input" 
                             type="radio"

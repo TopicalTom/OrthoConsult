@@ -1,53 +1,53 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import Card from '../Card/Card';
 
 function Step8() {
     const { state } = useData();
-    const { eyeDarkness, nostrilsDeveloped, weakLips, poorSeal, none } = state.airway;
-    const airway = [
+    const { eyeDarkness, nostrilsDeveloped, weakLips, poorSeal, none } = state.features;
+    const options = [
         {
             name: "eyeDarkness",
             label: "Eye Darkness",
             details: "Feature",
-            callback: "airwayEyeDarkness",
+            callback: "eyeDarkness",
             value: eyeDarkness,
         },
         {
             name: "nostrilsDeveloped",
             label: "Nostrils Well Developed",
             details: "Feature",
-            callback: "airwayNostrilsDeveloped",
+            callback: "nostrilsDeveloped",
             value: nostrilsDeveloped
         },
         {
             name: "weakLips",
             label: "Weak Lips",
             details: "Feature",
-            callback: "airwayWeakLips",
+            callback: "weakLips",
             value: weakLips
         },
         {
             name: "lipSeal",
             label: "Poor Lip Seal",
             details: "Feature",
-            callback: "airwayPoorSeal",
+            callback: "poorSeal",
             value: poorSeal
         },
         {
-            name: "airwayNone",
+            name: "featuresNone",
             label: "None",
-            callback: "airwayNone",
+            callback: "featuresNone",
             value: none
         },
     ]
 
     return (
-            <div className="case__container case__container--table" >
-                {airway && airway.map((item) => {
+            <div className="case__content case__content--table" >
+                {options && options.map((item) => {
                     return (
                         <Card 
                             type="checkbox"

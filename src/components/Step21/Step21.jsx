@@ -1,5 +1,27 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
+import "../Case/Case.scss";
+
+// Components 
+import UploadFile from '../UploadFile/UploadFile';
+import File from '../File/File';
+
+function Step21() {
+    const { state } = useData();
+    const { records } = state;
+
+    return (
+        <div className="case__content"> 
+            <UploadFile />
+        </div>
+    );
+}
+export default Step21;
+
+/*
+
+import React from 'react';
+import { useData } from "../../contexts/DataProvider";
 import "../CaseForm/CaseForm.scss";
 
 // Components 
@@ -33,3 +55,5 @@ function Step21() {
     );
 }
 export default Step21;
+
+*/

@@ -13,7 +13,7 @@ const ProgressBar = () => {
     }, [currentStep]);
 
     return (
-        <div className="progress">
+        <div className={`progress progress--${currentStep < 22 ? "visible" : "hidden"}`}>
             <div className="progress__container">
                 <span className="progress__bar" style={{width: `${progress}%`}}/>
             </div>

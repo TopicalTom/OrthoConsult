@@ -28,15 +28,19 @@ const caseEvaluation = {
         ulLateral: null,
         transpalatal: null,
     },
-    airway: {
+    habits: {
         mouthBreather: false,
         snores: false,
+        tongueThrust: false,
+        thumbSuck: false,
+        none: false
+    },
+    features: {
         nostrilsDeveloped: false,
         eyeDarkness: false,
         weakLips: false,
         poorSeal: false,
-        tongueThrust: false,
-        thumbSuck: false
+        none: false
     },
     tmj: {
         clicking: {
@@ -53,7 +57,8 @@ const caseEvaluation = {
             none: false,
             left: false,
             right: false
-        }
+        },
+        rangeOfMotion: []
     },
     facial: {
         profile: "",
@@ -65,7 +70,7 @@ const caseEvaluation = {
         earLevel: "",
         eyeLevel: "",
         shoulderLevel: "",
-        forwardPosture: false,
+        forwardPosture: null,
         mandibularPlane: "",
         growthDirection: "",
         maxillaPosition: ""
@@ -81,3 +86,5 @@ const caseEvaluation = {
     records: [],
     confirmation: false
 };  
+
+export default caseEvaluation;

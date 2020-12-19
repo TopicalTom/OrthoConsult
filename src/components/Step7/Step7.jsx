@@ -1,66 +1,66 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import Card from '../Card/Card';
 
 function Step7() {
     const { state } = useData();
-    const { mouthBreather, snores, tongueThrusts, thumbSucking, none } = state.airway;
-    const airway = [
+    const { mouthBreather, snores, tongueThrusts, thumbSucking, none } = state.habits;
+    const options = [
         {
             name: "mouthBreather",
             label: "Mouth Breather",
             details: "Feature",
-            callback: "airwayMouthBreather",
+            callback: "mouthBreather",
             value: mouthBreather
         },
         {
             name: "snores",
             label: "Snores",
             details: "Habit",
-            callback: "airwaySnores",
+            callback: "snores",
             value: snores,
         },
         {
             name: "tongueThrusts",
             label: "Tongue Thrusts",
             details: "Habit",
-            callback: "airwayTongueThrusts",
+            callback: "tongueThrusts",
             value: tongueThrusts
         },
         {
             name: "thumbSucking",
             label: "Thumb Sucking",
             details: "Habit",
-            callback: "airwayThumbSucking",
+            callback: "thumbSucking",
             value: thumbSucking
         },
         {
-            name: "airwayNone",
+            name: "habitsNone",
             label: "None",
-            callback: "airwayNone",
+            callback: "habitsNone",
             value: none
         },
     ]
 
     return (
-            <div className="case__container case__container--table" >
-                {airway && airway.map((item) => {
-                    return (
-                        <Card 
-                            type="checkbox"
-                            id={item.name}
-                            name={item.name}
-                            label={item.label}
-                            details={item.details}
-                            callback={item.callback}
-                            value={item.value}
-                        />
-                    )
-                })}
-            </div>
+        <div className="case__content case__content--table" >
+            {options && options.map((item) => {
+                return (
+                    <Card 
+                        type="checkbox"
+                        id={item.name}
+                        name={item.name}
+                        label={item.label}
+                        details={item.details}
+                        callback={item.callback}
+                        value={item.value}
+                    />
+                )
+            })}
+        </div>
     );
 }
 export default Step7;

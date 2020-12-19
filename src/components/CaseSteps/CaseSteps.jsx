@@ -3,8 +3,8 @@ import { useStep } from "../../contexts/StepProvider";
 
 // Components
 import CaseType from '../CaseType/CaseType';
-import PatientInfo from '../Step1/Step1';
-import PatientQualifier from '../Step2/Step2';
+import PatientInfo from '../PatientInfo/PatientInfo';
+import PatientQualifier from '../PatientQualifier/PatientQualifier';
 import ModelLeft from '../Step3/Step3';
 import ModelRight from '../Step4/Step4';
 import Maloclussion from '../Step5/Step5';

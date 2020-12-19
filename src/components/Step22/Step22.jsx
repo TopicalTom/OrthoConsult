@@ -1,9 +1,9 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
-import Review from '../Review/Review';
+import ScrollView from '../ScrollView/ScrollView';
 import Toggle from '../Toggle/Toggle';
 
 function Step22() {
@@ -11,8 +11,8 @@ function Step22() {
     const { caseConfirmation } = state;
 
     return (
-            <div className="case__container">
-                <Review />
+            <div className="case__content">
+                <ScrollView />
                 <Toggle 
                     id="caseConfirmation"
                     label="Confirm the information provided is correct"

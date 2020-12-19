@@ -1,6 +1,6 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import TextArea from '../TextArea/TextArea';
@@ -8,20 +8,22 @@ import Selection from '../Selection/Selection';
 
 function Step20() {
     const { state } = useData();
-    const { details } = state.objective;
+    const { details, type } = state.objective;
     const treatment = [
         {
-            name: "male",
-            label: "Functional/Fixed"
+            name: "functionalFixed",
+            label: "Functional/Fixed",
+            value: "Functional / Fixed"
         },
         {
-            name: "female",
-            label: "Fixed"
+            name: "fixed",
+            label: "Fixed",
+            value: "Fixed"
         }
     ];
 
     return (
-            <div className="case__container">
+            <div className="case__content">
                 <TextArea
                     label="Your Objectives"
                     name="objective"
@@ -36,6 +38,7 @@ function Step20() {
                     type="radio"
                     callback="treatmentType"
                     list={treatment}
+                    data={type}
                 />
             </div>
     );

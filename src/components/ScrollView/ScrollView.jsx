@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useData } from "../../contexts/DataProvider";
-import "./Review.scss";
+import "./ScrollView.scss";
 
 const Review = () => {
     const { state } = useData();
@@ -39,9 +39,9 @@ const Review = () => {
                 <p>Transpalatal: {state.space.transpalatal}</p>
             </section>
             <section className="review__section">
-                <h3 className="review__title">Features & Habits</h3>
-                <p>Mouth Breather: {state.airway.mouthBreather}</p>
-                <p>Snores: {state.airway.snores}</p>
+                <h3 className="review__title">Patient Habits</h3>
+                <p>Mouth Breather: {state.habits.mouthBreather}</p>
+                <p>Snores: {state.habits.snores}</p>
             </section>
             <section className="review__section">
                 <h3 className="review__title">TMJ</h3>
@@ -64,11 +64,7 @@ const Review = () => {
 
             </section>
             <section className="review__section">
-                <h3 className="review__title">Treatment Objectives</h3>
-
-            </section>
-            <section className="review__section">
-                <h3 className="review__title">Records</h3>
+                <h3 className="review__title">Objectives</h3>
 
             </section>
         </div>

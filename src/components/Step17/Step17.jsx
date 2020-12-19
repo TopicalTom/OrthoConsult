@@ -1,6 +1,6 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import Cards from '../Cards/Cards';
@@ -27,12 +27,13 @@ function Step17() {
     ]
 
     return (
-            <div className="case__container">
+            <div className="case__content">
                 <Cards
                     name="growthDirection"
                     callback="growthDirection"
                     data={growthDirection}
                     options={options}
+                    type="triple"
                 />
             </div>
     );

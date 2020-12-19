@@ -1,6 +1,6 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import TextArea from '../TextArea/TextArea';
@@ -10,7 +10,7 @@ function Step19() {
     const { patient, parent } = state.concerns;
 
     return (
-            <div className="case__container">
+            <div className="case__content">
                 <TextArea 
                     label="Patients' Concerns"
                     name="patientConcerns"

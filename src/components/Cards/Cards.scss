@@ -10,8 +10,18 @@
         gap: 1rem;
     }
 
-    &--alt {
+    &--duo {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem;
+    }
+
+    &--triple {
         grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    &--quad {
+        grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
     }
 

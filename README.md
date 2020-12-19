@@ -9,12 +9,16 @@ This project is my first in-depth UX and Development project/product that has a 
 A big focus for this project is in storing, viewing and managing data so aside from utilizing more React Hooks as in my other projects, I delved into Firebase. The current list of dependencies (at the moment) are the following:
 
 - [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
-- [HTML Drag & Drop](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
+- [Dependencies](https://firebase.google.com/)
+  - [HTML Drag & Drop](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
+  - [React Signatures](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
 - [React Hooks](https://reactjs.org/docs/hooks-reference.html#useeffect)
   - [useState](https://reactjs.org/docs/hooks-reference.html#usestate)
   - [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)
   - [useContext](https://reactjs.org/docs/hooks-reference.html#usecontext)
   - [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer)
+  - [useRef](https://reactjs.org/docs/hooks-reference.html#useref)
+  - [useCallback](https://reactjs.org/docs/hooks-reference.html#usecallback)
 - [React Router](https://reactrouter.com/web/guides/quick-start)
 - [Axios](https://www.npmjs.com/package/axios)
 - [Firebase](https://firebase.google.com/)
@@ -48,17 +52,16 @@ OrthoConsult
     ├── components
     │   ├── Card
     │   ├── CardGroup
+    │   ├── Case
     │   ├── CaseForm
-    │   ├── CaseSteps
+    │   ├── CaseRecords
     │   ├── DropZone
     │   ├── Header
     │   ├── Help
     │   ├── Input
-    │   ├── LogIn
     │   ├── Options
     │   ├── Rating
     │   ├── Selection
-    │   ├── SignUp
     │   ├── TextArea
     │   └── Toggle
     ├── contexts
@@ -70,9 +73,13 @@ OrthoConsult
     ├── templates
     │   ├── dataTemplate.jsx
     │   └── formTemplate.jsx
+    ├── fields
     ├── pages
     │   ├── About
     │   ├── Account
+    │   ├── SignUp
+    │   ├── LogIn
+    │   ├── Evaluation
     │   └── Main
     ├── styles
     │   ├── partials

@@ -1,37 +1,41 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import Input from '../Input/Input';
 import Selection from '../Selection/Selection';
 import Dropdown from '../Dropdown/Dropdown';
 
-function Step1() {
+function PatientInfo() {
     const { state } = useData();
     const { patient, patientInfo } = state;
-    const { height, dob } = patientInfo;
+    const { height, dob, gender } = patientInfo;
     const adult = [
         {
-            name: "Yes",
-            label: "Yes"
+            name: "yes",
+            label: "Yes",
+            value: true
         },
         {
-            name: "No",
-            label: "No"
+            name: "no",
+            label: "No",
+            value: false
         }
     ];
-    const gender = [
+    const patientGender = [
         {
             name: "male",
-            label: "Male"
+            label: "Male",
+            value: "Male"
         },
         {
             name: "female",
-            label: "Female"
+            label: "Female",
+            value: "Female"
         }
     ];
-    const ethnicity = [
+    const patientEthnicity = [
         {
             name: "americanIndianOrAlaskaNative",
             label: "American Indian or Alaska Native"
@@ -67,62 +71,61 @@ function Step1() {
     ];
 
     return (
-        <div className="case__step">
-            <div className="case__container case__container--default">
-                <div className="case__column">
+        <div className="case__content case__content--default">
+            <div className="case__column">
+                <Input 
+                    label="Full Name"
+                    name="name"
+                    type="text"
+                    callback="PATIENT_NAME"
+                    value={patient}
+                />
+                <div className="case__row">
                     <Input 
-                        label="Full Name"
-                        name="name"
-                        type="text"
-                        callback="patientName"
-                        value={patient}
+                        label="Height"
+                        name="height"
+                        type="number"
+                        criteria="cm"
+                        callback="PATIENT_HEIGHT"
+                        value={height}
                     />
-                    <div className="case__row">
-                        <Input 
-                            label="Height"
-                            name="height"
-                            type="number"
-                            criteria="cm"
-                            callback="patientHeight"
-                            value={height}
-                        />
-                        <Input 
-                            label="Date of Birth"
-                            name="dob"
-                            type="date"
-                            callback="patientBirthday"
-                            value={dob}
-                        />
-                    </div>
-                    <Dropdown 
-                        label="Ethnicity"
-                        name="ethnicity"
-                        type="radio"
-                        callback="patientEthnicity"
-                        list={ethnicity}
+                    <Input 
+                        label="Date of Birth"
+                        name="dob"
+                        type="date"
+                        callback="PATIENT_BIRTHDAY"
+                        value={dob}
                     />
                 </div>
-                <div className="case__column">
-                    <Selection 
-                        label="Gender"
-                        name="gender"
-                        type="radio"
-                        callback="patientGender"
-                        list={gender}
-                    />
-                    <Selection 
-                        label="Is a parent overseeing treatment?"
-                        name="oversight"
-                        type="radio"
-                        callback="patientOversight"
-                        list={adult}
-                    />
-                </div>
+                <Dropdown 
+                    label="Ethnicity"
+                    name="ethnicity"
+                    type="radio"
+                    callback="PATIENT_ETHNICITY"
+                    list={patientEthnicity}
+                />
+            </div>
+            <div className="case__column">
+                <Selection 
+                    label="Gender"
+                    name="gender"
+                    type="radio"
+                    callback="PATIENT_GENDER"
+                    list={patientGender}
+                    data={gender}
+                />
+                <Selection 
+                    label="Is a parent or guardian overseeing treatment?"
+                    name="oversight"
+                    type="radio"
+                    callback="PATIENT_OVERSIGHT"
+                    list={adult}
+                />
             </div>
         </div>
     );
 }
-export default Step1;
+export default PatientInfo;
 
 /*
 

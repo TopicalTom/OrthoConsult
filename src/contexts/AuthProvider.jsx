@@ -14,11 +14,6 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
 
     // SignUp Modal
-    function googleAuth(email, password) {
-        createClient(email)
-        return auth.createUserWithEmailAndPassword(email, password)
-    }
-
     function signup(email, password, name, phone) {
         createClient(email, name, phone)
         return auth.createUserWithEmailAndPassword(email, password)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import Input from '../Input/Input';
@@ -13,8 +13,7 @@ function Step5() {
     const { overbite, overjet } = state.model;
 
     return (
-        <div className="case__step">
-            <div className="case__container case__container--default">
+            <div className="case__content case__content--default">
                 <div className="case__column">
                    <img 
                         className="case__diagram"
@@ -43,7 +42,6 @@ function Step5() {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 export default Step5;

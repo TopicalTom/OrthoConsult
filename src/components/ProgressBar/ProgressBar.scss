@@ -7,6 +7,18 @@
     //vertical-align: center;
     margin: auto 0;
     //margin-bottom: 60px;
+    justify-self: center;
+    transition: opacity 0.25s ease;
+
+    &--hidden {
+        transition: opacity 0.25s ease;
+        opacity: 0;
+    }
+
+    &--visible {
+        transition: opacity 0.25s ease;
+        opacity: 1;
+    }
 
     &__container {
         height: 10px;

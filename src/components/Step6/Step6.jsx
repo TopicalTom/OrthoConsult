@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import Input from '../Input/Input';
@@ -14,7 +14,7 @@ function Step6() {
 
     return (
 
-            <div className="case__container case__container--default">
+            <div className="case__content case__content--default">
                 <div className="case__column">
                    <img 
                         className="case__diagram"

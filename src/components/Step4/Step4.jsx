@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from "../../contexts/DataProvider";
-import "../CaseForm/CaseForm.scss";
+import "../Case/Case.scss";
 
 // Components
 import Cards from '../Cards/Cards';
@@ -32,16 +32,15 @@ function Step4() {
     ]
 
     return (
-        <div className="case__step">
-            <div className="case__container">
+            <div className="case__content">
                 <Cards
                     name="modelRight"
                     callback="modelRight"
                     data={right}
                     options={options}
+                    type="quad"
                 />
             </div>
-        </div>
     );
 }
 export default Step4;

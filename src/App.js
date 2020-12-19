@@ -7,7 +7,7 @@ import Main from "./pages/Main/Main";
 import Header from "./components/Header/Header";
 import SignUp from './components/SignUp/SignUp';
 import LogIn from './components/LogIn/LogIn';
-import Cases from './components/CaseForm/CaseForm';
+import Case from './components/Case/Case';
 
 function App() {
     const { currentUser } = useAuth(); 
@@ -22,7 +22,7 @@ function App() {
                         <LogIn />
                         <SignUp />
                     </>
-                :   <Cases />
+                :   <Case />
             }
         </>
     );
