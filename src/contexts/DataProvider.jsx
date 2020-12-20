@@ -67,6 +67,14 @@ export function DataProvider({ children }) {
                         ...state.patientInfo,
                         ethnicity: action.payload,
                     }
+                };            
+            case "PATIENT_OVERSIGHT":
+                return {
+                    ...state,
+                    patientInfo: {
+                        ...state.patientInfo,
+                        oversight: action.payload,
+                    }
                 };
             
             // Patient Qualifiers Fields
@@ -96,7 +104,7 @@ export function DataProvider({ children }) {
                 };
 
             // Model Left Classification Fields
-            case "modelLeft":
+            case "MODEL_LEFT":
                 return {
                     ...state,
                     model: {
@@ -106,7 +114,7 @@ export function DataProvider({ children }) {
                 };  
 
             // Model Right Classification Fields
-            case "modelRight":
+            case "MODEL_RIGHT":
                 return {
                     ...state,
                     model: {
@@ -116,7 +124,7 @@ export function DataProvider({ children }) {
                 };            
 
             // Malocclusion Calculation Fields
-            case "modelOverjet":
+            case "MODEL_OVERJET":
                 return {
                     ...state,
                     model: {
@@ -124,7 +132,7 @@ export function DataProvider({ children }) {
                         overjet: action.payload
                     }
                 };
-            case "modelOverbite":
+            case "MODEL_OVERBITE":
                 return {
                     ...state,
                     model: {
@@ -134,7 +142,7 @@ export function DataProvider({ children }) {
                 };
 
             // Space Shortage Fields
-            case "spaceURCentral":
+            case "UR_CENTRAL":
                 return {
                     ...state,
                     space: {
@@ -142,7 +150,7 @@ export function DataProvider({ children }) {
                         urCentral: action.payload
                     }
                 };
-            case "spaceULCentral":
+            case "UL_CENTRAL":
                 return {
                     ...state,
                     space: {
@@ -150,7 +158,7 @@ export function DataProvider({ children }) {
                         ulCentral: action.payload
                     }
                 };
-            case "spaceURLateral":
+            case "UR_LATERAL":
                 return {
                     ...state,
                     space: {
@@ -158,7 +166,7 @@ export function DataProvider({ children }) {
                         urLateral: action.payload
                     }
                 };
-            case "spaceULLateral":
+            case "UL_LATERAL":
                 return {
                     ...state,
                     space: {
@@ -166,7 +174,7 @@ export function DataProvider({ children }) {
                         ulLateral: action.payload
                     }
                 };
-            case "spaceTranspalatal":
+            case "TRANSPALATAL_DISTANCE":
                 return {
                     ...state,
                     space: {
@@ -176,7 +184,7 @@ export function DataProvider({ children }) {
                 };
 
             // Features & Habits Fields
-            case "mouthBreather":
+            case "MOUTH_BREATHER":
                 return {
                     ...state,
                     habits: {
@@ -185,7 +193,7 @@ export function DataProvider({ children }) {
                         mouthBreather: action.payload,
                     }
                 };
-            case "snores":
+            case "SNORES":
                 return {
                     ...state,
                     habits: {
@@ -194,7 +202,7 @@ export function DataProvider({ children }) {
                         snores: action.payload,
                     }
                 };
-            case "tongueThrusts":
+            case "TONGUE_THRUSTS":
                 return {
                     ...state,
                     habits: {
@@ -203,7 +211,7 @@ export function DataProvider({ children }) {
                         tongueThrusts: action.payload,
                     }
                 };
-            case "thumbSucking":
+            case "THUMB_SUCKING":
                 return {
                     ...state,
                     habits: {
@@ -212,7 +220,7 @@ export function DataProvider({ children }) {
                         thumbSucking: action.payload,
                     }
                 };
-            case "habitsNone":
+            case "HABITS_NONE":
                 return {
                     ...state,
                     habits: {
@@ -225,7 +233,7 @@ export function DataProvider({ children }) {
                 };
 
             // Features Fields
-            case "nostrilsDeveloped":
+            case "NOSTRILS_DEVELOPED":
                 return {
                     ...state,
                     features: {
@@ -234,7 +242,7 @@ export function DataProvider({ children }) {
                         nostrilsDeveloped: action.payload,
                     }
                 };
-            case "eyeDarkness":
+            case "EYE_DARKNESS":
                 return {
                     ...state,
                     features: {
@@ -243,7 +251,7 @@ export function DataProvider({ children }) {
                         eyeDarkness: action.payload,
                     }
                 };
-            case "weakLips":
+            case "WEAK_LIPS":
                 return {
                     ...state,
                     features: {
@@ -252,7 +260,7 @@ export function DataProvider({ children }) {
                         weakLips: action.payload,
                     }
                 };
-            case "poorSeal":
+            case "POOR_SEAL":
                 return {
                     ...state,
                     features: {
@@ -261,7 +269,7 @@ export function DataProvider({ children }) {
                         poorSeal: action.payload,
                     }
                 };             
-            case "featuresNone":
+            case "FEATURES_NONE":
                 return {
                     ...state,
                     features: {
@@ -275,7 +283,7 @@ export function DataProvider({ children }) {
 
     
             // Clicking Fields
-            case "clickingLeft":
+            case "CLICKING_LEFT":
                 return {
                     ...state,
                     tmj: {
@@ -287,7 +295,7 @@ export function DataProvider({ children }) {
                         }
                     }
                 };            
-            case "clickingRight":
+            case "CLICKING_RIGHT":
                 return {
                     ...state,
                     tmj: {
@@ -299,7 +307,7 @@ export function DataProvider({ children }) {
                         }
                     }
                 };  
-            case "clickingNone":
+            case "CLICKING_NONE":
                 return {
                     ...state,
                     tmj: {
@@ -313,7 +321,7 @@ export function DataProvider({ children }) {
                 }; 
 
             // Popping Fields
-            case "poppingLeft":
+            case "POPPING_LEFT":
                 return {
                     ...state,
                     tmj: {
@@ -325,7 +333,7 @@ export function DataProvider({ children }) {
                         }
                     }
                 };            
-            case "poppingRight":
+            case "POPPING_RIGHT":
                 return {
                     ...state,
                     tmj: {
@@ -337,7 +345,7 @@ export function DataProvider({ children }) {
                         }
                     }
                 };  
-            case "poppingNone":
+            case "POPPING_NONE":
                 return {
                     ...state,
                     tmj: {
@@ -351,7 +359,7 @@ export function DataProvider({ children }) {
                 };    
                 
             // Locking Fields
-            case "lockingLeft":
+            case "LOCKING_LEFT":
                 return {
                     ...state,
                     tmj: {
@@ -363,7 +371,7 @@ export function DataProvider({ children }) {
                         }
                     }
                 };            
-            case "lockingRight":
+            case "LOCKING_RIGHT":
                 return {
                     ...state,
                     tmj: {
@@ -375,7 +383,7 @@ export function DataProvider({ children }) {
                         }
                     }
                 };  
-            case "lockingNone":
+            case "LOCKING_NONE":
                 return {
                     ...state,
                     tmj: {
@@ -389,7 +397,7 @@ export function DataProvider({ children }) {
                 };  
 
             // Range of Motion Fields
-            case "captureDrawing":
+            case "CAPTURE_DRAWING":
                 return {
                     ...state,
                     tmj: {
@@ -397,7 +405,7 @@ export function DataProvider({ children }) {
                         rangeOfMotion: action.payload,
                     }
                 };            
-            case "clearDrawing":
+            case "CLEAR_DRAWING":
                 return {
                     ...state,
                     tmj: {
@@ -407,7 +415,7 @@ export function DataProvider({ children }) {
                 };
 
             // Facial Profile Fields
-            case "facialProfile":
+            case "FACIAL_PROFILE":
                 return {
                     ...state,
                     facial: {
@@ -415,7 +423,7 @@ export function DataProvider({ children }) {
                         profile: action.payload,
                     }
                 };
-            case "facialHereditary":
+            case "FACIAL_HEREDITARY":
                 return {
                     ...state,
                     facial: {
@@ -425,7 +433,7 @@ export function DataProvider({ children }) {
                 };
 
             // Facial Height Fields
-            case "facialHeight":
+            case "FACIAL_HEIGHT":
                 return {
                     ...state,
                     facial: {
@@ -435,7 +443,7 @@ export function DataProvider({ children }) {
                 };
 
             // Cranial Abnormalities Fields
-            case "dentalArches":
+            case "DENTAL_ARCHES":
                 return {
                     ...state,
                     cranial: {
@@ -443,7 +451,7 @@ export function DataProvider({ children }) {
                         dentalArches: action.payload,
                     }
                 };
-            case "earLevel":
+            case "EAR_LEVEL":
                 return {
                     ...state,
                     cranial: {
@@ -451,7 +459,7 @@ export function DataProvider({ children }) {
                         earLevel: action.payload,
                     }
                 };
-            case "eyeLevel":
+            case "EYE_LEVEL":
                 return {
                     ...state,
                     cranial: {
@@ -459,7 +467,7 @@ export function DataProvider({ children }) {
                         eyeLevel: action.payload,
                     }
                 };
-            case "shoulderLevel":
+            case "SHOULDER_LEVEL":
                 return {
                     ...state,
                     cranial: {
@@ -467,7 +475,7 @@ export function DataProvider({ children }) {
                         shoulderLevel: action.payload,
                     }
                 };
-            case "forwardPosture":
+            case "FORWARD_POSTURE":
                 return {
                     ...state,
                     cranial: {
@@ -477,7 +485,7 @@ export function DataProvider({ children }) {
                 };
 
             // Mandibular Plane Fields
-            case "mandibularPlane":
+            case "MANDIBULAR_PLANE":
                 return {
                     ...state,
                     cranial: {
@@ -487,7 +495,7 @@ export function DataProvider({ children }) {
                 };    
                 
             // Growth Direction Fields
-            case "growthDirection":
+            case "GROWTH_DIRECTION":
                 return {
                     ...state,
                     cranial: {
@@ -497,7 +505,7 @@ export function DataProvider({ children }) {
                 };
 
             // Maxilla Position Fields 
-            case "maxillaPosition":
+            case "MAXILLA_POSITION":
                 return {
                     ...state,
                     cranial: {
@@ -507,7 +515,7 @@ export function DataProvider({ children }) {
                 };
 
             // Concerns Fields
-            case "patientConcerns":
+            case "PATIENT_CONCERNS":
                 return {
                     ...state,
                     concerns: {
@@ -515,7 +523,7 @@ export function DataProvider({ children }) {
                         patient: action.payload
                     }
                 };            
-            case "parentConcerns":
+            case "PARENT_CONCERNS":
                 return {
                     ...state,
                     concerns: {
@@ -525,7 +533,7 @@ export function DataProvider({ children }) {
                 };            
 
             // Objectives Fields
-            case "doctorObjective":
+            case "TREATMENT_OBJECTIVE":
                 return {
                     ...state,
                     objective: {
@@ -533,7 +541,7 @@ export function DataProvider({ children }) {
                         details: action.payload
                     }
                 };           
-            case "treatmentType":
+            case "TREATMENT_TYPE":
                 return {
                     ...state,
                     objective: {
@@ -543,7 +551,7 @@ export function DataProvider({ children }) {
                 };
 
             // Upload Dental Records Fields
-            case "uploadRecord":
+            case "UPLOAD_RECORD":
                 return {
                     ...state,
                     records: [
@@ -551,7 +559,7 @@ export function DataProvider({ children }) {
                         action.payload
                     ]
                 };            
-            case "removeRecord":
+            case "REMOVE_RECORD":
                 const updatedRecords = state.records.filter(item => item.id !== action.payload);
 
                 return {
@@ -560,7 +568,7 @@ export function DataProvider({ children }) {
                 };
             
             // Review Fields
-            case "caseConfirmation":
+            case "CASE_CONFIRMATION":
                 return {
                     ...state,
                     confirmation: action.payload

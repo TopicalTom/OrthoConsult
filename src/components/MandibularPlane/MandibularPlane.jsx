@@ -7,32 +7,32 @@ import { useData } from "../../contexts/DataProvider";
 // Components
 import Cards from '../Cards/Cards';
 
-function CaseType() {
+function MandibularPlane() {
     const { state } = useData();
-    const { caseType } = state;
+    const { mandibularPlane } = state.cranial;
     const options = [
         {
-            id: "newCase",
-            label: "New Case",
-            value: "New Case"
+            name: "mandibularNormal",
+            label: "Normal",
+            value: "Normal"
         },
         {
-            id: "ongoingCase",
-            label: "Ongoing Case",
-            value: "Ongoing Case"
-        },
+            name: "mandibularSteep",
+            label: "Steep",
+            value: "Steep"
+        }
     ]
 
     return (
         <div className="case__content">
             <Cards
-                name="caseType"
-                callback="CASE_TYPE"
-                data={caseType}
+                name="mandibularPlane"
+                callback="MANDIBULAR_PLANE"
+                data={mandibularPlane}
                 options={options}
                 type="duo"
             />
         </div>
     );
 }
-export default CaseType;
+export default MandibularPlane;

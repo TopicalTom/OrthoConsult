@@ -14,6 +14,7 @@ const caseEvaluation = {
         motivation: "",
         hygiene: "",
         finances: "",
+        oversight: null
     },
     model: {
         left: "",

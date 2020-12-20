@@ -2,9 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { useModal } from "../../contexts/ModalProvider";
+import "./Case.scss";
+
+// Contexts
 import { DataProvider } from "../../contexts/DataProvider";
 import { StepProvider } from '../../contexts/StepProvider';
-import "./Case.scss";
+import { ValidationProvider } from '../../contexts/ValidationProvider';
 
 // Icons
 import cancel from "../../assets/icons/cancel.svg";
@@ -36,8 +39,10 @@ function Case() {
             </div>
             <DataProvider>
                 <StepProvider>
-                    <Form />
-                    <Records />
+                    <ValidationProvider>
+                        <Form />
+                        <Records />
+                    </ValidationProvider>
                 </StepProvider>
             </DataProvider>
         </Modal>

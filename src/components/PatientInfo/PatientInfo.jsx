@@ -1,6 +1,8 @@
 import React from 'react';
-import { useData } from "../../contexts/DataProvider";
 import "../Case/Case.scss";
+
+// Contexts
+import { useData } from "../../contexts/DataProvider";
 
 // Components
 import Input from '../Input/Input';
@@ -10,7 +12,7 @@ import Dropdown from '../Dropdown/Dropdown';
 function PatientInfo() {
     const { state } = useData();
     const { patient, patientInfo } = state;
-    const { height, dob, gender } = patientInfo;
+    const { height, dob, gender, oversight } = patientInfo;
     const adult = [
         {
             name: "yes",
@@ -120,6 +122,7 @@ function PatientInfo() {
                     type="radio"
                     callback="PATIENT_OVERSIGHT"
                     list={adult}
+                    data={oversight}
                 />
             </div>
         </div>

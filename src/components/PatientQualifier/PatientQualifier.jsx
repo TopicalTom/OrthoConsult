@@ -1,6 +1,8 @@
 import React from 'react';
-import { useData } from "../../contexts/DataProvider";
 import "../Case/Case.scss";
+
+// Contexts
+import { useData } from "../../contexts/DataProvider";
 
 // Components
 import Rating from '../Rating/Rating';

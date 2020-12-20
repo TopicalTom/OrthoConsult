@@ -1,6 +1,7 @@
 import React from 'react';
 import { useData } from "../../contexts/DataProvider";
 import { useStep } from "../../contexts/StepProvider";
+import { useValidation } from "../../contexts/ValidationProvider";
 
 // Components
 import ProgressBar from '../ProgressBar/ProgressBar';
@@ -8,15 +9,19 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 function CaseForm() {
     const { addCase } = useData();
     const { currentStep, previousTitle, previous, next, question } = useStep();
+    const { checkValidation, validation } = useValidation();
 
     function submitCase(e) {
         e.preventDefault();
         addCase()
     }
 
+    console.log(validation[0].status)
+
     return (
         <form
             className={`case__form case__form--${currentStep >= 21 ? "alt" : "default"}`}
+            onChange={checkValidation}
             onSubmit={submitCase}>
             <div className="case__container">
                 <div className="case__header">
@@ -51,7 +56,7 @@ function CaseForm() {
                         ?   <button 
                                 className="case__button case__button--next" 
                                 type="button"
-                                disabled={true} 
+                                disabled={validation[0].status === true ? true : false}
                                 onClick={next}>
                                 Continue
                             </button> 

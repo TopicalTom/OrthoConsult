@@ -1,27 +1,35 @@
-// Components
+// Card
+import Clicking from '../components/Clicking/Clicking';
+import Popping from '../components/Popping/Popping';
+import Locking from '../components/Locking/Locking';
+
+// Cards
 import CaseType from '../components/CaseType/CaseType';
+import ModelLeft from '../components/ModelLeft/ModelLeft';
+import ModelRight from '../components/ModelRight/ModelRight';
+import PatientHabits from '../components/PatientHabits/PatientHabits';
+import PatientFeatures from '../components/FacialFeatures/FacialFeatures';
+import FacialProfile from '../components/FacialProfile/FacialProfile';
+import FacialHeight from '../components/FacialHeight/FacialHeight';
+import MandibularPlane from '../components/MandibularPlane/MandibularPlane';
+import GrowthDirection from '../components/GrowthDirection/GrowthDirection';
+import MaxillaPosition from '../components/MaxillaPosition/MaxillaPosition';
+
+// Input
 import PatientInfo from '../components/PatientInfo/PatientInfo';
+import Malocclussion from '../components/Malocclusion/Malocclusion';
+import SpaceShortage from '../components/SpaceShortage/SpaceShortage';
+import CranialAbnormalities from '../components/CranialAbnormalities/CranialAbnormalities';
+import Concerns from '../components/Concerns/Concerns';
+import Treatment from '../components/Treatment/Treatment';
+
+// Rating
 import PatientQualifier from '../components/PatientQualifier/PatientQualifier';
-import ModelLeft from '../components/Step3/Step3';
-import ModelRight from '../components/Step4/Step4';
-import Malocclussion from '../components/Step5/Step5';
-import SpaceShortage from '../components/Step6/Step6';
-import PatientHabits from '../components/Step7/Step7';
-import PatientFeatures from '../components/Step8/Step8';
-import Clicking from '../components/Step9/Step9';
-import Popping from '../components/Step10/Step10';
-import Locking from '../components/Step11/Step11';
-import Deviation from '../components/Step12/Step12';
-import FacialProfile from '../components/Step13/Step13';
-import FacialHeight from '../components/Step14/Step14';
-import CranialAbnormalities from '../components/Step15/Step15';
-import MandibularPlane from '../components/Step16/Step16';
-import GrowthDirection from '../components/Step17/Step17';
-import MaxillaPosition from '../components/Step18/Step18';
-import Concerns from '../components/Step19/Step19';
-import Objective from '../components/Step20/Step20';
-import Records from '../components/Step21/Step21';
-import Review from '../components/Step22/Step22';
+
+// Unique
+import RangeOfMotion from '../components/RangeOfMotion/RangeOfMotion';
+import Upload from '../components/Upload/Upload';
+import Review from '../components/Review/Review';
 
 // Case Evaluation Form Template
 const questionaire = [
@@ -88,7 +96,7 @@ const questionaire = [
     {
         title: "Joint Range of Motion",
         instructions: "Draw the patient's joint range of motion below:",
-        content: <Deviation />
+        content: <RangeOfMotion />
     },
     {
         title: "Facial Profile",
@@ -122,18 +130,18 @@ const questionaire = [
     },
     {
         title: "General Concerns",
-        instructions: "Comment on any treatment concerns the patient or guardian may have:",
+        instructions: "Comment on any treatment concerns:",
         content: <Concerns />
     },
     {
         title: "Treatment Objectives",
         instructions: "Comment on your overall treatment objectives or goals:",
-        content: <Objective />
+        content: <Treatment />
     },
     {
         title: "Upload Dental Records",
         instructions: "Not sure what records are required? View our upload walkthrough",
-        content: <Records />
+        content: <Upload />
     },
     {
         title: "Review Case Details",
@@ -143,3 +151,30 @@ const questionaire = [
 ]
 
 export default questionaire;
+
+/*
+import CaseType from '../components/CaseType/CaseType';
+import PatientInfo from '../components/PatientInfo/PatientInfo';
+import PatientQualifier from '../components/PatientQualifier/PatientQualifier';
+import ModelLeft from '../components/ModelLeft/ModelLeft';
+import ModelRight from '../components/ModelRight/ModelRight';
+import Malocclussion from '../components/Malocclusion/Malocclusion';
+import SpaceShortage from '../components/SpaceShortage/SpaceShortage';
+import PatientHabits from '../components/PatientHabits/PatientHabits';
+import PatientFeatures from '../components/FacialFeatures/FacialFeatures';
+import Clicking from '../components/Step9/Step9';
+import Popping from '../components/Step10/Step10';
+import Locking from '../components/Step11/Step11';
+import Deviation from '../components/Step12/Step12';
+import FacialProfile from '../components/Step13/Step13';
+import FacialHeight from '../components/Step14/Step14';
+import CranialAbnormalities from '../components/Step15/Step15';
+import MandibularPlane from '../components/Step16/Step16';
+import GrowthDirection from '../components/Step17/Step17';
+import MaxillaPosition from '../components/Step18/Step18';
+import Concerns from '../components/Step19/Step19';
+import Objective from '../components/Step20/Step20';
+import Records from '../components/Step21/Step21';
+import Review from '../components/Step22/Step22';
+
+*/

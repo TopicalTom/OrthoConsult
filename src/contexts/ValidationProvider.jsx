@@ -1,5 +1,6 @@
-import React, { useContext, useState, createContext, useReducer } from 'react';
+import React, { useContext, useState, createContext, useEffect } from 'react';
 import { useData } from "./DataProvider";
+import { useStep } from "./StepProvider";
 
 // Custom Step Management Hook
 const ValidationContext = createContext();
@@ -10,29 +11,45 @@ export function useValidation() {
 
 // Handles Form Step Changes
 export function ValidationProvider({ children }) {
-    const initialState = {}; 
-    const [check, validate] = useReducer(reducer, initialState);
+    const { state } = useData();
+    const { currentStep } = useStep();
+    const options = [
+        {
+            status: false
+        }
+    ]
+    const [ validation, setValidation] = useState(options)
 
-    // Handles Case Evaluation Form Logic
-    function reducer(check, action) {
-        switch (action.type) {
-
+    function checkValidation() {
+        switch (currentStep) {
+    
             // Case Type Fields
-            case "CASE_TYPE":
+            case 0:
                 return {
-                    ...check,
-                    caseType: action.payload
+                    options: [
+                        ...options,
+                        options[0].status = state.caseType.length === 0 ? false : true
+                    ]
                 };
-
             default:
-                return check;
+                return options;
         }
     }
 
-    
+    useEffect(() => {
+        setValidation(options)
+    }, [options])
+
     return (
-        <ValidationContext.Provider value={{ check, validate}}>
+        <ValidationContext.Provider value={{ validation, checkValidation }}>
             {children}
         </ValidationContext.Provider>
     )
 }
+
+/*
+                state.caseType.length !== 0 
+                    ?   validate[0].status = true
+                    :   validate[0].status = false
+
+*/
