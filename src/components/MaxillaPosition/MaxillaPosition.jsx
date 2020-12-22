@@ -12,11 +12,6 @@ function MaxillaPosition() {
     const { maxillaPosition } = state.cranial;
     const options = [
         {
-            name: "maxillaNormal",
-            label: "Normal",
-            value: "Normal"
-        },
-        {
             name: "maxillaPosterior",
             label: "Posterior",
             value: "Posterior"
@@ -25,6 +20,11 @@ function MaxillaPosition() {
             name: "maxillaAnterior",
             label: "Anterior",
             value: "Anterior"
+        },
+        {
+            name: "maxillaNormal",
+            label: "Normal",
+            value: "Normal"
         }
     ]
 

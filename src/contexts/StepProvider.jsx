@@ -1,7 +1,7 @@
 import React, { useContext, useState, createContext } from 'react';
 
-// State Template
-import questions from '../templates/questionaire';
+// Case Evaluation Template
+import evaluation from '../templates/evaluation';
 
 // Custom Step Management Hook
 const StepContext = createContext(0);
@@ -13,16 +13,17 @@ export function useStep() {
 // Handles Form Step Changes
 export function StepProvider({ children }) {
     const [ currentStep, setCurrentStep ] = useState(0);
-    const [ question, setQuestion ] = useState(questions[currentStep]);
+    const [ question, setQuestion ] = useState(evaluation[currentStep]);
     const [ previousTitle, setPreviousTitle ] = useState("");
+    const length = evaluation.length;
 
     function next() {
         let current = currentStep
         // If the current step is length of questions array, then add one on "next" button click
-        current = current >= (questions.length - 1) ? questions.length : current + 1
+        current = current >= (evaluation.length - 1) ? evaluation.length : current + 1
         setCurrentStep(current)
-        setQuestion(questions[current])
-        setPreviousTitle(questions[current - 1].title)
+        setQuestion(evaluation[current])
+        setPreviousTitle(evaluation[current - 1].title)
     }
 
     function previous() {
@@ -30,12 +31,12 @@ export function StepProvider({ children }) {
         // If the current step is 0 or 1, then add one on "next" button click
         current = current <= 0 ? 1 : current - 1
         setCurrentStep(current)
-        setQuestion(questions[current])
-        setPreviousTitle(questions[current - 1].title)
+        setQuestion(evaluation[current])
+        setPreviousTitle(evaluation[current - 1].title)
     }
     
     return (
-        <StepContext.Provider value={{ question, currentStep, previousTitle, previous, next }}>
+        <StepContext.Provider value={{ question, currentStep, previousTitle, previous, next, length }}>
             {children}
         </StepContext.Provider>
     )

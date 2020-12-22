@@ -1,0 +1,26 @@
+@import "../../styles/baseline.scss";
+
+.scrollbar {
+    position: fixed;
+    width: 100vw;
+    height: 8vh;
+    display: grid;
+    justify-items: stretch;
+    grid-template-areas: " . scroll .";
+    grid-template-columns: 18vw 64vw 18vw;
+    z-index: 1000;
+    bottom: 0;
+    text-align: center;
+
+    &--active {
+        opacity: 1;
+    }
+
+    &--inactive {
+        opacity: 0;
+    }
+
+    &__scroll {
+        grid-area: scroll;
+    }
+}

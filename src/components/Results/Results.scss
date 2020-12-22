@@ -1,0 +1,76 @@
+@import "../../pages/Main/Main.scss";
+@import "../../styles/baseline.scss";
+
+.results {
+    height: 100vh;
+    grid-area: results;
+    width: 100%;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+    justify-content: center;
+    text-align: center;
+
+    &__icon {
+        fill: black;
+        transform: scaleX(-1);
+        height: 1.3rem;
+    }
+
+    &__header {
+        font-weight: 700;
+        padding-bottom: 40px;
+        color: white;
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    &__details {
+        display: flex;
+        width: 50%;
+        font-weight: 500;
+        line-height: 1.8rem;
+        padding-bottom: 50px;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.644);
+    }
+
+    &__link {
+        display: inline;
+        width: 140px;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 0.9rem;
+        max-height: 44px;
+        vertical-align: center;
+        margin: auto 0;
+
+        &--primary {
+            background-color: rgba(255, 255, 255, 0.158);
+            margin-right: 0.5rem;
+        }
+
+        &--secondary {
+            background-color: rgba(255, 255, 255, 0.021);
+            border: 1px solid rgba(255, 255, 255, 0.158);
+        }
+    }
+
+    &__progress {
+        height: 360px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    &__preview {
+        height: 360px;
+        //width: 50%;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: rgba(82, 82, 82, 0.3) 0px 20px 30px;
+    }
+}

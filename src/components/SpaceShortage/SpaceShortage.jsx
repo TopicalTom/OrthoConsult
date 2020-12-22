@@ -12,7 +12,7 @@ import dental from "../../assets/vectors/SpaceShortage.svg";
 
 function SpaceShortage() {
     const { state } = useData();
-    const { urCentral, ulCentral, urLateral, ulLateral, transpalatal } = state.space;
+    const { urCentral, ulCentral, urLateral, ulLateral, transpalatal } = state.dental.space;
 
     return (
         <div className="case__content case__content--default">

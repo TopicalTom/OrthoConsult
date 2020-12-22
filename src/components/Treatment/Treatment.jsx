@@ -26,14 +26,6 @@ function Treatment() {
 
     return (
         <div className="case__content">
-            <TextArea
-                label="Your Objectives"
-                name="objective"
-                type="text"
-                placeholder=""
-                callback="TREATMENT_OBJECTIVE"
-                value={details}
-            />
             <Selection 
                 label="Treatment Type"
                 name="treatment"
@@ -41,6 +33,14 @@ function Treatment() {
                 callback="TREATMENT_TYPE"
                 list={list}
                 data={type}
+            />
+            <TextArea
+                label="Your Objectives"
+                name="objective"
+                type="text"
+                placeholder=""
+                callback="TREATMENT_OBJECTIVE"
+                value={details}
             />
         </div>
     );

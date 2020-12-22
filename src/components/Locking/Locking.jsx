@@ -9,7 +9,7 @@ import Card from '../Card/Card';
 
 function Locking() {
     const { state } = useData();
-    const { left, right, none } = state.tmj.locking;
+    const { left, right, none } = state.joint.locking;
     const options = [
         {
             name: "lockingLeft",

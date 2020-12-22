@@ -3,6 +3,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { useData } from "../../contexts/DataProvider";
 import "./Selection.scss";
 
+// Components
+import Input from '../Input/Input';
+
 const Selection = (props) => {
     const { dispatch, state } = useData();
     const { label, type, name, callback, list, data} = props;
@@ -33,7 +36,17 @@ const Selection = (props) => {
                                 id={item.name}
                                 value={item.value}
                             />
-                            <label className="selection__option" forHTML={item.name}>{item.label}</label>
+                            <div className="selection__container">
+                                <label className="selection__option" forHTML={item.name}>{item.label}</label>
+                                {item.field === true
+                                    ?   <input 
+                                            className={`selection__field selected__field--${selected !== item.value ? "disabled" : "active"}`}
+                                            disabled={selected !== item.value ? true : false}
+                                            placeholder={item.placeholder}
+                                        />
+                                    :   <></>
+                                }
+                            </div>
                         </li>
                     )
                 })}

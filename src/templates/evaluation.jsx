@@ -8,20 +8,27 @@ import CaseType from '../components/CaseType/CaseType';
 import ModelLeft from '../components/ModelLeft/ModelLeft';
 import ModelRight from '../components/ModelRight/ModelRight';
 import PatientHabits from '../components/PatientHabits/PatientHabits';
+import Trauma from '../components/Trauma/Trauma';
+import EarLevel from '../components/EarLevel/EarLevel';
+import ShoulderLevel from '../components/ShoulderLevel/ShoulderLevel';
+import EyeLevel from '../components/EyeLevel/EyeLevel';
 import PatientFeatures from '../components/FacialFeatures/FacialFeatures';
 import FacialProfile from '../components/FacialProfile/FacialProfile';
 import FacialHeight from '../components/FacialHeight/FacialHeight';
 import MandibularPlane from '../components/MandibularPlane/MandibularPlane';
 import GrowthDirection from '../components/GrowthDirection/GrowthDirection';
 import MaxillaPosition from '../components/MaxillaPosition/MaxillaPosition';
+import HeadPosture from '../components/HeadPosture/HeadPosture';
+import DentalArches from '../components/DentalArches/DentalArches';
 
-// Input
+// Text Input
 import PatientInfo from '../components/PatientInfo/PatientInfo';
-import Malocclussion from '../components/Malocclusion/Malocclusion';
-import SpaceShortage from '../components/SpaceShortage/SpaceShortage';
-import CranialAbnormalities from '../components/CranialAbnormalities/CranialAbnormalities';
 import Concerns from '../components/Concerns/Concerns';
 import Treatment from '../components/Treatment/Treatment';
+
+// Number Input
+import DentalMeasurements from '../components/Malocclusion/Malocclusion';
+import SpaceShortage from '../components/SpaceShortage/SpaceShortage';
 
 // Rating
 import PatientQualifier from '../components/PatientQualifier/PatientQualifier';
@@ -31,8 +38,8 @@ import RangeOfMotion from '../components/RangeOfMotion/RangeOfMotion';
 import Upload from '../components/Upload/Upload';
 import Review from '../components/Review/Review';
 
-// Case Evaluation Form Template
-const questionaire = [
+// Evaluation Form Template
+const evaluation = [
     {
         title: "Case Type",
         instructions: "Select the type of case we are looking at:",
@@ -59,9 +66,9 @@ const questionaire = [
         content: <ModelRight />
     },
     {
-        title: "Malocclusion Calculation",
-        instructions: "Input all the following calculations for malocclusion:",
-        content: <Malocclussion />
+        title: "Dental Measurements",
+        instructions: "Input all the following measurements:",
+        content: <DentalMeasurements />
     },
     {
         title: "Space Shortage Calculation",
@@ -72,6 +79,11 @@ const questionaire = [
         title: "Patient Habits",
         instructions: "Select all applicable habits the patient exhibits:",
         content: <PatientHabits />
+    },
+    {
+        title: "Underlying Issues",
+        instructions: "Select all applicable trauma the patient has:",
+        content: <Trauma />
     },
     {
         title: "Facial Features",
@@ -109,9 +121,29 @@ const questionaire = [
         content: <FacialHeight />
     },
     {
-        title: "Cranial Abnormalities",
-        instructions: "Comment on the presence of any abnormalites the patient might have:",
-        content: <CranialAbnormalities />
+        title: "Head Posture",
+        instructions: "Select the applicable for each side of the patient:",
+        content: <HeadPosture />
+    },
+    {
+        title: "Eye Level",
+        instructions: "Select the applicable for each side of the patient:",
+        content: <EyeLevel />
+    },
+    {
+        title: "Ear Level",
+        instructions: "Select the applicable for each side of the patient:",
+        content: <EarLevel />
+    },
+    {
+        title: "Shoulder Level",
+        instructions: "Select the applicable for each side of the patient:",
+        content: <ShoulderLevel />
+    },
+    {
+        title: "Dental Arches",
+        instructions: "Select the applicable for each side of the patient:",
+        content: <DentalArches />
     },
     {
         title: "Mandibular Plane Angle",
@@ -150,7 +182,7 @@ const questionaire = [
     },
 ]
 
-export default questionaire;
+export default evaluation;
 
 /*
 import CaseType from '../components/CaseType/CaseType';

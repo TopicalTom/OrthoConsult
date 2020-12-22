@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useData } from "../../contexts/DataProvider";
-//import { useValidation } from "../../contexts/ValidationProvider";
 import { useStep } from "../../contexts/StepProvider";
 import "./Cards.scss";
 
 const Cards = (props) => {
     const { dispatch, state } = useData();
     const { next } = useStep();
-    const { type, name, callback, options, data} = props;
+    const { type, name, callback, options, data, category} = props;
     const [selected, setSelected] = useState(data);
 
     function select() {
@@ -20,6 +19,11 @@ const Cards = (props) => {
     }, [state]);
 
     return (
+        <>
+        {category 
+            ?   <label className="cards__category">{category}</label>
+            :   <></>
+        }
         <ul className={`cards cards--${type}`}>
             {options && options.map((item) => {
                 return (
@@ -49,6 +53,7 @@ const Cards = (props) => {
                 )
             })}
         </ul>
+        </>
     );
 };
 

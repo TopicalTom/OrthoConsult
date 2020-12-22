@@ -9,7 +9,7 @@ import Card from '../Card/Card';
 
 function Clicking() {
     const { state } = useData();
-    const { left, right, none } = state.tmj.clicking;
+    const { left, right, none } = state.joint.clicking;
     const options = [
         {
             name: "clickingLeft",

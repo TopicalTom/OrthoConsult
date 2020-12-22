@@ -9,7 +9,7 @@ import Cards from '../Cards/Cards';
 
 function ModelLeft() {
     const { state } = useData();
-    const { left } = state.model;
+    const { left } = state.dental.model;
     const options = [
         {
             name: "leftClassI",

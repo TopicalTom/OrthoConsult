@@ -12,7 +12,8 @@ import dental from "../../assets/vectors/SpaceShortage.svg";
 
 function Malocclusion() {
     const { state } = useData();
-    const { overbite, overjet } = state.model;
+    const { overbite, overjet } = state.dental.model;
+    const { maxOpening } = state.joint;
 
     return (
         <div className="case__content case__content--default">
@@ -40,6 +41,16 @@ function Malocclusion() {
                         criteria="%"
                         callback="MODEL_OVERBITE"
                         value={overbite}
+                    />
+                </div>
+                <div className="case__row">
+                    <Input 
+                        label="Max Opening"
+                        name="maxOpening"
+                        type="number"
+                        criteria="mm"
+                        callback="MAXIMUM_OPENING"
+                        value={maxOpening}
                     />
                 </div>
             </div>

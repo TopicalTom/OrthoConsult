@@ -12,18 +12,151 @@ import Dropdown from '../Dropdown/Dropdown';
 function PatientInfo() {
     const { state } = useData();
     const { patient, patientInfo } = state;
-    const { height, dob, gender, oversight } = patientInfo;
+    const { height, dob, gender, ethnicity } = patientInfo;
     const adult = [
-        {
-            name: "yes",
-            label: "Yes",
-            value: true
-        },
         {
             name: "no",
             label: "No",
             value: false
+        },
+        {
+            name: "yes",
+            label: "Yes",
+            value: true,
+            field: true
+        },
+    ];
+    const patientGender = [
+        {
+            name: "male",
+            label: "Male",
+            value: "Male"
+        },
+        {
+            name: "female",
+            label: "Female",
+            value: "Female"
         }
+    ];
+    const patientEthnicity = [
+        {
+            name: "americanIndianOrAlaskaNative",
+            label: "American Indian or Alaska Native",
+            value: "American Indian or Alaska Native"
+        },
+        {
+            name: "asian",
+            label: "Asian",
+            value: "Asian"
+        },
+        {
+            name: "black",
+            label: "Black or African American",
+            value: "Black or African American"
+        },
+        {
+            name: "hispanicOrLatino",
+            label: "Hispanic or Latino",
+            value: "Hispanic or Latino"
+        },
+        {
+            name: "hawaiianNativeOrPacificIslander",
+            label: "Native Hawaiian or Other Pacific Islander",
+            value: "Native Hawaiian or Other Pacific Islander",
+        },
+        {
+            name: "white",
+            label: "White",
+            value: "White"
+        },
+        {
+            name: "otherRace",
+            label: "Other",
+            value: "Other",
+            field: true,
+            placeholder: "list others..."
+        },
+    ];
+
+    return (
+        <div className="case__content case__content--default">
+            <div className="case__column">
+                <Input 
+                    label="Full Name"
+                    name="name"
+                    type="text"
+                    callback="PATIENT_NAME"
+                    value={patient}
+                />
+                <div className="case__row">
+                    <Input 
+                        label="Height"
+                        name="height"
+                        type="number"
+                        criteria="cm"
+                        callback="PATIENT_HEIGHT"
+                        value={height}
+                    />
+                    <Input 
+                        label="Date of Birth"
+                        name="dob"
+                        type="date"
+                        callback="PATIENT_BIRTHDAY"
+                        value={dob}
+                    />
+                </div>
+                <Selection 
+                    label="Gender"
+                    name="gender"
+                    type="radio"
+                    callback="PATIENT_GENDER"
+                    list={patientGender}
+                    data={gender}
+                />
+            </div>
+            <div className="case__column">
+                <Selection 
+                    label="Ethnicity"
+                    name="ethnicity"
+                    type="radio"
+                    callback="PATIENT_ETHNICITY"
+                    list={patientEthnicity}
+                    data={ethnicity}
+                />
+            </div>
+        </div>
+    );
+}
+export default PatientInfo;
+
+/*
+import React from 'react';
+import "../Case/Case.scss";
+
+// Contexts
+import { useData } from "../../contexts/DataProvider";
+
+// Components
+import Input from '../Input/Input';
+import Selection from '../Selection/Selection';
+import Dropdown from '../Dropdown/Dropdown';
+
+function PatientInfo() {
+    const { state } = useData();
+    const { patient, patientInfo } = state;
+    const { height, dob, gender, oversight } = patientInfo;
+    const adult = [
+        {
+            name: "no",
+            label: "No",
+            value: false
+        },
+        {
+            name: "yes",
+            label: "Yes",
+            value: true,
+            field: true
+        },
     ];
     const patientGender = [
         {
@@ -117,7 +250,7 @@ function PatientInfo() {
                     data={gender}
                 />
                 <Selection 
-                    label="Is a parent or guardian overseeing treatment?"
+                    label="Is the patient being medicated?"
                     name="oversight"
                     type="radio"
                     callback="PATIENT_OVERSIGHT"
@@ -129,6 +262,8 @@ function PatientInfo() {
     );
 }
 export default PatientInfo;
+
+*/
 
 /*
 

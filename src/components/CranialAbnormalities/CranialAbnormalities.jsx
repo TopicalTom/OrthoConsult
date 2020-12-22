@@ -68,3 +68,86 @@ function CranialAbnormalities() {
     );
 }
 export default CranialAbnormalities;
+
+/*
+
+import React from 'react';
+import { useData } from "../../contexts/DataProvider";
+import "../Case/Case.scss";
+
+// Components
+import Card from '../Card/Card';
+
+function CranialAbnormalities() {
+    const { state } = useData();
+    const { earLevel, eyeLevel, shoulderLevel, dentalArches, forwardPosture, none } = state.cranial;
+    const options = [
+        {
+            name: "earLevel",
+            label: "Ear Level",
+            details: "",
+            callback: "EAR_LEVEL",
+            value: earLevel,
+            field: true
+        },
+        {
+            name: "eyeLevel",
+            label: "Eye Level",
+            details: "",
+            callback: "EYE_LEVEL",
+            value: eyeLevel,
+            field: true
+        },
+        {
+            name: "shoulderLevel",
+            label: "Shoulder Level",
+            details: "",
+            callback: "SHOULDER_LEVEL",
+            value: shoulderLevel,
+            field: true
+        },
+        {
+            name: "dentalArches",
+            label: "Dental Arches",
+            details: "",
+            callback: "DENTAL_ARCHES",
+            value: dentalArches,
+            field: true
+        },
+        {
+            name: "forwardPosture",
+            label: "Forward Head Posture",
+            details: "",
+            callback: "FORWARD_POSTURE",
+            value: forwardPosture
+        },
+        {
+            name: "abnormalitiesNone",
+            label: "None",
+            details: "",
+            callback: "ABNORMALITIES_NONE",
+            value: none
+        },
+    ]
+
+    return (
+        <div className="case__content case__content--table" >
+            {options && options.map((item) => {
+                return (
+                    <Card 
+                        type="checkbox"
+                        id={item.name}
+                        name={item.name}
+                        label={item.label}
+                        details={item.details}
+                        callback={item.callback}
+                        value={item.value}
+                        field={item.field}
+                    />
+                )
+            })}
+        </div>
+    );
+}
+export default CranialAbnormalities;
+*/

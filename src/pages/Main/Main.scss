@@ -2,6 +2,114 @@
 
 .main {
     width: 100vw;
+    //height: 100vh;
+    //background-color: #1f92fd;
+    display: grid;
+    justify-items: stretch;
+    grid-template-areas: 
+        " . hero hero ."
+        " . results results ."
+        " . about about ."
+        " . footer footer .";
+    grid-template-columns: 18vw 32vw 32vw 18vw;
+    //grid-template-rows: 8vh 84vh 8vh;
+    gap: auto;
+    position: relative;
+    //grid-template-areas: 
+    //". . . ."
+    //" . hero hero ."
+    //" . . . .";
+    //grid-template-columns: 18vw 32vw 32vw 18vw;
+    //grid-template-rows: 8vh 84vh 8vh;
+    //gap: auto;
+
+    &__container {
+        grid-area: hero;
+        width: 100%;
+        z-index: 900;
+        display: flex;
+        flex-direction: column;
+        margin: auto 0;
+        vertical-align: center;
+    }
+
+    &__actions {
+        width: 25%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        height: 60px;
+    }
+
+    &__icon {
+        fill: white;
+        transform: scaleX(-1);
+        height: 1.3rem;
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        line-height: 3.4rem;
+        font-weight: 700;
+        color: white;
+        padding-bottom: 40px;
+    
+        @include tablet {
+            font-size: 5.8rem;
+            line-height: 5.8rem;
+            width: 68%;
+        }
+    }
+
+    &__mission {
+        display: flex;
+        color: rgba(255, 255, 255, 0.75);
+        width: 40%;
+        font-weight: 500;
+        line-height: 1.8rem;
+        padding-bottom: 50px;
+    }
+
+    &__cta {
+        display: inline;
+        width: 140px;
+        padding: 1rem 1.5rem;
+        color: white;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 0.9rem;
+        max-height: 44px;
+        vertical-align: center;
+        margin: auto 0;
+
+        &--primary {
+            background-color: rgba(255, 255, 255, 0.158);
+            margin-right: 0.5rem;
+        }
+
+        &--secondary {
+            background-color: rgba(255, 255, 255, 0.021);
+            border: 1px solid rgba(255, 255, 255, 0.158);
+        }
+    }
+
+    &__partition {
+        position: absolute;
+        top: -1000px;
+        left: 0;
+        right: 0;
+        transform-origin: 0 50%;
+        height: 2500px;
+        background-color: #1f92fd;
+        transform: skewY(-10deg);
+    }
+}
+
+/*
+@import "../../styles/baseline.scss";
+
+.main {
+    width: 100vw;
     height: 90vh;
     margin: 0;
     background-color: #2997ff;
@@ -59,3 +167,5 @@
         }
     }
 }
+
+*/

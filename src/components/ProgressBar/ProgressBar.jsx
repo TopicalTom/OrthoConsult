@@ -3,17 +3,17 @@ import { useStep } from "../../contexts/StepProvider";
 import "./ProgressBar.scss";
 
 const ProgressBar = () => {
-    const { currentStep } = useStep();
+    const { currentStep, length } = useStep();
     const [ progress, setProgress ] = useState(null);
 
     useEffect(() => {
-        const dynamicWidth = Math.round(((currentStep + 1) / 23) * 100);
+        const dynamicWidth = Math.round(((currentStep + 1) / length) * 100);
 
         setProgress(dynamicWidth);
     }, [currentStep]);
 
     return (
-        <div className={`progress progress--${currentStep < 22 ? "visible" : "hidden"}`}>
+        <div className={`progress progress--${currentStep < (length - 1) ? "visible" : "hidden"}`}>
             <div className="progress__container">
                 <span className="progress__bar" style={{width: `${progress}%`}}/>
             </div>

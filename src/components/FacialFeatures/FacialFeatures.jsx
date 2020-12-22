@@ -9,7 +9,7 @@ import Card from '../Card/Card';
 
 function FacialFeatures() {
     const { state } = useData();
-    const { eyeDarkness, nostrilsDeveloped, weakLips, poorSeal, none } = state.features;
+    const { eyeDarkness, nostrilsDeveloped, weakLips, poorSeal, none } = state.facial.features;
     const options = [
         {
             name: "eyeDarkness",

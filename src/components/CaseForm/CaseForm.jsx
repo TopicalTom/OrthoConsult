@@ -8,7 +8,7 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 
 function CaseForm() {
     const { addCase } = useData();
-    const { currentStep, previousTitle, previous, next, question } = useStep();
+    const { currentStep, previousTitle, previous, next, question, length } = useStep();
     const { checkValidation, validation } = useValidation();
 
     function submitCase(e) {
@@ -16,11 +16,9 @@ function CaseForm() {
         addCase()
     }
 
-    console.log(validation[0].status)
-
     return (
         <form
-            className={`case__form case__form--${currentStep >= 21 ? "alt" : "default"}`}
+            className={`case__form case__form--${currentStep >= (length - 2) ? "alt" : "default"}`}
             onChange={checkValidation}
             onSubmit={submitCase}>
             <div className="case__container">
@@ -52,7 +50,7 @@ function CaseForm() {
                 <div className="case__footer">
                     <div></div>
                     <ProgressBar />
-                    {currentStep < 22
+                    {currentStep < (length - 1)
                         ?   <button 
                                 className="case__button case__button--next" 
                                 type="button"

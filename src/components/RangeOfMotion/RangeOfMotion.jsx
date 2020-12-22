@@ -9,7 +9,7 @@ import SignatureCanvas from 'react-signature-canvas'
 
 function RangeOfMotion() {
     const { dispatch, state } = useData();
-    const { rangeOfMotion } = state.tmj;
+    const { rangeOfMotion } = state.joint;
     const [ drawing, setDrawing ] = useState(rangeOfMotion);
     const sigPad = useRef(drawing);
 

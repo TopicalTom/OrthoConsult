@@ -51,15 +51,14 @@ OrthoConsult
     │   └── vectors
     ├── components
     │   ├── Card
-    │   ├── CardGroup
-    │   ├── Case
-    │   ├── CaseForm
-    │   ├── CaseRecords
-    │   ├── DropZone
+    │   ├── Cards
+    │   ├── EvaluationForm
+    │   ├── EvaluationRecords
+    │   ├── File
+    │   ├── FileUploader
     │   ├── Header
     │   ├── Help
     │   ├── Input
-    │   ├── Options
     │   ├── Rating
     │   ├── Selection
     │   ├── TextArea

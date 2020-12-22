@@ -9,7 +9,7 @@ import Card from '../Card/Card';
 
 function Popping() {
     const { state } = useData();
-    const { left, right, none } = state.tmj.popping;
+    const { left, right, none } = state.joint.popping;
     const options = [
         {
             name: "poppingLeft",

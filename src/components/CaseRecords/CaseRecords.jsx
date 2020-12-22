@@ -8,10 +8,10 @@ import File from '../File/File';
 function CaseRecords() {
     const { state } = useData();
     const { records } = state;
-    const { currentStep } = useStep();
+    const { currentStep, length } = useStep();
 
     return (
-        <aside className={`case__records case__records--${currentStep >= 21 ? "alt" : "default"}`}>
+        <aside className={`case__records case__records--${currentStep >= (length - 2) ? "alt" : "default"}`}>
             {records.length !== 0
                 ?   <div className="case__files">
                         <p>Currently Uploading</p>

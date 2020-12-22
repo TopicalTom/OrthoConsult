@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useData } from "../../contexts/DataProvider";
 import "./Card.scss";
 
+// Components
+import Input from '../Input/Input';
+
 const Card = (props) => {
     const { dispatch, state } = useData();
-    const { id, name, callback, label, details, type, value } = props;
+    const { id, name, callback, label, details, type, value, field } = props;
     const [selected, setSelected] = useState(value);
 
     useEffect(() => {
@@ -36,6 +39,14 @@ const Card = (props) => {
                     className={`card__details card__details--${selected == true ? "selected" : "default"} `}>
                     {details}
                 </p>
+                {field === true
+                    ?   <input 
+                            className="card__field" 
+                            type="text"
+                            placeholder="ex: MVA"
+                        />
+                    :   <></>
+                }
             </div>
         </div>
     );

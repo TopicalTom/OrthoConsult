@@ -12,11 +12,6 @@ function GrowthDirection() {
     const { growthDirection } = state.cranial;
     const options = [
         {
-            name: "growthNormal",
-            label: "Normal",
-            value: "Normal"
-        },
-        {
             name: "growthDeep",
             label: "Deep",
             value: "Deep"
@@ -25,6 +20,11 @@ function GrowthDirection() {
             name: "growthOpen",
             label: "Open",
             value: "Open"
+        },
+        {
+            name: "growthNormal",
+            label: "Normal",
+            value: "Normal"
         }
     ]
 

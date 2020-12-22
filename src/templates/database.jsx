@@ -1,4 +1,4 @@
-const caseEvaluation = { 
+const database = { 
     caseType: "",
     patient: "",
     doctor: "",
@@ -16,19 +16,6 @@ const caseEvaluation = {
         finances: "",
         oversight: null
     },
-    model: {
-        left: "",
-        right: "",
-        overjet: null,
-        overbite: null,
-    },
-    space: {
-        urCentral: null,
-        ulCentral: null,
-        urLateral: null,
-        ulLateral: null,
-        transpalatal: null,
-    },
     habits: {
         mouthBreather: false,
         snores: false,
@@ -36,14 +23,22 @@ const caseEvaluation = {
         thumbSuck: false,
         none: false
     },
-    features: {
-        nostrilsDeveloped: false,
-        eyeDarkness: false,
-        weakLips: false,
-        poorSeal: false,
-        none: false
+    dental: {
+        model: {
+            left: "",
+            right: "",
+            overjet: null,
+            overbite: null,
+        },
+        space: {
+            urCentral: null,
+            ulCentral: null,
+            urLateral: null,
+            ulLateral: null,
+            transpalatal: null,
+        }
     },
-    tmj: {
+    joint: {
         clicking: {
             none: false,
             left: false,
@@ -59,19 +54,45 @@ const caseEvaluation = {
             left: false,
             right: false
         },
-        rangeOfMotion: []
+        maxOpening: "",
+        rangeOfMotion: [],
+        issues: {
+            trauma: false,
+            traumaDetails: "",
+            headaches: false,
+            none: false
+        }
     },
     facial: {
         profile: "",
         hereditary: false,
         height: "",
+        features: {
+            nostrilsDeveloped: false,
+            eyeDarkness: false,
+            weakLips: false,
+            poorSeal: false,
+            none: false
+        }
     },
     cranial: {
-        dentalArches: "",
-        earLevel: "",
-        eyeLevel: "",
-        shoulderLevel: "",
-        forwardPosture: null,
+        earLevel: {
+            left: "",
+            right: "",
+        },
+        shoulderLevel: {
+            left: "",
+            right: ""
+        },
+        eyeLevel: {
+            left: "",
+            right: ""
+        },
+        dentalArches: {
+            left: "",
+            right: ""
+        },
+        headPosture: null,
         mandibularPlane: "",
         growthDirection: "",
         maxillaPosition: ""
@@ -88,4 +109,4 @@ const caseEvaluation = {
     confirmation: false
 };  
 
-export default caseEvaluation;
+export default database;

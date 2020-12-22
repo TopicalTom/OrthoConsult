@@ -12,14 +12,14 @@ function MandibularPlane() {
     const { mandibularPlane } = state.cranial;
     const options = [
         {
-            name: "mandibularNormal",
-            label: "Normal",
-            value: "Normal"
-        },
-        {
             name: "mandibularSteep",
             label: "Steep",
             value: "Steep"
+        },
+        {
+            name: "mandibularNormal",
+            label: "Normal",
+            value: "Normal"
         }
     ]
 

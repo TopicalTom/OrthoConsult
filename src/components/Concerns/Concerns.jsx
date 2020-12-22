@@ -7,7 +7,6 @@ import TextArea from '../TextArea/TextArea';
 
 function Concerns() {
     const { state } = useData();
-    const { oversight } = state.patientInfo;
     const { patient, parent } = state.concerns;
 
     return (
@@ -20,17 +19,14 @@ function Concerns() {
                 callback="PATIENT_CONCERNS"
                 value={patient}
             />
-            {oversight !== true
-                ?   <></>
-                :   <TextArea 
-                        label="Parent Concerns"
-                        name="parentConcerns"
-                        type="text"
-                        placeholder=""
-                        callback="PARENT_CONCERNS"
-                        value={parent}
-                    />
-            }
+            <TextArea 
+                label="Parent Concerns"
+                name="parentConcerns"
+                type="text"
+                placeholder=""
+                callback="PARENT_CONCERNS"
+                value={parent}
+            />
         </div>
     );
 }

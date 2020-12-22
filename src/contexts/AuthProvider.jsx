@@ -13,20 +13,34 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
 
-    // SignUp Modal
+    // Handles SignUp Requests
     function signup(email, password, name, phone) {
         createClient(email, name, phone)
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
-    // Login Modal
+    // Handles Login Requests
     function login(email, password) {
         return auth.signInWithEmailAndPassword(email, password)
     }
 
-    // Account Page
+    // Handles Logout Requests
     function logout() {
         return auth.signOut()
+    }
+
+    // Updates Acccount Info on Creation
+    function setProfile(name, phone) {
+        auth.currentUser
+            .updateProfile({
+                displayName: name,
+                phoneNumber: phone
+            })
+            .then(() => {
+                console.log("Success");
+            }).catch((error) => {
+                console.log(error);
+            });
     }
     
     // Links SignUp with User Doc in FireStore
@@ -39,11 +53,11 @@ export function AuthProvider({ children }) {
             cases: []
         }
 
-        // Links Auth with Client Account Creation
         firestore.collection("clients")
             .doc(name)
             .set(newClient)
             .then(() => {
+                setProfile(name, phone)
                 console.log("Success");
             })
             .catch(error => {

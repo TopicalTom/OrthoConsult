@@ -5,58 +5,61 @@ import "./ScrollView.scss";
 
 const Review = () => {
     const { state } = useData();
+    const { caseType, patient, patientInfo, habits, dental, joint, facial } = state;
+    const { model, space } = dental;
+    const { clicking, popping, locking, maxOpening, rangeOfMotion, issues } = joint;
 
     return (
         <div className="review">
             <section className="review__section">
                 <h3 className="review__title">Case Info</h3>
-                <p>Type: {state.caseType}</p>
+                <p>Type: {caseType}</p>
             </section>
             <section className="review__section">
                 <h3 className="review__title">Patient Info</h3>
-                <p>Name: {state.patient}</p>
-                <p>Height: {state.patientInfo.height}cm</p>
-                <p>Date of Birth: {state.patientInfo.dob}</p>
-                <p>Gender: {state.patientInfo.gender}</p>
-                <p>Ethnicity: {state.patientInfo.ethnicity}</p>
-                <p>Motivation: {state.patientInfo.motivation}</p>
-                <p>Hygiene: {state.patientInfo.hygiene}</p>
-                <p>Finances: {state.patientInfo.finances}</p>
-            </section>
-            <section className="review__section">
-                <h3 className="review__title">Model Classification</h3>
-                <p>Left: {state.model.left}</p>
-                <p>Right: {state.model.right}</p>
-                <p>Overjet: {state.model.overjet}mm</p>
-                <p>Overbite: {state.model.overbite}%</p>
-            </section>
-            <section className="review__section">
-                <h3 className="review__title">Space Shortage</h3>
-                <p>UR Central: {state.space.urCentral}mm</p>
-                <p>UL Central: {state.space.ulCentral}</p>
-                <p>UR Lateral: {state.space.urLateral}</p>
-                <p>UL Lateral: {state.space.ulLateral}</p>
-                <p>Transpalatal: {state.space.transpalatal}</p>
+                <p>Name: {patient}</p>
+                <p>Height: {patientInfo.height}cm</p>
+                <p>Date of Birth: {patientInfo.dob}</p>
+                <p>Gender: {patientInfo.gender}</p>
+                <p>Ethnicity: {patientInfo.ethnicity}</p>
+                <p>Motivation: {patientInfo.motivation}</p>
+                <p>Hygiene: {patientInfo.hygiene}</p>
+                <p>Finances: {patientInfo.finances}</p>
             </section>
             <section className="review__section">
                 <h3 className="review__title">Patient Habits</h3>
-                <p>Mouth Breather: {state.habits.mouthBreather}</p>
-                <p>Snores: {state.habits.snores}</p>
+                <p>{habits.filter(item => item !== false)}</p>
             </section>
             <section className="review__section">
-                <h3 className="review__title">TMJ</h3>
-                <p>Clicking: {state.tmj.clicking.left}</p>
-                <p>Popping: {state.tmj.popping.left}</p>
-                <p>Locking: {state.tmj.locking.left}</p>
+                <h3 className="review__title">Model Classification</h3>
+                <p>Left: {model.left}</p>
+                <p>Right: {model.right}</p>
+                <p>Overjet: {model.overjet}mm</p>
+                <p>Overbite: {model.overbite}%</p>
             </section>
             <section className="review__section">
-                <h3 className="review__title">Facial Features</h3>
-                <p>Profile: {state.facial.profile}</p>
-                <p>Hereditary: {state.facial.hereditary}</p>
-                <p>Height: {state.facial.height}</p>
+                <h3 className="review__title">Space Shortage Measurements</h3>
+                <p>UR Central: {space.urCentral}mm</p>
+                <p>UL Central: {space.ulCentral}mm</p>
+                <p>UR Lateral: {space.urLateral}mm</p>
+                <p>UL Lateral: {space.ulLateral}mm</p>
+                <p>Transpalatal: {space.transpalatal}mm</p>
             </section>
             <section className="review__section">
-                <h3 className="review__title">Cranial Features</h3>
+                <h3 className="review__title">Joint Classification</h3>
+                <p>Clicking: {clicking.filter(item => item !== false)}</p>
+                <p>Popping: {popping.filter(item => item !== false)}</p>
+                <p>Locking: {locking.filter(item => item !== false)}</p>
+            </section>
+            <section className="review__section">
+                <h3 className="review__title">Face Classification</h3>
+                <p>Profile: {facial.profile}</p>
+                <p>Hereditary: {facial.hereditary}</p>
+                <p>Height: {facial.height}</p>
+                <p>Features: {facial.features.filter(item => item !== false)}</p>
+            </section>
+            <section className="review__section">
+                <h3 className="review__title">Cranial Classification</h3>
 
             </section>
             <section className="review__section">
