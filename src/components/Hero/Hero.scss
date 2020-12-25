@@ -3,6 +3,96 @@
 
 .hero {
     height: 100vh;
+    width: 100vw;
+    display: grid;
+    justify-items: stretch;
+    grid-template-columns: 1fr repeat(2, 540px) 1fr;
+    gap: auto;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+    justify-content: center;
+
+    &__actions {
+        width: 25%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        height: 60px;
+    }
+
+    &__icon {
+        fill: white;
+        transform: scaleX(-1);
+        height: 1.3rem;
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        line-height: 3.4rem;
+        font-weight: 700;
+        color: white;
+        padding-bottom: 40px;
+    
+        @include tablet {
+            font-size: 5.8rem;
+            line-height: 5.8rem;
+            width: 68%;
+        }
+    }
+
+    &__mission {
+        display: flex;
+        color: rgba(255, 255, 255, 0.75);
+        width: 40%;
+        font-weight: 500;
+        line-height: 2rem;
+        padding-bottom: 50px;
+    }
+
+    &__cta {
+        display: inline;
+        width: 140px;
+        padding: 1rem 1.5rem;
+        color: white;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 0.9rem;
+        max-height: 44px;
+        vertical-align: center;
+        margin: auto 0;
+
+        &--primary {
+            backdrop-filter: saturate(180%) blur(20px);
+            background-color: rgba(255,255,255,0.15);
+            margin-right: 0.5rem;
+        }
+
+        &--secondary {
+            background-color: rgba(255, 255, 255, 0.021);
+            border: 1px solid rgba(255, 255, 255, 0.158);
+        }
+    }
+}
+
+/*
+@import "../../pages/Main/Main.scss";
+@import "../../styles/baseline.scss";
+
+.hero {
+    height: 100vh;
+    display: grid;
+    justify-items: stretch;
+    grid-template-areas: 
+        " . hero hero ."
+        " . results results ."
+        " . process process ."
+        " . about about ."
+        " . contact contact ."
+        " . footer footer .";
+    grid-template-columns: 18vw 32vw 32vw 18vw;
+    gap: auto;
     grid-area: hero;
     width: 100%;
     z-index: 900;
@@ -44,7 +134,7 @@
         color: rgba(255, 255, 255, 0.75);
         width: 40%;
         font-weight: 500;
-        line-height: 1.8rem;
+        line-height: 2rem;
         padding-bottom: 50px;
     }
 
@@ -61,7 +151,8 @@
         margin: auto 0;
 
         &--primary {
-            background-color: rgba(255, 255, 255, 0.158);
+            backdrop-filter: saturate(180%) blur(20px);
+            background-color: rgba(255,255,255,0.15);
             margin-right: 0.5rem;
         }
 
@@ -71,3 +162,5 @@
         }
     }
 }
+
+*/

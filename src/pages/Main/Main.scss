@@ -2,35 +2,96 @@
 
 .main {
     width: 100vw;
-    //height: 100vh;
-    //background-color: #1f92fd;
-    display: grid;
-    justify-items: stretch;
-    grid-template-areas: 
-        " . hero hero ."
-        " . results results ."
-        " . about about ."
-        " . footer footer .";
-    grid-template-columns: 18vw 32vw 32vw 18vw;
-    //grid-template-rows: 8vh 84vh 8vh;
-    gap: auto;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    //display: grid;
+    //justify-items: stretch;
     //grid-template-areas: 
-    //". . . ."
-    //" . hero hero ."
-    //" . . . .";
+        //" . hero hero ."
+        //" . results results ."
+        //" . process process ."
+        //" . about about ."
+        //" . contact contact ."
+        //" . footer footer .";
     //grid-template-columns: 18vw 32vw 32vw 18vw;
-    //grid-template-rows: 8vh 84vh 8vh;
     //gap: auto;
+    position: relative;
 
-    &__container {
-        grid-area: hero;
-        width: 100%;
+    &__section {
+        width: 100vw;
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: 1rem 1fr 1rem;
+        gap: auto;
         z-index: 900;
-        display: flex;
-        flex-direction: column;
-        margin: auto 0;
-        vertical-align: center;
+
+        @include desktop {
+            grid-template-columns: 1fr repeat(4, 270px) 1fr;
+        }
+
+        &--hero {
+            height: 100vh;
+            margin: auto 0;
+            justify-content: center;
+            grid-template-areas:
+                " . copy .";
+
+            @include desktop {
+                grid-template-areas:
+                " . copy copy copy copy .";
+            }
+        }
+
+        &--results {
+            margin: 5rem 0;
+            grid-template-areas:
+                " . copy ."
+                " . results .";
+
+            @include desktop {
+                grid-template-areas:
+                " . copy copy results results .";
+            }
+        }
+
+        &--service {
+            margin: 5rem 0;
+            grid-template-areas:
+                " . copy ."
+                " . service .";
+
+            @include desktop {
+                grid-template-areas:
+                " . copy copy . . ."
+                " . service service service service .";
+            }
+        }
+
+        &--about {
+            margin: 5rem 0;
+            grid-template-areas:
+                " . copy .";
+
+            @include desktop {
+                grid-template-areas:
+                " . copy copy . . .";
+            }
+        }
+
+        &--contact {
+            margin: 5rem 0;
+            grid-template-areas:
+                " . copy .";
+
+            @include desktop {
+                grid-template-areas:
+                " . copy copy . . .";
+            }
+        }
+    }
+
+    &__copy {
+        grid-area: copy;
     }
 
     &__actions {
@@ -99,12 +160,12 @@
         left: 0;
         right: 0;
         transform-origin: 0 50%;
-        height: 2500px;
-        background-color: #1f92fd;
-        transform: skewY(-10deg);
+        height: 2600px;
+        background: linear-gradient(90deg, rgba(23,139,248,1) 0%, rgba(23,135,248,1) 35%, rgba(0,183,255,1) 100%);
+        transform: skewY(-8deg);
+        z-index: 20;
     }
 }
-
 /*
 @import "../../styles/baseline.scss";
 

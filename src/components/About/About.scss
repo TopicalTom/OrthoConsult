@@ -2,7 +2,6 @@
 @import "../../styles/baseline.scss";
 
 .about {
-    height: 100vh;
     grid-area: about;
     width: 100%;
     z-index: 900;
@@ -10,14 +9,11 @@
     flex-direction: column;
     margin: auto 0;
     justify-content: center;
-
-    &__actions {
-        width: 25%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        height: 60px;
-    }
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    padding-top: 300px;
 
     &__icon {
         fill: black;
@@ -25,40 +21,37 @@
         height: 1.3rem;
     }
 
-    &__heading {
-        font-size: 2.8rem;
-        line-height: 3.4rem;
+    &__header {
         font-weight: 700;
-        padding-bottom: 40px;
-    
-        @include tablet {
-            font-size: 5.8rem;
-            line-height: 5.8rem;
-            width: 68%;
-        }
+        padding-bottom: 30px;
+        color: #3a3a3a;
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+        width: 100%;
     }
 
     &__details {
         display: flex;
-        width: 40%;
+        width: 100%;
         font-weight: 500;
-        line-height: 1.8rem;
-        padding-bottom: 50px;
+        line-height: 2rem;
+        padding-bottom: 40px;
+        color: rgba(0, 0, 0, 0.644);
     }
 
-    &__cta {
+    &__link {
         display: inline;
-        width: 140px;
+        width: 150px;
         padding: 1rem 1.5rem;
         border-radius: 8px;
         text-align: center;
         font-size: 0.9rem;
         max-height: 44px;
         vertical-align: center;
-        margin: auto 0;
+        margin-bottom: 4rem;
 
         &--primary {
-            background-color: rgba(255, 255, 255, 0.158);
+            background-color: rgba(0, 0, 0, 0.158);
             margin-right: 0.5rem;
         }
 
@@ -66,5 +59,53 @@
             background-color: rgba(255, 255, 255, 0.021);
             border: 1px solid rgba(255, 255, 255, 0.158);
         }
+    }
+
+    &__concept {
+        color: #3a3a3a;
+        padding-bottom: 20px;
+        opacity: 0.5;
+    }
+
+    &__progress {
+        height: 580px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__preview {
+        height: 550px;
+        border-radius: 8px;
+        box-shadow: rgba(82, 82, 82, 0.5) 0px 20px 30px;
+        background: linear-gradient(90deg, rgba(23,139,248,1) 0%, rgba(23,135,248,1) 35%, rgba(0,183,255,1) 100%);
+        position: relative;
+        margin-bottom: 4rem;
+    }
+
+    &__tag {
+        background-color: rgba(0, 0, 0, 0.226);
+        border-radius: 16px;
+        padding: 0.5rem 1rem;
+        color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 1rem;
+    }
+
+    &__image {
+        background-position: center;
+        background-image: inherit;
+        border-radius: 8px;
+        width: 100%;
+        height: 550px;
+        opacity: 0;
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
     }
 }

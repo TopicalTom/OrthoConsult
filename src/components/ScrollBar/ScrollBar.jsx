@@ -4,12 +4,12 @@ import { useScroll } from "../../contexts/ScrollProvider";
 import "./ScrollBar.scss";
 
 function ScrollBar() {
-    const { position } = useScroll();
+    const { currentScroll } = useScroll();
 
     return (
-        <div className={`scrollbar scrollbar--${position > 50 ? "inactive" : "active"}`}>
+        <div className={`scrollbar scrollbar--${currentScroll > 50 ? "inactive" : "active"}`}>
             <div className="scrollbar__scroll">
-                Indicator
+                Scoll
             </div>
         </div>
     );

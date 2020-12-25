@@ -1,9 +1,9 @@
 @import "../../pages/Main/Main.scss";
 @import "../../styles/baseline.scss";
 
-.results {
-    height: 100vh;
-    grid-area: results;
+.process {
+    //height: 100vh;
+    grid-area: process;
     width: 100%;
     z-index: 900;
     display: flex;
@@ -11,55 +11,69 @@
     margin: auto 0;
     justify-content: center;
     text-align: left;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: none;
-    padding-top: 160px;
+    display: flex;
+    flex-direction: column;
 
     &__icon {
-        fill: white;
+        fill: black;
         transform: scaleX(-1);
         height: 1.3rem;
+    }
+
+    &__split {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: none;
+    }
+
+    &__concept {
+        color: #3a3a3a;
+        padding-bottom: 20px;
+        opacity: 0.5;
     }
 
     &__header {
         font-weight: 700;
         padding-bottom: 30px;
-        color: white;
+        color: #3a3a3a;
         font-size: 2.4rem;
         line-height: 2.8rem;
-        width: 90%;
+        width: 42%;
+    }
+
+    &__phone {
+        width: 300px;
+        position: absolute;
+    }
+
+    &__laptop {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: rgba(82, 82, 82, 0.3) 0px 20px 30px;
     }
 
     &__details {
         display: flex;
-        width: 90%;
+        width: 50%;
         font-weight: 500;
         line-height: 2rem;
-        padding-bottom: 50px;
-        color: rgba(255, 255, 255, 0.644);
-    }
-
-    &__concept {
-        color: white;
-        padding-bottom: 20px;
-        opacity: 0.5;
+        padding-bottom: 40px;
+        color: rgba(0, 0, 0, 0.644);
     }
 
     &__link {
         display: inline;
-        width: 140px;
+        width: 150px;
         padding: 1rem 1.5rem;
         border-radius: 8px;
         text-align: center;
         font-size: 0.9rem;
         max-height: 44px;
         vertical-align: center;
-        margin: auto 0;
-        color: white;
+        margin-bottom: 4rem;
 
         &--primary {
-            background-color: rgba(255, 255, 255, 0.158);
+            background-color: rgba(0, 0, 0, 0.158);
             margin-right: 0.5rem;
         }
 
@@ -70,36 +84,16 @@
     }
 
     &__progress {
-        height: 580px;
+        height: 700px;
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
     }
 
     &__preview {
         height: 280px;
         border-radius: 8px;
-        box-shadow: rgba(82, 82, 82, 0.5) 0px 20px 30px;
-        background-color: black;
-        position: relative;
-    }
-
-    &__tag {
-        background-color: rgba(0, 0, 0, 0.226);
-        border-radius: 16px;
-        padding: 0.5rem 1rem;
-        color: white;
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: 1rem;
-    }
-
-    &__image {
-        background-position: center;
-        background-image: inherit;
-        border-radius: 8px;
-        width: 100%;
+        box-shadow: rgba(82, 82, 82, 0.3) 0px 20px 30px;
+        background-color: white;
     }
 }

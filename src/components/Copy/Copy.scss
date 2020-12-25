@@ -1,0 +1,104 @@
+@import "../../pages/Main/Main.scss";
+@import "../../styles/baseline.scss";
+
+.copy {
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    grid-area: copy;
+    padding: 0rem 1rem;
+
+    @include tablet {
+        padding-right: 1rem;
+    }
+
+    &--hero {
+        margin: auto 0;
+    }
+
+    &--marketing {
+        margin-bottom: 4rem;
+
+        @include tablet {
+            margin-bottom: 0rem;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    &__header {
+        font-size: 2.4rem;
+        line-height: 3rem;
+        font-weight: 700;
+        color: white;
+        padding-bottom: 40px;
+    
+        @include tablet {
+            font-size: 5.8rem;
+            line-height: 5.8rem;
+            width: 68%;
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        padding-bottom: 30px;
+        font-size: 2.4rem;
+        line-height: 2.8rem;
+        width: 90%;
+
+        &--light {
+            color: #3a3a3a;
+        }
+
+        &--dark {
+            color: white;
+        }
+    }
+
+    &__subtitle {
+        padding-bottom: 20px;
+
+        &--light {
+            color: #2997ff;
+        }
+
+        &--dark {
+            color: white;
+            opacity: 0.5;
+        }
+    }
+
+    &__details {
+        display: flex;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 500;
+        line-height: 2rem;
+        padding-bottom: 50px;
+
+        &--half {
+            width: 100%;
+
+            @include tablet {
+                width: 50%
+            }
+        }
+
+        &--full {
+            width: 100%
+        }
+
+        &--light {
+            color: #3a3a3a80;
+        }
+
+        &--dark {
+            color: rgba(255, 255, 255, 0.75);
+        }
+    }
+}

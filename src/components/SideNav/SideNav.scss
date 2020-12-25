@@ -1,0 +1,27 @@
+@import "../../styles/baseline.scss";
+
+.sidenav {
+    grid-area: sidenav;
+    position: sticky;
+    height: 400px;
+    overflow: scroll;
+    top: 20vh;
+    //background-color: rgb(236, 236, 236);
+    border-radius: 10px;
+    //padding: 1.5rem;
+    width: 90%;
+
+    &__header {
+        font-weight: bold;
+        padding-bottom: 20px;
+    }
+
+    &__links {
+        padding-inline-start: 0px;
+
+        & > li {
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+    }
+}

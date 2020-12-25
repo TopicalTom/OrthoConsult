@@ -1,9 +1,9 @@
 @import "../../pages/Main/Main.scss";
 @import "../../styles/baseline.scss";
 
-.results {
-    height: 100vh;
-    grid-area: results;
+.contact {
+    height: 85vh;
+    grid-area: contact;
     width: 100%;
     z-index: 900;
     display: flex;
@@ -17,15 +17,21 @@
     padding-top: 160px;
 
     &__icon {
-        fill: white;
+        fill: black;
         transform: scaleX(-1);
         height: 1.3rem;
+    }
+
+    &__concept {
+        color: #3a3a3a;
+        padding-bottom: 20px;
+        opacity: 0.5;
     }
 
     &__header {
         font-weight: 700;
         padding-bottom: 30px;
-        color: white;
+        color: #3a3a3a;
         font-size: 2.4rem;
         line-height: 2.8rem;
         width: 90%;
@@ -36,30 +42,23 @@
         width: 90%;
         font-weight: 500;
         line-height: 2rem;
-        padding-bottom: 50px;
-        color: rgba(255, 255, 255, 0.644);
-    }
-
-    &__concept {
-        color: white;
-        padding-bottom: 20px;
-        opacity: 0.5;
+        padding-bottom: 40px;
+        color: rgba(0, 0, 0, 0.644);
     }
 
     &__link {
         display: inline;
-        width: 140px;
+        width: 150px;
         padding: 1rem 1.5rem;
         border-radius: 8px;
         text-align: center;
         font-size: 0.9rem;
         max-height: 44px;
         vertical-align: center;
-        margin: auto 0;
-        color: white;
+        margin-bottom: 4rem;
 
         &--primary {
-            background-color: rgba(255, 255, 255, 0.158);
+            background-color: rgba(0, 0, 0, 0.158);
             margin-right: 0.5rem;
         }
 

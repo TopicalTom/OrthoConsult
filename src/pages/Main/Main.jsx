@@ -1,26 +1,96 @@
 import React from 'react';
+import { Element } from 'react-scroll';
 import { ScrollProvider } from '../../contexts/ScrollProvider';
 import "./Main.scss";
 
 // Components
 import Header from "../../components/Header/Header";
 import ScrollBar from "../../components/ScrollBar/ScrollBar";
+import Copy from "../../components/Copy/Copy";
+import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 import Footer from "../../components/Footer/Footer";
 
 // Sections
 import Hero from "../../components/Hero/Hero";
 import Results from "../../components/Results/Results";
+import Process from "../../components/Process/Process";
 import About from "../../components/About/About";
+import Contact from "../../components/Contact/Contact";
 
 function Main() {
+    const buttons = [
+        {
+            type: "primary",
+            link: "/evaluation",
+            authLink: "/register",
+            text: "Get started",
+            authText: "Get started",
+            icon: true
+        },
+        {
+            type: "secondary",
+            link: "/evaluation",
+            authLink: "/register",
+            text: "Learn more",
+            authText: "Learn more",
+            icon: false
+        }
+    ]
 
     return (
         <ScrollProvider>
             <Header />
             <main className="main">
-                <Hero />
-                <Results />
-                <About />
+                <Element className="main__section main__section--hero">
+                    <Copy 
+                        type="hero"
+                        theme="dark"
+                        header="Orthodontic case evaluations"
+                        details="Providing streamlined and informative case evaluations to provide your clients with the best service. Never has orthodontic treatment been better."
+                        buttons={buttons}
+                    />
+                </Element>
+                <Element className="main__section main__section--results">
+                    <Copy 
+                        type="point"
+                        theme="dark"
+                        title="Turn any case into a success story"
+                        subtitle="Visible results"
+                        details="We have a proven track record of taking orthodontic challenges and turning them into success stories. Sign up and see how we can make a difference."
+                        buttons={buttons}
+                    />
+                    <ImageCarousel />
+                </Element>
+                <Element className="main__section main__section--service">
+                    <Copy 
+                        type="point"
+                        theme="light"
+                        title="Say goodbye to paper and hello to digital"
+                        subtitle="Modern service"
+                        details="We have a proven track record of taking orthodontic challenges and turning them into success stories. Sign up and see how we can make a difference."
+                        buttons={buttons}
+                    />
+                </Element>
+                <Element className="main__section main__section--about">
+                    <Copy 
+                        type="point"
+                        theme="light"
+                        title="Tap into 40+ years of experience in the field"
+                        subtitle="Backed by experience"
+                        details="I have over 30 years of working in the orthodontic field and have helped over 1000 doctorrs. I have over 30 years of working in the orthodontic field and have helped over 1000 doctorrs."
+                        buttons={buttons}
+                    />
+                </Element>
+                <Element className="main__section main__section--contact">
+                    <Copy 
+                        type="point"
+                        theme="light"
+                        title="Ready to start?"
+                        subtitle="Become a client"
+                        details="I have over 30 years of working in the orthodontic field and have helped over 1000 doctorrs. I have over 30 years of working in the orthodontic field and have helped over 1000 doctorrs."
+                        buttons={buttons}
+                    />
+                </Element>
                 <div className="main__partition"/>
             </main>
             <Footer />
@@ -32,80 +102,39 @@ function Main() {
 export default Main;
 
 /*
-                <section className="main__container">
-                        <h1 
-                            className="main__heading">
-                            Orthodontic Case Evaluations
-                        </h1>
-                        <p 
-                            className="main__mission">
-                            Providing streamlined and informative case evaluations to provide your clients with the best service. Never has orthodontic treatment been better.
-                        </p>
-                        <div className="main_actions">
-                            <Link 
-                                className="main__cta main__cta--primary" 
-                                to={!currentUser ? "/register" : "/evaluation"}>
-                                {!currentUser ? "Get started" : "Send a case"}
-                                <svg 
-                                    className="main__icon"
-                                    viewBox="0 0 24 24">
-                                    <path d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23 1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z"/>
-                                </svg>
-                            </Link>
-                            <Link 
-                                className="main__cta main__cta--secondary" 
-                                to={!currentUser ? "/register" : "/evaluation"}>
-                                Learn more
-                                <svg 
-                                    className="main__icon"
-                                    viewBox="0 0 24 24">
-                                    <path d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23 1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z"/>
-                                </svg>
-                            </Link>
-                        </div>
-                </section>
-
-*/
-
-/*
 import React from 'react';
-import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthProvider";
-import { useModal } from "../../contexts/ModalProvider";
+import { Element } from 'react-scroll';
+import { ScrollProvider } from '../../contexts/ScrollProvider';
 import "./Main.scss";
 
 // Components
 import Header from "../../components/Header/Header";
+import ScrollBar from "../../components/ScrollBar/ScrollBar";
+import Footer from "../../components/Footer/Footer";
+
+// Sections
+import Hero from "../../components/Hero/Hero";
+import Results from "../../components/Results/Results";
+import Process from "../../components/Process/Process";
+import About from "../../components/About/About";
+import Contact from "../../components/Contact/Contact";
 
 function Main() {
-    const { currentUser } = useAuth();
-    const { toggleSignUp, toggleCase } = useModal();
 
-    console.log(currentUser)
-    
     return (
-        <>
+        <ScrollProvider>
             <Header />
             <main className="main">
-                <section className="main__container">
-                    <div className="main__details">
-                        <h1 
-                            className="main__heading">
-                            Orthodontic evaluation and consultation.
-                        </h1>
-                        <p className="main__mission">
-                            Providing streamlined and informative case evaluations to provide your clients with the best service
-                        </p>
-                        <button 
-                            className="main__cta"
-                            onClick={!currentUser ? toggleSignUp : toggleCase}>
-                            Get started
-                        </button>
-                        <Link to={!currentUser ? "/register" : "/evaluation"} >Test</Link>
-                    </div>
-                </section>
+                <Hero />
+                <Results />
+                <Process />
+                <About />
+                <Contact />
+                <div className="main__partition"/>
             </main>
-        </>
+            <Footer />
+            <ScrollBar />
+        </ScrollProvider>
     );
 };
 

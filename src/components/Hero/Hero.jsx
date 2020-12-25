@@ -26,7 +26,7 @@ function Hero() {
                     }>
                     {!currentUser 
                         ?   "Get started" 
-                        :   "Send a case"
+                        :   "Start evaluation"
                     }
                     <svg 
                         className="hero__icon"
@@ -40,7 +40,7 @@ function Hero() {
                         ?   "/register" 
                         :   "/evaluation"
                     }>
-                    Learn more
+                    Why us?
                     <svg 
                         className="hero__icon"
                         viewBox="0 0 24 24">
