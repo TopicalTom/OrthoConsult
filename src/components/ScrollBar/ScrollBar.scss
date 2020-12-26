@@ -4,7 +4,6 @@
     position: fixed;
     width: 100vw;
     height: 8vh;
-    display: grid;
     justify-items: stretch;
     grid-template-areas: " . scroll .";
     grid-template-columns: 18vw 64vw 18vw;
@@ -13,14 +12,32 @@
     text-align: center;
 
     &--active {
-        opacity: 1;
+        display: grid;
     }
 
     &--inactive {
+        display: none;
+    }
+
+    &__drop {
+        grid-area: scroll;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+
+        &:hover > span {
+            opacity: 1;
+        }
+    }
+
+    &__label {
+        color: white;
+        padding-bottom: 4px;
         opacity: 0;
     }
 
-    &__scroll {
-        grid-area: scroll;
+    &__icon {
+        fill: white;
+        height: 20px;
     }
 }

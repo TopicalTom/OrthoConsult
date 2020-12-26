@@ -8,7 +8,6 @@ function Footer() {
             <div className="footer__container">
                 <h2 className="footer__header">OrthoConsult</h2>
             </div>
-            <div className="footer__partition"/>
         </footer>
     );
 };

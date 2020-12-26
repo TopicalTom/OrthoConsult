@@ -3,8 +3,8 @@
 .footer {
     width: 100vw;
     height: 400px;
-    background-color: #f3f3f3;
-    //background-color: white;
+    //background-color: #f3f3f3;
+    background-color: white;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -16,6 +16,11 @@
     grid-template-columns: 1rem 1fr 1rem;
     border-top: 1px solid #e7e7e7;
     padding: 0rem 1rem;
+
+    @include tablet {
+        grid-template-areas: " . foot foot foot foot .";
+        grid-template-columns: 1fr repeat(4, 270px) 1fr;
+    }
 
     &__header {
         color: #3a3a3a;
@@ -29,18 +34,6 @@
         flex-direction: row;
         justify-content: space-between;
         transition: background-color 0.3s ease;
-        margin-top: 60px;
-    }
-
-    &__partition {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        transform-origin: 0 50%;
-        height: 240px;
-        background: #f3f3f3;
-        transform: skewY(-8deg);
-        z-index: 2;
+        margin-top: 4rem;
     }
 }

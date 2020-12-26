@@ -12,7 +12,7 @@ Modal.setAppElement('*');
 
 function SignUp() {
     const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
+    const [phone, setPhone] = useState(null);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -48,7 +48,7 @@ function SignUp() {
         }
         setLoading(false)
         setName("")
-        setPhone("")
+        setPhone(null)
         setEmail("")
         setPassword("")
         toggleSignUp()
@@ -94,7 +94,7 @@ function SignUp() {
                     />
                     <input
                         className="signup__input signup__input--text"
-                        type="text"
+                        type="number"
                         name="phone"
                         placeholder="Phone Number"
                         onChange={handlePhoneInput}

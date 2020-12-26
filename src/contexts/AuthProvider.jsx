@@ -15,8 +15,17 @@ export function AuthProvider({ children }) {
 
     // Handles SignUp Requests
     function signup(email, password, name, phone) {
-        createClient(email, name, phone)
-        return auth.createUserWithEmailAndPassword(email, password)
+        return (
+            auth
+                .createUserWithEmailAndPassword(email, password)
+                .then(() => {
+                    updateProfile(name);
+                    linkClient(email, name, phone);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        )
     }
 
     // Handles Login Requests
@@ -30,11 +39,10 @@ export function AuthProvider({ children }) {
     }
 
     // Updates Acccount Info on Creation
-    function setProfile(name, phone) {
+    function updateProfile(name) {
         auth.currentUser
             .updateProfile({
-                displayName: name,
-                phoneNumber: phone
+                displayName: name
             })
             .then(() => {
                 console.log("Success");
@@ -44,20 +52,19 @@ export function AuthProvider({ children }) {
     }
     
     // Links SignUp with User Doc in FireStore
-    function createClient(email, name, phone) {
-        
-        let newClient = {
-            name: name,
-            email: email,
-            phone: phone,
-            cases: []
-        }
+    function linkClient(email, name, phone) {
+        const clientId = auth.currentUser.uid;
 
+        //console.log(currentUser.uid);
         firestore.collection("clients")
-            .doc(name)
-            .set(newClient)
+            .doc(clientId)
+            .set({
+                email: email,
+                name: name,
+                phone: phone,
+                cases: []
+            })
             .then(() => {
-                setProfile(name, phone)
                 console.log("Success");
             })
             .catch(error => {
@@ -74,6 +81,8 @@ export function AuthProvider({ children }) {
 
         return unsubscribe
     }, [])
+
+    console.log(currentUser)
 
     return (
         <AuthContext.Provider value={{ currentUser, signup, login, logout, loading }}>

@@ -1,4 +1,22 @@
 import React from 'react';
+import "../../pages/Dashboard/Dashboard.scss";
+
+function Resources() {
+
+    return (
+        <section className="dashboard__content">
+            <h3 className="dashboard__subtitle">Pinned</h3>
+            <p className="dashboard__details">This is </p>
+            <h3 className="dashboard__subtitle">All</h3>
+            <p className="dashboard__details">This is </p>
+        </section>
+    );
+};
+
+export default Resources;
+
+/*
+import React from 'react';
 import { ScrollProvider } from '../../contexts/ScrollProvider';
 import "./Resources.scss";
 
@@ -54,3 +72,5 @@ function Resources() {
 };
 
 export default Resources;
+
+*/

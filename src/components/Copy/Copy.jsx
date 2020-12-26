@@ -7,19 +7,17 @@ import Button from '../Button/Button';
 const Copy = (props) => {
     const { type, theme, header, subtitle, title, details, buttons} = props;
 
+    const toggleBacking = (theme === "light" ? "light" : "dark");
+    const toggleWidth = (type === "hero" ? "half" : "full");
+
     return (
-        <section className={`
-            copy 
-            copy--${type === "hero" ? "hero" : "marketing"}
-            copy--${theme === "light" ? "light" : "dark"}`}>
-            {type === "hero"
+        <section className={`copy copy--${type} copy--${toggleBacking}`}>
+            {header
                 ?   <h1 className="copy__header">
                         {header}
                     </h1>
                 :   <>
-                        <span className={`
-                            copy__subtitle
-                            copy__subtitle--${theme === "light" ? "light" : "dark"}`}>
+                        <span className={`copy__subtitle copy__subtitle--${toggleBacking}`}>
                             {subtitle}
                         </span>
                         <h2 className={`
@@ -29,15 +27,12 @@ const Copy = (props) => {
                         </h2>
                     </>
             }
-            <p className={`
-                copy__details 
-                copy__details--${type === "hero" ? "half" : "full"}
-                copy__details--${theme === "light" ? "light" : "dark"}`}>
+            <p className={`copy__details copy__details--${toggleWidth} copy__details--${toggleBacking}`}>
                 {details}
             </p>
             <div className="copy__actions">
                 {buttons && buttons.map((item) => {
-                    const { type, link, authLink, text, authText, icon } = item
+                    const { type, link, authLink, text, authText, icon } = item;
                     return (
                         <Button 
                             theme={theme}
@@ -50,9 +45,6 @@ const Copy = (props) => {
                         />
                     )
                 })}
-                {type === "hero" &&
-                    <div></div>
-                }
             </div>   
         </section>
     );

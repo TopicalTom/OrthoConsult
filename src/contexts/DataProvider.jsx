@@ -1,7 +1,8 @@
 import React, { useContext, useReducer, createContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useAuth } from "./AuthProvider";
-import { firestore } from "../firebase";
+import { auth, firestore } from "../firebase";
+import * as firebase from '../firebase';
 
 // Database Template
 import database from "../templates/database";
@@ -15,7 +16,6 @@ export function useData() {
 
 // Handles Firebase Data Creation
 export function DataProvider({ children }) {
-    const { currentUser } = useAuth();
     const initialState = database; 
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -692,7 +692,7 @@ export function DataProvider({ children }) {
     }
 
     function addCase() {
-
+        const clientId = auth.currentUser.uid; 
         const newCaseId = uuidv4(); 
         const newCase = state;
 
@@ -707,28 +707,21 @@ export function DataProvider({ children }) {
                 console.log(error);
             });
 
-        // Adds Foreign Key (Case) to Current User 
-        /*
+        // Adds Foreign Key (Case) + Info to Current User 
         firestore.collection("clients")
-            .doc(currentUser)
-            .update({  
-                ...currentUser,   
-                cases: [
-                    ...currentUser.cases,
-                    {
-                        caseUID: newCaseId,
-                        patient: state.patient,
-                        date: new Date().getTime().toString(),
-                    }
-                ]
+            .doc(clientId).collection("cases")
+            .doc(newCaseId)
+            .set({
+                patient: state.patient,
+                date: new Date().getTime().toString(),
+                status: "pending"
             })
             .then(() => {
-                console.log("Success")
+                console.log("Case linked to client")
             })
             .catch((error) => {
                 console.log(error)
             })
-            */
     };
 
     return (

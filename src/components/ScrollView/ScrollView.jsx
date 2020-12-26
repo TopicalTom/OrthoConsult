@@ -11,6 +11,13 @@ const Review = () => {
 
     return (
         <div className="review">
+        </div>
+    );
+};
+
+export default Review;
+
+/*
             <section className="review__section">
                 <h3 className="review__title">Case Info</h3>
                 <p>Type: {caseType}</p>
@@ -70,8 +77,4 @@ const Review = () => {
                 <h3 className="review__title">Objectives</h3>
 
             </section>
-        </div>
-    );
-};
-
-export default Review;
+*/

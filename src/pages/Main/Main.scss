@@ -4,17 +4,6 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
-    //display: grid;
-    //justify-items: stretch;
-    //grid-template-areas: 
-        //" . hero hero ."
-        //" . results results ."
-        //" . process process ."
-        //" . about about ."
-        //" . contact contact ."
-        //" . footer footer .";
-    //grid-template-columns: 18vw 32vw 32vw 18vw;
-    //gap: auto;
     position: relative;
 
     &__section {
@@ -30,13 +19,14 @@
         }
 
         &--hero {
-            height: 100vh;
+            height: 90vh;
             margin: auto 0;
             justify-content: center;
             grid-template-areas:
                 " . copy .";
 
             @include desktop {
+                height: 100vh;
                 grid-template-areas:
                 " . copy copy copy copy .";
             }
@@ -55,102 +45,59 @@
         }
 
         &--service {
-            margin: 5rem 0;
+            margin: 1rem 0;
             grid-template-areas:
                 " . copy ."
                 " . service .";
 
             @include desktop {
+                margin: 5rem 0;
                 grid-template-areas:
                 " . copy copy . . ."
+                " . accolade accolade accolade accolade ."
                 " . service service service service .";
             }
         }
 
         &--about {
-            margin: 5rem 0;
+            margin: 8rem 0rem 5rem 0rem;
+            grid-template-rows: 1fr repeat(3, 420px);
+            gap: 1rem 0rem;
             grid-template-areas:
-                " . copy .";
+                " . copy ."
+                " . test1 ."
+                " . test2 ."
+                " . test3 .";
 
             @include desktop {
+                margin: 15rem 0rem 5rem 0rem;
+                grid-template-rows: repeat(10, 100px);
+                gap: 4rem 0rem;
                 grid-template-areas:
-                " . copy copy . . .";
+                " . copy copy . . ."
+                " . copy copy . . ."
+                " . copy copy test2 test2 ."
+                " . . . test2 test2 ."
+                " . test1 test1 test2 test2 ."
+                " . test1 test1 test2 test2 ."
+                " . test1 test1 test3 test3 ."
+                " . test1 test1 test3 test3 ."
+                " . . . test3 test3 ."
+                " . . . test3 test3 ."
             }
         }
 
         &--contact {
-            margin: 5rem 0;
+            //margin: 5rem 0rem 10rem 0rem;
             grid-template-areas:
                 " . copy .";
 
             @include desktop {
+                padding: 5rem 0rem 20rem 0rem;
+                background-color: #f3f3f3;
                 grid-template-areas:
                 " . copy copy . . .";
             }
-        }
-    }
-
-    &__copy {
-        grid-area: copy;
-    }
-
-    &__actions {
-        width: 25%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        height: 60px;
-    }
-
-    &__icon {
-        fill: white;
-        transform: scaleX(-1);
-        height: 1.3rem;
-    }
-
-    &__heading {
-        font-size: 2.8rem;
-        line-height: 3.4rem;
-        font-weight: 700;
-        color: white;
-        padding-bottom: 40px;
-    
-        @include tablet {
-            font-size: 5.8rem;
-            line-height: 5.8rem;
-            width: 68%;
-        }
-    }
-
-    &__mission {
-        display: flex;
-        color: rgba(255, 255, 255, 0.75);
-        width: 40%;
-        font-weight: 500;
-        line-height: 1.8rem;
-        padding-bottom: 50px;
-    }
-
-    &__cta {
-        display: inline;
-        width: 140px;
-        padding: 1rem 1.5rem;
-        color: white;
-        border-radius: 8px;
-        text-align: center;
-        font-size: 0.9rem;
-        max-height: 44px;
-        vertical-align: center;
-        margin: auto 0;
-
-        &--primary {
-            background-color: rgba(255, 255, 255, 0.158);
-            margin-right: 0.5rem;
-        }
-
-        &--secondary {
-            background-color: rgba(255, 255, 255, 0.021);
-            border: 1px solid rgba(255, 255, 255, 0.158);
         }
     }
 
@@ -164,6 +111,18 @@
         background: linear-gradient(90deg, rgba(23,139,248,1) 0%, rgba(23,135,248,1) 35%, rgba(0,183,255,1) 100%);
         transform: skewY(-8deg);
         z-index: 20;
+    }
+
+    &__partition2 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform-origin: 0 50%;
+        height: 1500px;
+        background: #f3f3f3;
+        transform: skewY(-8deg);
+        z-index: 2;
     }
 }
 /*

@@ -8,21 +8,15 @@
     justify-content: left;
     grid-area: copy;
     padding: 0rem 1rem;
+    margin-bottom: 4rem;
 
     @include tablet {
         padding-right: 1rem;
+        margin-bottom: 0rem;
     }
 
     &--hero {
         margin: auto 0;
-    }
-
-    &--marketing {
-        margin-bottom: 4rem;
-
-        @include tablet {
-            margin-bottom: 0rem;
-        }
     }
 
     &__actions {
@@ -32,7 +26,9 @@
     }
 
     &__header {
-        font-size: 2.4rem;
+        //font-size: 2.4rem;
+        //line-height: 3rem;
+        font-size: 3rem;
         line-height: 3rem;
         font-weight: 700;
         color: white;
@@ -48,9 +44,15 @@
     &__title {
         font-weight: 700;
         padding-bottom: 30px;
-        font-size: 2.4rem;
-        line-height: 2.8rem;
-        width: 90%;
+        font-size: 2.1rem;
+        line-height: 2.5rem;
+        width: 100%;
+
+        @include tablet {
+            font-size: 2.4rem;
+            line-height: 2.8rem;
+            width: 90%;
+        }
 
         &--light {
             color: #3a3a3a;
@@ -85,12 +87,12 @@
             width: 100%;
 
             @include tablet {
-                width: 50%
+                width: 45%
             }
         }
 
         &--full {
-            width: 100%
+            width: 100%;
         }
 
         &--light {

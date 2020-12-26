@@ -12,10 +12,10 @@
     justify-items: stretch;
     grid-template-rows: repeat(2, 210px);
     gap: 2rem;
-    padding: 0rem 1rem;
 
     @include tablet {
         grid-template-rows: repeat(2, 280px);
+        padding: 0rem 1rem;
     }
 
     &__preview {

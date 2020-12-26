@@ -1,4 +1,21 @@
 import React from 'react';
+import "../../pages/Dashboard/Dashboard.scss";
+
+function Education() {
+    return (
+        <section className="dashboard__content">
+            <h3 className="dashboard__subtitle">Recommended</h3>
+            <p className="dashboard__details">This is </p>
+            <h3 className="dashboard__subtitle">All</h3>
+            <p className="dashboard__details">This is </p>
+        </section>
+    );
+};
+
+export default Education;
+
+/*
+import React from 'react';
 import { ScrollProvider } from '../../contexts/ScrollProvider';
 import "./Education.scss";
 
@@ -38,3 +55,5 @@ function Education() {
 };
 
 export default Education;
+
+*/

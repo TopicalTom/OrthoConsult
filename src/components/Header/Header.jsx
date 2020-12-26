@@ -4,6 +4,9 @@ import { useAuth } from "../../contexts/AuthProvider";
 import { useScroll } from "../../contexts/ScrollProvider";
 import "./Header.scss";
 
+// Components 
+import Button from '../Button/Button';
+
 function Header() {
     const { currentUser, logout } = useAuth();
     const location = useLocation();
@@ -25,7 +28,82 @@ function Header() {
     const toggle = currentScroll > 900 ? "active" : "inactive";
 
     return (
-        <header className={`header header--${toggle}`}>
+        <header className={`header ${hide} header--${toggle}`}>
+            <div className="header__container">
+                <Link
+                    className={`header__watermark header__watermark--${toggle}`}
+                    to="/">
+                    OrthoConsult
+                </Link>
+                <nav className={`header__nav ${location.pathname === "/register" || location.pathname === "/login" ? "hide" : ""}`}>
+                    <ul className={`header__links header__links--${toggle}`}>
+
+                    </ul>
+                </nav>
+                <div className={`header__actions ${location.pathname === "/register" || location.pathname === "/login" ? "hide" : ""}`}>
+                    {!currentUser
+                        ?   <Button 
+                                theme="dark"
+                                type="secondary"
+                                link="/login" 
+                                authLink="/login"
+                                text="Log out" 
+                                authText="Log in"
+                            />
+                        :   <button
+                                className="header__button header__button--secondary"
+                                onClick={logout}>
+                                Logout
+                            </button>
+                    }
+                    <Button 
+                        theme="dark"
+                        type="primary"
+                        link="/dashboard" 
+                        authLink="/register"
+                        text="Dashboard" 
+                        authText="Register"
+                    />
+                </div>
+            </div>
+        </header>
+    );
+};
+
+export default Header;
+
+/*
+import React, {useState, useEffect} from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from "../../contexts/AuthProvider";
+import { useScroll } from "../../contexts/ScrollProvider";
+import "./Header.scss";
+
+// Components 
+import Button from '../Button/Button';
+
+function Header() {
+    const { currentUser, logout } = useAuth();
+    const location = useLocation();
+    const { previousScroll, currentScroll } = useScroll();
+    const [ hide, setHide ] = useState("");
+    console.log(location.pathname)
+
+    useEffect(() => {
+        const minimum = 10;
+        const isScrolledDown = previousScroll < currentScroll;
+        const isMinimumScrolled = currentScroll > minimum;
+
+        setHide(isScrolledDown && isMinimumScrolled
+            ?   "hidden"
+            :   ""
+        );
+    }, [previousScroll, currentScroll]);
+
+    const toggle = currentScroll > 900 ? "active" : "inactive";
+
+    return (
+        <header className={`header ${hide} header--${toggle}`}>
             <div className="header__container">
                 <Link
                     className={`header__watermark header__watermark--${toggle}`}
@@ -76,17 +154,5 @@ function Header() {
 };
 
 export default Header;
-
-/*
-                    <button 
-                        className={`header__button header__button--${!currentUser ? "signup" : "case"}`}
-                        onClick={!currentUser ? toggleSignUp : toggleCase}>
-                        {!currentUser ? "Sign Up" : "Submit Case"}
-                    </button>
-                                        <button
-                        className={`header__button header__button--${!currentUser ? "login" : "logout"}`}
-                        onClick={!currentUser ? toggleLogin : toggleCase}>
-                        {!currentUser ? "Sign in" : "Dashboard"}
-                    </button>
 
 */

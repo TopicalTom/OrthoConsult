@@ -7,6 +7,9 @@
     text-align: left;
     font-size: 0.9rem;
     align-items: center;
+    min-width: 120px;
+    text-align: center;
+    height: 44px;
 
     &--dark-primary {
         //backdrop-filter: saturate(180%) blur(20px);
@@ -35,8 +38,8 @@
 
     &__icon {
         transform: scaleX(-1);
-        height: 0.9rem;
-        vertical-align: center;
+        height: 1rem;
+        align-self: center;
         margin: auto 0rem auto 0.3rem;
 
         &--light {

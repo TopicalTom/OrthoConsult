@@ -1,0 +1,40 @@
+@import "../../pages/Main/Main.scss";
+@import "../../styles/baseline.scss";
+
+.testimonies {
+    height: 420px;
+    background-color: black;
+    border-radius: 1rem;
+    //padding: 2rem;
+    box-shadow: rgba(82, 82, 82, 0.5) 0px 20px 30px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+
+    @include tablet {
+        width: 92%;
+        height: 100%;
+        margin: 0rem;
+    }
+
+    &--test1 {
+        grid-area: test1;
+        margin-top: 4rem 0rem;
+        justify-self: left;
+
+        @include tablet {
+            margin-top: 0rem;
+        }
+    }
+
+    &--test2 {
+        grid-area: test2;
+        justify-self: right;
+    }
+
+    &--test3 {
+        grid-area: test3;
+        justify-self: right;
+    }
+}

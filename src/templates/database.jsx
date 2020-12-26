@@ -1,11 +1,6 @@
 const database = { 
     caseType: "",
     patient: "",
-    doctor: "",
-    contactInfo: {
-        email: "",
-        phone: null
-    },
     patientInfo: {
         dob: "",
         height: "",
