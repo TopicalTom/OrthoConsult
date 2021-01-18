@@ -5,9 +5,12 @@
     flex-direction: row;
     width: 100%;
     //background-color: red;
-    margin-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 1.5rem;
     border-bottom: 0.5px solid #F2F3F7;
+
+    &:hover {
+        background-color: #EEEEEE;
+    }
 
     &__preview {
         width: 70px;
@@ -31,7 +34,7 @@
         width: 100%;
     }
 
-    &__progress {
+    &__size {
         width: 100%;
         background-color: #F2F3F7;
         border-radius: 8px;
@@ -39,8 +42,9 @@
 
     &__remove {
         border: none;
-        background: white;
+        background: none;
         height: 10px;
         width: 10px;
+        opacity: 0;
     }
 }

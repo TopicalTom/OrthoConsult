@@ -1,3 +1,82 @@
+import React from 'react';
+import { ScrollProvider } from '../../contexts/ScrollProvider';
+import { Link } from "react-router-dom";
+import "./SignUp.scss";
+
+// Components
+import Header from "../../components/Header/Header";
+import Form from "../../components/SignUpForm/SignUpForm";
+
+// CTA Steps
+const steps = [
+    {
+        action: "Create an account",
+        details: "Fill out the following form to get access to your personal OrthoConsult Dashboard"
+    },
+    {
+        action: "Submit a case",
+        details: 'Gain access to our evaluation form where you will upload any relevant dental records'
+    },
+    {
+        action: "Complete payment",
+        details: "Upon submission, you will recieve a secure Stripe link for processing payment for your case"
+    },
+]
+
+const SignUp = () => {
+    
+    return (
+        <ScrollProvider>
+        <Header />
+        <main className="signup">
+            <div className="signup__cta">
+                <h2 
+                    className="signup__subtitle">
+                    It's simple!
+                </h2>
+                <ul className="signup__steps">
+                    {steps && steps.map((item) => {
+                        return (                    
+                            <li className="signup__step">
+                                <svg 
+                                    className="signup__icon signup__icon--check"
+                                    aria-hidden="true"
+                                    viewBox="0 0 16 16">
+                                    <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zm3.083-11.005L7 9.085 5.207 7.294a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4.79-4.798a1 1 0 1 0-1.414-1.414z" fill-rule="evenodd" />
+                                </svg>
+                                <div className="signup__item">
+                                    <h4 
+                                        className="signup__action">
+                                        {item.action}
+                                    </h4>
+                                    <p
+                                        className="signup__details">
+                                        {item.details}
+                                    </p>
+                                </div>
+                            </li> 
+                        )
+                    })}
+                </ul>
+            </div>
+            <Form />
+            <span className="signup__redirect">
+                Have an account? 
+                <Link
+                    to="/login"
+                    className="signup__switch">
+                    Sign in
+                </Link>
+            </span>
+            <div className="signup__partition" />
+        </main>
+        </ScrollProvider>
+    );
+};
+
+export default SignUp;
+
+/*
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { ScrollProvider } from '../../contexts/ScrollProvider';
@@ -6,10 +85,11 @@ import "./SignUp.scss";
 
 // Components
 import Header from "../../components/Header/Header";
+import Toggle from "../../components/Toggle/Toggle";
 
 function SignUp() {
     const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
+    const [location, setLocation] = useState(null);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -20,8 +100,8 @@ function SignUp() {
         setName(e.target.value)
     }
 
-    function handlePhoneInput(e) {
-        setPhone(e.target.value)
+    function handleLocationInput(e) {
+        setLocation(e.target.value)
     }
 
     function handleEmailInput(e) {
@@ -38,13 +118,13 @@ function SignUp() {
         try {
             setError("")
             setLoading(true)
-            await signup(email, password, name, phone)
+            await signup(email, password, name, location)
         } catch {
-            setError("Failed to create and account")
+            setError("Failed to create an account")
         }
         setLoading(false)
         setName("")
-        setPhone("")
+        setLocation("")
         setEmail("")
         setPassword("")
     }
@@ -57,11 +137,11 @@ function SignUp() {
             value: name
         },
         {
-            label: "Phone Number",
-            name: "phone",
+            label: "Location",
+            name: "location",
             type: "text",
-            callback: handlePhoneInput,
-            value: phone
+            callback: handleLocationInput,
+            value: location
         },
         {
             label: "Email",
@@ -81,15 +161,15 @@ function SignUp() {
     const steps = [
         {
             action: "Create your account",
-            details: "This enables us to provide your case details with you in an accessible way"
+            details: "Gain access to your OrthoConsult dashboard for use in viewing cases and additional resources"
         },
         {
-            action: "Sign our agreement",
-            details: "We will email you an agreement that you can look over and sign"
+            action: "Link payment details",
+            details: "Setup once and have transactions be completed whenever you submit a new case"
         },
         {
             action: "Start submitting",
-            details: "You will be granted access to our form for use in sending us case evaluations"
+            details: "Send a case when you have one; no barriers to when and how many you can submit"
         },
     ]
     
@@ -136,28 +216,29 @@ function SignUp() {
                     Become a client
                 </h2>
                 {options && options.map((item) => {
+                    const {name, label, value, type, callback} = item;
                     return (
                         <>
                             <label 
                                 className="signup__label"
-                                htmlFor={item.name}>
-                                    {item.label}
+                                htmlFor={name}>
+                                {label}
                             </label>
                             <input 
                                 className="signup__input"
-                                type={item.type}
-                                name={item.name}
+                                type={type}
+                                name={name}
                                 placeholder=""
-                                onChange={item.callback}
-                                value={item.value}
+                                onChange={callback}
+                                value={value}
                             />
                         </>
                     )
                 })}
+                <Toggle />
                 <button 
                     className="signup__button"
-                    type="submit"
-                >
+                    type="submit">
                     Create Account
                 </button>
                 <span className="signup__redirect">
@@ -176,72 +257,5 @@ function SignUp() {
 };
 
 export default SignUp;
-
-/*
-            <div className="signup__section signup__section--cta">
-                <div className="signup__cta">
-                    <h1 className="signup__title">Pre-case Evaluations</h1>
-                    <p className="signup__details">Case Evaluations are exclusive to clients so please sign up in order to complete the pre-case evaluation.</p>
-                    <a className="signup__learn">Learn More</a>
-                </div>
-            </div>
-            <div className="signup__section signup__section--auth">
-                <h2 className="signup__header">Create an OrthoConsult account</h2>
-                <form 
-                    className="signup__form"
-                    onSubmit={handleSubmit}>
-                    <label>Email</label>
-                    <input
-                        className="signup__input signup__input--text"
-                        type="text"
-                        name="email"
-                        placeholder="Email"
-                        onChange={handleEmailInput}
-                        value={email}
-                    />
-                    <label>Phone Number</label>
-                    <input
-                        className="signup__input signup__input--text"
-                        type="text"
-                        name="phone"
-                        placeholder="Phone Number"
-                        onChange={handlePhoneInput}
-                        value={phone}
-                    />
-                    <label className="signup__label">Full Name</label>
-                    <input
-                        className="signup__input signup__input--text"
-                        type="text"
-                        name="name"
-                        placeholder="Full Name"
-                        onChange={handleNameInput}
-                        value={name}
-                    />
-                    <label>Password</label>
-                    <input
-                        className="signup__input signup__input--text"
-                        type="text"
-                        name="password"
-                        placeholder="Password"
-                        onChange={handlePasswordInput}
-                        value={password}
-                    />
-                    <button
-                        className="signup__button signup__button--submit"
-                        disabled={loading}
-                        type="submit">
-                        Create Account
-                    </button>
-                    <span 
-                        className="signup__redirect">
-                        Already a Client? 
-                        <Link
-                            className="signup__switch"
-                            to="/login">
-                            Log-In
-                        </Link>
-                    </span>
-                </form>
-            </div>
 
 */

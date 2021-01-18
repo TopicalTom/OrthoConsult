@@ -1,13 +1,38 @@
 import React from 'react';
-import { useData } from "../../contexts/DataProvider";
+import { useEvaluation } from "../../contexts/EvaluationProvider";
+import { useValidation } from "../../contexts/ValidationProvider";
 import "./TextArea.scss";
 
 // Components
 import Help from "../Help/Help";
 
 const TextArea = (props) => {
-    const { dispatch } = useData();
-    const { label, type, name, placeholder, callback, value, help, criteria} = props;
+    const { dataDispatch } = useEvaluation();
+    const { validationDispatch } = useValidation();
+    const { label, type, name, group, path, placeholder, callback, value, help, criteria, check } = props;
+
+    function handleInput(e) {
+        
+        // Send Data for storage
+        dataDispatch ({
+            type: callback,
+            payload: {
+                name: name,
+                group: group,
+                path: path,
+                value: e.target.value,
+            }
+        })
+        
+        // Checks Data for validation
+        validationDispatch ({
+            type: check,
+            payload: {
+                name: name,
+                value: e.target.value,
+            }
+        })
+    }
 
     return (
         <div className="textarea">
@@ -31,10 +56,7 @@ const TextArea = (props) => {
                     type={type}
                     name={name}
                     placeholder={placeholder}
-                    onChange={(e) => dispatch ({
-                        type: callback,
-                        payload: e.target.value
-                    })}
+                    onChange={(e) => handleInput(e)}
                     value={value}
                 />
             </div>

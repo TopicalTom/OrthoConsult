@@ -1,26 +1,36 @@
 import React from 'react';
-import { ScrollProvider } from '../../contexts/ScrollProvider';
-import "./Contact.scss";
+import "../../pages/Dashboard/Dashboard.scss";
 
 // Components
-import Header from "../../components/Header/Header";
-import SideNav from "../../components/SideNav/SideNav";
-import Footer from "../../components/Footer/Footer";
+import Input from '../../components/Input/Input';
+import TextArea from '../../components/TextArea/TextArea';
 
 function Contact() {
 
     return (
-        <ScrollProvider>
-            <Header />
-            <main className="education">
-                <SideNav />
-                <section className="education__container">
-                    <h1 className="education__header">Education</h1>
-                    <p className="education__details">Click any of the links on the left to learn about the best that orthodontics has to offer:</p>
-                </section>
-            </main>
-            <Footer />
-        </ScrollProvider>
+        <div className="dashboard__content">
+            <section className="dashboard__section">
+                <h3 className="dashboard__subtitle">A quick note</h3>
+                <p className="dashboard__details">Before sending us a message, make sure to read up on our FAQs as provided:</p>
+            </section>
+            <section className="dashboard__section">
+                <h3 className="dashboard__subtitle">Fill out the following:</h3>
+                <form className="dashboard__form">
+                    <Input 
+                        label="Link case"
+                    />
+                    <Input 
+                        label="Question type"
+                    />
+                    <TextArea 
+                        label="Message"
+                    />
+                    <button>
+                        Submit question
+                    </button>
+                </form>
+            </section>
+        </div>
     );
 };
 

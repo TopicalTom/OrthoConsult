@@ -3,12 +3,92 @@ import "../../pages/Dashboard/Dashboard.scss";
 
 function Education() {
     return (
-        <section className="dashboard__content">
-            <h3 className="dashboard__subtitle">Recommended</h3>
-            <p className="dashboard__details">This is </p>
-            <h3 className="dashboard__subtitle">All</h3>
-            <p className="dashboard__details">This is </p>
-        </section>
+        <div className="dashboard__content">
+            <section className="dashboard__section">
+                <h3 className="dashboard__subtitle">Recommended</h3>
+                <div className="dashboard__videos">
+                    <iframe 
+                        className="dashboard__video"
+                        src="https://www.youtube.com/embed/qE2iLIWh7cY" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen 
+                    />
+                    <iframe 
+                        className="dashboard__video"
+                        src="https://www.youtube.com/embed/QhPV1-Kdkow"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                    />
+                </div>
+            </section>
+            <section className="dashboard__section">
+                <h3 className="dashboard__subtitle">All</h3>
+                <div className="dashboard__resources">
+                <div className="dashboard__resource">
+                    
+                </div>
+                <div className="dashboard__resource">
+                    
+                </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+            </div>
+            </section>
+        </div>
     );
 };
 

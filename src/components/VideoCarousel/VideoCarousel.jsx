@@ -2,30 +2,32 @@ import React, {useState, useEffect} from 'react';
 import './VideoCarousel.scss';
 
 // Assets 
-import dashboard from '../../assets/images/dashboard.png';
-import dashboard2 from '../../assets/images/dashboard2.png';
+import send from '../../assets/images/marketingevaluation.png';
+import cases from '../../assets/images/marketingcases.png';
+import study from '../../assets/images/marketingstudy.png';
+import resources from '../../assets/images/marketingresources.png';
 
 const VideoCarousel = () => {
     const options = [
         {
-            category: "Send cases",
+            category: "Submit cases",
             details: "This is information about this accolade and why people should care.",
-            preview: dashboard
+            preview: send
         },
         {
-            category: "View cases",
+            category: "Review records",
             details: "This is information about this accolade and why people should care.",
-            preview: dashboard2
+            preview: cases
         },
         {
-            category: "Retrieve records",
+            category: "Get feedback",
             details: "This is information about this accolade and why people should care.",
-            preview: dashboard
+            preview: study
         },
         {
-            category: "Learn",
+            category: "And more...",
             details: "This is information about this accolade and why people should care.",
-            preview: dashboard2
+            preview: resources
         }
     ]
 

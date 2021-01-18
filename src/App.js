@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router";
 
 // Components
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Modal from './components/Modal/Modal';
 
 // Pages
 import Main from "./pages/Main/Main";
@@ -18,6 +19,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 function App() {
     return (
         <>
+            <Modal />
             <Switch>
                 <PrivateRoute path="/dashboard" component={Dashboard} />
                 <PrivateRoute path="/evaluation" component={Evaluation} />

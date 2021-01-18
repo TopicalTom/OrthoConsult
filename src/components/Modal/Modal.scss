@@ -1,0 +1,222 @@
+.modal {
+    position: fixed;
+    overflow-y:auto;
+    background-color: white;
+    top:50%;
+    left:50%;
+    right:auto;
+    bottom:auto;
+    z-index: 1000;
+    border-radius: 1rem;
+    transform:translate(-50%,-50%);
+    width: 700px;
+    height: 320px;
+    text-align: left;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 30px;
+    border: 2px solid rgba(196, 196, 196, 0.315);
+    overflow: hidden;
+
+    &--delete {
+        height: 320px;
+    }
+
+    &__content {
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+        display: grid;
+        justify-items: stretch;
+        grid-template-areas: 
+            "modal-header modal-close"
+            "modal-details modal-details "
+            "modal-actions modal-actions";
+        grid-template-columns: 1fr 48px;
+        grid-template-rows: 2rem 1fr 3rem;
+        row-gap: 2rem;
+
+        &--delete {
+            grid-template-areas: 
+                "modal-header modal-close"
+                "modal-details modal-details "
+                "modal-actions modal-actions";
+            grid-template-columns: 1fr 48px;
+            grid-template-rows: 2rem 1fr 3rem;
+            row-gap: 2rem;
+        }
+    }
+
+    &__close {
+        grid-area: modal-close;
+        height: 48px;
+        width: 48px;
+        background-color: #ffffff;
+        border: none;
+        font-size: 1.4rem;
+        justify-self: end;
+        align-self: center;
+
+        & > span {
+            justify-self: end;
+            align-self: center;
+            color: rgba(0, 0, 0, 0.54);
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__header {
+        grid-area: modal-header;
+        justify-self: start;
+        align-self: center;
+    }
+
+    &__details {
+        grid-area: modal-details;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #fbe9e7;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        height: 100%;
+    }
+
+    &__text {
+
+        &--warning {
+            color: #d32f2f;
+            width: 90%;
+            margin-left: auto;
+        }
+    }
+
+    &__actions {
+        grid-area: modal-actions;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    &__input {
+
+        &--text {
+            border-radius: 4px;
+            padding: 0.75rem;
+            background-color: #F2F3F7;
+            border: 1.5px solid #E1E1E1;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+    }
+
+    &__redirect {
+        text-align: center;
+        color: rgba(0, 0, 0, 0.54);
+        margin-top: 20px;
+    }
+
+    &__break {
+        text-align: center;
+        color: rgba(0, 0, 0, 0.54);
+        font-weight: bold;
+        margin: 20px 0px;
+    }
+
+    &__link {
+        color: #2997ff;
+        text-align: right;
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+
+    &__button {
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.9rem;
+        width: 120px;
+        height: 48px;
+        border-radius: 8px;
+        padding: 0.75rem;
+
+        &--submit {
+            background-color: #2997ff;
+            border: 1.5px solid #2997ff;
+            //padding: 1rem 3rem;
+            color: white;
+            //font-weight: bold;
+            //align-self: flex-end;
+            //margin-top: 15px;
+
+            &:hover {
+                background-color: #156fc4;
+                border: 1.5px solid #156fc4;
+            }
+        }
+
+        &--close {
+            font-size: 0.9rem;
+        }
+
+        &--cancel{
+            background-color: #ffffff;
+            border: 1.5px solid #ffffff;
+            color: rgba(0, 0, 0, 0.54);
+
+            &:hover {
+                background-color: #f8f8f8;
+                border: 1.5px solid #f8f8f8;
+            }
+        }
+
+        &--destructive {
+            background-color: #d32f2f;
+            border: 1.5px solid #d32f2f;
+            color: white;
+
+            &:hover {
+                background-color: #d32f2f;
+                border: 1.5px solid #d32f2f;
+                //background-color: #fbe9e7;
+                //border: 1.5px solid #fbe9e7;
+            }
+        }
+
+        &--google {
+            border-radius: 4px;
+            background-color: white;
+            border: 1.5px solid #E1E1E1;
+            padding: 1rem 3rem;
+            color: rgba(0, 0, 0, 0.54);
+            font-weight: bold;
+            align-self: flex-end;
+            font-size: 0.9rem;
+            position: relative;
+            width: 100%;
+
+            &:hover {
+                background-color: #EEEEEE;
+                border: 1.5px solid #EEEEEE;
+            }
+        }
+    }
+}
+
+.overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 600;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}

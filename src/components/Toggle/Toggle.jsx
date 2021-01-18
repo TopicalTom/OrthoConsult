@@ -1,31 +1,51 @@
-import React, { useState } from 'react'
+import React from 'react';
+import { useEvaluation } from "../../contexts/EvaluationProvider";
+//import { useValidation } from "../../contexts/ValidationProvider";
 import './Toggle.scss'
 
 const Toggle = (props) => {
-    const {id, label, data} = props
-    const [selected, setSelected] = useState(data);
+    const { dataDispatch } = useEvaluation();
+    //const { validationDispatch } = useValidation();
+    const { link, id, label, name, callback, value } = props;
 
-    function toggle() {
-        {selected !== true ? setSelected(true) : setSelected(false)}
+    function handleToggle() {
+        
+        dataDispatch ({
+            type: callback,
+            payload: {
+                name: name,
+                value: value !== true ? true : false
+            }
+        })
+
+        /*
+        validationDispatch ({
+            type: "CHECK_TOGGLE",
+            payload: {
+                name: name,
+                value: value !== true ? true : false
+            }
+        })
+        */
     }
 
     return (
         <div className="toggle">
-            <input
-                className="switch"
-                id={id}
+            <input 
+                className="toggle__input"
                 type="checkbox"
-                onChange={toggle}
-                value={selected}
-                checked={selected === true ? true : false}
+                onClick={() => handleToggle()}
+                name={name}
+                id={id}
+                checked={value}
+                value={value}
             />
-            <label
-                className="switch__label"
-                htmlFor={id}
-            >
-                <span className="switch__button" />
+            <label 
+                className="toggle__option" 
+                forHTML={name}>
+                {label}
+                {link && <a className="toggle__link">{link}</a>}
             </label>
-            <p className="toggle__type">{label}</p>
         </div>
     )
 };

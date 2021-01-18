@@ -4,12 +4,61 @@ import "../../pages/Dashboard/Dashboard.scss";
 function Resources() {
 
     return (
-        <section className="dashboard__content">
-            <h3 className="dashboard__subtitle">Pinned</h3>
-            <p className="dashboard__details">This is </p>
-            <h3 className="dashboard__subtitle">All</h3>
-            <p className="dashboard__details">This is </p>
-        </section>
+        <div className="dashboard__content">
+            <section className="dashboard__section">
+                <h3 className="dashboard__subtitle">Guides</h3>
+                <div className="dashboard__guides">
+                    <div className="dashboard__guide">
+                    
+                    </div>
+                    <div className="dashboard__guide">
+                    
+                    </div>                    
+            </div>
+            </section>
+            <section className="dashboard__section">
+                <h3 className="dashboard__subtitle">All</h3>
+                <div className="dashboard__resources">
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    <div className="dashboard__resource">
+                    
+                    </div>
+                    
+            </div>
+            </section>
+        </div>
     );
 };
 

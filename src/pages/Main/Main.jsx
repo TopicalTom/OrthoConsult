@@ -50,7 +50,7 @@ function Main() {
             type: "service",
             theme: "light",
             title: "Say goodbye to paper and hello to the cloud",
-            subtitle: "Personal platform",
+            subtitle: "Digital delivery",
             content: <VideoCarousel />
         },
         {

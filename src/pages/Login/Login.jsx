@@ -1,3 +1,36 @@
+import React from 'react';
+import { ScrollProvider } from '../../contexts/ScrollProvider';
+import { Link } from "react-router-dom";
+import "./Login.scss";
+
+// Components
+import Header from "../../components/Header/Header";
+import Form from "../../components/LoginForm/LoginForm";
+
+function Login() {
+    
+    return (
+        <ScrollProvider>
+        <Header />
+        <main className="login">
+            <Form />
+            <span className="login__redirect">
+                Need an account? 
+                <Link
+                    to="/register"
+                    className="login__switch">
+                    Sign up
+                </Link>
+            </span>
+            <div className="login__partition" />
+        </main>
+        </ScrollProvider>
+    );
+};
+
+export default Login;
+
+/*
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { ScrollProvider } from '../../contexts/ScrollProvider';
@@ -89,8 +122,7 @@ function Login() {
                 <button 
                     className="login__button"
                     type="submit"
-                    disabled={loading}
-                >
+                    disabled={loading}>
                     Continue
                 </button>
                 <span className="login__redirect">
@@ -109,3 +141,5 @@ function Login() {
 };
 
 export default Login;
+
+*/

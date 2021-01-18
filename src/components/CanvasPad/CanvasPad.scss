@@ -1,0 +1,85 @@
+@import "../../styles/baseline.scss";
+
+.canvas {
+    display: grid;
+    justify-items: stretch;
+    grid-template-areas: 
+        "pad buttons";
+    grid-template-columns: 1fr 150px;
+    column-gap: 2rem;
+    width: 100%;
+    height: 300px;
+
+    &__container {
+
+        &--pad {
+            width: 100%;
+            position: relative;
+            grid-area: pad;
+            display: grid;
+            justify-items: stretch;
+            grid-template-columns: 1fr;
+
+            &:hover > div {
+                border-color: #868686;
+            }
+        }
+
+        &--buttons {
+            grid-area: buttons;
+        }
+    }
+
+    &__label {
+        position: absolute;
+        padding: 1rem 0.5rem;
+        top: 0;
+        z-index: 900;
+        color: #868686;
+
+        &--right {
+            left: 0;
+        }
+
+        &--left {
+            right: 0;
+        }
+    }
+
+    &__pad {
+        grid-area: pad;
+        border: 1.5px solid #dbdbdb;
+        z-index: 2;
+        width: 100%;
+        background-color: #fafafa;
+        border-radius: 4px;
+        cursor: crosshair;
+        height: 300px;
+        transition: background-color 0.25s ease-in-out;
+        transition: border-color 0.25s ease-in-out;
+
+        &:hover {
+            background-color: #EEEEEE;
+            border-color: #868686;
+        }
+    }
+
+    &__overlay {
+        grid-area: pad;
+        z-index: 900;
+        height: 300px;
+        pointer-events: none;
+        transition: border-color 0.25s ease-in-out;
+
+        &--divide {
+            width: 50%;
+            border-right: 6px solid #dbdbdb;
+        }
+
+        &--top {
+            width: 100%;
+            border-top: 6px solid #dbdbdb;
+            //margin-top: 30px;
+        }
+    }
+}

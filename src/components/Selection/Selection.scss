@@ -3,7 +3,7 @@
 .selection {
     display: flex;
     flex-direction: column;
-    margin-bottom: 34px;
+    margin-bottom: 0px;
 
     &__label {
         margin-bottom: 10px;
@@ -13,6 +13,17 @@
 
     &__list {
         padding-inline-start: 0px;
+
+        &--vertical {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &--horizontal {
+            display: flex;
+            flex-direction: row;
+            height: 50px;
+        }
     }
 
     &__item {
@@ -22,6 +33,10 @@
         align-items: top;
         display: flex;
         flex-direction: row;
+
+        &--horizontal {
+            height: 50px;
+        }
 
         &:hover {
             background-color: #EEEEEE;
@@ -40,7 +55,7 @@
 
     &__container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         margin-left: 10px;
         width: 100%;
     }
@@ -63,6 +78,16 @@
         &--selected {
             background-color: white;
             border: 1.5px solid white;
+        }
+    }
+
+    &__link {
+        text-decoration: underline;
+        color: #2997ff;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.8;
         }
     }
 }

@@ -108,7 +108,8 @@
         right: 0;
         transform-origin: 0 50%;
         height: 2600px;
-        background: linear-gradient(90deg, rgba(23,139,248,1) 0%, rgba(23,135,248,1) 35%, rgba(0,183,255,1) 100%);
+        background: linear-gradient(90deg, #1086F6, #0B79E6, #118DFD);
+        //background: linear-gradient(90deg, rgba(23,139,248,1) 0%, rgba(23,135,248,1) 35%, rgba(0,183,255,1) 100%);
         transform: skewY(-8deg);
         z-index: 20;
     }

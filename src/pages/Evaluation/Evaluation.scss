@@ -1,5 +1,484 @@
 @import "../../styles/baseline.scss";
 
+.evaluation {
+    width: 100vw;
+    display: grid;
+    justify-items: stretch;
+    grid-template-areas: 
+        ". evaluation-header evaluation-records"
+        ". evaluation-content evaluation-records";
+    grid-template-columns: 160px 1fr 400px;
+    grid-template-rows: 120px 1fr;
+    //row-gap: 3rem;
+
+    &__header {
+        grid-area: evaluation-header;
+        display: grid;
+        justify-items: stretch;
+        align-items: center;
+        grid-template-areas: 
+            "close title";
+        grid-template-columns: 35px 1fr;
+        column-gap: 1rem;
+        //margin: 4rem 7rem;
+    }
+
+    &__title {
+        font-size: 1.8rem;
+        height: 35px;
+    }
+
+    &__close {
+        width: 35px;
+        font-weight: 500;
+        color: #999999;
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+    }
+
+    &__icon {
+        width: 70px;
+    }
+
+    &__placeholder {
+        margin-top: 1rem;
+        color: #999999;
+        line-height: 1.4rem;
+    }
+
+    &__tester {
+        border: 1.5px solid #dbdbdb;
+        border-radius: 4px;
+        z-index: 900;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        background-color: #fafafa;
+        transition: background-color 0.25s ease-in-out;
+        transition: border-color 0.25s ease-in-out;
+        position: relative;
+        border-top: 6px solid #dbdbdb;
+
+        &:hover {
+            background-color: #EEEEEE;
+            //border: 1.5px solid #868686;
+            border-top: 6px solid #868686;
+
+            & > div {
+                transition: border-color 0.25s ease-in-out;
+                border-color: #868686;
+            }
+        }
+    }
+
+    &__canvas {
+        grid-area: signature-pad;
+        border: 1.5px solid #dbdbdb;
+        z-index: 2;
+        width: 100%;
+        background-color: #fafafa;
+        border-radius: 4px;
+        cursor: crosshair;
+        height: 300px;
+        transition: background-color 0.25s ease-in-out;
+
+        &:hover {
+            background-color: #EEEEEE;
+        }
+    }
+
+    &__overlay {
+        grid-area: signature-pad;
+        z-index: 900;
+        height: 300px;
+        pointer-events: none;
+        transition: border-color 0.25s ease-in-out;
+
+        &--divide {
+            width: 50%;
+            border-right: 6px solid #dbdbdb;
+        }
+
+        &--highlight {
+            width: 100%;
+            border-top: 6px solid #dbdbdb;
+            //margin-top: 30px;
+        }
+    }
+
+    &__form {
+        grid-area: evaluation-content;
+        display: grid;
+        justify-items: stretch;
+        align-self: start;
+        grid-template-areas: 
+            ". evaluation-step1"
+            ". evaluation-step2"
+            ". evaluation-step3"
+            ". evaluation-step4"
+            ". evaluation-step5";
+        grid-template-columns: 35px 1fr;
+        grid-template-rows: repeat(5, min-content);
+        column-gap: 1rem;
+        row-gap: 0.5rem;
+        width: 800px;
+        //margin: 4rem 7rem;
+    }
+
+    &__step {
+        display: grid;
+        justify-items: stretch;
+        grid-template-areas: 
+            "evaluation-context"
+            "evaluation-fields";
+        grid-template-rows: 24px 1fr;
+        row-gap: 0.5rem;
+        width: 100%;
+        //margin-left: 4rem;
+
+        &--step1 {
+            grid-area: evaluation-step1;
+        }
+
+        &--step2 {
+            grid-area: evaluation-step2;
+        }
+
+        &--step3 {
+            grid-area: evaluation-step3;
+        }
+
+        &--step4 {
+            grid-area: evaluation-step4;
+        }
+
+        &--step5 {
+            grid-area: evaluation-step5;
+        }
+    }
+
+    &__context {
+        grid-area: evaluation-context;
+        display: grid;
+        justify-items: stretch;
+        grid-template-areas: 
+            "evaluation-progress evaluation-requirement";
+        grid-template-columns: 24px 1fr;
+        grid-template-rows: auto;
+        column-gap: 1rem;
+        width: 100%;
+    }
+
+    &__progress {
+        grid-area: evaluation-progress;
+        border-radius: 50px;
+        height: 24px;
+        width: 24px;
+        text-align: center;
+        justify-content: center;
+        align-content: center;  
+        line-height: 23px;     
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        
+        &--current {
+            background: linear-gradient(90deg, #1086F6, #0B79E6, #118DFD);
+        }
+
+        &--completed {
+            fill: #1086F6;
+        }
+
+        &--upcoming {
+            background: rgb(184, 184, 184);
+        }
+    }
+
+    &__boundary {
+        grid-area: evaluation-boundary;
+        width: 1px;
+        background-color: rgb(236, 236, 236);
+        justify-self: center;
+        height: 100%;
+
+        &--5 {
+            background-color: white;
+        }
+    }
+
+    &__requirement {
+        grid-area: evaluation-requirement;
+        font-weight: 400;
+
+        &--current {
+            font-weight: 700;
+            color: black;
+        }
+
+        &--completed {
+            color: black;
+        }
+
+        &--upcoming {
+            font-weight: 500;
+            color: rgb(184, 184, 184);
+        }
+    }
+
+    &__content {
+        grid-area: evaluation-fields;
+        display: grid;
+        justify-items: stretch;
+        grid-template-areas: 
+            "evaluation-boundary evaluation-question";
+        grid-template-columns: 24px 1fr;
+        column-gap: 1rem;
+        width: 100%;
+        min-height: 0.75rem;
+    }
+
+    &__fields {
+        display: grid;
+        justify-items: stretch;
+        height: 300px;
+
+        &--default {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        &--wrap {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            column-gap: 4rem;
+            row-gap: 2.5rem;
+            grid-auto-flow: column;
+        }
+
+        &--duo {
+            //grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        &--triple {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        &--quad {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        &--table {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        &--split {
+            grid-template-columns: 120px repeat(3, 1fr);
+            column-gap: 1rem;
+            row-gap: 2rem;
+            grid-auto-flow: row;
+        }
+
+        &--split-alt {
+            grid-template-columns: 120px repeat(4, 1fr);
+            column-gap: 1rem;
+            row-gap: 2rem;
+            grid-auto-flow: row;
+        }
+
+        &--offset {
+            grid-template-areas: 
+                "signature-pad signature-buttons"
+                ". signature-buttons";
+            grid-template-rows: 1fr 20px;
+            grid-template-columns: 1fr 150px;
+            column-gap: 2rem;
+            //row-gap: 1.5rem;
+        }
+
+        &--offset-alt {
+            grid-template-areas: 
+                "signature-pad signature-buttons";
+            //grid-template-rows: 20px, 1fr;
+            grid-template-columns: 1fr 150px;
+            column-gap: 2rem;
+        }
+
+        &--stack {
+            grid-template-rows: repeat(2, 1fr);
+            row-gap: 2rem;
+        }
+
+        &--layer {
+            grid-template-columns: 1fr;
+            grid-template-rows: 60px 1fr;
+            row-gap: 2rem;
+        }
+
+        &--layers {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 20px;
+        }
+    }
+
+    &__instructions {
+        padding-bottom: 2rem;
+    }
+
+    &__column {
+        grid-area: signature-buttons;
+    }
+
+    &__labels {
+        grid-area: signature-labels;
+        height: 20px;
+    }
+
+    &__stepper {
+        grid-area: evaluation-actions;
+        display: grid;
+        justify-items: stretch;
+        grid-template-areas: 
+            "evaluation-previous evaluation-next . evaluation-submit";
+        grid-template-columns: repeat(2, 120px) 1fr 230px;
+        column-gap: 1rem;
+        width: 100%;
+        padding: 2rem 0rem 1rem 0rem;
+    }
+
+    &__button {
+        cursor: pointer;
+        outline: none;
+        text-align: center;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+        border: none;
+        font-weight: 500;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &--clear,
+        &--capture {
+            padding: 0.5rem 1.5rem;
+            width: 120px;
+            color: black;
+            font-weight: bold;
+            align-self: flex-end;
+            margin-bottom: 1rem;
+            background-color: #fafafa;
+            border: 1.5px solid #dbdbdb;
+            transition: background-color 0.25s ease-in-out;
+            transition: border-color 0.25s ease-in-out;
+        }
+
+        &--previous {
+            grid-area: evaluation-previous;
+            color: rgb(90, 90, 90);
+            background-color:#f5f5f5;
+        }
+
+        &--next {
+            grid-area: evaluation-next;
+        }
+
+        &--submit {
+            grid-area: evaluation-submit;
+        }
+
+        &--active {
+            color: white;
+            background: linear-gradient(90deg, #1086F6, #0B79E6, #118DFD);
+        }
+
+        &--inactive {
+            //color: rgb(90, 90, 90);
+            color:#f5f5f5;
+            //background-color:#f5f5f5;
+            background-color: rgb(153, 153, 153);
+            cursor: not-allowed;
+        }
+    }
+
+    &__records {
+        grid-area: evaluation-records;
+        display: flex;
+        flex-direction: column;
+        background-color: #fafafa;
+        height: 100vh;
+        overflow: hidden;
+        overflow-y: scroll;
+        position: relative;
+    }
+
+    &__files {
+        display: flex;
+        flex-direction: column;
+        //height: 100vh;
+        //width: 25vw;
+        padding: 2rem 0rem;
+    }
+
+    &__empty {
+        padding: 5rem;
+        text-align: center;
+        vertical-align: center;
+        margin: auto 0px;
+    }
+
+    &__range {
+        grid-area: evaluation-question;
+        opacity: 0.4;
+        font-size: 0.75rem;
+        align-self: start;
+        padding-bottom: 0.5rem;
+        font-style: italic;
+
+        &--inactive {
+            display: none;
+        }
+    }
+
+    &__link {
+        grid-area: evaluation-question;
+        //opacity: 0.4;
+        font-size: 0.75rem;
+        align-self: start;
+        padding-left: 0px;
+        padding-bottom: 0.5rem;
+        font-style: italic;
+        color: #3c9eff;
+        cursor: pointer;
+        background-color: white;
+        border: none;
+        text-align: left;
+
+        &--inactive {
+            display: none;
+        }
+    }
+
+    &__question {
+        grid-area: evaluation-question;
+
+        &--inactive {
+            display: none;
+        }
+    }
+}
+
+
+// Old
+
 // Shifts Display for Uploading Files
 @keyframes shift {
     from { 
@@ -330,7 +809,7 @@
         &--next,
         &--submit {
             border-radius: 4px;
-            background-color: #2997ff;
+            background: linear-gradient(90deg, #1086F6, #0B79E6, #118DFD);
             border: none;
             padding: 1rem 3rem;
             color: white;
@@ -339,10 +818,6 @@
             font-size: 0.9rem;
             margin-left: 20px;
             grid-area: button;
-
-            &:hover {
-                background-color: #156fc4;
-            }
         }
     }
 

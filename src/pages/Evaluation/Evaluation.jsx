@@ -2,41 +2,24 @@ import React from 'react';
 import "./Evaluation.scss";
 
 // Contexts
-import { DataProvider } from "../../contexts/DataProvider";
-import { StepProvider } from '../../contexts/StepProvider';
-import { ValidationProvider } from '../../contexts/ValidationProvider';
-
-// Icons
-import cancel from "../../assets/icons/cancel.svg";
+import { EvaluationProvider } from "../../contexts/EvaluationProvider";
+import { QuestionProvider } from '../../contexts/QuestionProvider';
 
 // Components
-import Form from '../../components/CaseForm/CaseForm';
-import Records from '../../components/CaseRecords/CaseRecords';
+import Header from '../../components/EvaluationHeader/EvaluationHeader';
+import Form from '../../components/EvaluationForm/EvaluationForm';
+import Records from '../../components/EvaluationRecords/EvaluationRecords';
 
-function Evaluation() {
-    //const { currentUser } = useAuth();
-    
+function Evaluation() {    
     return (
-        <main className="case">
-            <div
-                className="case__close">
-                <img 
-                    className="case__cancel"
-                    src={cancel}
-                />
-                <p 
-                    className="case__escape">
-                    Esc
-                </p>
-            </div>
-            <DataProvider> 
-                <StepProvider>
-                    <ValidationProvider>
-                        <Form />
-                        <Records />
-                    </ValidationProvider>
-                </StepProvider>
-            </DataProvider>
+        <main className="evaluation">
+            <EvaluationProvider> 
+                <QuestionProvider>
+                    <Header />
+                    <Form />
+                    <Records />
+                </QuestionProvider>
+            </EvaluationProvider>
         </main>
     );
 };

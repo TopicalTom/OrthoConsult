@@ -9,18 +9,105 @@ export function useAuth() {
 }
 
 // Handles Firebase Auth Requests
-export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState();
-    const [loading, setLoading] = useState(true);
+export const AuthProvider = ({ children }) => {
+    const [ currentUser, setCurrentUser ] = useState();
+    const [ loading, setLoading ] = useState(true);
 
     // Handles SignUp Requests
-    function signup(email, password, name, phone) {
+    const signup = (email, password) => {
+        return auth.createUserWithEmailAndPassword(email, password);
+    }
+
+    // Handles Login Requests
+    const login = (email, password) => {
+        return auth.signInWithEmailAndPassword(email, password)
+    }
+
+    // Handles Logout Requests
+    const logout = () => {
+        return auth.signOut()
+    }
+
+    // Links SignUp with New Client Doc in FireStore
+    const createClient = async (userAuth, additionalData) => {
+        if (!userAuth) { return };
+    
+        const clientRef = firestore.doc(`clients/${userAuth.uid}`);
+        const snapShot = await clientRef.get();
+    
+        if (!snapShot.exists) {
+            const { displayName, email } = userAuth;
+            const createdAt = new Date();
+    
+            try {
+                await clientRef.set({
+                    displayName,
+                    email,
+                    createdAt,
+                    ...additionalData
+                });
+            } catch (error) {
+                console.log('error creating user', error.message)
+            }
+        }
+    
+        return clientRef;
+    }
+
+    // Watches for User Changes
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(async userAuth => {
+            if (userAuth) {
+                const clientRef = await createClient(userAuth);
+
+                clientRef.onSnapshot(snapShot => {
+                    setCurrentUser({
+                        id: snapShot.id,
+                        ...snapShot.data()
+                    });
+                    setLoading(false)
+                })
+            } else {
+                setCurrentUser(userAuth)
+                setLoading(false)
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    return (
+        <AuthContext.Provider value={{ currentUser, signup, createClient, login, logout, loading }}>
+            {children}
+        </AuthContext.Provider>
+    )
+}
+
+/*
+
+import React, { useContext, useState, createContext, useEffect } from 'react';
+import { auth, firestore } from "../firebase";
+
+const AuthContext = createContext()
+
+// Custom Auth Hook
+export function useAuth() {
+    return useContext(AuthContext)
+}
+
+// Handles Firebase Auth Requests
+export function AuthProvider({ children }) {
+    const [ currentUser, setCurrentUser ] = useState();
+    const [ loading, setLoading ] = useState(true);
+
+    // Handles SignUp Requests
+    function signup(email, password, name, location, confirm) {
         return (
             auth
                 .createUserWithEmailAndPassword(email, password)
                 .then(() => {
                     updateProfile(name);
-                    linkClient(email, name, phone);
+                    linkClient(email, name, location);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -52,7 +139,7 @@ export function AuthProvider({ children }) {
     }
     
     // Links SignUp with User Doc in FireStore
-    function linkClient(email, name, phone) {
+    function linkClient(email, name, location) {
         const clientId = auth.currentUser.uid;
 
         //console.log(currentUser.uid);
@@ -61,8 +148,7 @@ export function AuthProvider({ children }) {
             .set({
                 email: email,
                 name: name,
-                phone: phone,
-                cases: []
+                location: location,
             })
             .then(() => {
                 console.log("Success");
@@ -82,11 +168,11 @@ export function AuthProvider({ children }) {
         return unsubscribe
     }, [])
 
-    console.log(currentUser)
-
     return (
         <AuthContext.Provider value={{ currentUser, signup, login, logout, loading }}>
             {children}
         </AuthContext.Provider>
     )
 }
+
+*/

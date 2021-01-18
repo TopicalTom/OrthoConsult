@@ -12,8 +12,9 @@ function Header() {
     const location = useLocation();
     const { previousScroll, currentScroll } = useScroll();
     const [ hide, setHide ] = useState("");
-    console.log(location.pathname)
+    const [ toggle, setToggle ] = useState("inactive");
 
+    // Handles On Scroll actions
     useEffect(() => {
         const minimum = 10;
         const isScrolledDown = previousScroll < currentScroll;
@@ -23,9 +24,12 @@ function Header() {
             ?   "hidden"
             :   ""
         );
-    }, [previousScroll, currentScroll]);
 
-    const toggle = currentScroll > 900 ? "active" : "inactive";
+        setToggle(currentScroll > 900
+            ?   "active"
+            :   "inactive"
+        )
+    }, [previousScroll, currentScroll]);
 
     return (
         <header className={`header ${hide} header--${toggle}`}>
@@ -53,7 +57,7 @@ function Header() {
                         :   <button
                                 className="header__button header__button--secondary"
                                 onClick={logout}>
-                                Logout
+                                Dashboard
                             </button>
                     }
                     <Button 
@@ -61,7 +65,7 @@ function Header() {
                         type="primary"
                         link="/dashboard" 
                         authLink="/register"
-                        text="Dashboard" 
+                        text="New case" 
                         authText="Register"
                     />
                 </div>
