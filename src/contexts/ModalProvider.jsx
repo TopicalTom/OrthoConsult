@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
+// Assets 
+import alert from '../assets/icons/danger.svg';
+
 Modal.setAppElement('*');
 
 const ModalContext = createContext()
@@ -41,7 +44,10 @@ export function ModalProvider({children}) {
                             <span>X</span>
                         </button>
                         <div className="modal__details">
-                            <p>Icon</p>
+                            <img 
+                                className="modal__alert"
+                                src={alert}
+                            />
                             <p 
                                 className="modal__text modal__text--warning">
                                 Information provided so far will be permenately deleted and can't be undone.

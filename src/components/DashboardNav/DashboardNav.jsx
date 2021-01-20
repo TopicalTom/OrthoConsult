@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthProvider';
 import { useDashboard } from '../../contexts/DashboardProvider';
 import "../../pages/Dashboard/Dashboard.scss";
@@ -18,6 +18,7 @@ import payment from "../../assets/icons/payment.svg";
 
 const DashboardNav = () => {
     const { logout } = useAuth();
+    const history = useHistory();
     const { page, currentCase } = useDashboard();
     const routes = [
         {
@@ -76,6 +77,11 @@ const DashboardNav = () => {
         }
     ]
 
+    const handleLogout = () => {
+        logout()
+        history.push('/');
+    }
+
     return (
         <aside className="dashboard__nav" >
             <Link className="dashboard__watermark" to="/">
@@ -108,7 +114,7 @@ const DashboardNav = () => {
             </ul>
             <button 
                 className="dashboard__logout"
-                onClick={() => logout}>
+                onClick={handleLogout}>
                 <img 
                     className="dashboard__icon dashboard__icon--logout"
                     src={logoutIcon}
@@ -120,61 +126,3 @@ const DashboardNav = () => {
 };
 
 export default DashboardNav;
-
-/*
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthProvider';
-import "../../pages/Dashboard/Dashboard.scss";
-
-// Assets 
-import logoutIcon from '../../assets/icons/logout.svg';
-
-const DashboardNav = props => {
-    const { links } = props;
-    const { logout } = useAuth();
-
-    return (
-        <aside className="dashboard__nav" >
-            <Link className="dashboard__watermark" to="/">
-                <h3 
-                    className="dashboard__watermark">
-                    OrthoConsult
-                </h3>
-            </Link>
-            <ul className="dashboard__links">
-                {links && links.map(link => {
-                    return (
-                        <li 
-                            className="dashboard__toucharea"
-                            style={{gridArea: `${link.id}`}}>
-                            <img 
-                                className={`dashboard__icon dashboard__icon--${link.id}`}
-                                src={link.icon}
-                            />
-                            <Link
-                                className="dashboard__link"
-                                to={link.url}
-                                >
-                                {link.name}
-                            </Link>
-                        </li>
-                    )
-                })}
-            </ul>
-            <button 
-                className="dashboard__logout"
-                onClick={() => logout}>
-                <img 
-                    className="dashboard__icon dashboard__icon--logout"
-                    src={logoutIcon}
-                />
-                <span className="dashboard__link">Logout</span>
-            </button>
-        </aside>
-    );
-};
-
-export default DashboardNav;
-
-*/

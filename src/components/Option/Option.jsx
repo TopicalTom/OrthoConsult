@@ -8,7 +8,7 @@ const Option = (props) => {
     const { validationDispatch } = useValidation();
     const { type, id, name, group, path, callback, label, details, value, data, check } = props;
 
-    const toggleValue = value !== true ? true : false;
+    //const toggleValue = value !== true ? true : false;
     const matchCriteria = data === value ? "selected" : "default";
     const booleanCriteria = value === true ? "selected" : "default";
     const aCheck = data === value ? true : false;

@@ -20,9 +20,6 @@
             justify-items: stretch;
             grid-template-columns: 1fr;
 
-            &:hover > div {
-                border-color: #868686;
-            }
         }
 
         &--buttons {
@@ -48,7 +45,7 @@
 
     &__pad {
         grid-area: pad;
-        border: 1.5px solid #dbdbdb;
+        border: 1.5px solid #e9e9e9;
         z-index: 2;
         width: 100%;
         background-color: #fafafa;
@@ -57,10 +54,14 @@
         height: 300px;
         transition: background-color 0.25s ease-in-out;
         transition: border-color 0.25s ease-in-out;
+        outline: none;
+        transition: box-shadow 0.2s ease;
+        box-shadow: rgba(58, 151, 212, 0.36) 0px 0px 0px 0px;
 
         &:hover {
-            background-color: #EEEEEE;
-            border-color: #868686;
+            border: 1.5px solid rgba(41, 152, 255, 0.05);
+            background-color: rgba(41, 152, 255, 0.05);
+            box-shadow: rgba(58, 151, 212, 0.36) 0px 0px 0px 4px;
         }
     }
 

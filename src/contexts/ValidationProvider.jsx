@@ -120,9 +120,17 @@ export function ValidationProvider({ children }) {
 }
 
 /*
-import React, { useContext, useState, createContext, useEffect } from 'react';
-import { useData } from "./DataProvider";
-import { useStep } from "./StepProvider";
+import React, { useContext, useReducer, createContext } from 'react';
+
+// Contexts
+import { useQuestion } from './QuestionProvider';
+import { useEvaluation } from './EvaluationProvider';
+
+// Reducers
+import validationReducer from '../reducers/validationReducer';
+
+// Validation Template
+import validation from "../templates/validation";
 
 // Custom Step Management Hook
 const ValidationContext = createContext();
@@ -133,248 +141,59 @@ export function useValidation() {
 
 // Handles Form Step Changes
 export function ValidationProvider({ children }) {
-    const { state } = useData();
-    const { currentStep, next } = useStep();
-    const options = [
-        {
-            status: false,
-            fields: 1
-        },
-        {
-            status: false,
-            fields: 4
-        },
-        {
-            status: false,
-            fields: 4
-        },
-        {
-            status: false,
-            fields: 4
-        },
-    ]
-    const [ validation, setValidation ] = useState(options)
+    const { currentQuestion } = useQuestion();
+    const { dataState, recordState } = useEvaluation();
+    const values = {currentQuestion, dataState, recordState};
 
-    function checkValidation() {
-        switch (currentStep) {
-    
-            case 0:
-                if (
-                    state.caseType !== ""
-                ) {
-                    return next()
-                }
-                break;
-            case 1:
-                if (
-                    state.patient !== "" 
-                    && state.patientInfo 
-                    && state.patientInfo.height !== null
-                ) {
-                    return next()
-                }
-                break;
-            case 3:
-                if (
-                    Object.values(state.patientHabits).some(v => v === true) 
-                ) {
-                    return next()
-                }
-                break;
-            case 4:
-                if (
-                    Object.values(state.underlyingIssues).some(v => v === true) 
-                ) {
-                    return next()
-                }
-                break;
-            case 5:
-                if (
-                    state.patientInfo &&
-                    state.patientInfo.motivation !== "" 
-                ) {
-                    return next()
-                }
-                break;
-            case 6:
-                if (
-                    state.patientInfo &&
-                    state.patientInfo.hygiene !== "" 
-                ) {
-                    return next()
-                }
-                break;            
-            case 7:
-                if (
-                    state.patientInfo &&
-                    state.patientInfo.finances !== "" 
-                ) {
-                    return next()
-                }
-                break;            
-            case 8:
-                if (
-                    state.treatment &&
-                    state.treatment.patientConcerns !== "" 
-                ) {
-                    return next()
-                }
-                break;
-            default:
-                break;
-        }
-    }
-    useEffect(() => {
-        setValidation(options)
-    }, [options])
+    const initialState = validation;
+    const [ validationState, validationDispatch ] = useReducer(
+        validationReducer, 
+        initialState,
+        values
+    );
 
-   return (
-    <ValidationContext.Provider value={{ validation, checkValidation }}>
-        {children}
-    </ValidationContext.Provider>
-)
+    return (
+        <ValidationContext.Provider value={{ validationState, validationDispatch }}>
+            {children}
+        </ValidationContext.Provider>
+    )
+}import React, { useContext, useReducer, createContext } from 'react';
+
+// Contexts
+import { useQuestion } from './QuestionProvider';
+import { useEvaluation } from './EvaluationProvider';
+
+// Reducers
+import validationReducer from '../reducers/validationReducer';
+
+// Validation Template
+import validation from "../templates/validation";
+
+// Custom Step Management Hook
+const ValidationContext = createContext();
+
+export function useValidation() {
+    return useContext(ValidationContext)
 }
 
+// Handles Form Step Changes
+export function ValidationProvider({ children }) {
+    const { currentQuestion } = useQuestion();
+    const { dataState, recordState } = useEvaluation();
+    const values = {currentQuestion, dataState, recordState};
 
-*/
+    const initialState = validation;
+    const [ validationState, validationDispatch ] = useReducer(
+        validationReducer, 
+        initialState,
+        values
+    );
 
-/*
+    return (
+        <ValidationContext.Provider value={{ validationState, validationDispatch }}>
+            {children}
+        </ValidationContext.Provider>
+    )
+}
 
-    function checkValidation() {
-        switch (currentStep) {
-    
-            case 0:
-                if (
-                    state.caseType !== ""
-                ) {
-                    return next()
-                }
-                break;
-            case 1:
-                if (
-                    state.patient !== "" 
-                    && state.patientInfo 
-                    && state.patientInfo.height !== null
-                ) {
-                    return next()
-                }
-                break;
-            case 3:
-                if (
-                    Object.values(state.patientHabits).some(v => v === true) 
-                ) {
-                    return next()
-                }
-                break;
-            case 4:
-                if (
-                    Object.values(state.underlyingIssues).some(v => v === true) 
-                ) {
-                    return next()
-                }
-                break;
-            case 5:
-                if (
-                    state.patientInfo &&
-                    state.patientInfo.motivation !== "" 
-                ) {
-                    return next()
-                }
-                break;
-            case 6:
-                if (
-                    state.patientInfo &&
-                    state.patientInfo.hygiene !== "" 
-                ) {
-                    return next()
-                }
-                break;            
-            case 7:
-                if (
-                    state.patientInfo &&
-                    state.patientInfo.finances !== "" 
-                ) {
-                    return next()
-                }
-                break;            
-            case 8:
-                if (
-                    state.treatment &&
-                    state.treatment.patientConcerns !== "" 
-                ) {
-                    return next()
-                }
-                break;
-            default:
-                return next();
-        }
-    }    function checkValidation() {
-        switch (currentStep) {
-    
-            case 0:
-                if (
-                    state.caseType !== ""
-                ) {
-                    return next()
-                }
-                break;
-            case 1:
-                if (
-                    state.patient !== "" 
-                    && state.patientInfo 
-                    && state.patientInfo.height !== null
-                ) {
-                    return next()
-                }
-                break;
-            case 3:
-                if (
-                    Object.values(state.patientHabits).some(v => v === true) 
-                ) {
-                    return next()
-                }
-                break;
-            case 4:
-                if (
-                    Object.values(state.underlyingIssues).some(v => v === true) 
-                ) {
-                    return next()
-                }
-                break;
-            case 5:
-                if (
-                    state.patientInfo &&
-                    state.patientInfo.motivation !== "" 
-                ) {
-                    return next()
-                }
-                break;
-            case 6:
-                if (
-                    state.patientInfo &&
-                    state.patientInfo.hygiene !== "" 
-                ) {
-                    return next()
-                }
-                break;            
-            case 7:
-                if (
-                    state.patientInfo &&
-                    state.patientInfo.finances !== "" 
-                ) {
-                    return next()
-                }
-                break;            
-            case 8:
-                if (
-                    state.treatment &&
-                    state.treatment.patientConcerns !== "" 
-                ) {
-                    return next()
-                }
-                break;
-            default:
-                return next();
-        }
-    }
 */

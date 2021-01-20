@@ -45,25 +45,18 @@ function Header() {
                     </ul>
                 </nav>
                 <div className={`header__actions ${location.pathname === "/register" || location.pathname === "/login" ? "hide" : ""}`}>
-                    {!currentUser
-                        ?   <Button 
-                                theme="dark"
-                                type="secondary"
-                                link="/login" 
-                                authLink="/login"
-                                text="Log out" 
-                                authText="Log in"
-                            />
-                        :   <button
-                                className="header__button header__button--secondary"
-                                onClick={logout}>
-                                Dashboard
-                            </button>
-                    }
+                    <Button 
+                        theme="dark"
+                        type="secondary"
+                        link="/dashboard" 
+                        authLink="/login"
+                        text="Dashboard" 
+                        authText="Log in"
+                    />
                     <Button 
                         theme="dark"
                         type="primary"
-                        link="/dashboard" 
+                        link="/evaluation" 
                         authLink="/register"
                         text="New case" 
                         authText="Register"

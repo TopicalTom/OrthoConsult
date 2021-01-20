@@ -3,22 +3,22 @@
 .footer {
     width: 100vw;
     height: 400px;
-    //background-color: #f3f3f3;
-    background-color: white;
     display: flex;
     flex-direction: column;
     position: relative;
-    //overflow: hidden;
     z-index: 900;
     display: grid;
-    justify-items: stretch;
-    grid-template-areas: " . foot .";
+    justify-items: start;
+    grid-template-areas: 
+        " . foot ."
+        " . links1 ."
+        " . links2 .";
     grid-template-columns: 1rem 1fr 1rem;
-    border-top: 1px solid #e7e7e7;
+    background: #f3f3f3;
     padding: 0rem 1rem;
 
     @include tablet {
-        grid-template-areas: " . foot foot foot foot .";
+        grid-template-areas: ". foot . links1 links2 .";
         grid-template-columns: 1fr repeat(4, 270px) 1fr;
     }
 
@@ -31,9 +31,32 @@
         grid-area: foot;
         display: flex;
         width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
         transition: background-color 0.3s ease;
-        margin-top: 4rem;
+        padding: 0rem 1rem;
+    }
+
+    &__links1 {
+        z-index: 1000;
+        grid-area: links1;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        transition: background-color 0.3s ease;
+        padding: 0rem 1rem;
+    }
+
+    &__links2 {
+        z-index: 1000;
+        grid-area: links2;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        transition: background-color 0.3s ease;
+        padding: 0rem 1rem;
+    }
+
+    &__links {
+        padding-inline-start: 0px;
     }
 }

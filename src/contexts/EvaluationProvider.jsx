@@ -6,6 +6,102 @@ import { auth, firestore, storage } from "../firebase";
 import database from "../templates/database";
 import records from "../templates/records";
 
+// Reducers
+import dataReducer from "../reducers/dataReducer";
+import recordReducer from "../reducers/recordReducer";
+
+// Custom Hook
+const EvaluationContext = createContext({});
+
+export function useEvaluation() {
+    return useContext(EvaluationContext)
+}
+
+// Handles Case Evaluation Actions
+export const EvaluationProvider = ({ children }) => {
+    const initialData = database; 
+    const initialRecords = records; 
+    const [ dataState, dataDispatch ] = useReducer(dataReducer, initialData);
+    const [ recordState, recordDispatch ] = useReducer(recordReducer, initialRecords);
+
+    // Stores Case Data in Firestore Collection
+    const uploadData = (newCaseId) => {
+        firestore.collection("cases")
+            .doc(newCaseId)
+            .set(dataState)
+            .then(() => {
+                console.log("Success");
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    // Creates Storage Bucket in Firebase Storage
+    const uploadRecords = (newCaseId) => {
+        const storageRef = storage.ref(newCaseId);
+        {recordState.records.map((item) => {
+            storageRef.child(item.id)
+                .put(item.file)
+                .then(() => {
+                    console.log("Records Uploaded")
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        })}
+    }
+
+    // Adds Foreign Key (Case) + Info to Current User
+    const linkClient = (newCaseId) => {
+        firestore.collection("clients")
+            .doc(auth.currentUser.uid).collection("cases")
+            .doc(newCaseId)
+            .set({
+                uid: newCaseId,
+                type: dataState.caseType,
+                patient: dataState.patient,
+                createdAt: new Date(),
+                status: "Awaiting feedback"
+            })
+            .then(() => {
+                console.log("Case linked to client")
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    // Links Case Evaluation to Firebase resources
+    const submitCase = () => {
+        const newCaseId = uuidv4();
+        uploadData(newCaseId)
+        uploadRecords(newCaseId)
+        linkClient(newCaseId)
+    };
+
+    return (
+        <EvaluationContext.Provider 
+            value={{ 
+                dataState, 
+                dataDispatch, 
+                recordState, 
+                recordDispatch, 
+                submitCase }}>
+            {children}
+        </EvaluationContext.Provider>
+    )
+}
+
+/*
+import React, { useContext, useReducer, createContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { auth, firestore, storage } from "../firebase";
+
+// Templates
+import database from "../templates/database";
+import records from "../templates/records";
+
 // Custom Hook
 const EvaluationContext = createContext({});
 
@@ -160,7 +256,7 @@ export function EvaluationProvider({ children }) {
                 uid: newCaseId,
                 type: dataState.caseType,
                 patient: dataState.patient,
-                submitted: new Date().toDateString(),
+                createdAt: new Date(),
                 status: "Awaiting feedback"
             })
             .then(() => {
@@ -191,3 +287,5 @@ export function EvaluationProvider({ children }) {
         </EvaluationContext.Provider>
     )
 }
+
+*/
