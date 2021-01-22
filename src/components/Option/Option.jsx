@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { useEvaluation } from "../../contexts/EvaluationProvider";
 import { useValidation } from "../../contexts/ValidationProvider";
 import "./Option.scss";
@@ -6,12 +6,30 @@ import "./Option.scss";
 const Option = (props) => {
     const { dataDispatch } = useEvaluation();
     const { validationDispatch } = useValidation();
-    const { type, id, name, group, path, callback, label, details, value, data, check } = props;
+    const { type, id, name, group, path, callback, label, details, value, data, check, preview } = props;
+    //const [ selection, data ] = useReducer(selectionReducer, initialData);
 
-    //const toggleValue = value !== true ? true : false;
     const matchCriteria = data === value ? "selected" : "default";
     const booleanCriteria = value === true ? "selected" : "default";
     const aCheck = data === value ? true : false;
+    const typeCheck = type === "radios";
+
+    /*
+    function selectionReducer(selection, action) {
+        switch (data) {
+
+            case action.length === 0:
+                return selection = "default"
+
+            case action !== value:
+                return selection = "unselected"
+            
+            case action === value:
+                return selection = "selected"
+            
+        }
+    }
+    */
 
     function handleInput() {
         
@@ -21,41 +39,47 @@ const Option = (props) => {
                 name: name,
                 group: group,
                 path: path,
-                value: type === "radios" || type === "multi" ? value : !value
+                value: typeCheck ? value : !value
             }
         })
 
         validationDispatch ({
             type: check,
             payload: {
-                name: type === "radios" || type === "multi" ? name : group,
-                value: type === "radios" || type === "multi" ? value : path
+                name: typeCheck ? name : group,
+                value: typeCheck ? value : path
             }
         })
     }
 
     return (
         <div 
-            className={`option option--${type === "radios" || type === "multi" ? matchCriteria : booleanCriteria}`} 
+            className={`option option--${typeCheck ? matchCriteria : booleanCriteria}`} 
             onClick={() => handleInput()}>
             <input 
-                className={`option__input option__input--${type === "radios" || type === "multi" ? "hidden" : "visible"}`}
+                className={`option__input option__input--${typeCheck ? "hidden" : "visible"}`}
                 type="checkbox" 
-                id={id} 
+                id={name} 
                 name={name}
-                checked={type === "radios" || type === "multi" ? aCheck : value}
-                value={type === "radios" || type === "multi" ? data : value}
+                checked={typeCheck ? aCheck : value}
+                value={typeCheck ? data : value}
             />
             <div className="option__content">            
                 <label 
-                    className={`option__label option__label--${type === "radios" || type === "multi" ? matchCriteria : booleanCriteria} `} 
+                    className={`option__label option__label--${typeCheck ? matchCriteria : booleanCriteria} `} 
                     htmlFor={name}>
                     {label}
                 </label>
                 <p 
-                    className={`option__details option__details--${type === "radios" || type === "multi" ? matchCriteria : booleanCriteria} `}>
+                    className={`option__details option__details--${typeCheck ? matchCriteria : booleanCriteria} `}>
                     {details}
                 </p>
+                {preview &&
+                    <img
+                        src={preview}
+                        alt={`${name} preview`}
+                    />
+                }
             </div>
         </div>
     );

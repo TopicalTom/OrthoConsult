@@ -82,17 +82,21 @@ const EvaluationFields = (props) => {
                             />
                         )
                     })}
-                    <Selection 
-                        label={options[3].label}
-                        name={options[3].name}
-                        type="radio"
-                        callback="STORE_AS_NESTED_DATA"
-                        orientation="horizontal"
-                        data={options[3].data}
-                        list={options[3].list}
-                        group={group}
-                        path={path}
-                    />
+                    {options && options.slice(3,5).map((item) => {
+                        return (
+                            <Selection 
+                                label={item.label}
+                                name={item.name}
+                                type="radio"
+                                callback="STORE_AS_NESTED_DATA"
+                                orientation="vertical"
+                                data={item.data}
+                                list={item.list}
+                                group={group}
+                                path={path}
+                        />
+                        )
+                    })}
                 </div>
             )   
         
@@ -126,6 +130,7 @@ const EvaluationFields = (props) => {
                                 type="text"
                                 callback="STORE_AS_NESTED_DATA"
                                 check="CHECK_TEXT"
+                                placeholder={item.placeholder}
                                 value={item.value}
                                 group={group}
                                 path={path}
@@ -133,38 +138,7 @@ const EvaluationFields = (props) => {
                         )
                     })}
                 </div>
-            )
-
-        // Populates Fields for Calculation Questions
-        case "multi":
-            return (
-                <div className={`evaluation__fields evaluation__fields--${layout}`}>
-                    {options && options.map(row => {
-                        return (
-                            <>
-                                <label>{row.category}</label>
-                                {row.list.map((item) => {
-                                    return (
-                                        <Option 
-                                            name={row.name}
-                                            callback={callback}
-                                            check="CHECK_FIELD"
-                                            data={row.data}
-                                            id={item.id}
-                                            details={item.details}
-                                            label={item.label}
-                                            value={item.value}
-                                            group={group}
-                                            path={path}
-                                            type={type}
-                                        />
-                                    )
-                                })}
-                            </>
-                        )
-                    })}
-                </div>
-            )     
+            )    
         
         // Populates Fields for Calculation Questions
         case "calculations":
@@ -176,6 +150,7 @@ const EvaluationFields = (props) => {
                                 name={item.name}
                                 label={item.label}
                                 type="number"
+                                help={item.help}
                                 criteria={item.criteria}
                                 callback="STORE_AS_NESTED_DATA"
                                 check="CHECK_NUMBER"
@@ -207,7 +182,7 @@ const EvaluationFields = (props) => {
                             name={options[0].name}
                             type="radio"
                             callback="STORE_AS_NESTED_DATA"
-                            orientation="horizontal"
+                            orientation="vertical"
                             data={options[0].data}
                             list={options[0].list}
                             group={group}
@@ -219,6 +194,7 @@ const EvaluationFields = (props) => {
                             type="text"
                             callback="STORE_AS_NESTED_DATA"
                             check="CHECK_TEXT"
+                            placeholder={options[1].placeholder}
                             value={options[1].value}
                             group={group}
                             path={path}

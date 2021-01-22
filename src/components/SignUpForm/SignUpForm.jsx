@@ -82,12 +82,12 @@ const SignUpForm = () => {
                         }
                         <div className="signup__field">
                             <label 
-                                className={'signup__label ' + ( nameErrors ? 'signup__label--error' : '')}
+                                className={`signup__label signup__label--${nameErrors ? 'error' : 'default'}`}
                                 htmlFor="name">
                                 Full Name
                             </label>
                             <input 
-                                className={'signup__input ' + ( nameErrors ? 'signup__input--error' : '')}
+                                className={`signup__input signup__input--${nameErrors ? 'error' : 'default'}`}
                                 type="text"
                                 name="name"
                                 onChange={handleChange}
@@ -100,12 +100,12 @@ const SignUpForm = () => {
                         </div>
                         <div className="signup__field">
                             <label 
-                                className={'signup__label ' + ( locationErrors ? 'signup__label--error' : '')}
+                                className={`signup__label signup__label--${locationErrors ? 'error' : 'default'}`}
                                 htmlFor="location">
                                 Location
                             </label>
                             <input 
-                                className={'signup__input ' + ( locationErrors ? 'signup__input--error' : '')}
+                                className={`signup__input signup__input--${locationErrors ? 'error' : 'default'}`}
                                 type="text"
                                 name="location"
                                 onChange={handleChange}
@@ -118,12 +118,12 @@ const SignUpForm = () => {
                         </div>
                         <div className="signup__field">
                             <label 
-                                className={'signup__label ' + ( emailErrors ? 'signup__label--error' : '')}
+                                className={`signup__label signup__label--${emailErrors ? 'error' : 'default'}`}
                                 htmlFor="email">
                                 Email
                             </label>
                             <input 
-                                className={'signup__input ' + ( emailErrors ? 'signup__input--error' : '')}
+                                className={`signup__input signup__input--${emailErrors ? 'error' : 'default'}`}
                                 type="email"
                                 name="email"
                                 onChange={handleChange}
@@ -136,12 +136,12 @@ const SignUpForm = () => {
                         </div>
                         <div className="signup__field">
                             <label 
-                                className={'signup__label ' + ( passwordErrors ? 'signup__label--error' : '')}
+                                className={`signup__label signup__label--${passwordErrors ? 'error' : 'default'}`}
                                 htmlFor="password">
                                 Password
                             </label>
                             <input 
-                                className={'signup__input ' + ( passwordErrors ? 'signup__input--error' : '')}
+                                className={`signup__input signup__input--${passwordErrors ? 'error' : 'default'}`}
                                 type="password"
                                 name="password"
                                 onChange={handleChange}

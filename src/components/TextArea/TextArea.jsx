@@ -9,7 +9,7 @@ import Help from "../Help/Help";
 const TextArea = (props) => {
     const { dataDispatch } = useEvaluation();
     const { validationDispatch } = useValidation();
-    const { label, type, name, group, path, placeholder, callback, value, help, criteria, check } = props;
+    const { label, type, name, group, path, placeholder, callback, value, help, check } = props;
 
     function handleInput(e) {
         
@@ -44,13 +44,6 @@ const TextArea = (props) => {
                 }
             </div>
             <div className="textarea__container">
-                {criteria
-                    ?   <p 
-                            className="textarea__criteria">
-                            {criteria}
-                        </p>
-                    :   <></>
-                }
                 <textarea
                     className="textarea__field"
                     type={type}

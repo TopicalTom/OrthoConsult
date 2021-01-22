@@ -6,7 +6,8 @@ const validation = {
         patient: false,
         height: false,
         dob: false,
-        gender: false
+        gender: false,
+        history: false,
     },
     step2: {
         ethnicity: false,
@@ -15,19 +16,19 @@ const validation = {
         patientHabits: false,
     },
     step4: {
-        underlyingIssues: false,
-    },
-    step5: {
-        medicated: false,
-    },
-    step6: {
         hygiene: false,
     },
-    step7: {
+    step5: {
         motivation: false,
     },
-    step8: {
+    step6: {
         finances: false,
+    },
+    step7: {
+        underlyingIssues: false,
+    },
+    step8: {
+        medicated: false,
     },
     step9: {
         patientConcerns: false
@@ -45,16 +46,13 @@ const validation = {
         headPosture: false,
     },
     step14: {
-        left: false,
-        right: false,
+        eyeLevel: false,
     },
     step15: {
-        left: false,
-        right: false,
+        earLevel: false,
     },
     step16: {
-        left: false,
-        right: false,
+        shoulderLevel: false,
     },
     step17: {
         maxillaCant: false,
@@ -81,41 +79,37 @@ const validation = {
         rangeOfMotion: false,
     },
     step25: {
-        modelLeft: false,
-        modelRight: false,
-    },
-    step26: {
-        hereditary: true,
-    },
-    step27: {
-        modelHindrances: false,
-    },
-    step28: {
-        missingTeeth: false,
-    },
-    step29: {
-        wisdomTeeth: false,
-    },
-    step30: {
         overjet: false,
         overbite: false,
         maxOpening: false
     },
-    step31: {
+    step26: {
+        modelRight: false,
+    },
+    step27: {
+        modelLeft: false,
+    },
+    step28: {
+        modelHindrances: false,
+    },
+    step29: {
+        development: false,
+    },
+    step30: {
         urCentral: false,
         urLateral: false,
         ulCentral: false,
         ulLateral: false,
         transpalatal: false,
     },
-    step32: {
+    step31: {
         type: false,
         objective: false,
     },
-    step33: {
+    step32: {
         records: false,
     },
-    step34: {
+    step33: {
         confirmation: false,
     },
 };  

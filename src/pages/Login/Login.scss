@@ -125,12 +125,12 @@
         transition: border-color 0.25s ease-in-out;
         outline: none;
         transition: box-shadow 0.2s ease;
-        box-shadow: rgba(58, 151, 212, 0.36) 0px 0px 0px 0px;
+        box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 0px;
 
         &:focus {
             border: 1.5px solid rgba(41, 152, 255, 0.05);
             background-color: rgba(41, 152, 255, 0.05);
-            box-shadow: rgba(58, 151, 212, 0.36) 0px 0px 0px 4px;
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 4px;
         }
 
         &--error {
@@ -192,7 +192,7 @@
         transition: box-shadow ease 0.2s;
 
         &:focus {
-            box-shadow: rgba(58, 151, 212, 0.36) 0px 0px 0px 4px;
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 4px;
         }
     }
 
@@ -247,9 +247,14 @@
         grid-area: button;
         width: 100%;
         margin-top: 30px;
+        outline: none;
+        transition: box-shadow 0.2s ease;
+        box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 0px;
 
-        &:hover {
+        &:hover,
+        &:focus {
             background-color: #156fc4;
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 4px;
         }
     }
 

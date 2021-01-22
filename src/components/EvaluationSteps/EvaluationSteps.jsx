@@ -34,7 +34,7 @@ function EvaluationSteps() {
         },
         {
             step: "Evaluation",
-            questions: "Questions 11 - 33",
+            questions: "Questions 11 - 32",
             number: "3",
             range: currentQuestion >= 10 && currentQuestion <= (length - 3),
             threshold: currentQuestion >= 10,

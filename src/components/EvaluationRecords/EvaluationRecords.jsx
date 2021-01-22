@@ -38,13 +38,9 @@ function EvaluationRecords() {
                         </ul>
                     </>
                 :   <div className="evaluation__empty">
-                        <img 
-                            className="evaluation__icon" 
-                            src={Icon}
-                        />
                         <p 
                             className="evaluation__placeholder">
-                            Uploaded dental records will show up here.
+                            Uploaded dental records will show up here...
                         </p>
                         <button
                             className="evaluation__button"
