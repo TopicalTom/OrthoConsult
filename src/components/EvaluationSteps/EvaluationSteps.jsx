@@ -38,7 +38,7 @@ function EvaluationSteps() {
             number: "3",
             range: currentQuestion >= 10 && currentQuestion <= (length - 3),
             threshold: currentQuestion >= 10,
-            completion: validationState.step32.type && validationState.step32.objective,
+            completion: validationState.step31.type && validationState.step31.objective,
             value: "Complete"
         },
         {
@@ -46,7 +46,7 @@ function EvaluationSteps() {
             number: "4",
             range: currentQuestion === (length - 2),
             threshold: currentQuestion >= (length - 2),
-            completion: validationState.step33.records,
+            completion: validationState.step32.records,
             value: `${recordState && recordState.records.length} provided`
         },
         {

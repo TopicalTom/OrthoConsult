@@ -27,15 +27,15 @@ const database = {
         none: false
     },
     dental: {
-        modelLeft: "",
-        modelRight: "",
+        crLeft: "",
+        crRight: "",
         overjet: null,
         overbite: null,
         maxOpening: "",
         development: "",
         developmentDetails: ""
     },
-    modelHindrances: {
+    occlusionHindrances: {
         constriction: false,
         incisalDeflection: false,
         crossbite: false,

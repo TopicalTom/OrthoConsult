@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import Option from "../../components/Option/Option";
+import OptionGroup from "../../components/Option/OptionGroup";
 import Selection from "../../components/Selection/Selection";
 import Input from "../../components/Input/Input";
 import TextArea from "../../components/TextArea/TextArea";
@@ -31,6 +32,8 @@ const EvaluationFields = (props) => {
                                 label={item.label}
                                 value={item.value}
                                 details={item.details}
+                                initialPreview={item.initialPreview}
+                                selectedPreview={item.selectedPreview}
                                 group={group}
                                 path={path}
                                 type={type}
@@ -46,7 +49,7 @@ const EvaluationFields = (props) => {
                 <div className={`evaluation__fields evaluation__fields--${layout}`}>
                     {options && options.map((item) => {
                         return (
-                            <Option 
+                            <OptionGroup 
                                 name={item.name}
                                 callback={item.callback}
                                 check="CHECK_FIELDS"
@@ -54,9 +57,10 @@ const EvaluationFields = (props) => {
                                 label={item.label}
                                 value={item.value}
                                 details={item.details}
+                                initialPreview={item.initialPreview}
+                                selectedPreview={item.selectedPreview}
                                 group={group}
                                 path={path}
-                                type={type}
                             />
                         )
                     })}

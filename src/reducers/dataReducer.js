@@ -36,8 +36,8 @@ function dataReducer(dataState, action) {
             return {
                 ...dataState,
                 [group]: {
-                    [!name]: false,
-                    [name]: value
+                    [name !== "none"]: false,
+                    none: true
                 }
             };
 

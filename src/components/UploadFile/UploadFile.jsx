@@ -85,20 +85,20 @@ function UploadFile() {
                     </>
             }
         </div>
-        <div className="case__column">
-                <button 
-                    className="case__button case__button--capture"
-                    type="button"
-                    onClick={() => handleHelp()}>
-                    Help
-                </button>
-                <button 
-                    className="case__button case__button--capture"
-                    type="button"
-                    onClick={() => handleAdvanced()}>
-                    Advanced
-                </button>
-            </div>
+        <div className="upload__actions">
+            <button 
+                className="upload__button"
+                type="button"
+                onClick={() => handleHelp()}>
+                Help
+            </button>
+            <button 
+                className="upload__button"
+                type="button"
+                onClick={() => handleAdvanced()}>
+                Advanced
+            </button>
+        </div>
         </>
     )
 }

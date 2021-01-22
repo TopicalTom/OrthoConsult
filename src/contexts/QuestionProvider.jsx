@@ -1,6 +1,16 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { useEvaluation } from "./EvaluationProvider";
 
+// Assets
+import forwardPosture from '../assets/vectors/PatientLeft.svg';
+import forwardPostureSelected from '../assets/vectors/PatientLeftSelected.svg';
+import idealPosture from '../assets/vectors/PatientLeft.svg';
+import idealPostureSelected from '../assets/vectors/PatientLeftSelected.svg';
+import steepPlane from '../assets/vectors/PatientLeft.svg';
+import steepPlaneSelected from '../assets/vectors/PatientLeftSelected.svg';
+import idealPlane from '../assets/vectors/PatientLeft.svg';
+import idealPlaneSelected from '../assets/vectors/PatientLeftSelected.svg';
+
 // Custom Step Management Hook
 const QuestionContext = createContext(0);
 
@@ -24,21 +34,21 @@ export function QuestionProvider({ children }) {
             options: [
                 {
                     id: "newCase",
-                    label: "New Case",
+                    label: "New Case ($150)",
                     value: "New Case",
-                    details: "$150"
+                    details: "Select if you haven't already opened a case with us for this patient"
                 },
                 {
                     id: "ongoingCase",
-                    label: "Ongoing Case",
+                    label: "Ongoing Case ($100)",
                     value: "Ongoing Case",
-                    details: "$100"
+                    details: "Select if you are continuing treatment for a patient"
                 },
             ]
         },
         {
             title: "Patient Info",
-            instructions: "Input all of the following:",
+            instructions: "Input each of the following:",
             layout: "alt",
             type: "info",
             group: "patientInfo",
@@ -362,13 +372,13 @@ export function QuestionProvider({ children }) {
             options: [
                 {
                     name: "patientConcerns",
-                    label: "Patient's Concern(s)",
+                    label: "Patient's Concerns",
                     value: dataState.treatment.patientConcerns,
                 },
                 {
                     name: "guardianConcerns",
-                    label: "Guardian's Concern(s)",
-                    placeholder: "Only if applicable ",
+                    label: "Guardian's Concerns (optional)",
+                    placeholder: "",
                     value: dataState.treatment.guardianConcerns,
                 },
             ]
@@ -418,19 +428,19 @@ export function QuestionProvider({ children }) {
                 {
                     id: "facialLong",
                     label: "Long",
-                    details: "Long lower 1/3",
+                    details: "Face has a long lower 1/3",
                     value: "Long",
                 },
                 {
                     id: "facialShort",
                     label: "Short",
-                    details: "Short lower 1/3",
+                    details: "Face has a short lower 1/3",
                     value: "Short",
                 },
                 {
                     id: "facialIdeal",
                     label: "Ideal",
-                    details: "Held in 1/3 relationship",
+                    details: "Face is held in a 1/3 relationship",
                     value: "Ideal",
                 }
             ]
@@ -494,11 +504,15 @@ export function QuestionProvider({ children }) {
                     id: "forward",
                     label: "Forward Head Posture",
                     value: "Forward Cant",
+                    initialPreview: forwardPosture,
+                    selectedPreview: forwardPostureSelected
                 },
                 {
                     id: "ideal",
                     label: "Ideal",
                     value: "Ideal",
+                    initialPreview: idealPosture,
+                    selectedPreview: idealPostureSelected
                 },
             ]
         },
@@ -516,13 +530,13 @@ export function QuestionProvider({ children }) {
                 {
                     id: "patientRight",
                     label: "Right Cant",
-                    details: "Downward cant towards patient's right",
+                    details: "Patient's right eye is low relative to their left",
                     value: "Patient Right",
                 },
                 {
                     id: "patientLeft",
                     label: "Left Cant",
-                    details: "Downward cant towards patient's left",
+                    details: "Patient's left eye is low relative to their right",
                     value: "Patient Left",
                 },
                 {
@@ -547,13 +561,13 @@ export function QuestionProvider({ children }) {
                 {
                     id: "patientRight",
                     label: "Right Cant",
-                    details: "Downward cant towards patient's right",
+                    details: "Patient's right ear is low relative to their left",
                     value: "Patient Right",
                 },
                 {
                     id: "patientLeft",
                     label: "Left Cant",
-                    details: "Downward cant towards patient's left",
+                    details: "Patient's left ear is low relative to their right",
                     value: "Patient Left",
                 },
                 {
@@ -578,13 +592,13 @@ export function QuestionProvider({ children }) {
                 {
                     id: "patientRight",
                     label: "Right Cant",
-                    details: "Downward cant towards patient's right",
+                    details: "Patient's right shoulder is low relative to their left",
                     value: "Patient Right",
                 },
                 {
                     id: "patientLeft",
                     label: "Left Cant",
-                    details: "Downward cant towards patient's left",
+                    details: "Patient's left shoulder is low relative to their right",
                     value: "Patient Left",
                 },
                 {
@@ -597,7 +611,7 @@ export function QuestionProvider({ children }) {
         },
         {
             title: "Maxilla Asymmetry",
-            instructions: "Select all applicable for the downard cant direction:",
+            instructions: "Select all applicable from the following:",
             layout: "table",
             type: "checkbox",
             group: "maxillaCant",
@@ -606,14 +620,14 @@ export function QuestionProvider({ children }) {
                 {
                     name: "patientRight",
                     label: "Right Cant",
-                    details: "Downward cant towards patient's right",
+                    details: "Patient's maxilla is lower on their right side",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
                     value: dataState.maxillaCant.patientRight,
                 },
                 {
                     name: "patientLeft",
                     label: "Left Cant",
-                    details: "Downward cant towards patient's left",
+                    details: "Patient's maxilla is lower on their left side",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
                     value: dataState.maxillaCant.patientLeft,
                 },
@@ -682,12 +696,16 @@ export function QuestionProvider({ children }) {
                     id: "steep",
                     label: "Steep",
                     details: "High angle",
-                    value: "Steep"
+                    value: "Steep",
+                    initialPreview: steepPlane,
+                    selectedPreview: steepPlaneSelected
                 },
                 {
                     id: "ideal",
                     label: "Ideal",
-                    value: "Ideal"
+                    value: "Ideal",
+                    initialPreview: idealPlane,
+                    selectedPreview: idealPlaneSelected
                 }
             ]
         },
@@ -732,14 +750,16 @@ export function QuestionProvider({ children }) {
                 {
                     name: "right",
                     label: "Patient Right",
+                    details: "Experiences clicking on their right",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.clicking.right
+                    value: dataState.clicking.right,
                 },
                 {
                     name: "left",
                     label: "Patient Left",
+                    details: "Experiences clicking on their left",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.clicking.left
+                    value: dataState.clicking.left,
                 },
                 {
                     name: "none",
@@ -760,14 +780,16 @@ export function QuestionProvider({ children }) {
                 {
                     name: "right",
                     label: "Patient Right",
+                    details: "Experiences popping on their right",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.popping.right
+                    value: dataState.popping.right,
                 },
                 {
                     name: "left",
                     label: "Patient Left",
+                    details: "Experiences popping on their left",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.popping.left
+                    value: dataState.popping.left,
                 },
                 {
                     name: "none",
@@ -788,14 +810,16 @@ export function QuestionProvider({ children }) {
                 {
                     name: "right",
                     label: "Patient Right",
+                    details: "Experiences locking on their right",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.locking.right
+                    value: dataState.locking.right,
                 },
                 {
                     name: "left",
                     label: "Patient Left",
+                    details: "Experiences locking on their left",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.locking.left
+                    value: dataState.locking.left,
                 },
                 {
                     name: "none",
@@ -813,8 +837,8 @@ export function QuestionProvider({ children }) {
         },
         {
             title: "Dental Measurements",
-            instructions: "Input all the following measurements:",
-            layout: "wrap",
+            instructions: "Input each of the following:",
+            layout: "wrap-row",
             type: "calculations",
             group: "dental",
             path: dataState.dental,
@@ -826,27 +850,27 @@ export function QuestionProvider({ children }) {
                     value: dataState.dental.overjet,
                 },
                 {
+                    name: "maxOpening",
+                    label: "Max Opening",
+                    criteria: "mm",
+                    value: dataState.dental.maxOpening,
+                },
+                {
                     name: "overbite",
                     label: "Overbite",
                     criteria: "%",
                     value: dataState.dental.overbite,
                 },
-                {
-                    name: "maxOpening",
-                    label: "Max Opening",
-                    criteria: "mm",
-                    value: dataState.dental.maxOpening,
-                }
             ]
         },
         {
-            title: "Model Classification (Patient Right)",
-            instructions: "Select the Centric Relationship (CR) for this quadrant:",
+            title: "Centric Relationship (Patient Right)",
+            instructions: "Select one of the following for this quadrant:",
             layout: "table",
             type: "radios",
-            name: "modelRight",
+            name: "crRight",
             callback: "STORE_AS_NESTED_DATA",
-            data: dataState.dental.modelRight,
+            data: dataState.dental.crRight,
             group: "dental",
             path: dataState.dental,
             options: [
@@ -882,13 +906,13 @@ export function QuestionProvider({ children }) {
             ]
         },
         {
-            title: "Model Classification (Patient Left)",
-            instructions: "Select the Centric Relationship (CR) for this quadrant:",
+            title: "Centric Relationship (Patient Left)",
+            instructions: "Select one of the following for this quadrant:",
             layout: "table",
             type: "radios",
-            name: "modelLeft",
+            name: "crLeft",
             callback: "STORE_AS_NESTED_DATA",
-            data: dataState.dental.modelLeft,
+            data: dataState.dental.crLeft,
             group: "dental",
             path: dataState.dental,
             options: [
@@ -924,46 +948,46 @@ export function QuestionProvider({ children }) {
             ]
         },
         {
-            title: "Model Hindrances",
+            title: "Occlusion Hindrances",
             instructions: 'Select all applicable from the following, when dental casts are held in "as if" Class I:',
             layout: "table",
             type: "checkbox",
-            group: "modelHindrances",
-            path: dataState.modelHindrances,
+            group: "occlusionHindrances",
+            path: dataState.occlusionHindrances,
             options: [
                 {
                     name: "constriction",
                     label: "Constriction",
                     details: "",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.modelHindrances.constriction,
+                    value: dataState.occlusionHindrances.constriction,
                 },
                 {
                     name: "incisalDeflection",
                     label: "Incisal Deflection",
                     details: "",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.modelHindrances.incisalDeflection
+                    value: dataState.occlusionHindrances.incisalDeflection
                 },
                 {
                     name: "crossbite",
                     label: "Crossbite",
                     details: "",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.modelHindrances.crossbite
+                    value: dataState.occlusionHindrances.crossbite
                 },
                 {
                     name: "openBite",
                     label: "Open Bite",
                     details: "",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.modelHindrances.openBite
+                    value: dataState.occlusionHindrances.openBite
                 },
                 {
                     name: "none",
                     label: "None",
                     callback: "STORE_AS_EMPTY_NESTED_COLLECTION_DATA",
-                    value: dataState.modelHindrances.none
+                    value: dataState.occlusionHindrances.none
                 }
             ]
         },
@@ -1001,8 +1025,8 @@ export function QuestionProvider({ children }) {
         },
         {
             title: "Space Shortage Calculation",
-            instructions: "Input all of the following based on caliper measurements:",
-            layout: "wrap",
+            instructions: "Input each of the following based on caliper measurements:",
+            layout: "wrap-column",
             type: "calculations",
             group: "spaceShortage",
             path: dataState.spaceShortage,
@@ -1088,7 +1112,7 @@ export function QuestionProvider({ children }) {
         },
         {
             title: "Confirm Evaluation Agreement",
-            instructions: "Review our terms and policy before agreeing:",
+            instructions: "You will receive a confirmation email and invoice after submission:",
             layout: "layers",
             type: "review",
             options: [

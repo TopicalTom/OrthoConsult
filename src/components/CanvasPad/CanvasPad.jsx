@@ -77,15 +77,15 @@ function CanvasPad() {
                     ref={sigPad} 
                 />
             </div>
-            <div className="canvas__container canvas__container--buttons">
+            <div className="canvas__actions">
                 <button
-                    className="case__button case__button--capture"
+                    className="canvas__button"
                     type="button"
                     onClick={upload}>
                     Upload
                 </button>
                 <button
-                    className="case__button case__button--clear"
+                    className="canvas__button"
                     type="button"
                     onClick={clear}>
                     Clear

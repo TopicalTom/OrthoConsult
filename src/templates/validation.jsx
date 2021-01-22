@@ -84,13 +84,13 @@ const validation = {
         maxOpening: false
     },
     step26: {
-        modelRight: false,
+        crRight: false,
     },
     step27: {
-        modelLeft: false,
+        crLeft: false,
     },
     step28: {
-        modelHindrances: false,
+        occlusionHindrances: false,
     },
     step29: {
         development: false,
