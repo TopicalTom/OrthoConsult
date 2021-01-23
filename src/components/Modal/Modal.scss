@@ -32,7 +32,7 @@
             "modal-details modal-details "
             "modal-actions modal-actions";
         grid-template-columns: 1fr 48px;
-        grid-template-rows: 2rem 1fr 3rem;
+        grid-template-rows: 2rem 1fr 43px;
         row-gap: 2rem;
 
         &--delete {
@@ -41,7 +41,7 @@
                 "modal-details modal-details "
                 "modal-actions modal-actions";
             grid-template-columns: 1fr 48px;
-            grid-template-rows: 2rem min-content 3rem;
+            grid-template-rows: 2rem min-content 43px;
             row-gap: 2rem;
         }
     }
@@ -102,9 +102,11 @@
 
     &__actions {
         grid-area: modal-actions;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
+        display: grid;
+        grid-template-columns: repeat(2, 120px);
+        gap: 1rem;
+        justify-content: right;
+        height: 43px;
     }
 
     &__input {
@@ -144,7 +146,6 @@
 
     &__button {
         cursor: pointer;
-        font-weight: bold;
         font-size: 0.9rem;
         width: 120px;
         height: 48px;
@@ -153,6 +154,7 @@
         transition: box-shadow 0.2s ease;
 
         &--submit {
+            font-weight: bold;
             background-color: #2997ff;
             border: 1.5px solid #2997ff;
             color: white;
@@ -179,6 +181,7 @@
         }
 
         &--destructive {
+            font-weight: bold;
             background-color: #d32f2f;
             border: 1.5px solid #d32f2f;
             color: white;

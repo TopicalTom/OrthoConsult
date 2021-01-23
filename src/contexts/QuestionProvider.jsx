@@ -1,16 +1,6 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
 import { useEvaluation } from "./EvaluationProvider";
 
-// Assets
-import forwardPosture from '../assets/vectors/PatientLeft.svg';
-import forwardPostureSelected from '../assets/vectors/PatientLeftSelected.svg';
-import idealPosture from '../assets/vectors/PatientLeft.svg';
-import idealPostureSelected from '../assets/vectors/PatientLeftSelected.svg';
-import steepPlane from '../assets/vectors/PatientLeft.svg';
-import steepPlaneSelected from '../assets/vectors/PatientLeftSelected.svg';
-import idealPlane from '../assets/vectors/PatientLeft.svg';
-import idealPlaneSelected from '../assets/vectors/PatientLeftSelected.svg';
-
 // Custom Step Management Hook
 const QuestionContext = createContext(0);
 
@@ -161,7 +151,6 @@ export function QuestionProvider({ children }) {
                             id: "otherRace",
                             label: "Other",
                             value: "Other",
-                            field: true
                         }
                     ]
                 }
@@ -503,16 +492,12 @@ export function QuestionProvider({ children }) {
                 {
                     id: "forward",
                     label: "Forward Head Posture",
-                    value: "Forward Cant",
-                    initialPreview: forwardPosture,
-                    selectedPreview: forwardPostureSelected
+                    value: "Forward Head Posture",
                 },
                 {
                     id: "ideal",
                     label: "Ideal",
-                    value: "Ideal",
-                    initialPreview: idealPosture,
-                    selectedPreview: idealPostureSelected
+                    value: "Ideal Head Posture",
                 },
             ]
         },
@@ -684,7 +669,7 @@ export function QuestionProvider({ children }) {
         {
             title: "Mandibular Plane Angle",
             instructions: "Select one of the following:",
-            layout: "duo",
+            layout: "triple",
             type: "radios",
             name: "mandibularPlane",
             callback: "STORE_AS_NESTED_DATA",
@@ -697,15 +682,17 @@ export function QuestionProvider({ children }) {
                     label: "Steep",
                     details: "High angle",
                     value: "Steep",
-                    initialPreview: steepPlane,
-                    selectedPreview: steepPlaneSelected
+                },
+                {
+                    id: "low",
+                    label: "Low",
+                    details: "Low angle",
+                    value: "Low",
                 },
                 {
                     id: "ideal",
                     label: "Ideal",
                     value: "Ideal",
-                    initialPreview: idealPlane,
-                    selectedPreview: idealPlaneSelected
                 }
             ]
         },

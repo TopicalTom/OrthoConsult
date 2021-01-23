@@ -8,13 +8,6 @@ const OptionGroup = (props) => {
     const { validationDispatch } = useValidation();
     const { name, group, path, callback, label, details, value, check, initialPreview, selectedPreview } = props;
     const [ selected, setSelected ] = useState(value);
-    const icon = selected ? selectedPreview : initialPreview
-
-    const booleanCriteria = selected === true ? "selected" : "default";
-
-    useEffect(() => {
-        setSelected(value)
-    }, [value, path, currentQuestion]);
 
     function handleInput() {
         
@@ -35,7 +28,14 @@ const OptionGroup = (props) => {
                 value: path
             }
         })
-    }
+    };
+
+    const icon = selected ? selectedPreview : initialPreview
+    const booleanCriteria = selected === true ? "selected" : "default";
+
+    useEffect(() => {
+        setSelected(value)
+    }, [value, path, currentQuestion]);
 
     return (
         <div 

@@ -52,7 +52,7 @@ const Option = (props) => {
                     id={name} 
                     name={name}
                     checked={selected === value}
-                    value={value}
+                    //value={value}
                 />
                 <div className="option__context">
                     <label 

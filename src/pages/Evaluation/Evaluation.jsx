@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./Evaluation.scss";
 
 // Contexts
@@ -10,7 +10,15 @@ import Header from '../../components/EvaluationHeader/EvaluationHeader';
 import Form from '../../components/EvaluationForm/EvaluationForm';
 import Records from '../../components/EvaluationRecords/EvaluationRecords';
 
-function Evaluation() {    
+const Evaluation = () => { 
+    
+    // Prevents unintended leaving
+    useEffect(() => {
+        const doubleCheck = window.onbeforeunload = () => true
+
+        return () => doubleCheck();
+    }, []);
+
     return (
         <main className="evaluation">
             <EvaluationProvider> 
