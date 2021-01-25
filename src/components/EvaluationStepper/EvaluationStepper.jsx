@@ -4,16 +4,29 @@ import { useQuestion } from '../../contexts/QuestionProvider';
 import { useValidation } from "../../contexts/ValidationProvider";
 
 function EvaluationStepper() {
-    const { dataState } = useEvaluation();
+    const { dataState, loading } = useEvaluation();
     const { currentQuestion, previous, next, length } = useQuestion();
     const { validationState } = useValidation();
     const [ valid, setValid ] = useState(null);
+    const [ price, setPrice ] = useState("");
 
     useEffect(() => {
         const validate = validationState[`step${currentQuestion}`]
         const status = Object.keys(validate).every((k) => validate[k])
         setValid(status)
     }, [validationState, currentQuestion]);
+
+    useEffect(() => {
+        const { caseType, cephalometric } = dataState;
+
+        if (caseType === "New Case" && cephalometric === true) {
+            setPrice("200")
+        } else if ((caseType === "Ongoing Case" && cephalometric === true) || caseType === "New Case") {
+            setPrice("150")
+        } else {
+            setPrice("100")
+        }
+    }, [dataState]);
 
     return (
         <div className="evaluation__stepper">
@@ -47,7 +60,7 @@ function EvaluationStepper() {
                         evaluation__button--${dataState && dataState.confirmation ? "active" : "inactive"}`}
                     disabled={!dataState.confirmation}
                     type="submit">
-                    Submit & Pay ($150)
+                    {loading ? "Loading" : `Submit Case ($${price})`}
                 </button>
             }
         </div>

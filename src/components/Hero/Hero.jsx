@@ -12,11 +12,11 @@ function Hero() {
             <div className="hero__container">
                 <h1 
                     className="hero__heading">
-                    Orthodontic Case Evaluations
+                    Orthopedic & Orthodontic Case Evaluations
                 </h1>
                 <p 
                     className="hero__mission">
-                    Providing streamlined and informative case evaluations to provide your clients with the best service. Never has orthodontic treatment been better.
+                    Providing our clients with a unique consultation service backed by 50+ years of experience in Functional Jaw Orthopedics (FJO).
                 </p>
                 <div className="hero__actions">
                     <Link 

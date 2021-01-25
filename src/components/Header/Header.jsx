@@ -17,11 +17,9 @@ function Header() {
 
     // Handles On Scroll actions
     useEffect(() => {
-        const minimum = 10;
         const isScrolledDown = previousScroll < currentScroll;
-        const isMinimumScrolled = currentScroll > minimum;
 
-        setHide(isScrolledDown && isMinimumScrolled
+        setHide(isScrolledDown && currentScroll > 10
             ?   "hidden"
             :   ""
         );
@@ -51,7 +49,7 @@ function Header() {
                             offset={-170}
                             duration={500}
                             to="results">
-                            Results
+                            Why us
                         </ScrollLink>
                     </li>
                     <li>
@@ -63,7 +61,7 @@ function Header() {
                             offset={-170}
                             duration={500}
                             to="service">
-                            Service
+                            Platform
                         </ScrollLink>
                     </li>
                     <li>
@@ -76,6 +74,18 @@ function Header() {
                             duration={500}
                             to="about">
                             Background
+                        </ScrollLink>
+                    </li>
+                    <li>
+                        <ScrollLink
+                            activeClass="active"
+                            className="header__link"
+                            spy={true}
+                            smooth={true}
+                            offset={-170}
+                            duration={500}
+                            to="contact">
+                            Testimonies
                         </ScrollLink>
                     </li>
                     <li>

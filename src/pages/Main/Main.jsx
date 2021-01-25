@@ -20,7 +20,7 @@ function Main() {
             theme: "dark",
             title: "Turn a problematic case into a success story",
             subtitle: "Visible results",
-            details: "We have a proven track record of taking orthodontic challenges and turning them into success stories. Sign up and see how we can make a difference.",
+            details: "Diagnosis is the key to a successful treatment outcome. Each case evaluation outlines a comprehensive treatment outline from Phase I through to retention. You ",
             content: <ImageCarousel />
         },
         {
@@ -28,6 +28,13 @@ function Main() {
             theme: "light",
             title: "Say goodbye to paper and hello to the cloud",
             subtitle: "Digital delivery",
+            content: <VideoCarousel />
+        },
+        {
+            type: "service",
+            theme: "light",
+            title: "Don't just take our word, hear it from others",
+            subtitle: "Trust based",
             content: <VideoCarousel />
         },
         {

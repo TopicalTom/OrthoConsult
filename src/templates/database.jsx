@@ -1,5 +1,5 @@
 const database = { 
-    timestamp: new Date().toDateString(),
+    timestamp: new Date(),
     caseType: "",
     patient: "",
     patientInfo: {

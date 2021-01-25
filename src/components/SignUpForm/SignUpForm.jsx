@@ -165,7 +165,7 @@ const SignUpForm = () => {
                             <label 
                                 className="signup__confirmation" 
                                 forHTML="confirm">
-                                Check here to indicate that you have read and agree to our <a className="signup__link">Terms of Service</a> and <a className="signup__link">Privacy Policy</a>
+                                Check here to confirm you are a General Practitioner (GP) and that you agree to our <a className="signup__link">Terms of Service</a> and <a className="signup__link">Privacy Policy</a>
                             </label>
                         </div>
                         <button 
