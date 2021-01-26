@@ -16,17 +16,13 @@ const Testimonies = () => {
             name: "test2",
             src: test2
         },
-        {
-            name: "test3",
-            src: test3
-        }
     ]
     
     return (
         <>
             {testimonies.map((item) => {
                 return (
-                    <img className={`testimonies testimonies--${item.name}`} src={item.src}/>
+                    <div className={`testimonies testimonies--${item.name}`} />
                 )
             })}
         </>

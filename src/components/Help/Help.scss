@@ -2,9 +2,8 @@
 
 .help {
     position: relative;
-    height: 1wpx;
+    //height: 12px;
     width: 12px;
-    //align-self: center;
     margin-bottom: 5px;
     margin-left: 6px;
 
@@ -27,8 +26,12 @@
         width: 380px;
         padding: 1rem 2rem;
         text-align: center;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
-        border-radius: 6px;
+        height: min-content;
+        background: white;
+        box-shadow: rgba(82, 82, 82, 0.2) 0px 0px 30px;
+        border-radius: 4px;
+        padding-inline-start: 0px;
+        border: 1px solid #EEEEEE;
         justify-self: center;
         -webkit-animation: fadeIn 0.5s;
         animation: fadeIn 0.5s;
@@ -60,7 +63,7 @@
             border-width: 5px;
             border-style: solid;
             border-color: transparent transparent white transparent;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 20px 30px;
+            box-shadow: rgba(82, 82, 82, 0.2) 0px 0px 30px;
         }
     }
 

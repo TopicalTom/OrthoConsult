@@ -40,7 +40,9 @@ function CanvasPad() {
                 id: "1234",
                 name: "Range Of Motion",
                 preview: file,
-                size: 34
+                meta: {
+                    size: 3400
+                }
             }
         })
 
@@ -54,7 +56,7 @@ function CanvasPad() {
 
     useEffect(() => {
         setDrawing(sigPad.current.fromData(rangeOfMotion));
-        
+
         recordDispatch ({
             type: "CAPTURE_DRAWING",
             payload: {

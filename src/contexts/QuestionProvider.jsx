@@ -1,4 +1,5 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
+import { useAuth } from '../contexts/AuthProvider';
 import { useEvaluation } from "./EvaluationProvider";
 
 // Custom Step Management Hook
@@ -11,6 +12,7 @@ export function useQuestion() {
 // Handles Form Step Changes
 export function QuestionProvider({ children }) {
     const { dataState } = useEvaluation();
+    const { currentUser } = useAuth();
 
     const questions = [
         {
@@ -1098,17 +1100,16 @@ export function QuestionProvider({ children }) {
             ]
         },
         {
-            title: "Confirm Evaluation Agreement",
-            instructions: "You will receive a confirmation email and invoice after submission:",
+            title: "Confirm Agreement",
+            instructions: `You will receive your invoice by email (${currentUser.email}) after submission:`,
             layout: "layers",
             type: "review",
             options: [
                 {
                     id: "confirm",
                     name: "confirmation",
-                    label: "I agree to the ",
+                    label: "I agree to the terms of service and privacy policy",
                     value: dataState.confirmation,
-                    link: "terms of service"
                 }
             ]
         },

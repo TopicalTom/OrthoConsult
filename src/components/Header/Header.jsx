@@ -43,7 +43,7 @@ function Header() {
                     <li>
                         <ScrollLink
                             activeClass="active"
-                            className="header__link"
+                            className={`header__link header__link--${toggle}`}
                             spy={true}
                             smooth={true}
                             offset={-170}
@@ -55,7 +55,7 @@ function Header() {
                     <li>
                         <ScrollLink
                             activeClass="active"
-                            className="header__link"
+                            className={`header__link header__link--${toggle}`}
                             spy={true}
                             smooth={true}
                             offset={-170}
@@ -67,7 +67,7 @@ function Header() {
                     <li>
                         <ScrollLink
                             activeClass="active"
-                            className="header__link"
+                            className={`header__link header__link--${toggle}`}
                             spy={true}
                             smooth={true}
                             offset={-170}
@@ -79,19 +79,7 @@ function Header() {
                     <li>
                         <ScrollLink
                             activeClass="active"
-                            className="header__link"
-                            spy={true}
-                            smooth={true}
-                            offset={-170}
-                            duration={500}
-                            to="contact">
-                            Testimonies
-                        </ScrollLink>
-                    </li>
-                    <li>
-                        <ScrollLink
-                            activeClass="active"
-                            className="header__link"
+                            className={`header__link header__link--${toggle}`}
                             spy={true}
                             smooth={true}
                             offset={-170}

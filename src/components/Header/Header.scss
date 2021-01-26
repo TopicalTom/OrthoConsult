@@ -55,9 +55,15 @@
     }
 
     &__link {
-        //padding: 0.5rem 0;
-        color: #4e4e4e;
         cursor: pointer;
+
+        &--active {
+            color: #4e4e4e;;
+        }
+
+        &--inactive {
+            color: white;
+        }
     }
 
     &__watermark {

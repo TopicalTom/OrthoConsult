@@ -11,11 +11,17 @@ export function useAuth() {
 // Handles Firebase Auth Requests
 export const AuthProvider = ({ children }) => {
     const [ currentUser, setCurrentUser ] = useState();
+    const [ verified, setVerified ] = useState();
     const [ loading, setLoading ] = useState(true);
 
     // Handles SignUp Requests
     const signup = (email, password) => {
         return auth.createUserWithEmailAndPassword(email, password);
+    }
+
+    // Handles Email Verification
+    const confirmEmail = () => {
+        return auth.currentUser.sendEmailVerification();
     }
 
     // Handles Login Requests
@@ -28,6 +34,11 @@ export const AuthProvider = ({ children }) => {
         return auth.signOut()
     }
 
+    // Handles Email Verification
+    const verifyClient = () => {
+        return auth.currentUser.sendEmailVerification();
+    }
+
     // Links SignUp with New Client Doc in FireStore
     const createClient = async (userAuth, additionalData) => {
         if (!userAuth) { return };
@@ -37,15 +48,16 @@ export const AuthProvider = ({ children }) => {
     
         if (!snapShot.exists) {
             const { displayName, email } = userAuth;
-            const createdAt = new Date();
+            const createdOn = new Date();
     
             try {
                 await clientRef.set({
                     displayName,
                     email,
-                    createdAt,
+                    createdOn,
                     ...additionalData
                 });
+                verifyClient();
             } catch (error) {
                 console.log('error creating user', error.message)
             }
@@ -65,19 +77,24 @@ export const AuthProvider = ({ children }) => {
                         id: snapShot.id,
                         ...snapShot.data()
                     });
-                    setLoading(false)
                 })
+
+                if (userAuth.emailVerified === false ) {
+                    setVerified(false)  
+                } else {
+                    setVerified(true)
+                }
             } else {
                 setCurrentUser(userAuth)
-                setLoading(false)
             }
+            setLoading(false)
         });
 
         return () => unsubscribe();
     }, []);
 
     return (
-        <AuthContext.Provider value={{ currentUser, signup, createClient, login, logout, loading }}>
+        <AuthContext.Provider value={{ currentUser, verified, signup, createClient, login, logout, loading }}>
             {children}
         </AuthContext.Provider>
     )

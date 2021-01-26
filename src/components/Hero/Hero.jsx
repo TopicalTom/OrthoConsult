@@ -12,11 +12,11 @@ function Hero() {
             <div className="hero__container">
                 <h1 
                     className="hero__heading">
-                    Orthopedic & Orthodontic Case Evaluations
+                    Orthopedic & Orthodontic Case Consultation
                 </h1>
                 <p 
                     className="hero__mission">
-                    Providing our clients with a unique consultation service backed by 50+ years of experience in Functional Jaw Orthopedics (FJO).
+                    Providing our clients with online case evaluations & consultation backed by 50+ years of experience in Functional Jaw Orthopedics (FJO).
                 </p>
                 <div className="hero__actions">
                     <Link 
@@ -27,6 +27,20 @@ function Hero() {
                         }>
                         Get started
                     </Link>
+                    <Link 
+                        className="hero__button hero__button--secondary" 
+                        to="/contact">
+                        Contact us
+                    </Link>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Hero;
+
+/*
                     <ScrollLink 
                         className="hero__button hero__button--secondary" 
                         activeClass="active"
@@ -37,10 +51,5 @@ function Hero() {
                         to="results">
                         Learn more
                     </ScrollLink>
-                </div>
-            </div>
-        </section>
-    );
-};
 
-export default Hero;
+*/

@@ -1,5 +1,14 @@
 @import "../../styles/baseline.scss";
 
+@keyframes scrollHint {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(20%);
+    }
+}
+
 .scrollbar {
     position: fixed;
     width: 100vw;
@@ -31,13 +40,15 @@
     }
 
     &__label {
-        color: white;
+        color: rgba(255, 255, 255, 0.5);
         padding-bottom: 4px;
+        transition: opacity 0.3s ease;
         opacity: 0;
     }
 
     &__icon {
         fill: white;
         height: 20px;
+        animation: scrollHint 0.8s linear infinite alternate;
     }
 }

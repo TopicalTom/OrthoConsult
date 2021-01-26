@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useEvaluation } from '../../contexts/EvaluationProvider';
 import { useModal } from '../../contexts/ModalProvider';
 import readableFileSize from '../../utils/readableFileSize';
@@ -10,47 +10,65 @@ function EvaluationRecords() {
     const { recordState } = useEvaluation();
     const { records } = recordState;
     const { toggleModal, modalDispatch } = useModal();
+    const [ currentSize, setCurrentSize ] = useState(null);
 
     function handleClick() {
         toggleModal()
         modalDispatch({ type: "REQUIRED_RECORDS" })
     }
 
-    console.log(records)
+    useEffect(() => {
+        const total = records.reduce((total, file) => total + file.meta.size, 0)
+        const current = readableFileSize(total);
+
+        console.log(total)
+        console.log(current)
+
+        setCurrentSize(current)
+    }, [records]);
 
     return (
         <aside className="evaluation__records">
             {records.length !== 0
                 ?   <>
-                        <h3 className="evaluation__sub">Dental Records</h3>
-                        <p className="evaluation__category">Static</p>
-                        <ul className="evaluation__files">
-                            {records.filter(item => item.name === "Range Of Motion").map((item) => {
-                                return (
-                                    <File
-                                        preview={item.preview}
-                                        id={item.id}
-                                        name={item.name}
-                                        size="13 KB"
-                                    />
-                                )
-                            })}
-                        </ul>
-                        <p className="evaluation__category">Uploaded ({records.filter(item => item.name !== "Range Of Motion").length})</p>
-                        <ul className="evaluation__files">
-                            {records.filter(item => item.name !== "Range Of Motion").map((item) => {
-                                const readableSize = readableFileSize(item.meta.size);
-                                console.log(item.id)
-                                return (
-                                    <File
-                                        preview={item.preview}
-                                        id={item.id}
-                                        name={item.name}
-                                        size={readableSize}
-                                    />
-                                )
-                            })}
-                        </ul>
+                        <div className="evaluation__head">
+                            <h3 className="evaluation__sub">Dental Records</h3>
+                        </div>
+                        <div className="evaluation__container">
+                            <p className="evaluation__category">Default</p>
+                            <ul className="evaluation__files">
+                                {records.filter(item => item.name === "Range Of Motion").map((item) => {
+                                    return (
+                                        <File
+                                            preview={item.preview}
+                                            id={item.id}
+                                            name={item.name}
+                                            size="13 KB"
+                                        />
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                        <div>
+                            <p className="evaluation__category">Uploaded ({records.filter(item => item.name !== "Range Of Motion").length})</p>
+                            <ul className="evaluation__files">
+                                {records.filter(item => item.name !== "Range Of Motion").map((item) => {
+                                    const readableSize = readableFileSize(item.meta.size);
+                                    console.log(item.id)
+                                    return (
+                                        <File
+                                            preview={item.preview}
+                                            id={item.id}
+                                            name={item.name}
+                                            size={readableSize}
+                                        />
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                        <div className="evaluation__foot">
+                            <span className="evaluation__counter">Upload limit: {currentSize} / 2 MB</span>
+                        </div>
                     </>
                 :   <div className="evaluation__empty">
                         <p 

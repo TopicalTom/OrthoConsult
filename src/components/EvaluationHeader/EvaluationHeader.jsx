@@ -5,7 +5,7 @@ import { useModal } from '../../contexts/ModalProvider';
 import { useQuestion } from '../../contexts/QuestionProvider';
 
 // Icons
-import cancel from "../../assets/icons/cancel.svg";
+import cancel from "../../assets/icons/close.svg";
 
 function EvaluationHeader() {    
     const { currentQuestion, length } = useQuestion();
@@ -24,7 +24,10 @@ function EvaluationHeader() {
                 className="evaluation__close"
                 type="button"
                 onClick={() => handleClick()}>
-                X
+                <img 
+                    className="evaluation__icon"
+                    src={cancel}
+                />
             </button>
             <h2 
                 className="evaluation__title">

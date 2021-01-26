@@ -26,7 +26,7 @@
             "hero-title"
             "hero-caption"
             "hero-actions";
-        grid-template-rows: repeat(2, min-content) 43px;
+        grid-template-rows: repeat(2, min-content) 50px;
         row-gap: 2.5rem;
     }
 
@@ -60,7 +60,7 @@
     &__actions {
         grid-area: hero-actions;
         display: grid;
-        grid-template-columns: repeat(2, 120px);
+        grid-template-columns: 200px 120px;
         justify-content: stretch;
         gap: 1rem;
     }
@@ -71,16 +71,17 @@
         text-align: center;
         border-radius: 4px;
         font-size: 0.9rem;
-        padding: 0.75rem 1rem;
+        padding: 0.95rem 1rem;
         border: none;
         font-weight: 500;
         transition: box-shadow 0.2s ease;
-        color: white;
         width: 100%;
 
         &--primary {
-            backdrop-filter: blur(20px);
-            background-color: rgba(255,255,255,0.15);
+            //backdrop-filter: blur(20px);
+            //background-color: rgba(255,255,255,0.15);
+            background: white;
+            color: #6b6b6b;
             box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 0px;
 
             &:hover {
@@ -96,6 +97,7 @@
             background-color: rgba(255, 255, 255, 0.021);
             border: 1px solid rgba(255, 255, 255, 0.158);
             box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 0px;
+            color: white;
 
             &:hover {
                 box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 4px;

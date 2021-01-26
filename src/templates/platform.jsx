@@ -8,26 +8,26 @@ const platform = [
     {
         category: "Submit cases",
         details: "Using our custom evaluation form, provide patient details and records.",
-        video: send,
-        screen: "Evaluation form"
+        preview: send,
+        screen: "Evaluation Form"
     },
     {
         category: "Pay securely",
         details: "Payments are handled by Stripe, a leading provider in secure online payments.",
-        video: cases,
-        screen: "Stripe checkout screen"
-    },
-    {
-        category: "Review records",
-        details: "This is information about this accolade and why people should care.",
-        video: study,
-        screen: "Dashboard, Client Cases"
+        preview: resources,
+        screen: "Stripe Hosted Invoice"
     },
     {
         category: "Get feedback",
         details: "This is information about this accolade and why people should care.",
-        video: resources,
-        screen: "Personal Email"
+        preview: cases,
+        screen: "Dashboard, Client Cases"
+    },
+    {
+        category: "And more...",
+        details: "This is information about this accolade and why people should care.",
+        preview: study,
+        screen: "Dashboard, Self Study"
     }
 ]
 

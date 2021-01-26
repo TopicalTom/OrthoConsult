@@ -33,6 +33,7 @@
         align-items: top;
         display: flex;
         flex-direction: row;
+        border: 1px solid white;
 
         &--horizontal {
             height: 50px;
@@ -40,6 +41,7 @@
 
         &:hover {
             background-color: rgba(41, 152, 255, 0.05);
+            border: 1px solid rgba(41, 152, 255, 0.05);
         }
     }
 

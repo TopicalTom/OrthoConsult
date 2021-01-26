@@ -1,16 +1,28 @@
 @import "../../styles/baseline.scss";
 
+@keyframes slideIn {
+    0% {
+        transform: translateY(5%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .file {
     display: flex;
     flex-direction: row;
     width: 100%;
     padding: 1rem 1.5rem;
     border-bottom: 0.5px solid #F2F3F7;
+    animation: 0.8s ease 0s 1 slideIn;
 
     &:hover {
         background-color: #EEEEEE;
 
-        & > div:nth-of-type(2) > button {
+        & > div:nth-of-type(3) > button {
             opacity: 1;
         }
     }
@@ -22,6 +34,10 @@
         border: 0.5px solid #F2F3F7;
         margin-right: 1rem;
         background-color: white;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        outline: none;
     }
 
     &__details {
@@ -47,17 +63,14 @@
 
     &__actions {
         position: relative;
-        //border: none;
-        //background: #EEE;
         width: 1rem;
-        //height: 100%;
-        //opacity: 0;
         justify-self: start;
         margin-bottom: auto;
+        padding-top: 0.5rem;
     }
 
     &__button {
-        margin-top: 0.5rem;
+        //margin-top: 0.5rem;
         border: none;
         background: #EEE;
         width: 1rem;

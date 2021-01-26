@@ -31,13 +31,6 @@ function Main() {
             content: <VideoCarousel />
         },
         {
-            type: "service",
-            theme: "light",
-            title: "Don't just take our word, hear it from others",
-            subtitle: "Trust based",
-            content: <VideoCarousel />
-        },
-        {
             type: "about",
             theme: "light",
             title: "Leverage 40+ years of dental knowledge",

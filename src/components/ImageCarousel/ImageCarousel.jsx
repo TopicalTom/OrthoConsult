@@ -28,9 +28,12 @@ function ImageCarousel() {
 
     // Loops images if autoPlay = true
     useEffect(() => {
-        if (autoPlay) {
-            setTimeout(() => next(), 4000);
+        const changePreview = () => {
+            if (autoPlay) {
+                setTimeout(() => next(), 6000);
+            }
         }
+        return changePreview();
     }, [index, autoPlay]);
 
     return (

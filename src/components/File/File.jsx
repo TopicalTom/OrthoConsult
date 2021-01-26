@@ -27,10 +27,10 @@ const File = (props) => {
     }
 
     return (
-        <article className="file">
-            <img 
+        <article className="file" onMouseLeave={() => setIsOpen(false)}>
+            <div 
                 className="file__preview" 
-                src={preview}
+                style={{backgroundImage: `url(${preview})`}}
             />
             <div className="file__details">
                 <span 
@@ -52,7 +52,7 @@ const File = (props) => {
                     />
                 </button>
                 {isOpen &&
-                    <ul className="file__dropdown">
+                    <ul className="file__dropdown" onMouseLeave={() => setIsOpen(false)}>
                         <li 
                             className="file__option">
                             Edit name

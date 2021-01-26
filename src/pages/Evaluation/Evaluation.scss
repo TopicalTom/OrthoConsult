@@ -1,5 +1,16 @@
 @import "../../styles/baseline.scss";
 
+@keyframes slideIn {
+    0% {
+        transform: translateY(5%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .evaluation {
     width: 100vw;
     display: grid;
@@ -28,16 +39,29 @@
 
     &__close {
         width: 35px;
-        font-weight: 500;
-        color: #999999;
+        height: 35px;
         background: none;
         border: none;
-        font-size: 1.4rem;
         cursor: pointer;
+        outline: none;
+        justify-self: center;
+        align-self: center;
+        justify-content: center;
+        align-content: center;
+        padding: 0px;
+
+        &:hover {
+            background: #EEEEEE;
+            border-radius: 100px;
+        }
     }
 
     &__icon {
-        width: 70px;
+        margin-top: 4px;
+        width: 18px;
+        height: 18px;
+        justify-self: center;
+        align-self: center;
     }
 
     &__placeholder {
@@ -121,7 +145,6 @@
         column-gap: 1rem;
         row-gap: 0.5rem;
         width: 800px;
-        //margin: 4rem 7rem;
     }
 
     &__step {
@@ -240,6 +263,7 @@
         display: grid;
         justify-items: stretch;
         height: 300px;
+        animation: 0.8s ease 0s 1 slideIn;
 
         &--default {
             grid-template-columns: repeat(2, 1fr);
@@ -317,14 +341,14 @@
                 "signature-pad signature-buttons"
                 ". signature-buttons";
             grid-template-rows: 1fr 20px;
-            grid-template-columns: 1fr 150px;
+            grid-template-columns: 1fr 120px;
             column-gap: 2rem;
         }
 
         &--offset-alt {
             grid-template-areas: 
                 "signature-pad signature-buttons";
-            grid-template-columns: 1fr 150px;
+            grid-template-columns: 1fr 120px;
             column-gap: 2rem;
         }
 
@@ -376,11 +400,11 @@
         justify-items: stretch;
         grid-template-areas: 
             "evaluation-buttons . evaluation-submit";
-        //grid-template-columns: repeat(2, 105px) 1fr 230px;
         grid-template-columns: 300px 1fr 230px;
         column-gap: 1rem;
         width: 100%;
         padding: 2rem 0rem 1rem 0rem;
+        animation: 0.8s ease 0s 1 slideIn;
     }
 
     &__buttons {
@@ -390,6 +414,10 @@
         grid-template-columns: repeat(2, 105px);
         column-gap: 1rem;
         width: 100%;
+    }
+
+    &__container {
+        position: relative;
     }
 
     &__button {
@@ -497,13 +525,13 @@
         overflow: hidden;
         overflow-y: scroll;
         position: relative;
-        padding: 2rem 0rem;
+        //padding: 2rem 0rem;
     }
 
     &__files {
         display: flex;
         flex-direction: column;
-        padding: 1rem 0rem 2rem 0rem;
+        padding: 0rem;
 
         & > article:last-child {
             border-bottom: none;
@@ -511,15 +539,56 @@
     }
 
     &__category {
-        padding-left: 1.5rem;
+        padding: 2rem 1.5rem 0.5rem 1.5rem;
         color: #3a3a3a;
+        position: sticky;
+        z-index: 600;
+        top: 2.5rem;
+        background-color: #fafafa;
+    }
+
+    &__head {
+        position: sticky;
+        width: 100%;
+        top: 0;
+        right: 0;
+        height: 4rem;
+        background-color: #fafafa;
+        z-index: 900;
+        display: flex;
+        align-content: center;
+        padding: 2.5rem 1.5rem 1rem 1.5rem;
+    }
+
+    &__foot {
+        position: sticky;
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 3rem;
+        background-color: #fafafa;
+        z-index: 900;
+        margin-top: auto;
+        display: flex;
+        align-content: center;
+        padding: 2rem 1.5rem;
+        text-align: center;
     }
 
     &__sub {
         font-weight: 700;
-        padding-left: 1.5rem;
+        //padding-left: auto 1.5rem;
         color: #3a3a3a;
-        margin-bottom: 1rem;
+        //margin-bottom: 1rem;
+    }
+
+    &__counter {
+        font-weight: 700;
+        color: #3a3a3a;
+        width: 100%;
+        align-self: center;
+        padding: auto;
     }
 
     &__empty {
