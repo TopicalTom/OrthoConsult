@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState, createContext, useEffect } from 'react';
+import React, { useContext, useReducer, useState, createContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { auth, firestore, storage } from "../firebase";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
@@ -82,7 +82,7 @@ export const EvaluationProvider = ({ children }) => {
         await Promise
             .all([
                 uploadData(newCaseId),
-                // uploadRecords(newCaseId),
+                //uploadRecords(newCaseId),
                 linkClient(newCaseId)
             ])
             .then(() => {
@@ -103,11 +103,6 @@ export const EvaluationProvider = ({ children }) => {
                 setLoading(false)
             );
     };
-
-    useEffect(() => {
-        
-
-    }, [dataState.caseType, dataState.cephalometric])
 
     return (
         <EvaluationContext.Provider 

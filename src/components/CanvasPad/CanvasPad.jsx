@@ -30,14 +30,17 @@ function CanvasPad() {
     
     // Adds 
     const upload = () => {
-        const file = sigPad.current.getTrimmedCanvas()
+        const file = sigPad.current.getCanvas().toDataURL('image/png');
+
+        console.log(file)
 
         recordDispatch ({
             type: "ADD_DRAWING",
             payload: {
                 id: "1234",
                 name: "Range Of Motion",
-                preview: file
+                preview: file,
+                size: 34
             }
         })
 
@@ -51,7 +54,7 @@ function CanvasPad() {
 
     useEffect(() => {
         setDrawing(sigPad.current.fromData(rangeOfMotion));
-
+        
         recordDispatch ({
             type: "CAPTURE_DRAWING",
             payload: {
@@ -59,7 +62,7 @@ function CanvasPad() {
                 drawing: sigPad.current.toData()
             }
         })
-    }, [drawing])
+    }, [drawing]);
 
     return (
         <div className="canvas">

@@ -27,9 +27,9 @@ function UploadFile() {
                     type: "ADD_RECORD",
                     payload: { 
                         id: id, 
-                        name: `Name ${id}`,
+                        name: file.name,
                         preview: URL.createObjectURL(file),
-                        file: file
+                        meta: file
                     }
                 })
 

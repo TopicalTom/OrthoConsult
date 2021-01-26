@@ -50,7 +50,7 @@ function EvaluationSteps() {
             value: `${recordState && recordState.records.length} provided`
         },
         {
-            step: "Confirm & Pay",
+            step: "Confirm & Submit",
             number: "5",
             range: currentQuestion === (length - 1),
             threshold: currentQuestion >= (length - 1),
