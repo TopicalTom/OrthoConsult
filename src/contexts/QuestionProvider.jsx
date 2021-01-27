@@ -322,7 +322,7 @@ export function QuestionProvider({ children }) {
             ]
         },
         {
-            title: "Patient Medications",
+            title: "Patient Medicated",
             instructions: "Indicate if the patient is using pain medications to alleviate their underlying issues:",
             layout: "layer",
             type: "treatment",
@@ -358,19 +358,19 @@ export function QuestionProvider({ children }) {
             instructions: "Explain the treatment request(s):",
             layout: "stack",
             type: "concerns",
-            group: "treatment",
+            group: "patientInfo",
             path: dataState.patientInfo,
             options: [
                 {
                     name: "patientConcerns",
                     label: "Patient's Concerns",
-                    value: dataState.treatment.patientConcerns,
+                    value: dataState.patientInfo.patientConcerns,
                 },
                 {
                     name: "guardianConcerns",
                     label: "Guardian's Concerns (optional)",
                     placeholder: "",
-                    value: dataState.treatment.guardianConcerns,
+                    value: dataState.patientInfo.guardianConcerns,
                 },
             ]
         },
@@ -1063,7 +1063,6 @@ export function QuestionProvider({ children }) {
             options: [
                 {
                     name: "type",
-                    //label: "Treatment Type",
                     data: dataState.treatment.type,
                     list: [
                         {

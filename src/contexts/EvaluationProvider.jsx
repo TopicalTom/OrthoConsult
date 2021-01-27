@@ -43,14 +43,26 @@ export const EvaluationProvider = ({ children }) => {
     const uploadRecords = (newCaseId) => {
         const storageRef = storage.ref(newCaseId);
         {recordState.records.map((item) => {
-            storageRef.child(item.id)
-                .put(item.file)
-                .then(() => {
-                    console.log("Records Uploaded")
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
+
+            if (item.id !== "base64") {
+                storageRef.child(item.id)
+                    .put(item.meta)
+                    .then(() => {
+                        console.log("Records Uploaded")
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            } else {
+                storageRef.child(item.name)
+                    .putString(item.meta.file, 'data_url')
+                    .then(() => {
+                        console.log("Records Uploaded")
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }
         })}
     }
 
@@ -82,7 +94,7 @@ export const EvaluationProvider = ({ children }) => {
         await Promise
             .all([
                 uploadData(newCaseId),
-                //uploadRecords(newCaseId),
+                uploadRecords(newCaseId),
                 linkClient(newCaseId)
             ])
             .then(() => {

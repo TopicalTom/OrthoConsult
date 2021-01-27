@@ -11,6 +11,7 @@ function EvaluationRecords() {
     const { records } = recordState;
     const { toggleModal, modalDispatch } = useModal();
     const [ currentSize, setCurrentSize ] = useState(null);
+    const [ totalBytes, setTotalBytes ] = useState(null);
 
     function handleClick() {
         toggleModal()
@@ -20,11 +21,8 @@ function EvaluationRecords() {
     useEffect(() => {
         const total = records.reduce((total, file) => total + file.meta.size, 0)
         const current = readableFileSize(total);
-
-        console.log(total)
-        console.log(current)
-
-        setCurrentSize(current)
+        setTotalBytes(total);
+        setCurrentSize(current);
     }, [records]);
 
     return (
@@ -35,26 +33,26 @@ function EvaluationRecords() {
                             <h3 className="evaluation__sub">Dental Records</h3>
                         </div>
                         <div className="evaluation__container">
-                            <p className="evaluation__category">Default</p>
+                            <p className="evaluation__category">Provided</p>
                             <ul className="evaluation__files">
                                 {records.filter(item => item.name === "Range Of Motion").map((item) => {
+                                    const readableSize = readableFileSize(item.meta.size);
                                     return (
                                         <File
                                             preview={item.preview}
                                             id={item.id}
                                             name={item.name}
-                                            size="13 KB"
+                                            size={readableSize}
                                         />
                                     )
                                 })}
                             </ul>
                         </div>
-                        <div>
+                        <div className="evaluation__container">
                             <p className="evaluation__category">Uploaded ({records.filter(item => item.name !== "Range Of Motion").length})</p>
                             <ul className="evaluation__files">
                                 {records.filter(item => item.name !== "Range Of Motion").map((item) => {
                                     const readableSize = readableFileSize(item.meta.size);
-                                    console.log(item.id)
                                     return (
                                         <File
                                             preview={item.preview}
@@ -67,7 +65,7 @@ function EvaluationRecords() {
                             </ul>
                         </div>
                         <div className="evaluation__foot">
-                            <span className="evaluation__counter">Upload limit: {currentSize} / 2 MB</span>
+                            <span className={`evaluation__counter evaluation__counter--${totalBytes < 2000000 ? "under" : "over"}`}>Upload limit: {currentSize} / 2 MB</span>
                         </div>
                     </>
                 :   <div className="evaluation__empty">

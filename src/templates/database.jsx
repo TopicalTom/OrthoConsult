@@ -13,6 +13,8 @@ const database = {
         medicated: "",
         medicationDetails: "",
         history: "",
+        patientConcerns: "",
+        guardianConcerns: "",
     },
     patientHabits: {
         mouthBreather: false,
@@ -94,8 +96,6 @@ const database = {
     treatment: {
         type: "",
         objective: "",
-        patientConcerns: "",
-        guardianConcerns: "",
     },
     cephalometric: false,
     confirmation: false

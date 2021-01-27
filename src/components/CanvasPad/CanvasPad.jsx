@@ -31,17 +31,19 @@ function CanvasPad() {
     // Adds 
     const upload = () => {
         const file = sigPad.current.getCanvas().toDataURL('image/png');
+        const size = file.length * (3/4);
 
         console.log(file)
 
         recordDispatch ({
             type: "ADD_DRAWING",
             payload: {
-                id: "1234",
+                id: "base64",
                 name: "Range Of Motion",
                 preview: file,
                 meta: {
-                    size: 3400
+                    file: file,
+                    size: size
                 }
             }
         })

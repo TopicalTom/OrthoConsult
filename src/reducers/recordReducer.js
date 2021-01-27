@@ -19,10 +19,13 @@ function recordReducer(recordState, action) {
                 
         // Adds drawing to records list (overrides previous)
         case "ADD_DRAWING":
+            const removeDuplicate = recordState.records
+                .filter(item => item.id !== action.payload.id);
+
             return {
                 ...recordState,
                 records: [
-                    ...recordState.records,
+                    ...removeDuplicate,
                     action.payload
                 ]
             }; 

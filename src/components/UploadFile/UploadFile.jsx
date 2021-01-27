@@ -29,9 +29,11 @@ function UploadFile() {
                         id: id, 
                         name: file.name,
                         preview: URL.createObjectURL(file),
-                        meta: file
+                        meta: file,
                     }
                 })
+
+                console.log(file)
 
                 validationDispatch ({
                     type: "CHECK_RECORDS",
