@@ -1,4 +1,5 @@
 import React, { useContext, useState, createContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { auth, firestore } from "../firebase";
 
 const AuthContext = createContext()
@@ -10,6 +11,7 @@ export function useAuth() {
 
 // Handles Firebase Auth Requests
 export const AuthProvider = ({ children }) => {
+    const history = useHistory();
     const [ currentUser, setCurrentUser ] = useState();
     const [ verified, setVerified ] = useState();
     const [ loading, setLoading ] = useState(true);
@@ -19,24 +21,19 @@ export const AuthProvider = ({ children }) => {
         return auth.createUserWithEmailAndPassword(email, password);
     }
 
-    // Handles Email Verification
-    const confirmEmail = () => {
-        return auth.currentUser.sendEmailVerification();
-    }
-
     // Handles Login Requests
     const login = (email, password) => {
-        return auth.signInWithEmailAndPassword(email, password)
+        return auth.signInWithEmailAndPassword(email, password);
     }
 
     // Handles Logout Requests
     const logout = () => {
-        return auth.signOut()
+        return auth.signOut();
     }
 
     // Handles Email Verification
-    const verifyClient = () => {
-        return auth.currentUser.sendEmailVerification();
+    const verifyClient = async () => {
+        return await auth.currentUser.sendEmailVerification();
     }
 
     // Links SignUp with New Client Doc in FireStore
@@ -74,7 +71,7 @@ export const AuthProvider = ({ children }) => {
 
                 clientRef.onSnapshot(snapShot => {
                     setCurrentUser({
-                        id: snapShot.id,
+                        uid: snapShot.id,
                         ...snapShot.data()
                     });
                 })
@@ -85,13 +82,15 @@ export const AuthProvider = ({ children }) => {
                     setVerified(true)
                 }
             } else {
-                setCurrentUser(userAuth)
+                setCurrentUser(userAuth);
             }
-            setLoading(false)
+            setLoading(false);
         });
 
         return () => unsubscribe();
     }, []);
+
+    if(loading) { return <div>Loading...</div> }
 
     return (
         <AuthContext.Provider value={{ currentUser, verified, signup, createClient, login, logout, loading }}>

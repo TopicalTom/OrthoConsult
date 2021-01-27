@@ -11,7 +11,6 @@ import Header from '../../components/DashboardHeader/DashboardHeader';
 import Bar from '../../components/DashboardBar/DashboardBar';
 
 // Pages
-import Patient from "../Patient/Patient";
 import Settings from "../Settings/Settings";
 import Account from "../Account/Account";
 import Education from '../Education/Education';

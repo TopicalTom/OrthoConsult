@@ -20,13 +20,16 @@ export function DashboardProvider({ children }) {
     const [ caseDetails, setCaseDetails ] = useState([]);
     const [ clientCases, setClientCases ] = useState([]);
 
+    console.log(currentUser)
+
     // Grabs All Client Cases on Load
     useEffect(() => {
-        const casesRef = firestore.collection('clients').doc(currentUser.uid).collection("cases")
+        const casesRef = firestore.collection('clients').doc(currentUser.uid).collection("cases");
 
         casesRef.get()
             .then((querySnapshot) => {
                 const data = querySnapshot.docs.map(doc => doc.data());
+                console.log(data)
                 setClientCases(data);
                 setCurrentCase(data[0].uid)
             })

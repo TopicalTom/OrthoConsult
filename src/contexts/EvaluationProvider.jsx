@@ -1,4 +1,5 @@
 import React, { useContext, useReducer, useState, createContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { auth, firestore, storage } from "../firebase";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
@@ -20,6 +21,7 @@ export function useEvaluation() {
 
 // Handles Case Evaluation Actions
 export const EvaluationProvider = ({ children }) => {
+    const history = useHistory();
     const initialData = database; 
     const initialRecords = records; 
     const [ dataState, dataDispatch ] = useReducer(dataReducer, initialData);
@@ -100,13 +102,14 @@ export const EvaluationProvider = ({ children }) => {
             .then(() => {
                 fetchFromAPI('create-invoice', {
                     body: { 
-                        customer_email: auth.currentUser.email, 
+                        customer_uid: auth.currentUser.uid, 
                         invoice_items: {
                             caseType: dataState.caseType,
                             cephalometric: dataState.cephalometric
                         }
                     },
                 });
+                history.push(`/dashboard/cases/${newCaseId}`);
             })
             .catch(error => {
                 console.log(error);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import { withRouter, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthProvider";
@@ -20,7 +20,7 @@ const validate = values => {
 }
 
 const LoginForm = () => {
-    const { login } = useAuth(); 
+    const { login, currentUser } = useAuth(); 
     const history = useHistory();
     const [ error, setError ] = useState(null);
     const initialValues = {
@@ -34,14 +34,18 @@ const LoginForm = () => {
 
         try {
             await login(email, password)
-            history.push('/dashboard');
             setSubmitting(false);
         } catch (error) {
-            console.log(error);
             setSubmitting(false);
             setError(error);
         }
     }
+
+    useEffect(() => {
+        if (currentUser) {
+            history.push('/dashboard')
+        }
+    }, [currentUser]);
     
     return (
         <Formik
