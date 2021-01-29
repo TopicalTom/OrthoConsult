@@ -2,12 +2,12 @@ import React from 'react';
 import "./Account.scss";
 
 // Layout
-import Page from '../../components/DashboardLayout/DashboardLayout';
+import Page from '../../components/DashboardPage/DashboardPage';
 
 // Components
 import Section from '../../components/DashboardSection/DashboardSection';
 
-function Account() {
+const Account = () => {
     return (
         <Page className="account" title="account">
             <Section className="account__section account__section--overview">

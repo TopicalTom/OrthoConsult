@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import "./Cases.scss";
 
 // Assets
@@ -7,14 +6,14 @@ import search from "../../assets/icons/search.svg";
 import cat from "../../assets/files/teeth.jpg";
 
 // Components
-import CaseList from '../../components/DashboardBar/DashboardBar';
-import Patient from '../Patient/Patient';
+import Nav from '../../components/CasesNav/CasesNav';
+import Case from '../Patient/Patient';
 
 const Cases = () => {
     return (
         <div className="cases">
-            <CaseList />
-            <Patient />
+            <Nav />
+            <Case />
         </div>
     );
 };

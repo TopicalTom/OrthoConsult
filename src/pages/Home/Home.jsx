@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/AuthProvider';
 import { useDashboard } from '../../contexts/DashboardProvider';
 
 // Layout
-import Page from '../../components/DashboardLayout/DashboardLayout';
+import Page from '../../components/DashboardPage/DashboardPage';
 
 // Components
 import Section from '../../components/DashboardSection/DashboardSection';
@@ -16,36 +16,32 @@ const Home = () => {
     const { clientCases } = useDashboard();
     const { currentUser } = useAuth();
     const welcomeUser = `Welcome, Dr. ${currentUser.displayName.split(" ").pop()}`;
-
+    
     const updates = [
         {
-            count: clientCases.filter(item => item.status === "Awaiting payment").length,
+            name: "payment",
+            type: "Awaiting payment",
             status: "Require payment",
             caption: "Cases that still have invoices you need to finish paying for",
             cta: "View invoices",
             link: "/dashboard/payments"
         },
         {
-            count: clientCases.filter(item => item.status === "Reviewing").length,
+            name: "review",
+            type: "Reviewing",
             status: "Being reviewed",
             caption: "Cases from you that we are actively working on feedback for",
             cta: "Contact us",
             link: "/dashboard/contact"
         },
         {
-            count: clientCases.filter(item => item.status === "Feedback provided").length,
+            name: "feedback",
+            type: "Feedback provided",
             status: "Have feedback",
             caption: "Cases with new feedback that have yet to be viewed by you",
             cta: "View most recent",
             link: "/dashboard/cases"
-        },
-        {
-            count: clientCases.length,
-            status: "Total submitted",
-            caption: "The number of active and archived cases connected to your account",
-            cta: "View archived",
-            link: "/dashboard/cases"
-        },
+        }
     ]
 
     const actions = [
@@ -64,13 +60,32 @@ const Home = () => {
         <Page className="home" title={welcomeUser}>
             <Section className="home__section home__section--overview">
                 <h3>Account overview</h3>
-                <div className="home__container home__container--overview">
+                <div className="home__overview">
+                    <ul>
+                        <li>
+                            <span>Total cases</span>
+                            <span>{clientCases.length}</span>
+                        </li>
+                        <li>
+                            <span>Course credits</span>
+                            <span>34pts</span>
+                        </li>
+                        <li>
+                            <span>Client since</span>
+                            <span>{currentUser.createdOn.seconds}</span>
+                        </li>
+                    </ul>
+                </div>
+            </Section>
+            <Section className="home__section home__section--updates">
+                <h3>Case status</h3>
+                <div className="home__container">
                     {updates.map(item => {
                         return (
                             <Link
-                                className="home__card"
+                                className={`home__card home__card--${item.name}`}
                                 to={item.link}>
-                                <h1>{item.count}</h1>
+                                <h1>{clientCases.filter(type => type.status === item.type).length}</h1>
                                 <h3>{item.status}</h3>
                                 <h4>{item.caption}</h4>
                                 <a>{item.cta}</a>
@@ -81,7 +96,7 @@ const Home = () => {
             </Section>
             <Section className="home__section home__section--actions">
                 <h3>Suggested actions</h3>
-                <div className="home__container home__container--actions">
+                <div className="home__container">
                     {actions.map(item => {
                         return (
                             <Link

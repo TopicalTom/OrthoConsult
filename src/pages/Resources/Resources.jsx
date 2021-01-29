@@ -2,7 +2,7 @@ import React from 'react';
 import "./Resources.scss";
 
 // Layout
-import Page from '../../components/DashboardLayout/DashboardLayout';
+import Page from '../../components/DashboardPage/DashboardPage';
 
 // Components
 import Section from '../../components/DashboardSection/DashboardSection';

@@ -2,14 +2,14 @@ import React from 'react';
 import "./Payments.scss";
 
 // Layout
-import Page from '../../components/DashboardLayout/DashboardLayout';
+import Page from '../../components/DashboardPage/DashboardPage';
 
 // Components
 import Section from '../../components/DashboardSection/DashboardSection';
 import Tabs from '../../components/DashboardTabs/DashboardTabs';
 import Table from '../../components/Table/Table';
 
-function Payments() {
+const Payments = () => {
 
     const tabs = [
         {

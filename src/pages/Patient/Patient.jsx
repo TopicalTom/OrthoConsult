@@ -1,21 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import "./Patient.scss";
 
 // Assets
-import search from "../../assets/icons/search.svg";
 import cat from "../../assets/files/teeth.jpg";
 
 // Components
 import Table from '../../components/Table/Table';
-import CaseList from '../../components/DashboardBar/DashboardBar';
-import Header from '../../components/DashboardHeader/DashboardHeader';
 import Section from '../../components/DashboardSection/DashboardSection';
 import Tabs from '../../components/DashboardTabs/DashboardTabs';
-import Button from '../../components/Button/Button';
-import Records from '../../components/CaseRecords/CaseRecords';
+import Records from '../../components/PatientRecords/PatientRecords';
 import Status from '../../components/DashboardStatus/DashboardStatus';
-import Page from '../../components/DashboardLayout/DashboardLayout';
+import Page from '../../components/DashboardPage/DashboardPage';
 
 const Patient = () => {
     

@@ -6,48 +6,41 @@
     justify-items: stretch;
     grid-template-columns: 260px 1fr;
 
+    // Dashboard Navigation Styles
     &__nav {
         background: linear-gradient(90deg, #1086F6, #0B79E6, #118DFD);
         height: 100vh;
-        padding: 3rem 0rem;
+        //padding: 3rem 0rem;
         display: grid;
         justify-items: stretch;
         grid-template-areas: 
-            ". watermark ."
-            "links links links"
-            " . . . "
-            "logout logout logout";
-        grid-template-columns: 2.4rem 1fr 2.4rem;
-        grid-template-rows: 10vh 1fr 1fr 44px;
-        row-gap: 1rem;
-    }
-
-    &__page {
-        display: grid;
-        justify-items: stretch;
-        grid-template-areas: 
-        " dashboard-header "
-        " dashboard-content";
-        grid-template-rows: 8rem 1fr;
-        row-gap: 2rem;
-        padding: 0rem 5rem;
-    }
-
-    &__label {
-        opacity: 0.5;
-        padding-bottom: 1rem;
+            "dashboard-watermark"
+            "dashboard-routes"
+            "dashboard-logout";
+        grid-template-rows: 5rem 1fr 8rem;
+        row-gap: 3rem;
     }
 
     &__watermark {
-        grid-area: watermark;
+        grid-area: dashboard-watermark;
         font-weight: bold;
         color: white;
         font-size: 1.5rem;
         width: 100%;
+        align-self: flex-end;
+        padding-left: 2rem;
+        height: 44px;
+
+        & > h2 {
+            height: 44px;
+            margin: auto 0px;
+            font-size: 1.6rem;
+            color: white;
+        }
     }
 
-    &__links {
-        grid-area: links;
+    &__routes {
+        grid-area: dashboard-routes;
         padding-inline-start: 0px;
         display: grid;
         justify-items: stretch;
@@ -59,12 +52,11 @@
             " . "
             "contact"
             " . "
-            "account"
             "payments"
             "legal"
             "settings";
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 44px) 1rem 44px 1rem repeat(4, 44px);
+        grid-template-rows: repeat(4, 44px) 1rem 44px 1rem repeat(3, 44px);
         row-gap: 0.2rem;
     }
 
@@ -74,9 +66,11 @@
         grid-template-areas: 
             "icon link";
         grid-template-columns: 44px 1fr;
-        height: 100%;
+        height: 44px;
         column-gap: 0.2rem;
         padding: 0rem 3rem 0rem 1.8rem;
+        outline: none;
+        cursor: pointer;
 
         &--active {
             backdrop-filter: brightness(85%);
@@ -87,6 +81,12 @@
             &:hover {
                 backdrop-filter: brightness(95%);
             }
+        }
+
+        &--logout {
+            width: 100%;
+            background: none;
+            border: none;
         }
     }
 
@@ -119,22 +119,73 @@
             position: absolute;
             padding: 0.85rem;
         }
+
+        &--logout {
+            height: 44px;
+        }
+    }
+
+    &__logout {
+        grid-area: dashboard-logout;
+        width: 100%;
+    }
+
+    // Dashboard Page Layout Styles
+    &__page {
+        display: grid;
+        justify-items: stretch;
+        grid-template-areas: 
+        " dashboard-header "
+        " dashboard-content";
+        grid-template-rows: 5rem 1fr;
+        row-gap: 4rem;
+        padding: 0rem 4rem;
+        height: 100%;
+    }
+
+    // Dashboard Header Styles
+    &__header {
+        display: grid;
+        justify-items: stretch;
+        align-content: flex-end;
+        grid-template-areas: 
+            "dashboard-title dashboard-searchbar dashboard-cta";
+        grid-template-columns: 1fr 200px 120px;
+        column-gap: 1rem;
+    }
+
+    &__title {
+        grid-area: dashboard-title;
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+
+    &__searchbar {
+        grid-area: dashboard-searchbar;
+        justify-self: end;
+        width: 200px;
+        position: relative;
+        height: 44px;
+    }
+
+    &__cta {
+        grid-area: dashboard-cta;
+    }
+
+    // Dashboard Content Styles
+    &__content {
+        grid-area: dashboard-content;
+    }
+
+    &__label {
+        opacity: 0.5;
+        padding-bottom: 1rem;
     }
 
     &__section {
         position: relative;
         height: auto;
         margin-bottom: 3rem;
-    }
-
-    &__header {
-        display: grid;
-        justify-items: stretch;
-        align-content: center;
-        grid-template-areas: 
-            "dashboard-title dashboard-searchbar dashboard-cta";
-        grid-template-columns: 1fr 200px 120px;
-        column-gap: 1rem;
     }
 
     &__subtitle {
@@ -163,14 +214,6 @@
         margin-top: 2rem;
     }
 
-    &__test {
-        text-transform: capitalize;
-    }
-
-    &__data {
-        padding-inline-start: 0px;
-    }
-
     &__row {
         display: flex;
         flex-direction: row;
@@ -178,184 +221,8 @@
         justify-content: space-between;
     }
 
-    &__title {
-        grid-area: dashboard-title;
-        font-size: 2rem;
-        text-transform: capitalize;
-
-        &--previous {
-            opacity: 0.6;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-
-    &__content {
-        grid-area: dashboard-content;
-        //padding: 0rem 5rem;
-        //height: calc(88vh - 3rem);
-
-        &--split {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            justify-content: stretch;
-            gap: 5rem;
-        }
-
-        &--full {
-            overflow: hidden;
-            overflow-y: scroll;
-        }
-
-        &--cases {
-            display: grid;
-            grid-template-areas: 
-                "case-patient case-overview"
-                "case-patient case-content";
-            grid-template-columns: 280px 1fr;
-            grid-template-rows: min-content 1fr;
-            justify-content: stretch;
-            gap: 5rem 2rem;
-        }
-    }
-
-    &__field {
-        //grid-area: search;
-        justify-self: end;
-        width: 200px;
-        font-family: inherit;
-        border-radius: 4px;
-        padding: 0.75rem 0.75rem 0.75rem 2.2rem;
-        background-color: #fafafa;
-        border: 1.5px solid #dbdbdb;
-        margin-bottom: 30px;
-        font-size: 1rem;
-        height: 44px;
-        transition: border-color 0.25s ease-in-out;
-        transition: width 0.4s ease-in-out;
-
-        &:hover {
-            border: 1.5px solid #868686;
-        }
-
-        &:focus {
-            transition: width 0.4s ease-in-out;
-            width: 100%;
-        }
-    }
-
-    &__searchbar {
-        grid-area: dashboard-searchbar;
-        justify-self: end;
-        width: 200px;
-        position: relative;
-        height: 44px;
-    }
-
-    &__logout {
-        grid-area: logout;
-        background: none;
-        border: none;
-        display: grid;
-        justify-items: stretch;
-        grid-template-areas: 
-            "icon link";
-        grid-template-columns: 44px 1fr;
-        height: 100%;
-        column-gap: 0.2rem;
-        padding: 0rem 3rem 0rem 1.8rem;
-        cursor: pointer;
-
-        &:hover {
-            backdrop-filter: brightness(90%);
-        }
-    }
-
     &__form {
         margin-top: 2rem;
-    }
-
-    &__cta {
-        grid-area: dashboard-cta;
-    }
-
-    &__cards,
-    &__cases {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        padding-inline-start: 0px;
-        justify-content: center;
-        padding: auto;
-        margin-top: 2rem;
-    }
-
-    &__videos {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        padding-inline-start: 0px;
-        justify-content: center;
-        padding: auto;
-        margin-top: 2rem;
-    }
-
-    &__video {
-        background-color: #f3f3f3;
-        height: 400px;
-        width: 100%;
-        border-radius: 1rem;
-    }
-
-    &__resources,
-    &__guides {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    &__payments {
-        display: grid;
-        justify-items: stretch;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    &__payment {
-        background-color: #f3f3f3;
-        height: 60px;
-        width: 100%;
-        border-radius: 1rem;
-    }
-
-    &__resource,
-    &__case {
-        background-color: #f3f3f3;
-        height: 180px;
-        width: 100%;
-        border-radius: 1rem;
-    }
-
-    &__action {
-        background-color: #f3f3f3;
-        height: 300px;
-        width: 100%;
-        border-radius: 1rem;
-    }
-
-    &__card,
-    &__guide {
-        background-color: #f3f3f3;
-        height: 240px;
-        width: 100%;
-        border-radius: 1rem;
     }
 }
 
