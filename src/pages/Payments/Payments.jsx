@@ -1,17 +1,42 @@
 import React from 'react';
-import "../Dashboard/Dashboard.scss";
+import "./Payments.scss";
 
-// Components 
+// Layout
+import Page from '../../components/DashboardLayout/DashboardLayout';
+
+// Components
+import Section from '../../components/DashboardSection/DashboardSection';
+import Tabs from '../../components/DashboardTabs/DashboardTabs';
 import Table from '../../components/Table/Table';
 
 function Payments() {
 
+    const tabs = [
+        {
+            title: "all"
+        },
+        {
+            title: "completed"
+        },
+        {
+            title: "pending"
+        },
+        {
+            title: "expired"
+        },
+    ]
+
     return (
-        <div className="dashboard__content">
-            <section className="dashboard__section">
-                <Table />
-            </section>
-        </div>
+        <Page className="payments" title="Payments">
+            <Section className="payments__section payments__section--overview">
+                <h3>Overview</h3>
+                <p>Coninue your education with our hosted education resources. Complete courses and gain credit.</p>
+            </Section>
+            <Tabs 
+                className="payments__section payments__section--invoices" 
+                tabs={tabs}>
+            </Tabs>
+        </Page>
     );
 };
 

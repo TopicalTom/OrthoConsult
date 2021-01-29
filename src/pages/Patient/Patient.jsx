@@ -1,241 +1,186 @@
-import React, { useState, useEffect } from 'react';
-import { useDashboard } from '../../contexts/DashboardProvider';
-import "../Dashboard/Dashboard.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import "./Patient.scss";
 
-function Patient() {
-    const { caseDetails, retrieveCase } = useDashboard();
-    const sections = [
+// Assets
+import search from "../../assets/icons/search.svg";
+import cat from "../../assets/files/teeth.jpg";
+
+// Components
+import Table from '../../components/Table/Table';
+import CaseList from '../../components/DashboardBar/DashboardBar';
+import Header from '../../components/DashboardHeader/DashboardHeader';
+import Section from '../../components/DashboardSection/DashboardSection';
+import Tabs from '../../components/DashboardTabs/DashboardTabs';
+import Button from '../../components/Button/Button';
+import Records from '../../components/CaseRecords/CaseRecords';
+import Status from '../../components/DashboardStatus/DashboardStatus';
+import Page from '../../components/DashboardLayout/DashboardLayout';
+
+const Patient = () => {
+    
+    //const evaluate = { patientHabits, underlyingIssues, dental,   };
+    //const treatment = { objective, patientConcerns, guardianConcerns };
+
+    const tabs = [
         {
-            name: "Patient Info",
-            blocks: [
-                {
-                    name: "Demographics",
-                    values: [
-                        {
-                            label: "Date of Birth",
-                            value: caseDetails.patientInfo && caseDetails.patientInfo.dob
-                        },
-                        {
-                            label: "Height",
-                            value: `${caseDetails.patientInfo && caseDetails.patientInfo.height} cm`
-                        },
-                        {
-                            label: "Gender",
-                            value: caseDetails.patientInfo && caseDetails.patientInfo.gender
-                        },
-                        {
-                            label: "Ethnicity",
-                            value: caseDetails.patientInfo && caseDetails.patientInfo.ethnicity
-                        },
-                    ]
-                },
-                {
-                    name: "Qualifiers",
-                    values: [
-                        {
-                            label: "Motivation",
-                            value: caseDetails.patientInfo && caseDetails.patientInfo.motivation
-                        },
-                        {
-                            label: "Hygiene",
-                            value: caseDetails.patientInfo && caseDetails.patientInfo.hygiene
-                        },
-                        {
-                            label: "Finances",
-                            value: caseDetails.patientInfo && caseDetails.patientInfo.finances
-                        }
-                    ]
-                }
-            ]
+            title: "records"
         },
         {
-            name: "Evaluation",
-            blocks: [
-                {
-                    name: "Patient Habits",
-                    values: caseDetails.habits && (Object.keys(caseDetails.habits).filter(value => caseDetails.habits[value] === true)).splice(",")
-                },
-                {
-                    name: "Dental Model",
-                    values: [
-                        {
-                            label: "Model Left",
-                            value: caseDetails.dental && caseDetails.dental.model && caseDetails.dental.model.left
-                        },
-                        {
-                            label: "Model Right",
-                            value: caseDetails.dental && caseDetails.dental.model && caseDetails.dental.model.right
-                        },
-                    ]
-                },
-                {
-                    name: "Malocclussion",
-                    values: [
-                        {
-                            label: "Overjet",
-                            value: `${caseDetails.dental && caseDetails.dental.model && caseDetails.dental.model.overjet} mm`
-                        },
-                        {
-                            label: "Overbite",
-                            value: `${caseDetails.dental && caseDetails.dental.model && caseDetails.dental.model.overbite} mm`
-                        },
-                    ]
-                },
-                {
-                    name: "Space Shortage",
-                    values: [
-                        {
-                            label: "UR Central",
-                            value: caseDetails.dental && caseDetails.dental.space && caseDetails.dental.space.urCentral
-                        },
-                        {
-                            label: "UL Central",
-                            value: caseDetails.dental && caseDetails.dental.space && caseDetails.dental.space.ulCentral
-                        },
-                        {
-                            label: "UR Lateral",
-                            value: caseDetails.dental && caseDetails.dental.space && caseDetails.dental.space.urLateral
-                        },
-                        {
-                            label: "UL Lateral",
-                            value: caseDetails.dental && caseDetails.dental.space && caseDetails.dental.space.ulLateral
-                        },
-                        {
-                            label: "Transpalatal",
-                            value: caseDetails.dental && caseDetails.dental.space && caseDetails.dental.space.transpalatal
-                        },
-                    ]
-                },
-                {
-                    name: "Joint",
-                    values: [
-                        {
-                            label: "Clicking",
-                            value: caseDetails.joint && (Object.keys(caseDetails.joint.clicking).filter(value => caseDetails.joint.clicking[value] === true)).splice(",")
-                        },
-                        {
-                            label: "Popping",
-                            value: caseDetails.joint && (Object.keys(caseDetails.joint.popping).filter(value => caseDetails.joint.popping[value] === true)).splice(",")
-                        },
-                        {
-                            label: "Locking",
-                            value: caseDetails.joint && (Object.keys(caseDetails.joint.locking).filter(value => caseDetails.joint.locking[value] === true)).splice(",")
-                        },
-                        {
-                            label: "Max Opening",
-                            value: caseDetails.joint && caseDetails.joint.maxOpening
-                        }
-                    ]
-                },
-                {
-                    name: "Face",
-                    values: [
-                        {
-                            label: "Profile",
-                            value: caseDetails.facial && caseDetails.facial.profile
-                        },
-                        {
-                            label: "Height",
-                            value: caseDetails.facial && caseDetails.facial.height
-                        },
-                        {
-                            label: "Features",
-                            value: caseDetails.facial && (Object.keys(caseDetails.facial.features).filter(value => caseDetails.facial.features[value] === true)).splice(",")
-                        },
-                    ]
-                }
-            ]
-        }
+            title: "evaluation"
+        },
+        {
+            title: "treatment"
+        },
     ]
 
-    useEffect(() => {
-        retrieveCase();
-    }, []);
+    const records = [
+        {
+            title: "evaluation",
+            image: cat
+        },
+        {
+            title: "records",
+            image: cat
+        },
+        {
+            title: "evaluation",
+            image: cat
+        },
+        {
+            title: "records",
+            image: cat
+        },
+        {
+            title: "evaluation",
+            image: cat
+        },
+        {
+            title: "records",
+            image: cat
+        },
+        {
+            title: "records",
+            image: cat
+        },
+        {
+            title: "evaluation",
+            image: cat
+        },
+        {
+            title: "records",
+            image: cat
+        },
+    ]
+
+    const habits = {
+        dob: "July 12th, 1995",
+        height: "90",
+        gender: "Male",
+        ethnicity: "White",
+    };
+
+    const ratings = {
+        motivation: "Low",
+        hygiene: "Poor",
+        finances: "Limited",
+    };
+
+    //Object.entries(patientHabits).forEach(([key, value]) => console.log(`${key}: ${value}`))
 
     return (
-        <div className="dashboard__content dashboard__content--patient">
-            {caseDetails
-                ?   <>
-                    {sections.map((section) => {
+        <Page className="patient" title="David Prue">
+            <Status 
+                className="patient__section patient__section--overview"
+                status="Awaiting payment"
+            />
+            <Section className="patient__section patient__section--patient">
+                <h3>Patient Info</h3>
+                <div className="patient__split">
+                <ul className="patient__list">
+                    {Object.entries(habits).map(([key, value]) => {
+                        if(key !== "height") {
+                            return (
+                                <li>
+                                    <p>
+                                        {key}
+                                    </p>
+                                    <p>
+                                        {value}
+                                    </p>
+                                </li>
+                            )
+                        } else {
+                            return (
+                                <li>
+                                    <p>
+                                        {key}
+                                    </p>
+                                    <p>
+                                        {value} cm
+                                    </p>
+                                </li>
+                            )
+                        }
+                    })}
+                </ul>
+                <ul className="patient__list">
+                    {Object.entries(ratings).map(([key, value]) => {
                         return (
-                            <section className="dashboard__section">
-                                <h3 className="dashboard__subtitle">{section.name}</h3>
-                                {section.blocks && section.blocks.map((block) => {
-                                    return (
-                                        <div>
-                                            <h4>{block.name}</h4>
-                                            <ul className="dashboard__data">
-                                                {block.values && block.values.map((number) => {
-                                                    return (
-                                                        <li className="dashboard__row">
-                                                            <p>{number.label}</p>
-                                                            <p>{number.value}</p>
-                                                        </li>
-                                                    )
-                                                })}
-                                                <p className="dashboard__test">{block.items}</p>
-                                            </ul>
-                                        </div>
-                                    )
-                                })}
-                            </section>
+                            <li>
+                                <p>
+                                    {key}
+                                </p>
+                                <p>
+                                    {value}
+                                </p>
+                            </li>
                         )
                     })}
-                    </>
-                :   <></>
-            }
-        </div>
+                </ul>
+
+                </div>
+            </Section>
+            <Tabs 
+                className="patient__section patient__section--data" 
+                tabs={tabs}>
+                <Records 
+                    className="patient__container"
+                    records={records} 
+                    id="records"
+                />
+                <div 
+                    className="patient__container"
+                    id="evaluation">
+                    <Section className="patient__section">
+                        <p>Airway</p>
+                    </Section>
+                    <Section className="patient__section">
+                        <p>Dental</p>
+                    </Section>
+                    <Section className="patient__section">
+                        <p>Skeletal</p>
+                    </Section>
+                </div>
+                <div 
+                    className="patient__container"
+                    id="treatment">
+                    <Section className="patient__section">
+                        <p>Type</p>
+                    </Section>
+                    <Section className="patient__section">
+                        <p>Objectives</p>
+                    </Section>
+                    <Section className="patient__section">
+                        <p>Patient Concerns</p>
+                    </Section>
+                    <Section className="patient__section">
+                        <p>Parent Concerns</p>
+                    </Section>
+                </div>
+            </Tabs>
+        </Page>
     );
 };
 
 export default Patient;
-
-/*
-import React, { useState, useEffect } from 'react';
-//import { useLocation } from "react-router-dom";
-//import { useAuth } from '../../contexts/AuthProvider';
-import { useDashboard } from '../../contexts/DashboardProvider';
-//import { firestore } from "../../firebase";
-import "../Dashboard/Dashboard.scss";
-
-function Patient() {
-    const { caseDetails, retrieveCase } = useDashboard();
-
-    useEffect(() => {
-        retrieveCase();
-    }, []);
-
-    return (
-        <div className="dashboard__content">
-            {caseDetails
-                ?   <>
-                        {caseDetails.patientInfo &&
-                            <section className="dashboard__section">
-                                <h3 className="dashboard__subtitle">Patient Overview</h3>
-                                <ul>
-                                    {Object.values(caseDetails.patientInfo).map((item) => {
-                                        return (
-                                        <li>{item}</li>
-                                        )
-                                    })}
-                                </ul>
-                            </section>
-                        }
-                        {caseDetails.habits &&
-                            <section className="dashboard__section">
-                                <h3 className="dashboard__subtitle">Patient Habits</h3>
-                                <ul>
-                                    {Object.values(caseDetails.habits).filter(habit => habit === false)
-                                    }
-                                </ul>
-                            </section>
-                        }
-                    </>
-                :   <p>You don't have permission to view these details</p>
-            }
-        </div>
-    );
-};
-
-export default Patient;
-*/

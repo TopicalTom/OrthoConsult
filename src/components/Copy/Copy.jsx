@@ -31,20 +31,7 @@ const Copy = (props) => {
                 {details}
             </p>
             <div className="copy__actions">
-                {buttons && buttons.map((item) => {
-                    const { type, link, authLink, text, authText, icon } = item;
-                    return (
-                        <Button 
-                            theme={theme}
-                            type={type}
-                            link={link} 
-                            authLink={authLink}
-                            text={text}  
-                            authText={authText}
-                            icon={icon}
-                        />
-                    )
-                })}
+
             </div>   
         </section>
     );

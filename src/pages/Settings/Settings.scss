@@ -1,6 +1,24 @@
 @import "../../styles/baseline.scss";
 
 .settings {
-    grid-area: bottom;
-    padding: 3rem 5rem;
+    grid-area: dashboard-content;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: stretch;
+    grid-template-areas: 
+        "settings-overview settings-option";
+    grid-template-columns: 240px 1fr;
+    column-gap: 6rem;
+
+    &__section {
+
+        &--overview {
+            grid-area: settings-overview;
+        }
+
+        &--option {
+            grid-area: settings-option;
+        }
+    }
 }

@@ -1,14 +1,24 @@
 import React from 'react';
-import "../../pages/Dashboard/Dashboard.scss";
+import "./Account.scss";
+
+// Layout
+import Page from '../../components/DashboardLayout/DashboardLayout';
+
+// Components
+import Section from '../../components/DashboardSection/DashboardSection';
 
 function Account() {
     return (
-        <div className="dashboard__content">
-            <section className="dashboard__section">
-                <h3 className="dashboard__subtitle">Overview</h3>
-                <p className="dashboard__details">Before sending us a message, make sure to read up on our FAQs as provided:</p>
-            </section>
-        </div>
+        <Page className="account" title="account">
+            <Section className="account__section account__section--overview">
+                <h3>Overview</h3>
+                <p>Before sending us a message, make sure to read up on our FAQs as provided:</p>
+            </Section>
+            <Section className="account__section account__section--option">
+                <h3>Overview</h3>
+                <p>Before sending us a message, make sure to read up on our FAQs as provided:</p>
+            </Section>
+        </Page>
     );
 };
 

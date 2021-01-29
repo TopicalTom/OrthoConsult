@@ -1,0 +1,84 @@
+@import "../../styles/baseline.scss";
+
+.status {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+    &__context {
+        width: 100%;
+        border-bottom: 1px solid #f3f3f3;
+        padding-bottom: 1rem;
+        background: white;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: row;
+        height: 40px;
+        justify-content: space-between;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        padding-inline-start: 0px;
+        margin-bottom: 1rem;
+
+        & > li {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+
+            & > p:nth-of-type(1) {
+                opacity: 0.5;
+                text-transform: capitalize;
+            }
+        }
+    }
+
+    &__label {
+        padding: 0.3rem 0.5rem;
+        border-radius: 4px;
+        margin-left: 0.5rem;
+        height: 25px;
+        font-size: 0.8rem;
+        transform: translateY(-5%);
+
+        &--default {
+            background: rgba(170, 248, 82, 0.438);
+
+            & > span {
+                color: rgba(82, 206, 25, 0.8);  
+            }
+        }
+
+        &--alert {
+            background: rgba(255, 229, 85, 0.438);
+            color: rgba(141, 134, 91, 0.8);  
+
+            & > span {
+                color: rgba(141, 134, 91, 0.8);  
+            }
+        }
+
+        &--important {
+            background: rgba(255, 96, 85, 0.438);
+
+            & > span {
+                color: rgba(141, 91, 91, 0.8);  
+            }
+        }
+    }
+
+    &__description {
+        width: 100%;
+        height: min-content;
+        margin-bottom: 2rem;
+        line-height: 1.6rem;
+    }
+
+    &__button {
+        width: 100%;
+    }
+}

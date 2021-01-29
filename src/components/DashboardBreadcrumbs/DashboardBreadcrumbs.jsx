@@ -10,7 +10,7 @@ import path from '../../assets/icons/dropdown.svg';
 const DashboardBreadcrumbs = () => {
     const { currentUser } = useAuth();
     const { page, subPage } = useDashboard();
-    const welcome = `Welcome, Dr. ${currentUser.displayName.split(" ")[1]}`;
+    const welcome = `Welcome, Dr. ${currentUser.displayName.split(" ").pop()}`;
 
     return (
         <nav className="dashboard__breadcrumbs">

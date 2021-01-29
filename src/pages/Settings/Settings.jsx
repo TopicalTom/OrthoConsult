@@ -1,14 +1,24 @@
 import React from 'react';
-import "../Dashboard/Dashboard.scss";
+import "./Settings.scss";
 
-function Settings() {
+// Layout
+import Page from '../../components/DashboardLayout/DashboardLayout';
+
+// Components
+import Section from '../../components/DashboardSection/DashboardSection';
+
+const Settings = () => {
     return (
-        <div className="dashboard__content">
-            <section className="dashboard__section">
-                <h3 className="dashboard__subtitle">Overview</h3>
-                <p className="dashboard__details">Before sending us a message, make sure to read up on our FAQs as provided:</p>
-            </section>
-        </div>
+        <Page className="settings" title="settings">
+            <Section className="settings__section settings__section--overview">
+                <h3>Overview</h3>
+                <p>Before sending us a message, make sure to read up on our FAQs as provided:</p>
+            </Section>
+            <Section className="settings__section settings__section--option">
+                <h3>Overview</h3>
+                <p>Before sending us a message, make sure to read up on our FAQs as provided:</p>
+            </Section>
+        </Page>
     );
 };
 

@@ -1,6 +1,69 @@
 @import "../../styles/baseline.scss";
 
 .button {
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    transition: box-shadow 0.2s ease;
+    display: block;
+    border: 1.5px solid;
+
+    &.primary {
+        color: white;
+        border-color:#1f92fd;
+        background-color: #1f92fd;
+        box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 0px;
+
+        &:hover {
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 4px;
+        }
+    
+        &:active {
+            border-color: #106abe;
+            background-color: #106abe;
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 2px;
+        }
+    }
+
+    &.secondary {
+        color: rgb(146, 146, 146);
+        border-color: #dbdbdb;
+        background-color: #fafafa;
+        box-shadow: rgba(207, 207, 207, 0.36) 0px 0px 0px 0px;
+
+        &:hover {
+            box-shadow: rgba(207, 207, 207, 0.36) 0px 0px 0px 4px;
+        }
+
+        &:active {
+            box-shadow: rgba(207, 207, 207, 0.36) 0px 0px 0px 2px;
+        }
+    }
+
+    &.destructive {
+        color: white;
+        border-color: #d32f2f;
+        background-color: #d32f2f;
+        box-shadow: rgb(255, 145, 145, 0.36) 0px 0px 0px 0px;
+
+        &:hover {
+            box-shadow: rgb(255, 145, 145, 0.36) 0px 0px 0px 4px;
+        }
+    
+        &:active {
+            box-shadow: rgb(255, 145, 145, 0.36) 0px 0px 0px 2px;
+        }
+    }
+}
+
+/*
+@import "../../styles/baseline.scss";
+
+.button {
     display: inline-block;
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
@@ -51,3 +114,5 @@
         }
     }
 }
+
+*/

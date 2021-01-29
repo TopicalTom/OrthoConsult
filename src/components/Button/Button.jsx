@@ -1,9 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import "./Button.scss";
+
+const Button = ( {children, ...props} ) => {
+    const { disabled, to, className, type } = props
+
+    if (!to) {
+        return (
+            <button className={`${className} ${type} ${disabled} button`}>
+                {children}
+            </button>
+        );
+    } else {
+        return (
+            <Link 
+                className={`${className} ${type} ${disabled} button`}
+                to={to}>
+                {children}
+            </Link>
+        );
+    }
+};
+
+export default Button;
+
+
+/*
+import React from 'react';
 import { useAuth } from "../../contexts/AuthProvider";
 import { Link } from "react-router-dom";
 import "./Button.scss";
 
-const Button = (props) => {
+const Button = ({children, props}) => {
     const { theme, type, link, authLink, text, authText, icon } = props
     const { currentUser } = useAuth();
 
@@ -25,8 +53,11 @@ const Button = (props) => {
                     </svg>
                 :   <></>
             }
+            {children}
         </Link>
     );
 };
 
 export default Button;
+
+*/

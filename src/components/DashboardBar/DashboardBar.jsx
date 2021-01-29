@@ -8,6 +8,64 @@ const DashboardBar = () => {
     const location = useLocation();
 
     return (
+        <nav className="cases__nav">
+            <div className="cases__items cases__items--selected">
+                <p className="cases__label">Currently viewing</p>
+                {clientCases && clientCases
+                    .filter(item => {
+                        return item.uid === location.pathname.split("/dashboard/cases/")[1]
+                    })
+                    .map(item => {
+                        return (
+                            <div className="cases__item cases__item--current">
+                                <Link
+                                    to={`/dashboard/cases/${item.uid}`}>
+                                    {item.patient}
+                                </Link>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+            <div className="cases__items cases__items--all">
+                <p className="cases__label">All Cases</p>
+                <ul className="cases__caselist">
+                    {clientCases && clientCases
+                        .filter(item => {
+                            return item.uid !== location.pathname.split("/dashboard/cases/")[1]
+                        })
+                        .map((item, index) => {
+                            return (
+                                <li className="cases__item cases__item--other" key={index}>
+                                    <Link
+                                        to={`/dashboard/cases/${item.uid}`}>
+                                        {item.patient}
+                                        {item.timestamp}
+                                    </Link>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
+        </nav>
+    );
+};
+
+export default DashboardBar;
+
+
+/*
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useDashboard } from '../../contexts/DashboardProvider';
+import "../../pages/Dashboard/Dashboard.scss";
+
+const DashboardBar = () => {
+    const { clientCases } = useDashboard();
+    const location = useLocation();
+
+    return (
         <nav className="dashboard__bar">
             <div className="dashboard__items dashboard__items--selected">
                 <p className="dashboard__label">Currently viewing</p>
@@ -52,3 +110,5 @@ const DashboardBar = () => {
 };
 
 export default DashboardBar;
+
+*/

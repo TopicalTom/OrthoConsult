@@ -12,12 +12,14 @@ import Records from '../../components/EvaluationRecords/EvaluationRecords';
 
 const Evaluation = () => { 
     
+    /*
     // Prevents unintended leaving
     useEffect(() => {
         const doubleCheck = window.onbeforeunload = () => true
 
         return () => doubleCheck();
     }, []);
+    */
 
     return (
         <main className="evaluation">

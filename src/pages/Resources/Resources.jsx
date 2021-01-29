@@ -1,64 +1,38 @@
 import React from 'react';
-import "../../pages/Dashboard/Dashboard.scss";
+import "./Resources.scss";
 
-function Resources() {
+// Layout
+import Page from '../../components/DashboardLayout/DashboardLayout';
+
+// Components
+import Section from '../../components/DashboardSection/DashboardSection';
+import Tabs from '../../components/DashboardTabs/DashboardTabs';
+
+const Resources = () => {
+
+    const tabs = [
+        {
+            title: "all"
+        },
+        {
+            title: "casts"
+        },
+        {
+            title: "files"
+        },
+    ]
 
     return (
-        <div className="dashboard__content">
-            <section className="dashboard__section">
-                <h3 className="dashboard__subtitle">Guides</h3>
-                <div className="dashboard__guides">
-                    <div className="dashboard__guide">
-                    
-                    </div>
-                    <div className="dashboard__guide">
-                    
-                    </div>                    
-            </div>
-            </section>
-            <section className="dashboard__section">
-                <h3 className="dashboard__subtitle">All</h3>
-                <div className="dashboard__resources">
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    <div className="dashboard__resource">
-                    
-                    </div>
-                    
-            </div>
-            </section>
-        </div>
+        <Page className="resources" title="resources">
+            <Section className="resources__section resouces__section--overview">
+                <h3>Overview</h3>
+                <p>Retrieve files and documents to enable your to provide the best experience.</p>
+            </Section>
+            <Tabs 
+                className="resources__section resources__section--options" 
+                tabs={tabs}>
+            </Tabs>
+        </Page>
     );
 };
 

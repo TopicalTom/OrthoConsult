@@ -1,24 +1,24 @@
 @import "../../styles/baseline.scss";
 
-.account {
+.payments {
     grid-area: dashboard-content;
     width: 100%;
     height: 100%;
     display: grid;
     justify-items: stretch;
     grid-template-areas: 
-        "account-overview account-option";
+        "payments-overview payments-invoices";
     grid-template-columns: 240px 1fr;
     column-gap: 6rem;
 
     &__section {
 
         &--overview {
-            grid-area: account-overview;
+            grid-area: payments-overview;
         }
 
-        &--option {
-            grid-area: account-option;
+        &--invoices {
+            grid-area: payments-invoices;
         }
     }
 }

@@ -1,0 +1,38 @@
+@import "../../styles/baseline.scss";
+
+.section {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    //margin-bottom: 2rem;
+
+    &.withScroll {
+        height: min-content;
+        overflow: hidden;
+        overflow-y: scroll;
+        height: auto;
+
+        & > h3 {
+            position: sticky;
+            overflow: scroll;
+            top: 0;
+        }
+    }
+
+    & > h3 {
+        width: 100%;
+        border-bottom: 1px solid #f3f3f3;
+        padding-bottom: 1rem;
+        background: white;
+        margin-bottom: 2rem;
+    }
+
+
+    & > p {
+        width: 100%;
+        height: min-content;
+        margin-bottom: 2rem;
+        line-height: 1.6rem;
+    }
+}

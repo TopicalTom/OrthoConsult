@@ -1,10 +1,84 @@
 @import "../../styles/baseline.scss";
 
 .home {
-    grid-area: bottom;
-    padding: 3rem 5rem;
+    grid-area: dashboard-content;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: stretch;
+    grid-template-rows: min-content 1fr;
+    row-gap: 4rem;
+
+    &__container {
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+
+        &--overview {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        &--actions {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+        background: white;
+        border-radius: 4px;
+        padding: 1rem 1.5rem;
+        border: 1.5px solid #e9e9e9;
+        transition: box-shadow 0.2s ease;
+        box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 0px;
+
+        &:hover {
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 4px;
+
+            & > a {
+                opacity: 1;
+            }
+        }
     
-    &__header {
-        font-size: 2.4rem;
+        &:active {
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 2px;
+        }
+
+        & > h4 {
+            margin-top: 0.25rem;
+        }
+
+        & > a {
+            margin-top: 0.5rem;
+            color: #1f92fd;
+            opacity: 0;
+        }
+    }
+
+    &__action {
+        display: flex;
+        flex-direction: column;
+        height: 280px;
+        background: white;
+        border-radius: 4px;
+        padding: 1rem 1.5rem;
+        border: 1.5px solid #e9e9e9;
+        transition: box-shadow 0.2s ease;
+        box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 0px;
+
+        &:hover {
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 4px;
+
+            & > a {
+                opacity: 1;
+            }
+        }
+    
+        &:active {
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 2px;
+        }
     }
 }

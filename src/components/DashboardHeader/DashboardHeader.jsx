@@ -1,5 +1,38 @@
 import React from 'react';
+import "../../pages/Dashboard/Dashboard.scss";
+
+// Components
+import Button from '../Button/Button';
+import SearchBar from '../SearchBar/SeachBar';
+
+const DashboardHeader = (props) => {
+    const { title } = props;
+
+    return (
+        <header className="dashboard__header">
+            <h2 
+                className="dashboard__title">
+                {title || "Cases"}
+            </h2>
+            <SearchBar className="dashboard__searchbar"/>
+            <Button 
+                className="dashboard__cta"
+                type="primary" 
+                to="/evaluation">
+                New case
+            </Button>
+    </header>
+    );
+};
+
+export default DashboardHeader;
+
+/*
+
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthProvider';
+import { useDashboard } from '../../contexts/DashboardProvider';
 import "../../pages/Dashboard/Dashboard.scss";
 
 // Assets
@@ -8,14 +41,15 @@ import search from "../../assets/icons/search.svg";
 
 // Components
 import Breadcrumbs from '../DashboardBreadcrumbs/DashboardBreadcrumbs';
-//import SearchBar from '../DashboardSearchBar/DashboardSearchBar';
-// SearchBar
-// Button
 
 const DashboardHeader = () => {
+    const { currentUser } = useAuth();
+    const { page, subPage } = useDashboard();
+    const welcome = `Welcome, Dr. ${currentUser.displayName.split(" ").pop()}`;
+
     return (
         <header className="dashboard__header" >
-            <Breadcrumbs />
+            <h2 className="dashboard__context">{page}</h2>
             <div className="dashboard__searchbar">
                 <img 
                     className="dashboard__icon dashboard__icon--search" 
@@ -27,16 +61,14 @@ const DashboardHeader = () => {
                 className="dashboard__cta" 
                 to="/evaluation">
                 New case
-                <img 
-                    className="dashboard__icon" 
-                    src={add}
-                />
             </Link>
         </header>
     );
 };
 
 export default DashboardHeader;
+
+*/
 
 /*
 import React, { useState } from 'react';
