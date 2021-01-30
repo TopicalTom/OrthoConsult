@@ -6,10 +6,8 @@ import "./Home.scss";
 import { useAuth } from '../../contexts/AuthProvider';
 import { useDashboard } from '../../contexts/DashboardProvider';
 
-// Layout
-import Page from '../../components/DashboardPage/DashboardPage';
-
 // Components
+import Page from '../../components/DashboardPage/DashboardPage';
 import Section from '../../components/DashboardSection/DashboardSection';
 
 const Home = () => {
@@ -28,15 +26,15 @@ const Home = () => {
         },
         {
             name: "review",
-            type: "Reviewing",
-            status: "Being reviewed",
+            type: "In review",
+            status: "In review",
             caption: "Cases from you that we are actively working on feedback for",
             cta: "Contact us",
             link: "/dashboard/contact"
         },
         {
             name: "feedback",
-            type: "Feedback provided",
+            type: "Reviewed",
             status: "Have feedback",
             caption: "Cases with new feedback that have yet to be viewed by you",
             cta: "View most recent",

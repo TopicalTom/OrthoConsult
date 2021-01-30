@@ -4,6 +4,7 @@ import "./Legal.scss";
 // Components
 import Page from '../../components/DashboardPage/DashboardPage';
 import Section from '../../components/DashboardSection/DashboardSection';
+import Button from '../../components/Button/Button';
 
 const Legal = () => {
     return (
@@ -22,6 +23,11 @@ const Legal = () => {
                     You have physically examined your patient and you are the certified and licensed dental practitioner and are solely responsible for the treatment and care of your patient.  
                     This hypothetical evaluation is merely an educational exercise to assist you in your overall practice development.  This evaluation is available only to customers of OrthoConsult Ltd. currently under the direct supervision of Dr. James Gordon Doner, DDS Registration #6577 maintaining compliance with the CDTO & RHPA, 1991 related to Laboratory Supervision Standards.
                 </p>
+                <Button 
+                    className="legal__button isSecondary" 
+                    type="action">
+                    Download
+                </Button>
             </Section>
             <Section className="legal__section legal__section--privacy">
                 <h3>Privacy Policy</h3>
@@ -31,6 +37,11 @@ const Legal = () => {
                     You have physically examined your patient and you are the certified and licensed dental practitioner and are solely responsible for the treatment and care of your patient.  
                     This hypothetical evaluation is merely an educational exercise to assist you in your overall practice development.  This evaluation is available only to customers of OrthoConsult Ltd. currently under the direct supervision of Dr. James Gordon Doner, DDS Registration #6577 maintaining compliance with the CDTO & RHPA, 1991 related to Laboratory Supervision Standards.
                 </p>
+                <Button 
+                    className="legal__button isSecondary" 
+                    type="action">
+                    Download
+                </Button>
             </Section>
         </Page>
     );

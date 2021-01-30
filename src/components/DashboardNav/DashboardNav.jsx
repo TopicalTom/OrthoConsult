@@ -4,73 +4,20 @@ import { useAuth } from '../../contexts/AuthProvider';
 import { useDashboard } from '../../contexts/DashboardProvider';
 import "../../pages/Dashboard/Dashboard.scss";
 
+// Templates
+import dashboard from '../../templates/dashboard';
+
 // Assets 
 import logoutIcon from '../../assets/icons/logout.svg';
-import home from "../../assets/icons/homealt.svg";
-import cases from "../../assets/icons/folder.svg";
-import resources from "../../assets/icons/printer.svg";
-import education from "../../assets/icons/education.svg";
-import legal from "../../assets/icons/cases.svg";
-import contact from "../../assets/icons/message.svg";
-import settings from "../../assets/icons/settings.svg";
-import payment from "../../assets/icons/payment.svg";
 
 const DashboardNav = () => {
     const { logout } = useAuth();
     const history = useHistory();
     const location = useLocation();
-    const { currentCase } = useDashboard();
-    const routes = [
-        {
-            id: "home",
-            name: "Home",
-            url: "/dashboard",
-            icon: home,
-        },
-        {
-            id: "cases",
-            name: "Cases",
-            url: `/dashboard/cases/${currentCase}`,
-            icon: cases,
-        },
-        {
-            id: "resources",
-            name: "Resources",
-            url: "/dashboard/resources",
-            icon: resources,
-        },
-        {
-            id: "education",
-            name: "Self Study",
-            url: "/dashboard/education",
-            icon: education,
-        },
-        {
-            id: "contact",
-            name: "Contact",
-            url: "/dashboard/contact",
-            icon: contact,
-        },
-        {
-            id: "payments",
-            name: "Payments",
-            url: "/dashboard/payments",
-            icon: payment,
-        },
-        {
-            id: "legal",
-            name: "Legal",
-            url: "/dashboard/legal",
-            icon: legal,
-        },
-        {
-            id: "settings",
-            name: "Settings",
-            url: "/dashboard/settings",
-            icon: settings,
-        }
-    ]
+    const { currentCase, clientCases } = useDashboard();
+    const routes = dashboard({currentCase, clientCases});
 
+    // Logs Account out and returns to Home
     const handleLogout = () => {
         logout()
         history.push('/');
@@ -86,11 +33,10 @@ const DashboardNav = () => {
                     return (
                         <li style={{gridArea: `${route.id}`}}>
                             <Link
-                                className={`dashboard__tab dashboard__tab--${
-                                    location.pathname === route.url
-                                        ?   "active"
-                                        :   "inactive"
-                                }`}
+                                className={`
+                                dashboard__tab 
+                                dashboard__tab--${route.id} 
+                                dashboard__tab--${location.pathname === route.url ? "active" : "inactive"}`}
                                 to={route.url}
                                 >
                                 <img 

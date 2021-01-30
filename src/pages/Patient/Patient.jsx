@@ -1,6 +1,9 @@
 import React from 'react';
 import "./Patient.scss";
 
+// Context
+import { useDashboard } from '../../contexts/DashboardProvider';
+
 // Assets
 import cat from "../../assets/files/teeth.jpg";
 
@@ -12,10 +15,17 @@ import Records from '../../components/PatientRecords/PatientRecords';
 import Status from '../../components/DashboardStatus/DashboardStatus';
 import Page from '../../components/DashboardPage/DashboardPage';
 
-const Patient = () => {
-    
-    //const evaluate = { patientHabits, underlyingIssues, dental,   };
-    //const treatment = { objective, patientConcerns, guardianConcerns };
+const Patient = (props) => {
+    const { status, createdAt, type } = props;
+    const submitted = createdAt.seconds
+    const caseOverview = { type, submitted, status };
+    const { caseDetails } = useDashboard();
+    const patient = caseDetails.patient;
+    const { dob, ethnicity, gender, height, motivation, hygiene, finances } = caseDetails.patientInfo;
+    const habits = { dob, ethnicity, gender, height };
+    const ratings = { motivation, hygiene, finances};
+
+    console.log(props)
 
     const tabs = [
         {
@@ -68,26 +78,15 @@ const Patient = () => {
         },
     ]
 
-    const habits = {
-        dob: "July 12th, 1995",
-        height: "90",
-        gender: "Male",
-        ethnicity: "White",
-    };
 
-    const ratings = {
-        motivation: "Low",
-        hygiene: "Poor",
-        finances: "Limited",
-    };
 
     //Object.entries(patientHabits).forEach(([key, value]) => console.log(`${key}: ${value}`))
 
     return (
-        <Page className="patient" title="David Prue">
+        <Page className="patient" title={patient}>
             <Status 
                 className="patient__section patient__section--overview"
-                status="Awaiting payment"
+                details={caseOverview}
             />
             <Section className="patient__section patient__section--patient">
                 <h3>Patient Info</h3>

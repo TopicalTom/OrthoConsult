@@ -13,7 +13,7 @@ import VideoCarousel from "../../components/VideoCarousel/VideoCarousel";
 import Testimonies from "../../components/Testimonies/Testimonies";
 import Footer from "../../components/Footer/Footer";
 
-function Main() {
+const Main = () => {
     const sections = [
         {
             type: "results",

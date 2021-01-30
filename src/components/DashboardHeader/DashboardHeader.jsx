@@ -16,8 +16,8 @@ const DashboardHeader = (props) => {
             </h2>
             <SearchBar className="dashboard__searchbar"/>
             <Button 
-                className="dashboard__cta"
-                type="primary" 
+                className="dashboard__cta isPrimary"
+                type="route" 
                 to="/evaluation">
                 New case
             </Button>

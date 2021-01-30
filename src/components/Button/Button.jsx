@@ -5,6 +5,36 @@ import "./Button.scss";
 const Button = ( {children, ...props} ) => {
     const { disabled, to, className, type } = props
 
+    switch (type) {
+
+        case 'external':
+            return (
+                <a href={to} className={`${className} ${disabled} button`}>
+                    {children}
+                </a>
+            );
+
+        case 'route':
+            return (
+                <Link 
+                    className={`${className} ${disabled} button`}
+                    to={to}>
+                    {children}
+                </Link>
+            );
+        
+        default:
+            return (
+                <button className={`${className} ${disabled} button`}>
+                    {children}
+                </button>
+            )
+    }
+};
+
+export default Button;
+
+/*
     if (!to) {
         return (
             <button className={`${className} ${type} ${disabled} button`}>
@@ -19,10 +49,9 @@ const Button = ( {children, ...props} ) => {
                 {children}
             </Link>
         );
-    }
-};
+    };
 
-export default Button;
+*/
 
 
 /*

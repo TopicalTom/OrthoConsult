@@ -42,22 +42,8 @@
     &__routes {
         grid-area: dashboard-routes;
         padding-inline-start: 0px;
-        display: grid;
-        justify-items: stretch;
-        grid-template-areas: 
-            "home"
-            "cases"
-            "resources"
-            "education"
-            " . "
-            "contact"
-            " . "
-            "payments"
-            "legal"
-            "settings";
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 44px) 1rem 44px 1rem repeat(3, 44px);
-        row-gap: 0.2rem;
+        display: flex;
+        flex-direction: column;
     }
 
     &__tab {
@@ -71,6 +57,7 @@
         padding: 0rem 3rem 0rem 1.8rem;
         outline: none;
         cursor: pointer;
+        margin-bottom: 0.2rem;
 
         &--active {
             backdrop-filter: brightness(85%);
@@ -83,6 +70,10 @@
             }
         }
 
+        &--education {
+            margin: 1rem 0rem;
+        }
+
         &--logout {
             width: 100%;
             background: none;
@@ -93,9 +84,10 @@
     &__link {
         grid-area: link;
         align-self: center;
-        justify-self: start;
+        justify-self: flex-start;
         color: rgba(255, 255, 255, 0.9);
         font-size: 1.2rem;
+        text-transform: capitalize;
     }
 
     &__icon {
@@ -140,7 +132,7 @@
         grid-template-rows: 5rem 1fr;
         row-gap: 4rem;
         padding: 0rem 4rem;
-        height: 100%;
+        height: 100vh;
     }
 
     // Dashboard Header Styles
