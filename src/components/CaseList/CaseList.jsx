@@ -1,26 +1,59 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useDashboard } from '../../contexts/DashboardProvider';
+import "../../pages/Cases/Cases.scss";
+
+// Components 
+import Nav from '../CaseNav/CaseNav';
+import Filter from '../CaseFilter/CaseFilter';
+
+const CaseList = () => {
+    const { filter } = useDashboard();
+
+    return (
+        <aside className="cases__list">
+            <header className="cases__header">
+                <h3>Cases</h3>
+                {filter !== "None (default)"
+                    ?   <h4>Filter: {filter}</h4>
+                    :   <h4>Sorted by most recent</h4>
+                }
+                <Filter className="cases__filter" />
+            </header>
+            <Nav filter={filter}/>
+        </aside>
+    );
+};
+
+export default CaseList;
+
+/*
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDashboard } from '../../contexts/DashboardProvider';
-import "../../pages/Dashboard/Dashboard.scss";
+import "../../pages/Cases/Cases.scss";
 
 const CaseList = ( ) => {
     const { clientCases, retrieveCase } = useDashboard();
     const { caseId } = useParams();
+    const [filter, setFilter] = useState("Date");
 
     useEffect(() => {
         retrieveCase(caseId);
     }, [caseId]);
 
     return (
-        <aside className="cases__nav">
+        <aside className="cases__list">
             <header className="cases__header">
                 <h3>Cases</h3>
-                <h4>Filtered by: Date</h4>
+                <h4>Filtered by: {filter}</h4>
+                <button>
+                    X
+                </button>
             </header>
-            <nav className="cases__container">
-            <div className="cases__items cases__items">
-                <ul className="cases__caselist">
+            <nav className="cases__nav">
+                <ul className="cases__items">
                     {clientCases && clientCases
+                        .filter(item => item.status === "In review")
                         .map((item, index) => {
                             const currentlySelected = item.uid === caseId ? "current" : "other";
                             const reverseName = item.patient.split(" ").reverse().join(", ");
@@ -37,13 +70,14 @@ const CaseList = ( ) => {
                         })
                     }
                 </ul>
-            </div>
             </nav>
         </aside>
     );
 };
 
 export default CaseList;
+
+*/
 
 /*
 import React, { useEffect } from 'react';

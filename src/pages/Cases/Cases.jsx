@@ -15,10 +15,6 @@ const Cases = () => {
     const hasCases = clientCases && clientCases.length > 0;
     const selectedCase = clientCases.find(item => item.uid === currentCase);
 
-    console.log(currentCase)
-    console.log(clientCases)
-    console.log(selectedCase)
-
     if (hasCases) {
         return (
             <div className="cases">

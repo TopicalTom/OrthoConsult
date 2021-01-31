@@ -7,9 +7,9 @@
     display: grid;
     justify-items: stretch;
     grid-template-areas: 
-        "test-overview test-patient"
-        "test-overview test-data";
-    grid-template-columns: 240px 1fr;
+        "patient-overview patient-overview patient-ref"
+        "patient-info patient-evaluation patient-evaluation";
+    grid-template-columns: 240px 1fr 335px;
     grid-template-rows: 12rem 1fr;
     gap: 4rem;
 
@@ -19,18 +19,23 @@
     }
 
     &__section {
-        &--patient {
-            grid-area: test-patient;
-        }
-
         &--overview {
-            grid-area: test-overview;
+            grid-area: patient-overview;
         }
 
-        &--data {
-            grid-area: test-data;
+        &--info {
+            grid-area: patient-info;
+        }
+
+        &--evaluation {
+            grid-area: patient-evaluation;
             height: inherit;
             max-height: calc(100vh - 25rem)
+        }
+
+        &--ref {
+            grid-area: patient-ref;
+            width: 100%;
         }
     }
 
@@ -45,7 +50,8 @@
         display: flex;
         flex-direction: column;
         padding-inline-start: 0px;
-        width: 45%;
+        //width: 45%;
+        width: 100%;
 
         & > li {
             display: flex;

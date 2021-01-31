@@ -19,7 +19,7 @@ const Home = () => {
         {
             name: "payment",
             type: "Awaiting payment",
-            status: "Require payment",
+            status: "Awaiting payment",
             caption: "Cases that still have invoices you need to finish paying for",
             cta: "View invoices",
             link: "/dashboard/payments"
@@ -76,7 +76,7 @@ const Home = () => {
                 </div>
             </Section>
             <Section className="home__section home__section--updates">
-                <h3>Case status</h3>
+                <h3>Cases overview</h3>
                 <div className="home__container">
                     {updates.map(item => {
                         return (
@@ -86,7 +86,6 @@ const Home = () => {
                                 <h1>{clientCases.filter(type => type.status === item.type).length}</h1>
                                 <h3>{item.status}</h3>
                                 <h4>{item.caption}</h4>
-                                <a>{item.cta}</a>
                             </Link>
                         )
                     })}

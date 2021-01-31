@@ -17,6 +17,23 @@
         grid-template-columns: 1fr;
     }
 
+    &__list {
+        position: relative;
+        height: 100vh;
+        //padding: 1rem 0rem;
+        display: grid;
+        grid-template-areas: 
+            "cases-header"
+            "cases-nav";
+        grid-template-columns: 1fr;
+        grid-auto-rows: 5rem 1fr;
+        //row-gap: 1rem;
+        border-right: 1px solid #e7e7e7;
+        background: #f3f3f3;
+        //background-color: #fafafa;
+    }
+
+    /*
     &__nav {
         position: relative;
         height: 100vh;
@@ -35,24 +52,38 @@
         overflow: hidden;
         overflow-y: scroll;
     }
+    */
 
     &__header {
-        position: sticky;
-        height: 5rem;
-        width: 260px;
-        //background-color: #fafafa;
-        //background-color: white;
+        grid-area: cases-header;
+        display: grid;
+        grid-template-areas: 
+            "cases-context cases-toggle"
+            "cases-filter cases-toggle";
+        grid-template-columns: 1fr 44px;
+        grid-auto-rows: repeat(2, min-content);
+        //position: sticky;
         background: #f3f3f3;
         z-index: 900;
-        padding: 0.5rem 1rem;
+        padding: 1.8rem 1rem 0.5rem 1rem;
         top: 0;
         border-bottom: 1px solid #e7e7e7;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        //display: flex;
+        //flex-direction: column;
+        //justify-content: flex-end;
 
         & > h4 {
+            grid-area: cases-filter;
             font-size: 0.8rem;
+        }
+
+        & > h3 {
+            grid-area: cases-context;
+        }
+
+        & > div {
+            grid-area: cases-toggle;
+            align-self: center;
         }
     }
 
@@ -61,27 +92,15 @@
         padding-bottom: 1rem;
     }
 
-    &__items {
-        height: auto;
-
-        &--selected {
-            grid-area: selected;
-        }
-
-        &--updated {
-            grid-area: updated;
-        }
-
-        &--all {
-            grid-area: all;
-        }
-
-        &:nth-of-type(1) {
-            padding-top: 6rem;
-        }
+    &__nav {
+        grid-area: cases-nav;
+        height: calc(100vh - 5rem);
+        overflow: hidden;
+        overflow-y: scroll;
+        padding: 1rem;
     }
 
-    &__caselist {
+    &__items {
         padding-inline-start: 0px;
     }
 

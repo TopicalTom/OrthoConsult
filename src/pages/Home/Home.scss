@@ -47,13 +47,6 @@
         transition: box-shadow 0.2s ease;
         box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 0px;
 
-        &--payment {
-
-            & > h1 {
-                color: yellow
-            }
-        }
-
         & > h4 {
             margin-top: 0.25rem;
         }

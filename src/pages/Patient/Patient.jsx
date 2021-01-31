@@ -12,8 +12,9 @@ import Table from '../../components/Table/Table';
 import Section from '../../components/DashboardSection/DashboardSection';
 import Tabs from '../../components/DashboardTabs/DashboardTabs';
 import Records from '../../components/PatientRecords/PatientRecords';
-import Status from '../../components/DashboardStatus/DashboardStatus';
+import Status from '../../components/CaseStatus/CaseStatus';
 import Page from '../../components/DashboardPage/DashboardPage';
+import Button from '../../components/Button/Button';
 
 const Patient = (props) => {
     const { status, createdAt, type } = props;
@@ -22,10 +23,7 @@ const Patient = (props) => {
     const { caseDetails } = useDashboard();
     const patient = caseDetails.patient;
     const { dob, ethnicity, gender, height, motivation, hygiene, finances } = caseDetails.patientInfo;
-    const habits = { dob, ethnicity, gender, height };
-    const ratings = { motivation, hygiene, finances};
-
-    console.log(props)
+    const patientInfo = { dob, ethnicity, gender, height, motivation, hygiene, finances };
 
     const tabs = [
         {
@@ -88,11 +86,13 @@ const Patient = (props) => {
                 className="patient__section patient__section--overview"
                 details={caseOverview}
             />
-            <Section className="patient__section patient__section--patient">
+            <Button className="patient__section patient__section--ref">
+                Ref: asdadshasdhjjhasdhjjhasd
+            </Button>
+            <Section className="patient__section patient__section--info">
                 <h3>Patient Info</h3>
-                <div className="patient__split">
                 <ul className="patient__list">
-                    {Object.entries(habits).map(([key, value]) => {
+                    {Object.entries(patientInfo).map(([key, value]) => {
                         if(key !== "height") {
                             return (
                                 <li>
@@ -118,25 +118,9 @@ const Patient = (props) => {
                         }
                     })}
                 </ul>
-                <ul className="patient__list">
-                    {Object.entries(ratings).map(([key, value]) => {
-                        return (
-                            <li>
-                                <p>
-                                    {key}
-                                </p>
-                                <p>
-                                    {value}
-                                </p>
-                            </li>
-                        )
-                    })}
-                </ul>
-
-                </div>
             </Section>
             <Tabs 
-                className="patient__section patient__section--data" 
+                className="patient__section patient__section--evaluation" 
                 tabs={tabs}>
                 <Records 
                     className="patient__container"

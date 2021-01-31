@@ -9,16 +9,30 @@ export function useDashboard() {
     return useContext(DashboardContext)
 }
 
+//const initialFilter = "None";
+
 // Handles Dashboard Data and Navigation
 export function DashboardProvider({ children }) {
     const { currentUser } = useAuth();
     const [ currentCase, setCurrentCase ] = useState("");
     const [ caseDetails, setCaseDetails ] = useState([]);
     const [ clientCases, setClientCases ] = useState([]);
+    const [ filter, setFilter ] = useState("None (default)")
+
+    /*
+    const [ filter, filterDispatch ] = useReducer(filterReducer, initialFilter);
+    const isAwaitingPayment = () => filterDispatch({type: 'AWAITING_PAYMENT'});
+    const isInReview = () => filterDispatch({type: 'IN_REVIEW'});
+    const isReviewed = () => filterDispatch({type: 'REVIEWED'});
+    const clearFilter = () => filterDispatch({type: 'CLEAR_FILTER'});
+    */
+
+    const addFilter = (action) => {
+        setFilter(action)
+    }
 
     // Gets Requested Case Specific Details
     const retrieveCase = (caseId) => {
-        //const caseId = location.pathname.split("/dashboard/cases/")[1];
         const caseRef = firestore.collection('cases').doc(caseId);
 
         // Retrievies data from Cases Collection
@@ -27,21 +41,6 @@ export function DashboardProvider({ children }) {
                 const data = doc.data();
                 setCaseDetails(data);
                 setCurrentCase(caseId);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
-
-    // Gets Most Recent Case Listing
-    const retrieveInitialCase = (caseId) => {
-        const caseRef = firestore.collection('cases').doc(caseId);
-
-        // Retrievies data from Cases Collection
-        caseRef.get()
-            .then((doc) => {
-                const data = doc.data();
-                setCaseDetails(data);
             })
             .catch((error) => {
                 console.log(error);
@@ -57,8 +56,7 @@ export function DashboardProvider({ children }) {
                 const data = querySnapshot.docs.map(doc => doc.data());
                 const descendingData = data.sort((a, b) => a.createdAt.seconds > b.createdAt.seconds ? 1 : -1 );
                 setClientCases(descendingData);
-                setCurrentCase(descendingData[0].uid);
-                retrieveInitialCase(descendingData[0].uid);
+                retrieveCase(descendingData[0].uid);
             })
             .catch((error) => {
                 console.log(error);
@@ -71,7 +69,7 @@ export function DashboardProvider({ children }) {
     }, []);
 
     return (
-        <DashboardContext.Provider value={{ clientCases, caseDetails, currentCase, retrieveCase }}>
+        <DashboardContext.Provider value={{ clientCases, caseDetails, currentCase, retrieveCase, filter, addFilter }}>
             {children}
         </DashboardContext.Provider>
     )
