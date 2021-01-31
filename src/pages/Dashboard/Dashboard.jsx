@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from "react-router";
-import { DashboardProvider, useDashboard } from '../../contexts/DashboardProvider';
+import { DashboardProvider } from '../../contexts/DashboardProvider';
 
 // Components
 import PrivateRoute from '../../components/PrivateRoute/PrivateRoute';
@@ -22,7 +22,7 @@ const Dashboard = () => {
             <main className="dashboard">
                 <Nav />
                 <Switch>
-                    <PrivateRoute path="/dashboard/cases/:caseId" component={Cases} />
+                    <PrivateRoute path="/dashboard/cases?filter=:filterQuery&case=:caseQuery" component={Cases} />
                     <PrivateRoute path="/dashboard/cases" component={Cases} />
                     <PrivateRoute path="/dashboard/resources" component={Resources} />
                     <PrivateRoute path="/dashboard/self-study" component={Education} />

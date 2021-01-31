@@ -14,8 +14,8 @@ const DashboardNav = () => {
     const { logout } = useAuth();
     const history = useHistory();
     const location = useLocation();
-    const { currentCase, clientCases } = useDashboard();
-    const routes = dashboard({currentCase, clientCases});
+    const { filter, currentCase, clientCases } = useDashboard();
+    const routes = dashboard({filter, currentCase, clientCases});
 
     // Logs Account out and returns to Home
     const handleLogout = () => {

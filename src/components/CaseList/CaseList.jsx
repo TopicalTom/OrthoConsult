@@ -1,19 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useDashboard } from '../../contexts/DashboardProvider';
+import { useLocation } from 'react-router-dom';
 import "../../pages/Cases/Cases.scss";
+
+// Utilities
+import getParams from '../../utils/getParams.js';
 
 // Components 
 import Nav from '../CaseNav/CaseNav';
 import Filter from '../CaseFilter/CaseFilter';
 
 const CaseList = () => {
-    const { filter } = useDashboard();
+    const { filter, addFilter } = useDashboard();
+    const location = useLocation();
+    const searchParams = getParams(location.search);
+
+    // Grabs all case listings on load
+    useEffect(() => {
+        addFilter(searchParams.filterType);
+    }, [searchParams.filterType]);
 
     return (
         <aside className="cases__list">
             <header className="cases__header">
                 <h3>Cases</h3>
-                {filter !== "None (default)"
+                {filter !== "None"
                     ?   <h4>Filter: {filter}</h4>
                     :   <h4>Sorted by most recent</h4>
                 }

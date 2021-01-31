@@ -10,7 +10,7 @@ import payment from "../assets/icons/payment.svg";
 
 const dashboard = (props) => {
     const { currentCase, clientCases } = props
-    const dynamicLink = clientCases.length > 0 ? `/dashboard/cases/${currentCase}` : "/cases";
+    const dynamicLink = clientCases.length > 0 ? `/dashboard/cases?filter=None&case=${currentCase}` : "/cases";
 
     return [
         {

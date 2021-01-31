@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import "./Home.scss";
 
+// Utilities
+import getQuickLink from '../../utils/getQuickLink';
+
 // Context
 import { useAuth } from '../../contexts/AuthProvider';
 import { useDashboard } from '../../contexts/DashboardProvider';
@@ -11,7 +14,7 @@ import Page from '../../components/DashboardPage/DashboardPage';
 import Section from '../../components/DashboardSection/DashboardSection';
 
 const Home = () => {
-    const { clientCases } = useDashboard();
+    const { clientCases, currentCase } = useDashboard();
     const { currentUser } = useAuth();
     const welcomeUser = `Welcome, Dr. ${currentUser.displayName.split(" ").pop()}`;
     
@@ -21,8 +24,6 @@ const Home = () => {
             type: "Awaiting payment",
             status: "Awaiting payment",
             caption: "Cases that still have invoices you need to finish paying for",
-            cta: "View invoices",
-            link: "/dashboard/payments"
         },
         {
             name: "review",
@@ -30,7 +31,6 @@ const Home = () => {
             status: "In review",
             caption: "Cases from you that we are actively working on feedback for",
             cta: "Contact us",
-            link: "/dashboard/contact"
         },
         {
             name: "feedback",
@@ -38,7 +38,6 @@ const Home = () => {
             status: "Have feedback",
             caption: "Cases with new feedback that have yet to be viewed by you",
             cta: "View most recent",
-            link: "/dashboard/cases"
         }
     ]
 
@@ -79,11 +78,13 @@ const Home = () => {
                 <h3>Cases overview</h3>
                 <div className="home__container">
                     {updates.map(item => {
+                        const quickLink = getQuickLink({clientCases, type: item.type, currentCase});
+                        const statusCount = clientCases.filter(type => type.status === item.type).length;
                         return (
                             <Link
-                                className={`home__card home__card--${item.name}`}
-                                to={item.link}>
-                                <h1>{clientCases.filter(type => type.status === item.type).length}</h1>
+                                className={`home__card home__card--${item.name}-${statusCount !== 0 ? "active" : "inactive"}`}
+                                to={quickLink}>
+                                <h1>{statusCount}</h1>
                                 <h3>{item.status}</h3>
                                 <h4>{item.caption}</h4>
                             </Link>

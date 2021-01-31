@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import "./Button.scss";
 
 const Button = ( {children, ...props} ) => {
-    const { disabled, to, className, type } = props
+    const { disabled, to, className, type } = props;
+    const history = useHistory();
 
     switch (type) {
 
@@ -21,6 +22,15 @@ const Button = ( {children, ...props} ) => {
                     to={to}>
                     {children}
                 </Link>
+            );
+            
+        case 'action':
+            return (
+                <button 
+                    className={`${className} ${disabled} button`}
+                    onClick={() => history.push(to)}>
+                    {children}
+                </button>
             );
         
         default:

@@ -44,6 +44,18 @@
         }
     }
 
+    &.isAction {
+        color: #1f92fd;
+        border: 1.5px solid rgba(41, 152, 255, 0.25);
+        background-color: rgba(41, 152, 255, 0.05);
+        box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 0px;
+
+        &:hover {
+            border: 1.5px solid rgba(41, 152, 255, 0.25);
+            box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 4px;
+        }
+    }
+
     &.isDestructive {
         color: white;
         border-color: #d32f2f;

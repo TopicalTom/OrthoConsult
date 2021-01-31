@@ -17,19 +17,12 @@ export function DashboardProvider({ children }) {
     const [ currentCase, setCurrentCase ] = useState("");
     const [ caseDetails, setCaseDetails ] = useState([]);
     const [ clientCases, setClientCases ] = useState([]);
-    const [ filter, setFilter ] = useState("None (default)")
+    const [ filter, setFilter ] = useState("None")
 
-    /*
-    const [ filter, filterDispatch ] = useReducer(filterReducer, initialFilter);
-    const isAwaitingPayment = () => filterDispatch({type: 'AWAITING_PAYMENT'});
-    const isInReview = () => filterDispatch({type: 'IN_REVIEW'});
-    const isReviewed = () => filterDispatch({type: 'REVIEWED'});
-    const clearFilter = () => filterDispatch({type: 'CLEAR_FILTER'});
-    */
-
+    // Filters case listings by status
     const addFilter = (action) => {
-        setFilter(action)
-    }
+        setFilter(action);
+    };
 
     // Gets Requested Case Specific Details
     const retrieveCase = (caseId) => {
@@ -63,7 +56,7 @@ export function DashboardProvider({ children }) {
             })
     }
 
-    // On Load Actions
+    // Grabs all case listings on load
     useEffect(() => {
         retrieveCaseList();
     }, []);

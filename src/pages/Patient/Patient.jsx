@@ -14,7 +14,7 @@ import Tabs from '../../components/DashboardTabs/DashboardTabs';
 import Records from '../../components/PatientRecords/PatientRecords';
 import Status from '../../components/CaseStatus/CaseStatus';
 import Page from '../../components/DashboardPage/DashboardPage';
-import Button from '../../components/Button/Button';
+import Reference from '../../components/CaseRef/CaseRef';
 
 const Patient = (props) => {
     const { status, createdAt, type } = props;
@@ -76,8 +76,6 @@ const Patient = (props) => {
         },
     ]
 
-
-
     //Object.entries(patientHabits).forEach(([key, value]) => console.log(`${key}: ${value}`))
 
     return (
@@ -86,9 +84,7 @@ const Patient = (props) => {
                 className="patient__section patient__section--overview"
                 details={caseOverview}
             />
-            <Button className="patient__section patient__section--ref">
-                Ref: asdadshasdhjjhasdhjjhasd
-            </Button>
+            <Reference />
             <Section className="patient__section patient__section--info">
                 <h3>Patient Info</h3>
                 <ul className="patient__list">
