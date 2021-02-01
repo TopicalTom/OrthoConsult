@@ -33,27 +33,6 @@
         //background-color: #fafafa;
     }
 
-    /*
-    &__nav {
-        position: relative;
-        height: 100vh;
-        //padding: 1rem 0rem;
-        display: grid;
-        grid-template-areas: 
-            ". selected ."
-            ". updated ."
-            ". all .";
-        grid-template-columns: 1rem 1fr 1rem;
-        grid-auto-rows: min-content;
-        row-gap: 1rem;
-        border-right: 1px solid #e7e7e7;
-        background: #f3f3f3;
-        //background-color: #fafafa;
-        overflow: hidden;
-        overflow-y: scroll;
-    }
-    */
-
     &__header {
         grid-area: cases-header;
         display: grid;

@@ -1,23 +1,56 @@
+import React from 'react';
+import "./DataTable.scss";
+
+const DataTable = (props) => {
+    const { data, title } = props;
+
+    return (
+        <article className="data__table">
+            <p className="data__title">{title}</p>
+            <ul className="data__section data__section--labels">
+                <li className="data__row data__row--labels">
+                    <h4 className="data__column data__column--labels data__column--type">DATA</h4>
+                    <h4 className="data__column data__column--labels data__column--value">DETAILS</h4>
+                </li>
+            </ul>
+            <ul className="data__section data__section--data">
+                {Object.entries(data).map(([key, value]) => {
+                    return (
+                        <li className="data__row data__row--data">
+                            <p className="data__column data__column--data data__column--type">{key}</p>
+                            <p className="data__column data__column--data data__column--value">{value}</p>
+                        </li>
+                    )
+                })}
+            </ul>
+        </article>
+    );
+};
+
+export default DataTable;
+
+/*
 import React, { useState, useEffect } from 'react';
-import "./Table.scss";
+import "./DataTable.scss";
 
 const Table = (props) => {
-    const { cases } = props;
+    const { data, title } = props;
 
     return (
         <section className="table">
+            <p className="table__title">{title}</p>
             <ul className="table__list table__list--labels">
                 <li className="table__row table__row--labels">
-                    <h4 className="table__column table__column--labels table__column--type">Type</h4>
-                    <h4 className="table__column table__column--labels table__column--value">Data</h4>
+                    <h4 className="table__column table__column--labels table__column--type">DATA</h4>
+                    <h4 className="table__column table__column--labels table__column--value">DETAILS</h4>
                 </li>
             </ul>
             <ul className="table__list table__list--data">
-                {cases && cases.map(data => {
+                {Object.entries(data).map(([key, value]) => {
                     return (
                         <li className="table__row table__row--data">
-                            <p className="table__column table__column--data table__column--type">{data.type}</p>
-                            <p className="table__column table__column--data table__column--value">{data.value}</p>
+                            <p className="table__column table__column--data table__column--type">{key}</p>
+                            <p className="table__column table__column--data table__column--value">{value}</p>
                         </li>
                     )
                 })}
@@ -27,6 +60,8 @@ const Table = (props) => {
 };
 
 export default Table;
+
+*/
 
 /*
 import React, { useState, useEffect } from 'react';

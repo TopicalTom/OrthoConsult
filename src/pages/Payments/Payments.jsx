@@ -7,7 +7,7 @@ import Page from '../../components/DashboardPage/DashboardPage';
 // Components
 import Section from '../../components/DashboardSection/DashboardSection';
 import Tabs from '../../components/DashboardTabs/DashboardTabs';
-import Table from '../../components/Table/Table';
+import Table from '../../components/DataTable/DataTable';
 import Button from '../../components/Button/Button';
 
 const Payments = () => {
