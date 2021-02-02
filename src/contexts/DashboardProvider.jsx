@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, createContext } from 'react';
 import { useAuth } from './AuthProvider';
-import { firestore } from "../firebase";
+import { firestore, storage } from "../firebase";
 
 // Custom Dashboard Management Hook
 const DashboardContext = createContext({});
@@ -9,13 +9,12 @@ export function useDashboard() {
     return useContext(DashboardContext)
 }
 
-//const initialFilter = "None";
-
 // Handles Dashboard Data and Navigation
 export function DashboardProvider({ children }) {
     const { currentUser } = useAuth();
     const [ currentCase, setCurrentCase ] = useState("");
     const [ caseDetails, setCaseDetails ] = useState([]);
+    const [ caseRecords, setCaseRecords ] = useState([]);
     const [ clientCases, setClientCases ] = useState([]);
     const [ filter, setFilter ] = useState("None")
 
@@ -23,6 +22,36 @@ export function DashboardProvider({ children }) {
     const addFilter = (action) => {
         setFilter(action);
     };
+
+    // Gets Requested Case Specific Details
+    const retrieveRecords = (caseId) => {
+        const recordsRef = storage.ref();
+        const folderRef = recordsRef.child(`${caseId}`);
+
+        let images = [];
+    
+        // Retrievies data from Cases Collection
+        folderRef.listAll()
+            .then((res) => {
+                const newImages = images;
+                res.items.forEach(imgRef => {
+                    imgRef.getDownloadURL()
+                        .then(url => {
+                            const image = {
+                                title: "Image Title",
+                                src: url
+                            }
+                            newImages.push(image);
+                        })
+                        .then(() =>  setCaseRecords(newImages))
+                        .catch(error => console.log(error))
+                })
+                //setCaseRecords(allRecords)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     // Gets Requested Case Specific Details
     const retrieveCase = (caseId) => {
@@ -50,6 +79,7 @@ export function DashboardProvider({ children }) {
                 const descendingData = data.sort((a, b) => a.createdAt.seconds > b.createdAt.seconds ? 1 : -1 );
                 setClientCases(descendingData);
                 retrieveCase(descendingData[0].uid);
+                retrieveRecords(descendingData[0].uid);
             })
             .catch((error) => {
                 console.log(error);
@@ -61,8 +91,11 @@ export function DashboardProvider({ children }) {
         retrieveCaseList();
     }, []);
 
+
+    console.log(caseRecords);
+
     return (
-        <DashboardContext.Provider value={{ clientCases, caseDetails, currentCase, retrieveCase, filter, addFilter }}>
+        <DashboardContext.Provider value={{ clientCases, caseDetails, caseRecords, currentCase, retrieveCase, retrieveRecords, filter, addFilter }}>
             {children}
         </DashboardContext.Provider>
     )

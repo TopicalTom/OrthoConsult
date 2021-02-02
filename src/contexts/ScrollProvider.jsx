@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext, useEffect } from 'react';
+import React, { useContext, useState, createContext, useLayoutEffect } from 'react';
 
 // Custom Scroll Hook
 const ScrollContext = createContext()
@@ -26,7 +26,7 @@ export function ScrollProvider({ children }) {
     }
 
     // Listens for Scroll Events
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.addEventListener('scroll', listenScrollEvent);
       
         return () =>

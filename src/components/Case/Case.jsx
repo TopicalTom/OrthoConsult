@@ -8,13 +8,14 @@ import getParams from '../../utils/getParams.js';
 
 const Case = ( props ) => {
     const { uid, patient } = props;
-    const { retrieveCase } = useDashboard();
+    const { retrieveCase, retrieveRecords } = useDashboard();
     const location = useLocation();
     const searchParams = getParams(location.search);
     const reverseName = patient.split(" ").reverse().join(", ");
 
     useEffect(() => {
         retrieveCase(searchParams.caseId);
+        retrieveRecords(searchParams.caseId);
     }, [searchParams.caseId]);
 
     return (
