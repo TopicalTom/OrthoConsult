@@ -28,7 +28,7 @@ const Patient = (props) => {
     const submitted = createdAt.seconds
     const caseOverview = { type, submitted, status };
 
-    const { caseDetails, caseRecords } = useDashboard();
+    const { caseDetails } = useDashboard();
     const patient = caseDetails.patient;
 
     // Patient Info Fields
@@ -148,7 +148,7 @@ const Patient = (props) => {
                 className="patient__section patient__section--evaluation" 
                 tabs={tabs}>
                 <Tab id="records">
-                    <Records records={caseRecords} />
+                    <Records />
                 </Tab>
                 <Tab id="evaluation">
                     {evaluation.map(table => {

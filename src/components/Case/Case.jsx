@@ -15,7 +15,7 @@ const Case = ( props ) => {
 
     useEffect(() => {
         retrieveCase(searchParams.caseId);
-        retrieveRecords(searchParams.caseId);
+        //retrieveRecords(searchParams.caseId);
     }, [searchParams.caseId]);
 
     return (

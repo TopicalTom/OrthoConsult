@@ -16,24 +16,28 @@ export function DashboardProvider({ children }) {
     const [ caseDetails, setCaseDetails ] = useState([]);
     const [ caseRecords, setCaseRecords ] = useState([]);
     const [ clientCases, setClientCases ] = useState([]);
-    const [ filter, setFilter ] = useState("None")
+    const [ filter, setFilter ] = useState("None");
+    const [ loading, setLoading ] = useState(true);
 
     // Filters case listings by status
     const addFilter = (action) => {
         setFilter(action);
     };
 
-    // Gets Requested Case Specific Details
-    const retrieveRecords = (caseId) => {
+    // Gets Requested Case Records
+    const retrieveRecords = async (caseId) => {
         const recordsRef = storage.ref();
         const folderRef = recordsRef.child(`${caseId}`);
 
         let images = [];
+        const newImages = images;
+        
+        setLoading(true);
     
-        // Retrievies data from Cases Collection
-        folderRef.listAll()
+        // Retrievies data from Case Storage Collection
+        await folderRef.listAll()
             .then((res) => {
-                const newImages = images;
+                //const newImages = images;
                 res.items.forEach(imgRef => {
                     imgRef.getDownloadURL()
                         .then(url => {
@@ -43,21 +47,23 @@ export function DashboardProvider({ children }) {
                             }
                             newImages.push(image);
                         })
-                        .then(() =>  setCaseRecords(newImages))
+                        //.then(() =>  setCaseRecords(newImages))
                         .catch(error => console.log(error))
                 })
-                //setCaseRecords(allRecords)
             })
             .catch((error) => {
                 console.log(error);
             })
+            .finally(() => setLoading(false))
+
+        setCaseRecords(newImages)
     }
 
-    // Gets Requested Case Specific Details
+    // Gets Requested Case Data
     const retrieveCase = (caseId) => {
         const caseRef = firestore.collection('cases').doc(caseId);
 
-        // Retrievies data from Cases Collection
+        // Retrievies data from Case FireStore Collection
         caseRef.get()
             .then((doc) => {
                 const data = doc.data();
@@ -91,11 +97,8 @@ export function DashboardProvider({ children }) {
         retrieveCaseList();
     }, []);
 
-
-    console.log(caseRecords);
-
     return (
-        <DashboardContext.Provider value={{ clientCases, caseDetails, caseRecords, currentCase, retrieveCase, retrieveRecords, filter, addFilter }}>
+        <DashboardContext.Provider value={{ clientCases, caseDetails, caseRecords, currentCase, retrieveCase, retrieveRecords, filter, addFilter, loading }}>
             {children}
         </DashboardContext.Provider>
     )
