@@ -1,9 +1,6 @@
 import React from 'react';
 import "./CaseStatus.scss";
 
-// Utilities
-import readableTime from '../../utils/readableTime';
-
 // Components
 import Button from '../Button/Button';
 
@@ -26,47 +23,65 @@ const CaseStatus = ( {children, ...props} ) => {
                     </div>
                     <p 
                         className="status__description">
-                        You must pay the case invoice sent you by email before we can being reviewing this case. Alternatively you can complete your payment through the link below:
+                        Once you pay for your invoice that was emailed to you, we will begin reviewing this case. Alternatively you can complete your payment through the link below:
                     </p>
-                    <Button 
-                        className="status__button isPrimary" 
-                        type="external"
-                        to="https://invoice.stripe.com/i/acct_1Hyx6KLSfMQSWLzu/invst_Ip2saoBpqfqRgonJ7RWcsnE9hv6cIUW">
-                        Complete payment
-                    </Button>
+                    <div className="status__actions">
+                        <Button 
+                            className="status__button status__button--primary isPrimary" 
+                            type="external"
+                            to="https://invoice.stripe.com/i/acct_1Hyx6KLSfMQSWLzu/invst_Ip2saoBpqfqRgonJ7RWcsnE9hv6cIUW">
+                            Complete payment
+                        </Button>
+                        <Button 
+                            className="status__button status__button--secondary isSecondary" 
+                            type="route"
+                            to="/dashboard/contact">
+                            Contact us
+                        </Button>
+                    </div>
                 </section>
             );         
         
+        // We are actively looking over and preparing case feedback
         case "In review":
             return (
                 <section className={`${className} status`}>
                     <div className="status__context">
-                        <h3>Feedback Status:</h3>
-                        <div className="status__label status__label--alert">
+                        <h3>Case Status:</h3>
+                        <div className="status__label status__label--default">
                             <span>
-                                In review
+                                {details.status}
                             </span>
                         </div>
                     </div>
                     <p 
                         className="status__description">
-                        Once you pay for your invoice that was emailed to you at (email@gmail.com) then you will gain access to feedback for this case once it is available:
+                        We are actively looking over your case to provide feedback and will email you when it is ready. If you have any questions, feel free to contact us below.
                     </p>
-                    <Button 
-                        className="status__button isPrimary" 
-                        type="route"
-                        to="/dashboard/contact">
-                        Contact us
-                    </Button>
+                    <div className="status__actions">
+                        <Button 
+                            className="status__button status__button--primary isPrimary" 
+                            type="action"
+                            disabled>
+                            Awaiting feedback
+                        </Button>
+                        <Button 
+                            className="status__button status__button--secondary isSecondary" 
+                            type="route"
+                            to="/dashboard/contact">
+                            Contact us
+                        </Button>
+                    </div>
                 </section>
             )        
         
+        // Feedback has been provided and clients can now download
         case "Reviewed":
             return (
                 <section className={`${className} status`}>
                     <div className="status__context">
-                        <h3>Feedback Status:</h3>
-                        <div className="status__label status__label--default">
+                        <h3>Case Status:</h3>
+                        <div className="status__label status__label--success">
                             <span>
                                 Reviewed
                             </span>
@@ -76,11 +91,19 @@ const CaseStatus = ( {children, ...props} ) => {
                         className="status__description">
                         Once you pay for your invoice that was emailed to you at (email@gmail.com) then you will gain access to feedback for this case once it is available:
                     </p>
-                    <Button 
-                        className="status__button isPrimary" 
-                        type="action">
-                        Download feedback
-                    </Button>
+                    <div className="status__actions">
+                        <Button 
+                            className="status__button status__button--primary isPrimary" 
+                            type="action">
+                            Download feedback
+                        </Button>
+                        <Button 
+                            className="status__button status__button--secondary isSecondary" 
+                            type="route"
+                            to="/dashboard/contact">
+                            Contact us
+                        </Button>
+                    </div>
                 </section>
             );
         
@@ -89,7 +112,7 @@ const CaseStatus = ( {children, ...props} ) => {
             return (
                 <section className={`${className} status`}>
                     <div className="status__context">
-                        <h3>Feedback Status:</h3>
+                        <h3>Case Status:</h3>
                         <div className="status__label status__label--important">
                             <span>
                                 Invoice expired
@@ -98,13 +121,22 @@ const CaseStatus = ( {children, ...props} ) => {
                     </div>
                     <p 
                         className="status__description">
-                        Once you pay for your invoice that was emailed to you at (email@gmail.com) then you will gain access to feedback for this case once it is available:
+                        The invoice sent to your email was not paid within the allotted time. In order for us to begin reviewing this case, request a new invoice below:
                     </p>
-                    <Button 
-                        className="status__button isPrimary" 
-                        type="action">
-                        Send new invoice
-                    </Button>
+                    <div className="status__actions">
+                        <Button 
+                            className="status__button status__button--primary isPrimary" 
+                            type="external"
+                            disabled>
+                            Request new invoice
+                        </Button>
+                        <Button 
+                            className="status__button status__button--secondary isSecondary" 
+                            type="route"
+                            to="/dashboard/contact">
+                            Contact us
+                        </Button>
+                    </div>
                 </section>
             ); 
         
@@ -114,156 +146,3 @@ const CaseStatus = ( {children, ...props} ) => {
 }
 
 export default CaseStatus;
-
-/*
-import React from 'react';
-import "./DashboardStatus.scss";
-
-// Utilities
-import readableTime from '../../utils/readableTime';
-
-// Components
-import Button from '../../components/Button/Button';
-
-const DashboardStatus = ( {children, ...props} ) => { 
-    const { details, className } = props;
-
-    switch (details.status) {
-
-        // Client has yet to pay their invoice
-        case "Awaiting payment":
-            return (
-                <section className={`${className} status`}>
-                    <div className="status__context">
-                        <h3>Overview:</h3>
-                    </div>
-                    <ul className="status__list">
-                    {Object.entries(details).map(([key, value]) => {
-                        if(key === "status") {
-                            return (
-                                <li>
-                                    <p>
-                                        {key}
-                                    </p>
-                                    <p className="status__label status__label--alert">
-                                        {value}
-                                    </p>
-                                </li>
-                            )
-                        } else if (key === "submitted") {
-                            return (
-                                <li>
-                                    <p>
-                                        {key}
-                                    </p>
-                                    <p>
-                                        {readableTime(value)}
-                                    </p>
-                                </li>
-                            )
-                        } else {
-                            return (
-                                <li>
-                                    <p>
-                                        {key}
-                                    </p>
-                                    <p>
-                                        {value}
-                                    </p>
-                                </li>
-                            )
-                        }
-                    })}
-                </ul>
-                    <p 
-                        className="status__description">
-                        Pay your invoice (by email or below) in order to get access to our feedback once it is available.
-                    </p>
-                    <Button 
-                        className="status__button isPrimary" 
-                        type="external"
-                        to="https://invoice.stripe.com/i/acct_1Hyx6KLSfMQSWLzu/invst_Ip2saoBpqfqRgonJ7RWcsnE9hv6cIUW">
-                        Complete payment
-                    </Button>
-                </section>
-            );         
-        
-        case "In review":
-            return (
-                <section className={`${className} status`}>
-                    <div className="status__context">
-                        <h3>Feedback Status:</h3>
-                        <div className="status__label status__label--alert">
-                            <span>
-                                In review
-                            </span>
-                        </div>
-                    </div>
-                    <p 
-                        className="status__description">
-                        Once you pay for your invoice that was emailed to you at (email@gmail.com) then you will gain access to feedback for this case once it is available:
-                    </p>
-                    <Button 
-                        className="status__button isPrimary" 
-                        type="route"
-                        to="/dashboard/contact">
-                        Contact us
-                    </Button>
-                </section>
-            )        
-        
-        case "Reviewed":
-            return (
-                <section className={`${className} status`}>
-                    <div className="status__context">
-                        <h3>Feedback Status:</h3>
-                        <div className="status__label status__label--default">
-                            <span>
-                                Reviewed
-                            </span>
-                        </div>
-                    </div>
-                    <p 
-                        className="status__description">
-                        Once you pay for your invoice that was emailed to you at (email@gmail.com) then you will gain access to feedback for this case once it is available:
-                    </p>
-                    <Button 
-                        className="status__button isPrimary" 
-                        type="action">
-                        Download feedback
-                    </Button>
-                </section>
-            );
-        
-        // Client missed the deadline for paying the invoice
-        case "Invoice expired":
-            return (
-                <section className={`${className} status`}>
-                    <div className="status__context">
-                        <h3>Feedback Status:</h3>
-                        <div className="status__label status__label--important">
-                            <span>
-                                Invoice expired
-                            </span>
-                        </div>
-                    </div>
-                    <p 
-                        className="status__description">
-                        Once you pay for your invoice that was emailed to you at (email@gmail.com) then you will gain access to feedback for this case once it is available:
-                    </p>
-                    <Button 
-                        className="status__button isPrimary" 
-                        type="action">
-                        Send new invoice
-                    </Button>
-                </section>
-            ); 
-        
-        default:
-            return <></>
-    }
-}
-
-export default DashboardStatus;
-
-*/

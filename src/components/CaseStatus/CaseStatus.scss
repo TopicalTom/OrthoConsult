@@ -38,21 +38,29 @@
     }
 
     &__label {
-        padding: 0.3rem 0.5rem;
+        padding: 0.4rem 0.5rem;
         border-radius: 4px;
         margin-left: 0.5rem;
-        height: 25px;
+        height: 28px;
         font-size: 0.8rem;
         transform: translateY(-5%);
         font-weight: bold;
 
-        &--default {
+        &--success {
             background: rgb(218, 255, 219);
             color: rgb(20, 112, 17);
 
             & > span {
                 color: rgb(20, 112, 17);
-                //color: rgba(82, 206, 25, 0.8);  
+            }
+        }
+
+        &--default {
+            background: #e3e8ee;
+            color: #4f566b;
+
+            & > span {
+                color: #4f566b; 
             }
         }
 
@@ -80,10 +88,27 @@
         height: min-content;
         margin-bottom: 2rem;
         line-height: 1.6rem;
+
+        @include desktop {
+            width: 44rem;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
     }
 
     &__button {
-        width: 240px;
+
+        &--primary {
+            width: 240px;
+            margin-right: 1rem;
+        }
+
+        &--secondary {
+            width: 120px;
+        }
     }
 }
 

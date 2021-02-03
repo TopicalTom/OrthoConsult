@@ -10,7 +10,7 @@ const Button = ( {children, ...props} ) => {
 
         case 'external':
             return (
-                <a href={to} className={`${className} ${disabled} button`}>
+                <a href={to} className={`${className} button`}>
                     {children}
                 </a>
             );
@@ -18,7 +18,7 @@ const Button = ( {children, ...props} ) => {
         case 'route':
             return (
                 <Link 
-                    className={`${className} ${disabled} button`}
+                    className={`${className} button`}
                     to={to}>
                     {children}
                 </Link>
@@ -27,7 +27,8 @@ const Button = ( {children, ...props} ) => {
         case 'action':
             return (
                 <button 
-                    className={`${className} ${disabled} button`}
+                    className={`${className} ${disabled ? "disabled" : ""} button`}
+                    disabled={disabled}
                     onClick={() => history.push(to)}>
                     {children}
                 </button>
@@ -35,7 +36,7 @@ const Button = ( {children, ...props} ) => {
         
         default:
             return (
-                <button className={`${className} ${disabled} button`}>
+                <button className={`${className} button`}>
                     {children}
                 </button>
             )

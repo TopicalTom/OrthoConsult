@@ -109,7 +109,7 @@ export const EvaluationProvider = ({ children }) => {
                         }
                     },
                 });
-                history.push(`/dashboard/cases/${newCaseId}`);
+                history.push(`/dashboard/cases?filter=None&case=${newCaseId}`);
             })
             .catch(error => {
                 console.log(error);

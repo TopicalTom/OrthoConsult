@@ -18,6 +18,7 @@ const CaseRecords = ( props ) => {
             {patientRecords.length !== 0 && patientRecords.map((record, index) => {
                 return (
                     <li className="patient__record" style={{backgroundImage: `url(${record.src})`}} key={index}>
+                        <span>{record.title}</span>
                     </li>
                 )
             })}

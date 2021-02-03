@@ -139,7 +139,6 @@ const Patient = (props) => {
                 className="patient__section patient__section--overview"
                 details={caseOverview}
             />
-            <Reference />
             <Section className="patient__section patient__section--info">
                 <h3>Patient Info</h3>
                 <List data={patientInfo} />

@@ -14,6 +14,11 @@ const Legal = () => {
                 <p>
                     By becoming a client of OrthoConsult you acknowledged the following documents. You can read each of the following below, or download them for your own records:
                 </p>
+                <Button 
+                    className="legal__button isSecondary" 
+                    type="action">
+                    Download all files
+                </Button>
             </Section>
             <Section className="legal__section legal__section--terms">
                 <h3>Terms of Service</h3>

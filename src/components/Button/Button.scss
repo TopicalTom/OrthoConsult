@@ -12,6 +12,10 @@
     display: block;
     border: 1.5px solid;
 
+    &.disabled {
+        opacity: 0.5;
+    }
+
     &.isPrimary {
         color: white;
         border-color:#1f92fd;

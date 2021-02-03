@@ -6,6 +6,7 @@ import Page from '../../components/DashboardPage/DashboardPage';
 
 // Components
 import Section from '../../components/DashboardSection/DashboardSection';
+import Button from '../../components/Button/Button';
 
 const Contact = () => {
     return (
@@ -13,9 +14,15 @@ const Contact = () => {
             <Section className="contact__section contact__section--overview">
                 <h3>Overview</h3>
                 <p>Before sending us a message, make sure to read up on our FAQs as provided:</p>
+                <Button 
+                    className="contact__button isSecondary" 
+                    type="external"
+                    to="https://stripe.com/en-ca/about">
+                    Email directly
+                </Button>
             </Section>
             <Section className="contact__section contact__section--form">
-                <h3>Form</h3>
+                <h3>Frequently asked questions (FAQs)</h3>
                 <p>Before sending us a message, make sure to read up on our FAQs as provided:</p>
             </Section>
         </Page>

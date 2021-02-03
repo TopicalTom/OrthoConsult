@@ -7,9 +7,9 @@
     display: grid;
     justify-items: stretch;
     grid-template-areas: 
-        "patient-overview patient-overview patient-ref"
-        "patient-info patient-evaluation patient-evaluation";
-    grid-template-columns: 240px 1fr 335px;
+        "patient-overview patient-overview"
+        "patient-info patient-evaluation";
+    grid-template-columns: 240px 1fr;
     grid-template-rows: 12rem 1fr;
     gap: 4rem;
 
@@ -77,15 +77,17 @@
         gap: 1rem;
         padding-inline-start: 0px;
         justify-content: center;
-        padding: auto;
-        overflow: scroll;
-        top: 0;
+        //padding: auto;
+        //overflow: scroll;
+        //top: 0;
         padding: 4px;
     }
 
     &__record {
         background-color: #f3f3f3;
-        height: 180px;
+        //height: 100%;
+        width: 100%;
+        padding-top: 100%;
         border-radius: 4px;
         border: 1.5px solid #e9e9e9;
         transition: box-shadow 0.2s ease;
@@ -95,11 +97,24 @@
         background-position: center;
         background-size: cover;
         outline: none;
+        position: relative;
+
+        & > span {
+            position: absolute;
+            opacity: 0;
+            padding: 1rem;
+            bottom: 0;
+            left: 0;
+        }
 
         &:hover {
             box-shadow: rgba(70, 169, 235, 0.36) 0px 0px 0px 4px;
             background-image:
             linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
+
+            & > span {
+                opacity: 1;
+            }
         }
     
         &:active {
