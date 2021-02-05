@@ -18,35 +18,32 @@ import Tab from '../../components/DashboardTab/DashboardTab';
 import Records from '../../components/PatientRecords/PatientRecords';
 import Status from '../../components/CaseStatus/CaseStatus';
 import Page from '../../components/DashboardPage/DashboardPage';
-import Reference from '../../components/CaseRef/CaseRef';
 import List from '../../components/DataList/DataList';
 import Table from '../../components/DataTable/DataTable';
 import Block from '../../components/DataBlock/DataBlock';
 
 const Patient = (props) => {
-    const { status, createdAt, type } = props;
-    const submitted = createdAt.seconds
-    const caseOverview = { type, submitted, status };
+    const { status, type } = props;
+    const caseOverview = { type, status };
 
     const { caseDetails } = useDashboard();
     const patient = caseDetails.patient;
 
     // Patient Info Fields
-    const { dob, ethnicity, gender, height, motivation, hygiene, finances, patientConcerns, guardianConcerns, medicationDetails } = caseDetails.patientInfo;
-    const patientInfo = { dob, ethnicity, gender, height, motivation, hygiene, finances };
+    const { birthday, ethnicity, gender, height, motivation, hygiene, finances } = caseDetails.patientInfo;
+    const patientInfo = { birthday, ethnicity, gender, height, motivation, hygiene, finances };
 
     // Dental Fields
-    const { crLeft, crRight, overjet, overbite, maxOpening } = caseDetails.dental;
+    const { modelLeft, modelRight, overjet, overbite, maxOpening, development, developmentDetails, history, historyDetails } = caseDetails.dental;
     const spaceShortage = calculateSpaceShortage(caseDetails.spaceShortage);
     const occlusionHindrances = condenseData(caseDetails.occlusionHindrances);
+    const dental = { modelLeft, modelRight, overjet, overbite, maxOpening, spaceShortage, occlusionHindrances };
 
     // Habits
     const habits = condenseData(caseDetails.patientHabits);
 
     // Face Fields
     const features = condenseData(caseDetails.features);
-    const { profile } = caseDetails.facial; // Fix Height
-    const face = { profile, features};
 
     // TMJ Fields
     const popping = condenseData(caseDetails.popping);
@@ -55,23 +52,15 @@ const Patient = (props) => {
     const underlyingIssues = condenseData(caseDetails.underlyingIssues);
 
     // Cranial Fields
-    const maxillaLevel = condenseData(caseDetails.maxillaCant);
-    const { headPosture, earLevel, eyeLevel, shoulderLevel, mandibularPlane, growthDirection, maxillaPosition } = caseDetails.cranial;
+    const maxillaAsymmetry = condenseData(caseDetails.maxillaAsymmetry);
 
     // Treatment Fields
-    const { objective } = caseDetails.treatment;
+    const { objective, patientConcerns, guardianConcerns } = caseDetails.treatment;
 
     const evaluation = [
         {
             title: "Dental",
-            data: { 
-                crRight, 
-                crLeft, 
-                overjet, 
-                overbite, 
-                spaceShortage, 
-                occlusionHindrances
-            }
+            data: dental
         },
         {
             title: "Airway",
@@ -79,7 +68,10 @@ const Patient = (props) => {
         },
         {
             title: "Face",
-            data: { profile, features }
+            data: { 
+                ...caseDetails.facial, 
+                features 
+            }
         },
         {
             title: "TMJ",
@@ -94,14 +86,8 @@ const Patient = (props) => {
         {
             title: "Cranial",
             data: { 
-                headPosture, 
-                earLevel, 
-                eyeLevel, 
-                shoulderLevel, 
-                maxillaLevel, 
-                maxillaPosition, 
-                mandibularPlane, 
-                growthDirection
+                ...caseDetails.cranial,
+                maxillaAsymmetry
             }
         }
     ]

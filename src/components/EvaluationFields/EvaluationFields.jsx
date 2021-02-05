@@ -71,36 +71,52 @@ const EvaluationFields = (props) => {
         case "info":
             return (
                 <div className={`evaluation__fields evaluation__fields--${layout}`}>
-                    {options && options.slice(0,3).map((item) => {
-                        return (
-                            <Input
-                                name={item.name}
-                                label={item.label}
-                                type={item.type}
-                                criteria={item.criteria}
-                                callback={item.callback}
-                                check={item.check}
-                                value={item.value}
-                                group={group}
-                                path={path}
-                            />
-                        )
-                    })}
-                    {options && options.slice(3,5).map((item) => {
-                        return (
-                            <Selection 
-                                label={item.label}
-                                name={item.name}
-                                type="radio"
-                                callback="STORE_AS_NESTED_DATA"
-                                orientation="vertical"
-                                data={item.data}
-                                list={item.list}
-                                group={group}
-                                path={path}
+                    <div className="evaluation__split evaluation__split--left">
+                        {options && options.slice(0,3).map((item) => {
+                            return (
+                                <Input
+                                    name={item.name}
+                                    label={item.label}
+                                    type={item.type}
+                                    criteria={item.criteria}
+                                    callback={item.callback}
+                                    placeholder={item.placeholder}
+                                    check={item.check}
+                                    value={item.value}
+                                    group={group}
+                                    path={path}
+                                />
+                            )
+                        })}
+                        <Selection 
+                            label={options[3].label}
+                            name={options[3].name}
+                            type="radio"
+                            callback="STORE_AS_NESTED_DATA"
+                            orientation="horizontal"
+                            data={options[3].data}
+                            list={options[3].list}
+                            group={group}
+                            path={path}
                         />
-                        )
-                    })}
+                    </div>
+                    <div className="evaluation__split evaluation__split--right">
+                        {options && options.slice(4,5).map((item) => {
+                            return (
+                                <Selection 
+                                    label={item.label}
+                                    name={item.name}
+                                    type="radio"
+                                    callback="STORE_AS_NESTED_DATA"
+                                    orientation="vertical"
+                                    data={item.data}
+                                    list={item.list}
+                                    group={group}
+                                    path={path}
+                                />
+                            )
+                        })}
+                    </div>
                 </div>
             )   
         

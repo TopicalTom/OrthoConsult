@@ -33,7 +33,7 @@ const Payments = () => {
                 <h3>Overview</h3>
                 <p>Details regarding your case invoices will be displayed here. All payments are handled by Stripe so your billing details are handled securely.</p>
                 <Button 
-                    className="payments__button isSecondary" 
+                    className="payments__button isAction" 
                     type="external"
                     to="https://stripe.com/en-ca/about">
                     Learn about Stripe

@@ -29,10 +29,10 @@ const Education = () => {
                 <h3>Overview</h3>
                 <p>Coninue your education with our hosted education resources. Complete courses and gain credit.</p>
                 <Button 
-                    className="contact__button isSecondary" 
+                    className="contact__button isAction" 
                     type="external"
                     to="https://stripe.com/en-ca/about">
-                    Learn about accredidation
+                    Learn about benefits
                 </Button>
             </Section>
             <Section className="education__section education__section--recommended">

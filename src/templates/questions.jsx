@@ -27,8 +27,8 @@ const questions = (props) => {
         },
         {
             title: "Patient Info",
-            instructions: "Input each of the following:",
-            layout: "alt",
+            instructions: "Provide each of the following:",
+            layout: "new",
             type: "info",
             group: "patientInfo",
             path: dataState.patientInfo,
@@ -42,12 +42,13 @@ const questions = (props) => {
                     value: dataState.patient,
                 },
                 {
-                    name: "dob",
+                    name: "birthday",
                     label: "Date of Birth",
                     callback: "STORE_AS_NESTED_DATA",
                     check: "CHECK_TEXT",
-                    type: "date",
-                    value: dataState.patientInfo.dob,
+                    type: "text",
+                    placeholder: "MM/YY/DD",
+                    value: dataState.patientInfo.birthday,
                 },
                 {
                     name: "height",
@@ -76,35 +77,9 @@ const questions = (props) => {
                     ]
                 },
                 {
-                    name: "history",
-                    label: "Is there history of Dental Class III in the family?",
-                    data: dataState.patientInfo.history,
-                    list: [
-                        {
-                            id: "yes",
-                            label: "Yes",
-                            value: "Yes"
-                        },
-                        {
-                            id: "no",
-                            label: "No",
-                            value: "No"
-                        },
-                    ]
-                }
-            ]
-        },
-        {
-            title: "Patient Ethnicity",
-            instructions: "Select one of the following:",
-            layout: "duo",
-            type: "ethnicity",
-            data: dataState.patientInfo.ethnicity,
-            group: "patientInfo",
-            name: "ethnicity",
-            path: dataState.patientInfo,
-            options: [
-                {
+                    name: "ethnicity",
+                    label: "Ethnicity",
+                    data: dataState.patientInfo.ethnicity,
                     list: [
                         {
                             id: "americanIndianOrAlaskaNative",
@@ -128,8 +103,8 @@ const questions = (props) => {
                         },
                         {
                             id: "hawaiianNativeOrPacificIslander",
-                            label: "Native Hawaiian or Other Pacific Islander",
-                            value: "Native Hawaiian or Other Pacific Islander",
+                            label: "Native Hawaiian or Pacific Islander",
+                            value: "Native Hawaiian or Pacific Islander",
                         },
                         {
                             id: "white",
@@ -313,12 +288,12 @@ const questions = (props) => {
             instructions: "Indicate if the patient is using pain medications to alleviate their underlying issues:",
             layout: "layer",
             type: "treatment",
-            group: "patientInfo",
-            path: dataState.patientInfo,
+            group: "treatment",
+            path: dataState.treatment,
             options: [
                 {
                     name: "medicated",
-                    data: dataState.patientInfo.medicated,
+                    data: dataState.treatment.medicated,
                     list: [
                         {
                             id: "no",
@@ -336,7 +311,39 @@ const questions = (props) => {
                     name: "medicationDetails",
                     label: "Additonal information:",
                     placeholder: "i.e. medication and duration",
-                    value: dataState.patientInfo.medicationDetails,
+                    value: dataState.treatment.medicationDetails,
+                }
+            ]
+        },
+        {
+            title: "Patient Family History",
+            instructions: "Indicate if there is history of Dental Class III in the family:",
+            layout: "layer",
+            type: "treatment",
+            group: "dental",
+            path: dataState.dental,
+            options: [
+                {
+                    name: "history",
+                    data: dataState.dental.history,
+                    list: [
+                        {
+                            id: "no",
+                            label: "No",
+                            value: "No"
+                        },
+                        {
+                            id: "yes",
+                            label: "Yes, (Explain below)",
+                            value: "Yes"
+                        },
+                    ]
+                },
+                {
+                    name: "historyDetails",
+                    label: "Additonal information:",
+                    placeholder: "",
+                    value: dataState.dental.historyDetails,
                 }
             ]
         },
@@ -345,19 +352,19 @@ const questions = (props) => {
             instructions: "Explain the treatment request(s):",
             layout: "stack",
             type: "concerns",
-            group: "patientInfo",
-            path: dataState.patientInfo,
+            group: "treatment",
+            path: dataState.treatment,
             options: [
                 {
                     name: "patientConcerns",
                     label: "Patient's Concerns",
-                    value: dataState.patientInfo.patientConcerns,
+                    value: dataState.treatment.patientConcerns,
                 },
                 {
                     name: "guardianConcerns",
                     label: "Guardian's Concerns (optional)",
                     placeholder: "",
-                    value: dataState.patientInfo.guardianConcerns,
+                    value: dataState.treatment.guardianConcerns,
                 },
             ]
         },
@@ -495,9 +502,9 @@ const questions = (props) => {
             instructions: "Select one of the following:",
             layout: "triple",
             type: "radios",
-            name: "eyeLevel",
+            name: "eyeAsymmetry",
             callback: "STORE_AS_NESTED_DATA",
-            data: dataState.cranial.eyeLevel,
+            data: dataState.cranial.eyeAsymmetry,
             group: "cranial",
             path: dataState.cranial,
             options: [
@@ -526,9 +533,9 @@ const questions = (props) => {
             instructions: "Select one of the following:",
             layout: "triple",
             type: "radios",
-            name: "earLevel",
+            name: "earAsymmetry",
             callback: "STORE_AS_NESTED_DATA",
-            data: dataState.cranial.earLevel,
+            data: dataState.cranial.earAsymmetry,
             group: "cranial",
             path: dataState.cranial,
             options: [
@@ -557,9 +564,9 @@ const questions = (props) => {
             instructions: "Select one of the following:",
             layout: "triple",
             type: "radios",
-            name: "shoulderLevel",
+            name: "shoulderAsymmetry",
             callback: "STORE_AS_NESTED_DATA",
-            data: dataState.cranial.shoulderLevel,
+            data: dataState.cranial.shoulderAsymmetry,
             group: "cranial",
             path: dataState.cranial,
             options: [
@@ -588,42 +595,42 @@ const questions = (props) => {
             instructions: "Select all applicable from the following:",
             layout: "table",
             type: "checkbox",
-            group: "maxillaCant",
-            path: dataState.maxillaCant,
+            group: "maxillaAsymmetry",
+            path: dataState.maxillaAsymmetry,
             options: [
                 {
                     name: "patientRight",
                     label: "Right Cant",
                     details: "Patient's maxilla is lower on their right side",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.maxillaCant.patientRight,
+                    value: dataState.maxillaAsymmetry.patientRight,
                 },
                 {
                     name: "patientLeft",
                     label: "Left Cant",
                     details: "Patient's maxilla is lower on their left side",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.maxillaCant.patientLeft,
+                    value: dataState.maxillaAsymmetry.patientLeft,
                 },
                 {
                     name: "upward",
                     label: "Upward",
                     details: "",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.maxillaCant.upward,
+                    value: dataState.maxillaAsymmetry.upward,
                 },
                 {
                     name: "downward",
                     label: "Downward",
                     details: "",
                     callback: "STORE_AS_NESTED_COLLECTION_DATA",
-                    value: dataState.maxillaCant.downward,
+                    value: dataState.maxillaAsymmetry.downward,
                 },
                 {
                     name: "none",
                     label: "None",
                     callback: "STORE_AS_EMPTY_NESTED_COLLECTION_DATA",
-                    value: dataState.maxillaCant.none,
+                    value: dataState.maxillaAsymmetry.none,
                 }
             ]
         },
@@ -844,9 +851,9 @@ const questions = (props) => {
             instructions: "Select one of the following for this quadrant:",
             layout: "table",
             type: "radios",
-            name: "crRight",
+            name: "modelRight",
             callback: "STORE_AS_NESTED_DATA",
-            data: dataState.dental.crRight,
+            data: dataState.dental.modelRight,
             group: "dental",
             path: dataState.dental,
             options: [
@@ -886,9 +893,9 @@ const questions = (props) => {
             instructions: "Select one of the following for this quadrant:",
             layout: "table",
             type: "radios",
-            name: "crLeft",
+            name: "modelLeft",
             callback: "STORE_AS_NESTED_DATA",
-            data: dataState.dental.crLeft,
+            data: dataState.dental.modelLeft,
             group: "dental",
             path: dataState.dental,
             options: [

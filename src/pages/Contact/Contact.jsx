@@ -15,7 +15,7 @@ const Contact = () => {
                 <h3>Overview</h3>
                 <p>Before sending us a message, make sure to read up on our FAQs as provided:</p>
                 <Button 
-                    className="contact__button isSecondary" 
+                    className="contact__button isAction" 
                     type="external"
                     to="https://stripe.com/en-ca/about">
                     Email directly

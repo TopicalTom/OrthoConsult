@@ -18,7 +18,10 @@ const DashboardTabs = ( {children, ...props} ) => {
                             <div 
                                 className={`tabs__item ${selected === tab.title ? "active" : "inactive"}`} 
                                 onClick={() => handleSelection(tab.title)}>
-                                <h3 className="tabs__title">{tab.title}</h3>
+                                <p 
+                                    className={`tabs__title ${selected === tab.title ? "active" : "inactive"}`}>
+                                    {tab.title}
+                                </p>
                             </div>
                         </li>
                     )

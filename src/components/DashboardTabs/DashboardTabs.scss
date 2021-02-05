@@ -48,11 +48,11 @@
         border: none;
         background: inherit;
         cursor: pointer;
-        padding-bottom: 1.3rem;
+        padding-bottom: 1.55rem;
         border-bottom: 1px solid;
 
         &.active {
-            border-color: #2E2E2E;
+            border-color:  #1086F6;
         }
 
         &.inactive {
@@ -63,7 +63,16 @@
     }
 
     &__title {
-        //color: #1086F6;
         text-transform: capitalize;
+        font-weight: bold;
+
+        &.active {
+            //color: #1086F6;
+            color: #2e2e2e;
+        }
+
+        &.inactive {
+            color: #8e8e93;
+        }
     }
 }

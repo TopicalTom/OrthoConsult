@@ -37,7 +37,7 @@ const Selection = (props) => {
                                 })
                             )}>
                             <input 
-                                className="selection__input"
+                                className={`selection__input selection__input--${orientation}`}
                                 type="radio"
                                 checked={data === item.value ? true : false }
                                 id={item.id}

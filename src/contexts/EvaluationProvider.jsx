@@ -78,7 +78,7 @@ export const EvaluationProvider = ({ children }) => {
                 type: dataState.caseType,
                 patient: dataState.patient,
                 createdAt: new Date(),
-                status: "Awaiting feedback"
+                status: "Awaiting payment"
             })
             .then(() => {
                 console.log("Case linked to client")

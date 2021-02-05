@@ -33,7 +33,7 @@ const CaseStatus = ( {children, ...props} ) => {
                             Complete payment
                         </Button>
                         <Button 
-                            className="status__button status__button--secondary isSecondary" 
+                            className="status__button status__button--secondary isAction" 
                             type="route"
                             to="/dashboard/contact">
                             Contact us

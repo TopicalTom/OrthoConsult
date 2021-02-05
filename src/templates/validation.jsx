@@ -5,30 +5,30 @@ const validation = {
     step1: {
         patient: false,
         height: false,
-        dob: false,
+        birthday: false,
         gender: false,
-        history: false,
-    },
-    step2: {
         ethnicity: false,
     },
-    step3: {
+    step2: {
         patientHabits: false,
     },
-    step4: {
+    step3: {
         hygiene: false,
     },
-    step5: {
+    step4: {
         motivation: false,
     },
-    step6: {
+    step5: {
         finances: false,
     },
-    step7: {
+    step6: {
         underlyingIssues: false,
     },
-    step8: {
+    step7: {
         medicated: false,
+    },
+    step8: {
+        history: false,
     },
     step9: {
         patientConcerns: false
@@ -46,16 +46,16 @@ const validation = {
         headPosture: false,
     },
     step14: {
-        eyeLevel: false,
+        eyeAsymmetry: false,
     },
     step15: {
-        earLevel: false,
+        earAsymmetry: false,
     },
     step16: {
-        shoulderLevel: false,
+        shoulderAsymmetry: false,
     },
     step17: {
-        maxillaCant: false,
+        maxillaAsymmetry: false,
     },
     step18: {
         maxillaPosition: false,
@@ -84,10 +84,10 @@ const validation = {
         maxOpening: false
     },
     step26: {
-        crRight: false,
+        modelRight: false,
     },
     step27: {
-        crLeft: false,
+        modelLeft: false,
     },
     step28: {
         occlusionHindrances: false,

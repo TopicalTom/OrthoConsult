@@ -3,18 +3,13 @@ const database = {
     caseType: "",
     patient: "",
     patientInfo: {
-        dob: "",
+        birthday: "",
         height: "",
         gender: "",
         ethnicity: "",
         motivation: "",
         hygiene: "",
         finances: "",
-        medicated: "",
-        medicationDetails: "",
-        history: "",
-        patientConcerns: "",
-        guardianConcerns: "",
     },
     patientHabits: {
         mouthBreather: false,
@@ -29,13 +24,15 @@ const database = {
         none: false
     },
     dental: {
-        crLeft: "",
-        crRight: "",
+        modelLeft: "",
+        modelRight: "",
         overjet: null,
         overbite: null,
         maxOpening: "",
         development: "",
-        developmentDetails: ""
+        developmentDetails: "",
+        history: "",
+        historyDetails: "",
     },
     occlusionHindrances: {
         constriction: false,
@@ -79,14 +76,14 @@ const database = {
     },
     cranial: {
         headPosture: null,
-        earLevel: "",
-        eyeLevel: "",
-        shoulderLevel: "",
+        earAsymmetry: "",
+        eyeAsymmetry: "",
+        shoulderAsymmetry: "",
         mandibularPlane: "",
         growthDirection: "",
         maxillaPosition: "",
     },
-    maxillaCant: {
+    maxillaAsymmetry: {
         upward: false,
         downward: false,
         patientLeft: false,
@@ -96,6 +93,10 @@ const database = {
     treatment: {
         type: "",
         objective: "",
+        medicated: "",
+        medicationDetails: "",
+        patientConcerns: "",
+        guardianConcerns: "",
     },
     cephalometric: false,
     confirmation: false

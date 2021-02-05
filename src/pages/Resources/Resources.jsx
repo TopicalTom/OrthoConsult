@@ -29,7 +29,7 @@ const Resources = () => {
                 <h3>Overview</h3>
                 <p>Retrieve files and documents to enable your to provide the best experience.</p>
                 <Button 
-                    className="contact__button isSecondary" 
+                    className="contact__button isAction" 
                     type="external"
                     to="https://stripe.com/en-ca/about">
                     View records required

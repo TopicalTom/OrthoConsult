@@ -50,7 +50,7 @@
         &--labels {
             //border-bottom: 1px solid #f3f3f3;
             //padding-bottom: 0.5rem;
-            background: #f3f3f3;
+            background: #f6f7f9;
         }
     }
 
@@ -59,7 +59,8 @@
         justify-items: stretch;
         grid-template-areas: 
             " type value category";
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 200px 1fr;
+        column-gap: 1rem;
         width: 100%;
 
         &--labels {

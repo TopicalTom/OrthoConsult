@@ -33,6 +33,23 @@
         }
     }
 
+    &.isPrimaryAlt {
+        color: white;
+        border-color:rgba(255,255,255,0);
+        background-color: rgba(255,255,255,0.15);
+        box-shadow: rgba(12, 76, 119, 0.1) 0px 0px 0px 0px;
+
+        &:hover {
+            box-shadow: rgba(12, 76, 119, 0.1) 0px 0px 0px 4px;
+        }
+    
+        &:active {
+            border-color: #106abe;
+            background-color: #106abe;
+            box-shadow: rgba(12, 76, 119, 0.1) 0px 0px 0px 2px;
+        }
+    }
+
     &.isSecondary {
         color: rgb(146, 146, 146);
         border-color: #dbdbdb;
@@ -45,6 +62,21 @@
 
         &:active {
             box-shadow: rgba(207, 207, 207, 0.36) 0px 0px 0px 2px;
+        }
+    }
+
+    &.isActionAlt {
+        color: white;
+        border-color: rgba(255, 255, 255, 0.158);
+        background-color: rgba(255, 255, 255, 0.021);
+        box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 0px;
+
+        &:hover {
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 4px;
+        }
+
+        &:active {
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 2px;
         }
     }
 

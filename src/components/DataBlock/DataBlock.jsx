@@ -16,7 +16,7 @@ const DataBlock = (props) => {
     return (
         <article className="data">
             <header className="data__header">
-                <p className="data__title">{title}</p>
+                <h3 className="data__title">{title}</h3>
                 <button 
                     className="data__button"
                     onClick={() => handleExpansion()}>

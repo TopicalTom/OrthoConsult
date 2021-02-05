@@ -286,16 +286,18 @@
             grid-auto-flow: row;
         }
 
-        &--alt {
+        &--new {
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(6, 1fr);
+            column-gap: 4rem;
+        }
+
+        &--alt {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
             grid-template-areas: 
-                "full-name gender"
-                "full-name gender"
-                "dob gender"
-                "dob history"
-                "heights history"
-                "heights history";
+                "full-name full-name ethnicity ethnicity"
+                "dob heights ethnicity ethnicity"
+                "gender gender ethnicity ethnicity";
             column-gap: 4rem;
             row-gap: 1rem;
             grid-auto-flow: column;
@@ -317,7 +319,7 @@
             }
 
             & > div:nth-of-type(5) {
-                grid-area: history;
+                grid-area: ethnicity;
             }
         }
 
@@ -374,6 +376,42 @@
         &--layers {
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 20px;
+        }
+    }
+
+    &__split {
+        
+        &--left {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas: 
+                "full-name full-name"
+                "dob heights"
+                "gender gender";
+            gap: 2rem 2rem;
+            grid-auto-flow: column;
+
+            & > div:nth-of-type(1) {
+                grid-area: full-name;
+            }
+
+            & > div:nth-of-type(2) {
+                grid-area: dob;
+            }
+
+            & > div:nth-of-type(3) {
+                grid-area: heights;
+            }
+
+            & > div:nth-of-type(4) {
+                grid-area: gender;
+            }
+        }
+
+        &--right {
+            display: flex;
+            flex-direction: column;
         }
     }
 
@@ -520,7 +558,7 @@
         grid-area: evaluation-records;
         display: flex;
         flex-direction: column;
-        background-color: #fafafa;
+        background-color: #f6f7f9;
         height: 100vh;
         overflow: hidden;
         overflow-y: scroll;
@@ -547,7 +585,7 @@
         position: sticky;
         z-index: 500;
         top: 2.5rem;
-        background-color: #fafafa;
+        background-color: #f6f7f9;
     }
 
     &__head {
@@ -556,7 +594,7 @@
         top: 0;
         right: 0;
         height: 4rem;
-        background-color: #fafafa;
+        background-color: #f6f7f9;
         z-index: 600;
         display: flex;
         align-content: center;
@@ -570,7 +608,7 @@
         right: 0;
         left: 0;
         height: 3rem;
-        background-color: #fafafa;
+        background-color: #f6f7f9;
         z-index: 600;
         margin-top: auto;
         display: flex;

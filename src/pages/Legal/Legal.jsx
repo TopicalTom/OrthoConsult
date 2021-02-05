@@ -15,7 +15,7 @@ const Legal = () => {
                     By becoming a client of OrthoConsult you acknowledged the following documents. You can read each of the following below, or download them for your own records:
                 </p>
                 <Button 
-                    className="legal__button isSecondary" 
+                    className="legal__button isAction" 
                     type="action">
                     Download all files
                 </Button>
@@ -29,7 +29,7 @@ const Legal = () => {
                     This hypothetical evaluation is merely an educational exercise to assist you in your overall practice development.  This evaluation is available only to customers of OrthoConsult Ltd. currently under the direct supervision of Dr. James Gordon Doner, DDS Registration #6577 maintaining compliance with the CDTO & RHPA, 1991 related to Laboratory Supervision Standards.
                 </p>
                 <Button 
-                    className="legal__button isSecondary" 
+                    className="legal__button isAction" 
                     type="action">
                     Download
                 </Button>
@@ -43,7 +43,7 @@ const Legal = () => {
                     This hypothetical evaluation is merely an educational exercise to assist you in your overall practice development.  This evaluation is available only to customers of OrthoConsult Ltd. currently under the direct supervision of Dr. James Gordon Doner, DDS Registration #6577 maintaining compliance with the CDTO & RHPA, 1991 related to Laboratory Supervision Standards.
                 </p>
                 <Button 
-                    className="legal__button isSecondary" 
+                    className="legal__button isAction" 
                     type="action">
                     Download
                 </Button>
