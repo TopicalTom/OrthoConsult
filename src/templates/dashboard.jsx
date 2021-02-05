@@ -1,5 +1,5 @@
 // Assets 
-import home from "../assets/icons/homealt.svg";
+import home from "../assets/icons/dashboard.svg";
 import cases from "../assets/icons/folder.svg";
 import resources from "../assets/icons/printer.svg";
 import education from "../assets/icons/education.svg";
@@ -15,7 +15,7 @@ const dashboard = (props) => {
     return [
         {
             id: "home",
-            name: "home",
+            name: "Dashboard",
             url: "/dashboard",
             icon: home,
         },

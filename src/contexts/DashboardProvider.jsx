@@ -37,7 +37,6 @@ export function DashboardProvider({ children }) {
         // Retrievies data from Case Storage Collection
         await folderRef.listAll()
             .then((res) => {
-                //const newImages = images;
                 res.items.forEach(imgRef => {
                     imgRef.getDownloadURL()
                         .then(url => {
@@ -47,7 +46,6 @@ export function DashboardProvider({ children }) {
                             }
                             newImages.push(image);
                         })
-                        //.then(() =>  setCaseRecords(newImages))
                         .catch(error => console.log(error))
                 })
             })
@@ -98,7 +96,18 @@ export function DashboardProvider({ children }) {
     }, []);
 
     return (
-        <DashboardContext.Provider value={{ clientCases, caseDetails, caseRecords, currentCase, retrieveCase, retrieveRecords, filter, addFilter, loading }}>
+        <DashboardContext.Provider 
+            value={{ 
+                clientCases, 
+                caseDetails, 
+                caseRecords, 
+                currentCase, 
+                retrieveCase, 
+                retrieveRecords, 
+                filter, 
+                addFilter, 
+                loading 
+            }}>
             {children}
         </DashboardContext.Provider>
     )

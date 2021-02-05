@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import "./Home.scss";
 
+// Assets
+import Evaluation from '../../assets/images/marketingevaluation.png';
+import SelfStudy from '../../assets/images/marketingstudy.png';
+import payment from "../../assets/icons/pay.svg";
+import reviewing from "../../assets/icons/reviewing.svg";
+import feedback from "../../assets/icons/feedback.svg";
+
 // Utilities
 import getQuickLink from '../../utils/getQuickLink';
 
@@ -12,6 +19,7 @@ import { useDashboard } from '../../contexts/DashboardProvider';
 // Components
 import Page from '../../components/DashboardPage/DashboardPage';
 import Section from '../../components/DashboardSection/DashboardSection';
+import Card from '../../components/Card/Card';
 
 const Home = () => {
     const { clientCases, currentCase } = useDashboard();
@@ -22,41 +30,27 @@ const Home = () => {
         {
             name: "payment",
             type: "Awaiting payment",
-            status: "Awaiting payment",
-            caption: "Cases that still have invoices you need to finish paying for",
+            status: "Have invoices that still require payment",
+            icon: payment
         },
         {
             name: "review",
             type: "In review",
-            status: "In review",
-            caption: "Cases from you that we are actively working on feedback for",
-            cta: "Contact us",
+            status: "Are being reviewed by us for feedback",
+            icon: reviewing
         },
         {
             name: "feedback",
             type: "Reviewed",
-            status: "Have feedback",
-            caption: "Cases with new feedback that have yet to be viewed by you",
-            cta: "View most recent",
+            status: "Have feedback that you are able to download",
+            icon: feedback
         }
     ]
 
-    const actions = [
-        {
-            cta: "Submit a case",
-        },
-        {
-            cta: "View cases",
-        },
-        {
-            cta: "Continue education",
-        },
-    ]
-    
     return (
         <Page className="home" title={welcomeUser}>
             <Section className="home__section home__section--overview">
-                <h3>Account overview</h3>
+                <h3>Account</h3>
                 <div className="home__overview">
                     <ul>
                         <li>
@@ -76,34 +70,50 @@ const Home = () => {
             </Section>
             <Section className="home__section home__section--updates">
                 <h3>Cases overview</h3>
-                <div className="home__container">
+                <div className="home__container home__container--updates">
                     {updates.map(item => {
                         const quickLink = getQuickLink({clientCases, type: item.type, currentCase});
                         const statusCount = clientCases.filter(type => type.status === item.type).length;
                         return (
-                            <Link
-                                className={`home__card home__card--${item.name}-${statusCount !== 0 ? "active" : "inactive"}`}
-                                to={quickLink}>
-                                <h1>{statusCount}</h1>
-                                <h3>{item.status}</h3>
-                                <h4>{item.caption}</h4>
-                            </Link>
+                            <Card 
+                                className={`home__status home__status--${item.name}`}
+                                quickLink={quickLink}
+                                statusCount={statusCount}
+                                status={item.status}
+                                name={item.name}
+                                icon={item.icon}
+                            />
                         )
                     })}
                 </div>
             </Section>
             <Section className="home__section home__section--actions">
                 <h3>Suggested actions</h3>
-                <div className="home__container">
-                    {actions.map(item => {
-                        return (
-                            <Link
-                                className="home__action"
-                                to={item.link}>
-                                <a>{item.cta}</a>
-                            </Link>
-                        )
-                    })}
+                <div className="home__container home__container--actions">
+                    <Link
+                        className="home__card"
+                        to="/evaluation">
+                        <div className="home__details">
+                            <h2 className="home__title">Case evaluation</h2>
+                            <p className="home__caption">Get feedback on how to proceed with a patient's treatment.</p>
+                            <span className="home__redirect">Get started</span>  
+                        </div>
+                        <div className="home__preview">
+                            <img className="home__image" src={Evaluation}/>
+                        </div>
+                    </Link>
+                    <Link
+                        className="home__card"
+                        to="/dashboard/self-study">
+                        <div className="home__details">
+                            <h2 className="home__title">Continue studies</h2>
+                            <p className="home__caption">Learn orthodontic best practices and gain accredidation.</p>
+                            <span className="home__redirect">Get started</span>  
+                        </div>
+                        <div className="home__preview">
+                            <img className="home__image" src={SelfStudy}/>
+                        </div>
+                    </Link>
                 </div>
             </Section>
         </Page>

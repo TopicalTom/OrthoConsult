@@ -7,6 +7,7 @@ import Page from '../../components/DashboardPage/DashboardPage';
 // Components
 import Section from '../../components/DashboardSection/DashboardSection';
 import Tabs from '../../components/DashboardTabs/DashboardTabs';
+import Button from '../../components/Button/Button';
 
 const Education = () => {
 
@@ -27,6 +28,12 @@ const Education = () => {
             <Section className="education__section education__section--overview">
                 <h3>Overview</h3>
                 <p>Coninue your education with our hosted education resources. Complete courses and gain credit.</p>
+                <Button 
+                    className="contact__button isSecondary" 
+                    type="external"
+                    to="https://stripe.com/en-ca/about">
+                    Learn about accredidation
+                </Button>
             </Section>
             <Section className="education__section education__section--recommended">
                 <h3>Recommended</h3>

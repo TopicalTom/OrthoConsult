@@ -7,6 +7,7 @@ import Page from '../../components/DashboardPage/DashboardPage';
 // Components
 import Section from '../../components/DashboardSection/DashboardSection';
 import Tabs from '../../components/DashboardTabs/DashboardTabs';
+import Button from '../../components/Button/Button';
 
 const Resources = () => {
 
@@ -27,6 +28,12 @@ const Resources = () => {
             <Section className="resources__section resouces__section--overview">
                 <h3>Overview</h3>
                 <p>Retrieve files and documents to enable your to provide the best experience.</p>
+                <Button 
+                    className="contact__button isSecondary" 
+                    type="external"
+                    to="https://stripe.com/en-ca/about">
+                    View records required
+                </Button>
             </Section>
             <Tabs 
                 className="resources__section resources__section--options" 

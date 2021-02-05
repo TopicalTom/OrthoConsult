@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDashboard } from '../../contexts/DashboardProvider';
-import { Link } from 'react-router-dom';
 import "../../pages/Cases/Cases.scss";
 
 // Components
