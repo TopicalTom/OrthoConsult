@@ -263,13 +263,15 @@ The verification badge is replaced with a cases overview which lets clients see 
 
 Since new users won't have any cases attached to their account, they must first complete a case evaluation by clicking the new evaluation button on the bottom of the dashboard nav.
 
-Note: the following also covers where I intend to go with the form, not just what I have currently built out.
-
 <br />
 
 ### `Part 1: Case Type`
 
-The first field a user is presented with asks for 
+Before getting into the case evaluation, users are prompted to categorize what type of case we will be looking at. This is done for three reasons:
+
+1. Determines the base price of how much the case evaluation will cost (pending additional ceph tracing)
+2. Future use in linking cases to view patient progress over time
+3. Potential for conditionally toggling what is displayed as the next form step
 
 <br />
 
@@ -285,31 +287,220 @@ When a user gets to this section they are asked to fill out a variety of informa
 
 [IMG Case Evaluation Part 1]
 
-Note: This works well for users that select "New Case", as it assumes that this patient's details aren't currently provided to our system. However, when a user selects "Ongoing Case", it is under the assumption we have already collected most of the information they are providing and doing so again would just be a repeat of the information we already have. To alleviate this, this part of the form could be branching where presiding "New Case" selections leads to the current iteration of the form below, but "Ongoing Case" selections lead to a variation where users can select from a dropdown of their patients and edit what information they have already provided for this iteration of the case.
+UX Note: This works well for users that select "New Case", as it assumes that this patient's details aren't currently provided to our system. However, when a user selects "Ongoing Case", it is under the assumption we have already collected most of the information they are providing and doing so again would just be a repeat of the information we already have. To alleviate this, this part of the form could be branching where presiding "New Case" selections leads to the current iteration of the form below, but "Ongoing Case" selections lead to a variation where users can select from a dropdown of their patients and edit what information they have already provided for this iteration of the case.
 
 <br />
 
 ### `Part 3: Evaluation`
 
+Regardless of case type, all users will fill out the same case evaluation fields. In terms of design, rather than having a long list of fields that users would fill out on one page I have instead opted to break down each question onto their own page. This was down for the following reasons:
+
+1. Focuses the user's attention to one question at a time
+2. Reduces the chance of a user missing a question in a wall of information
+3. Encourages a user to fully consider each question as each field requires an input 
+
+<br />
+
+```javascript
+    // EvaluationProvider.jsx (line 23 - 134)
+
+    export const EvaluationProvider = ({ children }) => {
+        const initialData = database; 
+        const [ dataState, dataDispatch ] = useReducer(dataReducer, initialData);
+
+        // lines 31 - 120
+
+        return (
+            <EvaluationContext.Provider 
+                value={{ 
+                    loading,
+                    dataState, 
+                    dataDispatch, 
+                    submitCase }}>
+                {children}
+            </EvaluationContext.Provider>
+        )
+    }
+```
+
+<br />
+
+[IMG Case Evaluation Part 3]
+
+UX Note: Due to the multi-step nature and length of this form, it was important to ensure users were aware of system status throughout their progress. This UX heuristic was acheived by:
+
+1. Indicators for what step of the form they were on
+2. What steps and information they might be expected to know as the form progressed
+3. Progress header for current question in relation to total questions
+4. Empty records container for anticipated content later on
+
 <br />
 
 ### `Part 4: Records`
+
+Using the drag and drop feature users are able to submit individual files, or multiple at a time. After providing a file, the records list on the right will updatee to showcase what files have been submitted, what they are currently called, and how large of a file it is. Should the user upload an exceptionally large file, they will be notified both on the offending file as well as on the bottom based on how large of an upload it will be. To alleviate these issues, users are able to remove any file they upload by clicking the options button (kebab) for each file listing.
+
+Furthermore, users are also able to opt-in to an additional service of ceph tracing (if they don't have the file themself) by clicking the checkbox that will add $50 CDN to the price of the base case evaluation type they selected in Part 1.
+
+<br />
+
+
+```javascript
+    // EvaluationProvider.jsx (line 23 - 134)
+
+    export const EvaluationProvider = ({ children }) => {
+        const initialRecords = records; 
+        const [ recordState, recordDispatch ] = useReducer(recordReducer, initialRecords);
+
+        // lines 31 - 120
+
+        return (
+            <EvaluationContext.Provider 
+                value={{ 
+                    loading,
+                    recordState, 
+                    recordDispatch, 
+                    submitCase }}>
+                {children}
+            </EvaluationContext.Provider>
+        )
+    }
+```
+
+<br />
+
+[IMG Case Evaluation Part 4]
+
+UX Note: There is currently a button labeled "Help" that would provide users with a guide for what records are required or suggested for submission as the client has had isssues in the past of people (their clients) not sending the right records needed to provide adequate feedback. This feature aims to guide users towards best practices should they be unaware or confused about what to provide. Additonally, an advanced option, denoted by the "Advanced" button could lead to an individual form where users could rename files or add notes to the files they submit for future use when reviewing their case.
 
 <br />
 
 ### `Part 5: Confirmation & Submission`
 
-<br/>
-
-[IMG Case Evaluation]
+After completing all required fields, users are finally able to submit their case evaluation once they agree to our terms of service and privacy policy. While users agree to both of these legal documents when they signup as a client, it is provided again just in-case.
 
 <br />
+
+```javascript
+    // EvaluationProvider.jsx (line 92 - 120)
+    
+    const submitCase = async () => {
+        const newCaseId = uuidv4();
+        setLoading(true);
+
+        await Promise
+            .all([
+                uploadData(newCaseId),
+                uploadRecords(newCaseId),
+                linkClient(newCaseId)
+            ])
+            .then(() => {
+                // lines 103 - 111
+                history.push(`/dashboard/cases?filter=None&case=${newCaseId}`);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+            .finally(() => 
+                setLoading(false)
+            );
+    };
+```
+
+<br />
+
+```javascript
+    // EvaluationProvider.jsx (line 32 - 42)
+    
+    const uploadData = (newCaseId) => {
+        firestore.collection("cases")
+            .doc(newCaseId)
+            .set(dataState)
+            .then(() => {
+                console.log("Success");
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+```
+
+<br />
+
+```javascript
+    // EvaluationProvider.jsx (line 45 - 69)
+    
+    const uploadRecords = (newCaseId) => {
+        const storageRef = storage.ref(newCaseId);
+        {recordState.records.map((item) => {
+
+            if (item.id !== "base64") {
+                storageRef.child(item.id)
+                    .put(item.meta)
+                    .then(() => {
+                        console.log("Records Uploaded")
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            } else {
+                storageRef.child(item.name)
+                    .putString(item.meta.file, 'data_url')
+                    .then(() => {
+                        console.log("Records Uploaded")
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }
+        })}
+    }
+```
+
+<br />
+
+```javascript
+    // EvaluationProvider.jsx (line 72 - 89)
+    
+    const linkClient = (newCaseId) => {
+        firestore.collection("clients")
+            .doc(auth.currentUser.uid).collection("cases")
+            .doc(newCaseId)
+            .set({
+                uid: newCaseId,
+                type: dataState.caseType,
+                patient: dataState.patient,
+                createdAt: new Date(),
+                status: "Awaiting payment"
+            })
+            .then(() => {
+                console.log("Case linked to client")
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+```
+
+<br />
+
+[IMG Case Evaluation Part 5]
+
+UX Note: Before submitting a user may want to look over the content they have provided to ensure they have everything submitted properly. This is especially the case given how what information they provided is used to provided curated feedback where incorrect information could go on to negatively influence they type of treatment a patient recieives. Due to the importance of getting information correct, an option to tab between viewing records provided with details provided would allow users to quickly check their details for errors without having to go back through the form and ensure they submit the case details sooner.
+
+<br/>
 
 ## Task 7: Confirm Submission
 
 - Touchpoint: Dashboard or Email
 - Screen: Dasboard Case # or Personal Email
 - Goal: Provide visibility of case status
+
+<br />
+
+After clicking the submit button users 
+
+<br />
 
 ### `Option 1: By Email`
 
