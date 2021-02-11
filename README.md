@@ -27,7 +27,7 @@ Even though a lot of this project was based largely on assumptions, I worked col
 
 My focus for this project was in building out the basic functionality for this platform that would enable my client to continue providing their services should their contract end. Based on our talks on their business, the minimum functionality for this would rely on client-facing touchpoints with the following task flow.
 
-[image of service blueprint]
+[IMG of service blueprint]
 
 <br />
 
@@ -71,7 +71,7 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
 
 <br />
 
-[GIF of website scroll]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 <br />
 
@@ -85,7 +85,7 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
 
 ### `Option 1: Sign Up`
 
-[GIF of Sign Up Screen]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 <br />
 
@@ -161,7 +161,7 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
 
 ### `Option 2: Sign In`
 
-[GIF of Sign In Screen]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 <br />
 
@@ -207,7 +207,7 @@ However, in order to truly engage with the platform they are required to verify 
 
 <br />
 
-[img of verification badge]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 <br />
 
@@ -241,7 +241,7 @@ After verifying their account, users now have full access to the OrthoConsult pl
 
 <br />
 
-[IMG New Dashboard Home]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 <br />
 
@@ -249,8 +249,9 @@ The verification badge is replaced with a cases overview which lets clients see 
 
 <br />
 
-[IMG of Cases Filtering]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
+<br />
 <br />
 
 ## Task 6: Complete Case Evaluation
@@ -275,7 +276,7 @@ Before getting into the case evaluation, users are prompted to categorize what t
 
 <br />
 
-[IMG Case Evaluation Part 1]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 <br />
 
@@ -285,7 +286,7 @@ When a user gets to this section they are asked to fill out a variety of informa
 
 <br />
 
-[IMG Case Evaluation Part 1]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 UX Note: This works well for users that select "New Case", as it assumes that this patient's details aren't currently provided to our system. However, when a user selects "Ongoing Case", it is under the assumption we have already collected most of the information they are providing and doing so again would just be a repeat of the information we already have. To alleviate this, this part of the form could be branching where presiding "New Case" selections leads to the current iteration of the form below, but "Ongoing Case" selections lead to a variation where users can select from a dropdown of their patients and edit what information they have already provided for this iteration of the case.
 
@@ -325,7 +326,7 @@ Regardless of case type, all users will fill out the same case evaluation fields
 
 <br />
 
-[IMG Case Evaluation Part 3]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 UX Note: Due to the multi-step nature and length of this form, it was important to ensure users were aware of system status throughout their progress. This UX heuristic was acheived by:
 
@@ -369,7 +370,7 @@ Furthermore, users are also able to opt-in to an additional service of ceph trac
 
 <br />
 
-[IMG Case Evaluation Part 4]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 UX Note: There is currently a button labeled "Help" that would provide users with a guide for what records are required or suggested for submission as the client has had isssues in the past of people (their clients) not sending the right records needed to provide adequate feedback. This feature aims to guide users towards best practices should they be unaware or confused about what to provide. Additonally, an advanced option, denoted by the "Advanced" button could lead to an individual form where users could rename files or add notes to the files they submit for future use when reviewing their case.
 
@@ -484,11 +485,12 @@ After completing all required fields, users are finally able to submit their cas
 
 <br />
 
-[IMG Case Evaluation Part 5]
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 UX Note: Before submitting a user may want to look over the content they have provided to ensure they have everything submitted properly. This is especially the case given how what information they provided is used to provided curated feedback where incorrect information could go on to negatively influence they type of treatment a patient recieives. Due to the importance of getting information correct, an option to tab between viewing records provided with details provided would allow users to quickly check their details for errors without having to go back through the form and ensure they submit the case details sooner.
 
 <br/>
+<br />
 
 ## Task 7: Confirm Submission
 
@@ -498,14 +500,51 @@ UX Note: Before submitting a user may want to look over the content they have pr
 
 <br />
 
-After clicking the submit button users 
+### `By Dashboard (Primary)`
+
+After submitting their case evaluation, users are redirected back to the cases page of their dashboard with a digitized documentation of the case file. From this screen users can look over the data and records they just submitted.
 
 <br />
 
-### `Option 1: By Email`
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
-### `Option 2: By Dashboard`
+<br />
 
+### `By Email (Secondary)`
+
+While users are automatically redirected back to their dashboard after submitting, they also receive a case confirmation to their email as backup. This provides a quick way to get back to their case details if they aren't actively using our dashboard.
+
+<br />
+
+```javascript
+    // EvaluationProvider.jsx (line 72 - 89)
+    
+    const submitCase = async () => {
+        const newCaseId = uuidv4();
+        setLoading(true);
+
+        await Promise
+        
+            // line 97 - 101
+            
+            .then(() => {
+                fetchFromAPI('create-invoice', {
+                    body: { 
+                        customer_uid: auth.currentUser.uid, 
+                        invoice_items: {
+                            caseType: dataState.caseType,
+                            cephalometric: dataState.cephalometric
+                        }
+                    },
+                });
+                history.push(`/dashboard/cases?filter=None&case=${newCaseId}`);
+            })
+            
+            // line 114 - 119
+    };
+```
+
+<br />
 <br />
 
 ## Task 8: Access Case Invoice
@@ -514,10 +553,53 @@ After clicking the submit button users
 - Screen: Dasboard Case # or Personal Email
 - Goal: Ensure compensation for expected work
 
-### `Option 1: By Email`
+<br />
 
-### `Option 2: By Dashboard`
+### `By Dashboard (Primary)`
 
+At the top of the case page users are presented with 
+
+<br />
+
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
+
+<br />
+
+### `By Email (Secondary)`
+
+Alternatively, users also are emailed
+
+<br />
+
+```javascript
+    // EvaluationProvider.jsx (line 72 - 89)
+    
+    const submitCase = async () => {
+        const newCaseId = uuidv4();
+        setLoading(true);
+
+        await Promise
+        
+            // line 97 - 101
+            
+            .then(() => {
+                fetchFromAPI('create-invoice', {
+                    body: { 
+                        customer_uid: auth.currentUser.uid, 
+                        invoice_items: {
+                            caseType: dataState.caseType,
+                            cephalometric: dataState.cephalometric
+                        }
+                    },
+                });
+                history.push(`/dashboard/cases?filter=None&case=${newCaseId}`);
+            })
+            
+            // line 114 - 119
+    };
+```
+
+<br />
 <br />
 
 ## Task 9: Pay Case Invoice
@@ -528,16 +610,34 @@ After clicking the submit button users
 
 <br />
 
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
+
+<br />
+<br />
+
 ## Task 10: Confirm All Actions are Completed
 
 - Touchpoint: Dashboard
 - Screen: Dashboard Case #
 - Goal: Let clients know no further action is required
 
-### `Option 1: By Email`
+<br />
 
-### `Option 2: By Dashboard`
+### `By Dashboard (Primary)`
 
+At the top of the case page users are presented with 
+
+<br />
+
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
+
+<br />
+
+### `By Email (Secondary)`
+
+Alternatively, users also are emailed
+
+<br />
 <br />
 
 ## Task 11: Download Case Feedback
@@ -546,11 +646,21 @@ After clicking the submit button users
 - Screen: Dashboard Case #
 - Goal: Provide downloadable feedback
 
-### `Option 1: By Email`
+<br />
 
-### `Option 2: By Dashboard`
+### `By Dashboard (Primary)`
+
+At the top of the case page users are presented with 
 
 <br />
+
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
+
+<br />
+
+### `By Email (Secondary)`
+
+Alternatively, users also are emailed
 
 <br />
 <br />
