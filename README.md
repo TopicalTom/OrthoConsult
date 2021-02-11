@@ -54,9 +54,10 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
   - [Storage](https://firebase.google.com/products/storage)
   - [Authentication](https://firebase.google.com/products/auth)
   - [Hosting](https://firebase.google.com/products/hosting)
-  - [Functions](https://firebase.google.com/products/functions)
+  - [Cloud Functions](https://firebase.google.com/products/functions)
+  - [Trigger Emails Extension](https://firebase.google.com/products/firestore)
+  - [Stripe Invoices Extension](https://firebase.google.com/products/firestore)
 - [Stripe](https://stripe.com/)
-  - [Invoices Extension](https://firebase.google.com/products/firestore)
 
 <br />
 <br />
@@ -84,8 +85,6 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
 <br />
 
 ### `Option 1: Sign Up`
-
-<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 <br />
 
@@ -159,9 +158,11 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
 
 <br />
 
-### `Option 2: Sign In`
-
 <a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
+
+<br />
+
+### `Option 2: Sign In`
 
 <br />
 
@@ -182,6 +183,10 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
         return auth.signInWithEmailAndPassword(email, password);
     }
 ```
+
+<br />
+
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 <br />
 
@@ -280,7 +285,7 @@ Before getting into the case evaluation, users are prompted to categorize what t
 
 <br />
 
-### `Part 2: Patient Info`
+### `Part 2: Patient`
 
 When a user gets to this section they are asked to fill out a variety of information pertaining to the identity and characteristics of a particular patient.
 
@@ -326,6 +331,42 @@ Regardless of case type, all users will fill out the same case evaluation fields
 
 <br />
 
+```javascript
+    // dataReducer.js (line 2 - 47)
+
+    function dataReducer(dataState, action) {
+        const { name, value, group, path } = action.payload;
+        switch (action.type) {
+
+            // Stores Data at the top level of state
+            case "STORE_DATA":
+                return {
+                    ...dataState,
+                    [name]: value
+                };
+
+            // Stores Data within an object of state
+            case "STORE_AS_NESTED_DATA":            
+                return {
+                    ...dataState,
+                    [group]: {
+                        ...path,
+                        [name]: value
+                    }
+                }; 
+            
+            // line (23 - 42)
+
+            default:
+                return dataState;
+        }
+    }
+
+    export default dataReducer;
+```
+
+<br />
+
 <a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 UX Note: Due to the multi-step nature and length of this form, it was important to ensure users were aware of system status throughout their progress. This UX heuristic was acheived by:
@@ -337,7 +378,7 @@ UX Note: Due to the multi-step nature and length of this form, it was important 
 
 <br />
 
-### `Part 4: Records`
+### `Part 4: Upload Records`
 
 Using the drag and drop feature users are able to submit individual files, or multiple at a time. After providing a file, the records list on the right will updatee to showcase what files have been submitted, what they are currently called, and how large of a file it is. Should the user upload an exceptionally large file, they will be notified both on the offending file as well as on the bottom based on how large of an upload it will be. To alleviate these issues, users are able to remove any file they upload by clicking the options button (kebab) for each file listing.
 
@@ -366,6 +407,44 @@ Furthermore, users are also able to opt-in to an additional service of ceph trac
             </EvaluationContext.Provider>
         )
     }
+```
+
+<br />
+
+```javascript
+    // recordReducer.js (line 2 - 58)
+
+    function recordReducer(recordState, action) {
+        switch (action.type) {
+        
+            // lines 5 - 32
+
+            // Adds new record to records list
+            case "ADD_RECORD":
+                return {
+                    ...recordState,
+                    records: [
+                        ...recordState.records,
+                        action.payload
+                    ]
+                };  
+
+            // Returns records of non-matching ID
+            case "REMOVE_RECORD":
+                const updatedRecords = recordState.records
+                    .filter(item => item.id !== action.payload.id);
+
+                return {
+                    ...recordState,
+                    records: [...updatedRecords]
+                };
+
+            default:
+                return recordState;
+        }
+    }
+
+    export default recordReducer;
 ```
 
 <br />
@@ -506,6 +585,87 @@ After submitting their case evaluation, users are redirected back to the cases p
 
 <br />
 
+```javascript
+    // DashboardProvider.jsx (line 2 - 58)
+
+    export function DashboardProvider({ children }) {
+
+        // Gets Short-form Client Case listings
+    
+        const retrieveCase = (caseId) => {
+            const caseRef = firestore.collection('cases').doc(caseId);
+
+            // Retrievies data from Case FireStore Collection
+            caseRef.get()
+                .then((doc) => {
+                    const data = doc.data();
+                    setCaseDetails(data);
+                    setCurrentCase(caseId);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+
+        return (
+            <DashboardContext.Provider 
+                // line 
+            </DashboardContext.Provider>
+        )
+    }
+```
+
+<br />
+
+```javascript
+    // DashboardProvider.jsx (line 2 - 58)
+
+    export function DashboardProvider({ children }) {
+
+        // Gets Short-form Client Case listings
+    
+        const retrieveRecords = async (caseId) => {
+            const recordsRef = storage.ref();
+            const folderRef = recordsRef.child(`${caseId}`);
+
+            let images = [];
+            const newImages = images;
+        
+            setLoading(true);
+    
+            // Retrievies data from Case Storage Collection
+            await folderRef.listAll()
+                .then((res) => {
+                    res.items.forEach(imgRef => {
+                        imgRef.getDownloadURL()
+                            .then(url => {
+                                const image = {
+                                    title: "Image Title",
+                                    src: url
+                                }
+                                newImages.push(image);
+                            })
+                            .catch(error => console.log(error))
+                    })
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+                .finally(() => setLoading(false))
+
+            setCaseRecords(newImages)
+        }
+
+        return (
+            <DashboardContext.Provider 
+                // line 
+            </DashboardContext.Provider>
+        )
+    }
+```
+
+<br />
+
 <a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
 <br />
@@ -528,12 +688,12 @@ While users are automatically redirected back to their dashboard after submittin
             // line 97 - 101
             
             .then(() => {
-                fetchFromAPI('create-invoice', {
+                fetchFromAPI('create-email', {
                     body: { 
                         customer_uid: auth.currentUser.uid, 
-                        invoice_items: {
-                            caseType: dataState.caseType,
-                            cephalometric: dataState.cephalometric
+                        email_items: {
+                          emailType: 'case-submission',
+                          caseData: dataState
                         }
                     },
                 });
@@ -675,6 +835,12 @@ As I am new to development, largely in uncharted territory as I work on this pro
 # Next Steps
 
 Aside from incorporating the tasks that still need to be completed and fixing known bugs, my next step for this project would to get actual users into the process as it could influence how I go about designing the platform.
+
+<br />
+
+- Incorporate updateInvoice Stripe Webhook
+- Add Email Notifications based on invoice changes
+- 
 
 <br />
 <br />
