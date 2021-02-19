@@ -1,37 +1,29 @@
 # OrthoConsult
 
-OrthoConsult is a SaaS for providing clients with online orthodontic & orthopedic case evaluation and consultation services.
-
-<br />
-<br />
-
-# Project Overview
-
-This project is my first in-depth UX Development project that has a real life context that will be used by real people and has actual functionality as a product. In its current state, OrthoConsult is made of three parts, namely:
+OrthoConsult is a SaaS for providing clients with online orthodontic & orthopedic case evaluation and consultation services. This project is my first in-depth UX Development project that has a real life context that will be used by real people and has actual functionality as a product. In its current state, OrthoConsult is made of three parts, namely:
 
 1. Marketing website 
 2. Multi-step case evaluation form
 3. Limited client-facing dashboard
 
 <br />
+<br />
 
-### Client constraints
+# Project Overview
+
+<br />
+
+## Client Constraints & Needs
 
 Due to this, a lot of the design decisions made for this project are based on assumptions. 
 
 Even though a lot of this project was based largely on assumptions, I worked collaboratively with the client to ensure elements like copy would be familiar to their specialized users to form a rough base to work with if they are released from their contract and I could then start worrking with actual users.
 
-<br />
-
-### Service Blueprint
-
-My focus for this project was in building out the basic functionality for this platform that would enable my client to continue providing their services should their contract end. Based on our talks on their business, the minimum functionality for this would rely on client-facing touchpoints with the following task flow.
-
-[IMG of service blueprint]
+<a href="https://ibb.co/Wnxjytc"><img src="https://i.ibb.co/G7xN2TV/Ortho-Consult-Print-Form.jpg" alt="Ortho-Consult-Print-Form" border="0"></a>
 
 <br />
 
-### Tech stack
+## Tech stack
 
 Based on these outlined features this project required the ability to store, view and manage data/files, process payments for the consulting services provided while linking all of the above to specific users. At the time of starting this project I had little to no experience in these areas but took the leap into learning Firebase and Stripe in order to add the needed functionality to this project.
 
@@ -58,6 +50,14 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
   - [Trigger Emails Extension](https://firebase.google.com/products/firestore)
   - [Stripe Invoices Extension](https://firebase.google.com/products/firestore)
 - [Stripe](https://stripe.com/)
+
+<br />
+
+## Service Flow
+
+My focus for this project was in building out the basic functionality for this platform that would enable my client to continue providing their services should their contract end. Based on our talks on their business, the minimum functionality for this would rely on client-facing touchpoints with the following task flow.
+
+<img src="https://i.ibb.co/FVQ1FZ0/Ortho-Consult-Flow.jpg" alt="Ortho-Consult-Flow" border="0">
 
 <br />
 <br />
