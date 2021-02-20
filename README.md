@@ -13,7 +13,7 @@ OrthoConsult is a SaaS for providing clients with online orthodontic & orthopedi
 
 <br />
 
-## Client Constraints & Needs
+## Client Needs
 
 Due to this, a lot of the design decisions made for this project are based on assumptions. 
 
@@ -53,11 +53,27 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
 
 <br />
 
+## Constraints
+
+Unfortunately, due to the contract mentioned above one of the major constraints was the inability to involve actual clients in the process as it would break the terms of agreement. This was especially troublesome for content copy as the terminology used is highly technical and specific to an Orthodontist.
+
+To overcome this constraint, I worked collaboratively with the client to leverage familiar language and referenced current touchpoints to keep the user journey as similar as possible to what their clients have come to expect.
+
+Furthermore, there was also the personal constraint of technical knowledge and time as this was a solo endeavour so I had to prioritize between learning the tech needed to deliver on the clients needs while having something functional the client could use should their contact abruptly end.
+
+<br />
+
 ## Service Flow
 
-My focus for this project was in building out the basic functionality for this platform that would enable my client to continue providing their services should their contract end. Based on our talks on their business, the minimum functionality for this would rely on client-facing touchpoints with the following task flow.
+Using all of the information above, I constructed a rough flow chart for potential user types as they engaged with the projected experience from a front-end and back-end perspective. For the sake of clarity, the “Users” communicated below are the Client’s “Clients” while the Client is classified as the “Owner”:
+
+<br />
 
 <img src="https://i.ibb.co/FVQ1FZ0/Ortho-Consult-Flow.jpg" alt="Ortho-Consult-Flow" border="0">
+
+<br />
+
+While this diagram provides a comprehensive overview of where the OrthoConsult platform as a whole can go, my initial focus was building out a minimum valuable experience (MVP) based on what would enable the client to effectively continue their consulting work. Therefore, the following task flow and functionality was focused on:
 
 <br />
 <br />
@@ -69,6 +85,10 @@ My focus for this project was in building out the basic functionality for this p
 - Touchpoint: Website
 - Screen: Landing Page
 - Goal: Contextualize value proposition
+
+<br />
+
+Upon arriving on the landing page, new leads are able to continue to register or scroll to learn more about what OrthoConsult has to offer.
 
 <br />
 
@@ -84,7 +104,17 @@ My focus for this project was in building out the basic functionality for this p
 
 <br />
 
-### `Option 1: Sign Up`
+Depending on whether the user is a pre-existing client or a new lead, they will visit either the "Registration" Screen or the "Sign In" Screen. Both of these
+
+<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
+
+<br />
+
+### `Option 1: Register`
+
+<br/>
+
+Whenever a new lead completes the registration form by filling out their full name, email, province and agree to our terms of service; a new user is created with Firebase Auth using the "Create user with Email and Password" function.
 
 <br />
 
@@ -98,13 +128,21 @@ My focus for this project was in building out the basic functionality for this p
 
 <br />
 
+While this function links an email and password to our Firebases services it doesn't intrinsically store the other information a user provided. To alleviate this limitation, a useEffect hook was used to watch for Auth changes which:
+
+- Calls the "Retrieve Client" function
+- Sets "Current User" using a unique identifier from a snapshot of Firebase Auth
+- Sets "Loading" state to false for adjusting button UI
+
+<br />
+
 ```javascript
     // AuthProvider.jsx (line 64 - 88)
     
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async userAuth => {
             if (userAuth) {
-                const clientRef = await createClient(userAuth);
+                const clientRef = await retrieveClient(userAuth);
 
                 clientRef.onSnapshot(snapShot => {
                     setCurrentUser({
@@ -127,10 +165,14 @@ My focus for this project was in building out the basic functionality for this p
 
 <br />
 
+When this "Retrieve Client" function is called, it will look for a document within the Clients FireStore database that matches the currrent userAuth uid. When no matching document exists it will instead create a new document with the registration form data and send a verification email to the current user. This in turn enables us to store all of the information they provided during registration.
+
+<br />
+
 ```javascript
     // AuthProvider.jsx (line 38 - 61)
     
-    const createClient = async (userAuth, additionalData) => {
+    const retrieveClient = async (userAuth, additionalData) => {
         if (!userAuth) { return };
     
         const clientRef = firestore.doc(`clients/${userAuth.uid}`);
@@ -158,21 +200,11 @@ My focus for this project was in building out the basic functionality for this p
 
 <br />
 
-<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
-
-<br />
-
 ### `Option 2: Sign In`
 
 <br />
 
-```javascript
-    // AuthProvider.jsx (line 28 - 30)
-
-    const logout = () => {
-        return auth.signOut();
-    }
-```
+This functionality is achieved by calling the "Sign In With Email and Password" Firebase Auth function before using the UseEffect Hook from before to set the curent user.
 
 <br />
 
@@ -186,10 +218,19 @@ My focus for this project was in building out the basic functionality for this p
 
 <br />
 
-<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
+Should users decide to sign out, they are able to click on the profile icon on the top right of the dashboard and click the "Logout" button in order to return to a logged out state. This state is achieved by calling the Firebase Auth "Sign Out" function before being redirected back to the Landing Page.
 
 <br />
 
+```javascript
+    // AuthProvider.jsx (line 28 - 30)
+
+    const logout = () => {
+        return auth.signOut();
+    }
+```
+
+<br />
 
 ## Task 3: Determine next steps
 
@@ -201,12 +242,8 @@ My focus for this project was in building out the basic functionality for this p
 
 When a client registers with OrthoConsult they are able to browse all aspects of the client dashboard but are largely limited to interacting with the resources and self-study sections. Due to this, whenever a client signs in to the OrthoConsult dashboard they are presented with prompts suggesting they continue to these sections of the website. This was important for two reasons:
 
-<br />
-
 1. It provides some value for providing personal details, even if they have no intent of using all our services
 2. It lowers the barrier to transitioning to a full client as we essentially have their required account details on file
-
-<br />
 
 However, in order to truly engage with the platform they are required to verify their account using the email they signed up with. Since a user won't automatically be verified when they register, and may not even be aware it is something they should do, one of the first prompts of the Dashboard Home is a banner letting them know to check their personal email to complete account verification.
 
@@ -244,19 +281,14 @@ However, in order to truly engage with the platform they are required to verify 
 
 After verifying their account, users now have full access to the OrthoConsult platform and can now submit case evaluations whenever they want. In light of this change, the banner that previously prompted a user to verify their account is replaced by a cases overview based on where in the feedback process a case currently is at while the altenative actions (available to all users) maintains its spot at the bottom of the screen. 
 
-<br />
+These features are placed on the Dashboard Home as it provides clients with a quick overview of system status and a quick way to navigate to an area of the dashboard that requires their immediate attention. This is achieved with the buttons under each section that redirects to the Dashboard Case Screen with a filtered list of cases based on what stage they are at and what actions they can complete. 
 
-<a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
-
-<br />
-
-The verification badge is replaced with a cases overview which lets clients see what stage their cases, and by extentsion feedback, is at from a quick glance when they visit their dashboard. Building off of this, they are able to click the buttons under each section and see a filtered list of cases based on what stage they are at and what actions they can complete. I'll cover what that looks like later on though.
+However, since new users won't have any cases attached to their account, they must first complete a case evaluation by clicking the new evaluation button on the bottom of the dashboard nav.
 
 <br />
 
 <a href="https://ibb.co/Phbyz4V"><img src="https://i.ibb.co/J7bTF2S/Case-Evaluation-Step-1.png" alt="Case-Evaluation-Step-1" border="0"></a>
 
-<br />
 <br />
 
 ## Task 6: Complete Case Evaluation
@@ -264,10 +296,6 @@ The verification badge is replaced with a cases overview which lets clients see 
 - Touchpoint: Evaluation Form
 - Screen: Evaluation Form
 - Goal: Digitize Patient Data & Records
-
-<br />
-
-Since new users won't have any cases attached to their account, they must first complete a case evaluation by clicking the new evaluation button on the bottom of the dashboard nav.
 
 <br />
 
@@ -825,22 +853,17 @@ Alternatively, users also are emailed
 <br />
 <br />
 
-# Known Issues
-
-As I am new to development, largely in uncharted territory as I work on this project, and am working solo, my focus has been more on getting rough functionality for this project down and then ensuring all bugs along the way are fixed. As it currently stands I am fully acknowledge the following issues with my code.
-
-<br />
-<br />
-
 # Next Steps
 
 Aside from incorporating the tasks that still need to be completed and fixing known bugs, my next step for this project would to get actual users into the process as it could influence how I go about designing the platform.
 
 <br />
 
-- Incorporate updateInvoice Stripe Webhook
-- Add Email Notifications based on invoice changes
-- 
+- Phase 1
+  - Incorporate updateInvoice Stripe Webhook
+  - Add Email Notifications based on invoice changes
+- Phase 2
+- Phase 3
 
 <br />
 <br />
