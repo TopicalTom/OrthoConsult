@@ -1,10 +1,73 @@
 # OrthoConsult
 
-OrthoConsult is a SaaS for providing clients with online orthodontic & orthopedic case evaluation and consultation services. This project is my first in-depth UX Development project that has a real life context that will be used by real people and has actual functionality as a product. In its current state, OrthoConsult is made of three parts, namely:
+<br />
 
-1. Marketing website 
-2. Multi-step case evaluation form
-3. Limited client-facing dashboard
+OrthoConsult is a SaaS for providing clients with online orthodontic & orthopedic case evaluation and consultation services. This project is my first in-depth full stack development project with a real life context and constraints. In developing this project I built out the base infastructure for a marketing splash page, a multi-step evaluation form and a dashboard that are supported by Firebase and Stripe integrations to enable storing of user case data/records and invoice generation for managing payment for the client's services.
+
+- Timeline: Dec 2020 - Feb 2021
+- Role: Full Stack Developer
+- Type: Consultation
+
+<br />
+<br />
+
+# Project Context
+
+<br />
+
+## The Challenge
+
+At a high-level, my client provides orthodontic & orthopadic case consultation by looking over a patient's dental records and offering their professional advice on how to proceed with treatment. This project arose from the potential of my clients' contract ending with a company and their need for a platform to continue their services with the customer base they have built over the years.
+
+<br />
+
+## Business Requirements
+
+Even though a lot of this project was based largely on assumptions, I worked collaboratively with the client to ensure elements like copy would be familiar to their specialized users to form a rough base to work with if they are released from their contract and I could then start worrking with actual users.
+
+<br />
+
+<a href="https://ibb.co/Wnxjytc"><img src="https://i.ibb.co/G7xN2TV/Ortho-Consult-Print-Form.jpg" alt="Ortho-Consult-Print-Form" border="0"></a>
+
+<br />
+
+In totality, the product that I was building needed to accomplish the following objectives:
+
+1. Collecting and Storing Raw Data and Files
+2. Communicate directly with potential customers
+3. Ensure payment for providing Consulting Services
+
+<br />
+
+## Customer Journey
+
+As it currently stands, when a potential customer wants to complete a case evaluation with my client they would have to jump through a few hoops. The typical flow a potential lead would go through would roughly be:
+
+1. Visit the website
+2. Navigate to the Case Evaluation Tab
+3. Click the Pre-Case Evaluation Link
+4. Download & Print Out the Pre-Evaluation Questionaire
+5. Fills Out Questionaire
+6. Emails Completed Questionaire with any relevant Dental Records
+
+  [ 1 - 2 working Days]
+
+7. Recieves a Legal/Payment Contract
+8. Agrees to Terms and provides Payment
+
+  [ 5 working Days ]
+  
+9. Recieves a Proposed Treatment Plan
+
+<br />
+
+## Constraints
+
+Unfortunately, due to the contract mentioned above one of the major constraints was the inability to involve actual clients in the process as it would break the terms of agreement. This was especially troublesome for content copy as the terminology used is highly technical and specific to an Orthodontist.
+
+To overcome this constraint, I worked collaboratively with the client to leverage familiar language and referenced current touchpoints to keep the user journey as similar as possible to what their clients have come to expect.
+
+Furthermore, there was also the personal constraint of technical knowledge and time as this was a solo endeavour so I had to prioritize between learning the tech needed to deliver on the clients needs while having something functional the client could use should their contact abruptly end.
 
 <br />
 <br />
@@ -13,13 +76,17 @@ OrthoConsult is a SaaS for providing clients with online orthodontic & orthopedi
 
 <br />
 
-## Client Needs
+## Service Flow
 
-Due to this, a lot of the design decisions made for this project are based on assumptions. 
+Using all of the information above, I constructed a rough flow chart for potential user types as they engaged with the projected experience from a front-end and back-end perspective. For the sake of clarity, the “Users” communicated below are the Client’s “Clients” while the Client is classified as the “Owner”.
 
-Even though a lot of this project was based largely on assumptions, I worked collaboratively with the client to ensure elements like copy would be familiar to their specialized users to form a rough base to work with if they are released from their contract and I could then start worrking with actual users.
+<br />
 
-<a href="https://ibb.co/Wnxjytc"><img src="https://i.ibb.co/G7xN2TV/Ortho-Consult-Print-Form.jpg" alt="Ortho-Consult-Print-Form" border="0"></a>
+<img src="https://i.ibb.co/FVQ1FZ0/Ortho-Consult-Flow.jpg" alt="Ortho-Consult-Flow" border="0">
+
+<br />
+
+While this diagram provides a comprehensive overview of where the OrthoConsult platform as a whole can go, my initial focus was building out a minimum valuable experience (MVP) based on what would enable the client to effectively continue their consulting work. Therefore, the following task flow and functionality was focused on:
 
 <br />
 
@@ -52,33 +119,11 @@ In addition to these three major aspects, I also ventured into using CSS Grid fo
 - [Stripe](https://stripe.com/)
 
 <br />
-
-## Constraints
-
-Unfortunately, due to the contract mentioned above one of the major constraints was the inability to involve actual clients in the process as it would break the terms of agreement. This was especially troublesome for content copy as the terminology used is highly technical and specific to an Orthodontist.
-
-To overcome this constraint, I worked collaboratively with the client to leverage familiar language and referenced current touchpoints to keep the user journey as similar as possible to what their clients have come to expect.
-
-Furthermore, there was also the personal constraint of technical knowledge and time as this was a solo endeavour so I had to prioritize between learning the tech needed to deliver on the clients needs while having something functional the client could use should their contact abruptly end.
-
 <br />
 
-## Service Flow
-
-Using all of the information above, I constructed a rough flow chart for potential user types as they engaged with the projected experience from a front-end and back-end perspective. For the sake of clarity, the “Users” communicated below are the Client’s “Clients” while the Client is classified as the “Owner”:
+# Project MVP
 
 <br />
-
-<img src="https://i.ibb.co/FVQ1FZ0/Ortho-Consult-Flow.jpg" alt="Ortho-Consult-Flow" border="0">
-
-<br />
-
-While this diagram provides a comprehensive overview of where the OrthoConsult platform as a whole can go, my initial focus was building out a minimum valuable experience (MVP) based on what would enable the client to effectively continue their consulting work. Therefore, the following task flow and functionality was focused on:
-
-<br />
-<br />
-
-# MVP Task Flow
 
 ## Task 1: Gain understanding of service offering
 
