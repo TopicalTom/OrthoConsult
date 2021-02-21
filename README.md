@@ -11,37 +11,34 @@ OrthoConsult is a SaaS for providing clients with online orthodontic & orthopedi
 <br />
 <br />
 
-# Project Context
-
-<br />
-
 ## The Challenge
 
-At a high-level, my client provides orthodontic & orthopadic case consultation by looking over a patient's dental records and offering their professional advice on how to proceed with treatment. This project arose from the potential of my clients' contract ending with a company and their need for a platform to continue their services with the customer base they have built over the years.
+At a high-level, my client provides orthodontic & orthopadic case consultation by looking over a patient's dental records and offering their professional advice on how to proceed with treatment. The need for this project arose from my clients' contract with a compnay potentially ending and them wanting a platform as backup to continue their services with the customer base they have built over the years.
 
 <br />
 
-## Business Requirements
+## Business Context
 
-Even though a lot of this project was based largely on assumptions, I worked collaboratively with the client to ensure elements like copy would be familiar to their specialized users to form a rough base to work with if they are released from their contract and I could then start worrking with actual users.
+In order for a customer to recieve my client's consultation services they are required to fill out a pre-case evaluation questionaire form and send any relevant dental records by email. This form (recreated below using non-personally identifying info) is crucial for their business as that it documents all the information needed to provide a thorough assessment of a patient's direction for treatment:
 
 <br />
-
 <a href="https://ibb.co/Wnxjytc"><img src="https://i.ibb.co/G7xN2TV/Ortho-Consult-Print-Form.jpg" alt="Ortho-Consult-Print-Form" border="0"></a>
-
 <br />
 
-In totality, the product that I was building needed to accomplish the following objectives:
+However, while this is how my client currently conducts their business, they also informed me of the following paint points:
 
-1. Collecting and Storing Raw Data and Files
-2. Communicate directly with potential customers
-3. Ensure payment for providing Consulting Services
+1. Some customers may not fill out (or miss) all the form fields
+2. Some customers don't send all the dental records
+
+This is troublesome for my client as an accurate assessment of a patient is only as good as the information they are provided as they themselves are not physically seeing a patient. Due to this, signing a legal contract with each customer every time they conduct an evaluation is absolutely necessary in their line of field.
 
 <br />
 
 ## Customer Journey
 
-As it currently stands, when a potential customer wants to complete a case evaluation with my client they would have to jump through a few hoops. The typical flow a potential lead would go through would roughly be:
+While the core of my clients business revolves around the act of filling out the aforementioned form, it in a broader sense occurs within a larger customer journey that spans from initially learning about the service all the way to recieiving their case assessment. Unfortunately, due to the contract mentioned above, one of the major constraints was the inability to involve actual clients in this process as it would break the terms of agreement.
+
+For this reason I was unable to involve actual customers in uncovering this journey and instead had to rely on my understanding of touchpoints presented to customers and what my client was able to explain about their business. As such, the following is an assumption of the high-level flow for the customer journey:
 
 1. Visit the website
 2. Navigate to the Case Evaluation Tab
@@ -61,13 +58,13 @@ As it currently stands, when a potential customer wants to complete a case evalu
 
 <br />
 
-## Constraints
+## Project Objective
 
-Unfortunately, due to the contract mentioned above one of the major constraints was the inability to involve actual clients in the process as it would break the terms of agreement. This was especially troublesome for content copy as the terminology used is highly technical and specific to an Orthodontist.
+Taking all of this into consideration, any solution to my clients needs would have to enable the following:
 
-To overcome this constraint, I worked collaboratively with the client to leverage familiar language and referenced current touchpoints to keep the user journey as similar as possible to what their clients have come to expect.
-
-Furthermore, there was also the personal constraint of technical knowledge and time as this was a solo endeavour so I had to prioritize between learning the tech needed to deliver on the clients needs while having something functional the client could use should their contact abruptly end.
+1. Collecting and Storing Raw Data and Files
+2. Communicate directly with potential customers
+3. Ensure payment for providing Consulting Services
 
 <br />
 <br />
